@@ -105,7 +105,18 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
   }
 
   private HashMap<String, String> listToMap(UserRecommendationList recommendationForOne) {
+<<<<<<< HEAD
     return null;
+=======
+    HashMap<String, String> map = new HashMap<>();
+    map.put(NODE_ID, recommendationForOne.getUserId() + "");
+    StringBuilder strb = new StringBuilder();
+    for (int recommendedFriend : recommendationForOne.getRecommendations()) {
+      strb.append(recommendedFriend + "");
+    }
+    map.put(RECOMMENDED_NODES, strb.toString());
+    return map;
+>>>>>>> 6581eca3634ecd5d6951115f44ed276a89b84a20
   }
 
   //update recommendationList
@@ -113,6 +124,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
                           int Id,
                           Map<Integer, GraphNode> map) {
     Rule currRule;
+<<<<<<< HEAD
     currRule = new Rule1GetFriendWithMaxFriends();
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
@@ -133,6 +145,25 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     }
     currRule = new Rule4FollowRandomUser();
     currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+=======
+    currRule = new Rule1();
+    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
+    currRule = new Rule2();
+    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
+    currRule = new Rule3();
+    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
+    currRule = new Rule4();
+    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+>>>>>>> 6581eca3634ecd5d6951115f44ed276a89b84a20
   }
 
 
