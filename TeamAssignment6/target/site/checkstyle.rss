@@ -25,9 +25,9 @@ under the License.
     <language>en-us</language>
     <copyright>&#169;2017</copyright>
     <item>
-      <title>File: 1,
+      <title>File: 8,
              Errors: 0,
-             Warnings: 7,
+             Warnings: 27,
              Infos: 0
       </title>
             <link>${project.url}/checkstyle.html</link>
@@ -46,13 +46,111 @@ under the License.
           <tbody>
                           <tr>
                 <td>
-                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.App.java">edu/neu/ccs/cs5010/App.java</a>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.UserRecommendationList.java">edu/neu/ccs/cs5010/UserRecommendationList.java</a>
                 </td>
                 <td>
                   0
                 </td>
                 <td>
-                  7
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.Rule2FriendOfFriend.java">edu/neu/ccs/cs5010/Rule2FriendOfFriend.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  5
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.GraphNode.java">edu/neu/ccs/cs5010/GraphNode.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.Rule.java">edu/neu/ccs/cs5010/Rule.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.Rule3FollowInfluencer.java">edu/neu/ccs/cs5010/Rule3FollowInfluencer.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.TwitterGraph.java">edu/neu/ccs/cs5010/TwitterGraph.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  14
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.Rule1GetFriendWithMaxFriends.java">edu/neu/ccs/cs5010/Rule1GetFriendWithMaxFriends.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  8
+                </td>
+                <td>
+                  0
+                </td>
+              </tr>
+                          <tr>
+                <td>
+                  <a href="${project.url}/checkstyle.html#edu.neu.ccs.cs5010.Rule4FollowRandomUser.java">edu/neu/ccs/cs5010/Rule4FollowRandomUser.java</a>
+                </td>
+                <td>
+                  0
+                </td>
+                <td>
+                  0
                 </td>
                 <td>
                   0

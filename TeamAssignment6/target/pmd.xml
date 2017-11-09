@@ -1,3 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.3.5" timestamp="2017-11-07T14:19:24.482">
+<pmd version="5.3.5" timestamp="2017-11-09T14:11:35.272">
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\GraphNode.java">
+<violation beginline="14" endline="14" begincolumn="16" endcolumn="17" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="GraphNode" method="GraphNode" variable="df" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like df
+</violation>
+</file>
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\TwitterGraph.java">
+<violation beginline="62" endline="62" begincolumn="36" endcolumn="37" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o1
+</violation>
+<violation beginline="62" endline="62" begincolumn="50" endcolumn="51" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like o2
+</violation>
+<violation beginline="92" endline="92" begincolumn="10" endcolumn="20" rule="UnusedLocalVariable" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="generateRecommendation" variable="currentDate" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'currentDate'.
+</violation>
+<violation beginline="93" endline="93" begincolumn="10" endcolumn="20" rule="UnusedLocalVariable" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="generateRecommendation" variable="monthTimeMs" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'monthTimeMs'.
+</violation>
+</file>
 </pmd>

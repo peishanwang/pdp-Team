@@ -1,23 +1,15 @@
 package edu.neu.ccs.cs5010;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
-import java.util.Random;
-import java.util.Set;
 
 enum Gender {
   MALE("M"), FEMALE("F"), Other("O");
@@ -44,67 +36,6 @@ enum Gender {
 }
 
 public class TwitterGraph {
-  class GraphNode {
-    GraphNode(int nodeId, String creationDate, String gender, int age, String city) {
-      this.nodeId = nodeId;
-
-      DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-      try {
-        profileCreationDate = df.parse(creationDate);
-      } catch (ParseException e) {
-        throw new IllegalArgumentException("creation date not properly formatted.");
-      }
-
-      this.gender = Gender.fromString(gender);
-      if (this.gender == null) {
-        throw new IllegalArgumentException("provided string: " + gender + " is not a valid gender");
-      }
-
-      if (age < 0 || age > 100) {
-        throw new IllegalArgumentException("Age outside of range [0, 100]");
-      }
-      this.age = age;
-
-      if (city.isEmpty()) {
-        throw new IllegalArgumentException("Provided city is empty.");
-      }
-      this.city = city;
-
-      this.friendSet = new HashSet<>();
-      friendSet.size();
-      this.numFollowers = 0;
-    }
-
-    void addFollower(GraphNode node) {
-      friendSet.add(node.getNodeId());
-      node.numFollowers++;
-    }
-
-    public int getNodeId() {
-      return nodeId;
-    }
-
-    public Set<Integer> getFriends() {
-      return friendSet;
-    }
-
-    public int getNumFollowers() {
-      return numFollowers;
-    }
-
-    public Date getProfileCreationDate() {
-      return profileCreationDate;
-    }
-
-    int nodeId;
-    Set<Integer> friendSet;
-    int numFollowers;
-
-    Gender gender;
-    int age;
-    Date profileCreationDate;
-    String city;
-  }
 
   public TwitterGraph() {
     idToNodeMap = new HashMap<>();
@@ -125,7 +56,7 @@ public class TwitterGraph {
     srcNode.addFollower(dstNode);
   }
 
-  private List<Integer> generateInfluencers(int maxInfluencers) {
+  public List<Integer> generateInfluencers(int maxInfluencers) {
     Comparator<GraphNode> followerComparator = new Comparator<GraphNode>() {
       @Override
       public int compare(GraphNode o1, GraphNode o2) {
@@ -156,7 +87,6 @@ public class TwitterGraph {
 
   public List<UserRecommendationList> generateRecommendation(int numUsersToProcess, int numRecommendationsPerUser, int maxInfluencersCount) {
     // first generate sort influencers list
-    List<Integer> influencersList = generateInfluencers(maxInfluencersCount);
     // TODO take arg to process user in that orders
     List<UserRecommendationList> usersRecommendation = new ArrayList<>();
     Date currentDate = new Date();
@@ -164,92 +94,51 @@ public class TwitterGraph {
     for (int i = 1; i <= numUsersToProcess; i++) {
       UserRecommendationList recommendationList = new UserRecommendationList(i);
       usersRecommendation.add(recommendationList);
-      // Rule 1: if profile less than 1 month old, find friend which has most friends and
-      // follow what he follows
-      GraphNode userNode = idToNodeMap.get(i);
-      if (userNode == null) {throw new IllegalStateException("invalid nodeId: " + i);}
-      // TODO make this check proper if users are from 1 to numUsers
-      if ((currentDate.getTime() - userNode.getProfileCreationDate().getTime()) <= monthTimeMs) {
-        int maxfriends = 0;
-        GraphNode nodeWithMaxfriends = null;
-        for (Integer friendsNodeId : userNode.getFriends()) {
-          GraphNode friendsNode = idToNodeMap.get(friendsNodeId);
-          if (friendsNodeId == null) {throw new IllegalStateException("friendNode not found for id: " + friendsNodeId);}
-          if (friendsNode.getFriends().size() > maxfriends) {
-            nodeWithMaxfriends = friendsNode;
-            maxfriends = nodeWithMaxfriends.getFriends().size();
-          }
-        }
-        if (maxfriends > 0) {
-          for (Integer friendsNodeId : nodeWithMaxfriends.getFriends()) {
-            if (recommendationList.getRecommendationSize() < numRecommendationsPerUser &&
-                    !userNode.getFriends().contains(friendsNodeId)) {
-              recommendationList.tryRecommendUser(friendsNodeId);
-            }
-          }
-        }
-      }
+
+      Rule rule = new Rule1GetFriendWithMaxFriends();
+      recommendationList = rule.generateRecommendations(recommendationList,
+              i,
+              idToNodeMap,
+              numRecommendationsPerUser);
+
       if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
         // recommendation finished for this user
         continue;
       }
 
-      // Rule 2: look at all friend of userNode friend and add in increasing order of id
-      Set<Integer> fOfFs = new HashSet<>();
-      for (Integer friendId : userNode.getFriends()) {
-        GraphNode friendNode = idToNodeMap.get(friendId);
-        if (friendNode == null) {
-          throw new IllegalStateException("friendNode not found for id: " + friendId);
-        }
-        for (Integer fOfF : friendNode.getFriends()) {
-          if (userNode.getNodeId() != fOfF && !userNode.getFriends().contains(fOfF)) {
-            fOfFs.add(fOfF);
-          }
-        }
-      }
-      // check if already in recommendation list
-      List<Integer> fOfFsList = new ArrayList<>(fOfFs);
-      fOfFs.clear();
-      Collections.sort(fOfFsList);
-      for (Integer fOfFId : fOfFsList) {
-        recommendationList.tryRecommendUser(fOfFId);
-        if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
-          break;
-        }
-      }
+      rule = new Rule2FriendOfFriend();
+      recommendationList = rule.generateRecommendations(recommendationList,
+              i,
+              idToNodeMap,
+              numRecommendationsPerUser);
       if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
         // recommendation finished for this user
         continue;
       }
 
-      // Rule 3: look at most popular person (influencer) in graph with most followers
-      for (Integer nodeId : influencersList) {
-        if (!userNode.getFriends().contains(nodeId)) {
-          recommendationList.tryRecommendUser(nodeId);
-          if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
-            break;
-          }
-        }
-      }
+      rule = new Rule3FollowInfluencer();
+      recommendationList = rule.generateRecommendations(recommendationList,
+              i,
+              idToNodeMap,
+              numRecommendationsPerUser);
       if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
         // recommendation finished for this user
         continue;
       }
 
       // Rule 4: propose randomly from graph
-      Random random = new Random();
-      while (recommendationList.getRecommendationSize() < numRecommendationsPerUser) {
-        // assuming nodeId are sequentially given
-        int randomNodeId = random.nextInt(idToNodeMap.size()) + 1;
-        if (!userNode.getFriends().contains(randomNodeId)) {
-          recommendationList.tryRecommendUser(randomNodeId);
-        }
-      }
+      rule = new Rule4FollowRandomUser();
+      recommendationList = rule.generateRecommendations(
+              recommendationList,
+              i,
+              idToNodeMap,
+              numRecommendationsPerUser
+      );
     }
     return usersRecommendation;
   }
 
-  private Map<Integer, GraphNode> idToNodeMap;
+  public Map<Integer, GraphNode> idToNodeMap;
 
 
 
@@ -257,7 +146,7 @@ public class TwitterGraph {
     TwitterGraph graph = new TwitterGraph();
 
     // read node data
-    BufferedReader reader = new BufferedReader(new FileReader(new File("nodes_small.csv")));
+    BufferedReader reader = new BufferedReader(new FileReader(new File("nodes_10000.csv")));
     String line = reader.readLine();
     if (line == null) {
       throw new IllegalArgumentException("Node File doesn't contain header");
@@ -269,7 +158,7 @@ public class TwitterGraph {
     reader.close();
 
     // read edge data
-    reader = new BufferedReader(new FileReader(new File("edges_small.csv")));
+    reader = new BufferedReader(new FileReader(new File("edges_10000.csv")));
     line = reader.readLine();
     if (line == null) {
       throw new IllegalArgumentException("Edge File doesn't contain header");
@@ -280,14 +169,27 @@ public class TwitterGraph {
     }
     reader.close();
 
+    File file = new File("output1.csv");
+    BufferedWriter bufferedWriter;
+    bufferedWriter = new BufferedWriter(new OutputStreamWriter(
+            new FileOutputStream(file.getAbsoluteFile()), StandardCharsets.UTF_8));
+
+
     // run recommendation algorithm
-    List<UserRecommendationList> recommendations = graph.generateRecommendation(50, 25, 250);
+    List<UserRecommendationList> recommendations = graph.generateRecommendation(10, 5, 250);
     for (UserRecommendationList userRecommendationList : recommendations) {
       System.out.print("User: " + userRecommendationList.getUserId() + " -> [");
+      bufferedWriter.write(userRecommendationList.getUserId() +"-> [");
       for (Integer nodeId : userRecommendationList.getRecommendations()) {
         System.out.print(nodeId + ", ");
+        bufferedWriter.write(nodeId + ",");
+
       }
       System.out.println("]");
+      bufferedWriter.write("]");
+      bufferedWriter.write("\n");
     }
+
+    bufferedWriter.close();
   }
 }

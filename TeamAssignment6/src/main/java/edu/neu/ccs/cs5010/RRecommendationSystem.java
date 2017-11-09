@@ -10,7 +10,7 @@ public class RRecommendationSystem extends RecommendationSystem{
 
   @Override
   public void generateRecommendation() {
-    Map<Integer, GraphNode> map = SocialNetworkUsersMap.map;
+    Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;
     List<Integer> allUser = new ArrayList<>(map.keySet());
     Random random = new Random();
     Collections.sort(allUser, (a, b) -> b - a);

@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010;
 
+import java.io.*;
 import java.util.*;
 
 public abstract class RecommendationSystem implements IRecommendationSystem{
@@ -22,12 +23,27 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
 
   public abstract void generateRecommendation();
 
-  public static void main(String[] args) {
+
+  @Override
+  public void printResult() {
+    for(UserRecommendationList userRecommendationList:allRecommendations){
+      System.out.print("User: " + userRecommendationList.getUserId() + " -> [");
+      for (Integer nodeId : userRecommendationList.getRecommendations()) {
+        System.out.print(nodeId + ", ");
+
+      }
+      System.out.println("]");
+
+    }
+  }
+
+  public static void main(String[] args) throws IOException {
     ICmdParser cmdParser = new CmdParser(args);
     IRecommendationSystem recommendationSystem = chooseSystem(cmdParser);
     recommendationSystem.initializeSystem();
     recommendationSystem.generateRecommendation();
     recommendationSystem.outputResult(cmdParser.getFileOutput(), ENCODING);
+    recommendationSystem.printResult();
   }
 
   private static IRecommendationSystem chooseSystem(ICmdParser cmdParser) {
@@ -51,8 +67,33 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     return recommendationSystem;
   }
 
-  public void initializeSystem() {
-    
+  public void initializeSystem() throws IOException {
+    SocialNetworkUsersMap socialNetworkUsersMap = new SocialNetworkUsersMap();
+
+    // read node data
+    BufferedReader reader = new BufferedReader(new FileReader(new File(nodeCsv)));
+    String line = reader.readLine();
+    if (line == null) {
+      throw new IllegalArgumentException("Node File doesn't contain header");
+    }
+    while ((line = reader.readLine()) != null) {
+      String cols[] = line.split(",");
+      socialNetworkUsersMap.addNode(Integer.parseInt(cols[0]), cols[1], cols[2], Integer.parseInt(cols[3]), cols[4]);
+    }
+    reader.close();
+
+
+    // read edge data
+    reader = new BufferedReader(new FileReader(new File(edgeCsv)));
+    line = reader.readLine();
+    if (line == null) {
+      throw new IllegalArgumentException("Edge File doesn't contain header");
+    }
+    while ((line = reader.readLine()) != null) {
+      String cols[] = line.split(",");
+      socialNetworkUsersMap.addEdge(Integer.parseInt(cols[0]), Integer.parseInt(cols[1]));
+    }
+    reader.close();
   }
 
   public void outputResult(String path, String encoding) {
@@ -64,7 +105,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
   }
 
   private HashMap<String, String> listToMap(UserRecommendationList recommendationForOne) {
-
+    return null;
   }
 
   //update recommendationList
@@ -72,13 +113,27 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
                           int Id,
                           Map<Integer, GraphNode> map) {
     Rule currRule;
-    currRule = new Rule1();
-    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
-    currRule = new Rule2();
-    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
-    currRule = new Rule3();
-    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
-    currRule = new Rule4();
-    recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    currRule = new Rule1GetFriendWithMaxFriends();
+    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      // recommendation finished for this user
+      return;
+    }
+    currRule = new Rule2FriendOfFriend();
+    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      // recommendation finished for this user
+      return;
+    }
+    currRule = new Rule3FollowInfluencer();
+    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      // recommendation finished for this user
+      return;
+    }
+    currRule = new Rule4FollowRandomUser();
+    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
   }
+
+
 }
