@@ -64,7 +64,14 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
   }
 
   private HashMap<String, String> listToMap(UserRecommendationList recommendationForOne) {
-
+    HashMap<String, String> map = new HashMap<>();
+    map.put(NODE_ID, recommendationForOne.getUserId() + "");
+    StringBuilder strb = new StringBuilder();
+    for (int recommendedFriend : recommendationForOne.getRecommendations()) {
+      strb.append(recommendedFriend + "");
+    }
+    map.put(RECOMMENDED_NODES, strb.toString());
+    return map;
   }
 
   //update recommendationList
@@ -74,10 +81,19 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     Rule currRule;
     currRule = new Rule1();
     recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
     currRule = new Rule2();
     recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
     currRule = new Rule3();
     recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
+    if (recommendationList.getRecommendationSize() >= numToRecommend) {
+      return;
+    }
     currRule = new Rule4();
     recommendationList = currRule.generateRecommendation(recommendationList, Id, map, numToRecommend);
   }
