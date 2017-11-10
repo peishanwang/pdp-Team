@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Rule4FollowRandomUser implements Rule{
   @Override
-  public UserRecommendationList generateRecommendations(UserRecommendationList recommendationList,
+  public void generateRecommendations(UserRecommendationList recommendationList,
                                               int userId,
                                               Map<Integer, GraphNode> idToNodeMap,
                                               int numRecommendationsPerUser) {
@@ -22,6 +22,5 @@ public class Rule4FollowRandomUser implements Rule{
       }
 
     }
-    return recommendationList;
   }
 }

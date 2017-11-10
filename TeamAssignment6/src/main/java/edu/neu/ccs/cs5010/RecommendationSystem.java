@@ -1,9 +1,16 @@
 package edu.neu.ccs.cs5010;
 
-import java.io.*;
-import java.util.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public abstract class RecommendationSystem implements IRecommendationSystem{
+public abstract class RecommendationSystem implements IRecommendationSystem {
   private static final String NODE_ID = "Node ID";
   private static final String RECOMMENDED_NODES = "Recommended nodes";
   private static final String ENCODING = "UTF-8";
@@ -26,7 +33,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
 
   @Override
   public void printResult() {
-    for(UserRecommendationList userRecommendationList:allRecommendations){
+    for (UserRecommendationList userRecommendationList : allRecommendations) {
       System.out.print("User: " + userRecommendationList.getUserId() + " -> [");
       for (Integer nodeId : userRecommendationList.getRecommendations()) {
         System.out.print(nodeId + ", ");
@@ -50,19 +57,19 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     IRecommendationSystem recommendationSystem;
     if (cmdParser.getProcessingFlag() == 's') {
       recommendationSystem = new SRecommendationSystem(cmdParser.getFileNodes(),
-          cmdParser.getFileEdges(),
-          cmdParser.getNumberOfUsersToProcess(),
-          cmdParser.getNumberOfRecommendations());
-    } else if (cmdParser.getProcessingFlag() == 'e'){
+              cmdParser.getFileEdges(),
+              cmdParser.getNumberOfUsersToProcess(),
+              cmdParser.getNumberOfRecommendations());
+    } else if (cmdParser.getProcessingFlag() == 'e') {
       recommendationSystem = new ERecommendationSystem(cmdParser.getFileNodes(),
-          cmdParser.getFileEdges(),
-          cmdParser.getNumberOfUsersToProcess(),
-          cmdParser.getNumberOfRecommendations());
+              cmdParser.getFileEdges(),
+              cmdParser.getNumberOfUsersToProcess(),
+              cmdParser.getNumberOfRecommendations());
     } else {
       recommendationSystem = new RRecommendationSystem(cmdParser.getFileNodes(),
-          cmdParser.getFileEdges(),
-          cmdParser.getNumberOfUsersToProcess(),
-          cmdParser.getNumberOfRecommendations());
+              cmdParser.getFileEdges(),
+              cmdParser.getNumberOfUsersToProcess(),
+              cmdParser.getNumberOfRecommendations());
     }
     return recommendationSystem;
   }
@@ -116,7 +123,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
   }
 
   //update recommendationList
-  UserRecommendationList giveRecommendation(UserRecommendationList recommendationList,
+  void giveRecommendation(UserRecommendationList recommendationList,
                           int Id,
                           Map<Integer, GraphNode> map) {
     Rule currRule;
@@ -124,23 +131,23 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return recommendationList;
+      return;
     }
     currRule = new Rule2FriendOfFriend();
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return recommendationList;
+      return;
     }
     currRule = new Rule3FollowInfluencer();
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return recommendationList;
+      return;
     }
     currRule = new Rule4FollowRandomUser();
     currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
-    return recommendationList;
+    return;
   }
 
 

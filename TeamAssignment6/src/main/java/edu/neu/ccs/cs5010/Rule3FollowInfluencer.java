@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class Rule3FollowInfluencer implements Rule {
   @Override
-  public UserRecommendationList generateRecommendations(UserRecommendationList recommendationList,
+  public void generateRecommendations(UserRecommendationList recommendationList,
                                               int userId,
                                               Map<Integer, GraphNode> idToNodeMap,
                                               int numRecommendationsPerUser) {
@@ -21,6 +21,5 @@ public class Rule3FollowInfluencer implements Rule {
         }
       }
     }
-    return recommendationList;
   }
 }

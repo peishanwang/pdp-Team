@@ -1,10 +1,15 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Collections;
 
 public class Rule2FriendOfFriend implements Rule{
   @Override
-  public UserRecommendationList generateRecommendations(UserRecommendationList recommendationList,
+  public void generateRecommendations(UserRecommendationList recommendationList,
                                               int userId,
                                               Map<Integer, GraphNode> idToNodeMap,
                                               int numRecommendationsPerUser) {
@@ -32,6 +37,5 @@ public class Rule2FriendOfFriend implements Rule{
         break;
       }
     }
-    return recommendationList;
   }
 }
