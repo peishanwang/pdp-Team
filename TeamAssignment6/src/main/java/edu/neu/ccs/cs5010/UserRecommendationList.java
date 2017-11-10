@@ -25,6 +25,7 @@ class UserRecommendationList {
   public void tryRecommendUser(int nodeId) {
     if (this.userId != nodeId) {
       this.recommendations.add(nodeId);
+      SocialNetworkUsersMap.idToNodeMap.get(nodeId).addOneRecommended();
     }
   }
 
