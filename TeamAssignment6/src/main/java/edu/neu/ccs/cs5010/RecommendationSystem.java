@@ -1,8 +1,5 @@
 package edu.neu.ccs.cs5010;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,6 +9,7 @@ import java.util.Map;
 
 public abstract class RecommendationSystem implements IRecommendationSystem {
   private static final String NODE_ID = "Node ID";
+  private static final String SEPARATOR = ",";
   private static final String RECOMMENDED_NODES = "Recommended nodes";
   private static final String ENCODING = "UTF-8";
   List<UserRecommendationList> allRecommendations;
@@ -82,29 +80,26 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     SocialNetworkUsersMap socialNetworkUsersMap = new SocialNetworkUsersMap();
 
     // read node data
-    BufferedReader reader = new BufferedReader(new FileReader(new File(nodeCsv)));
-    String line = reader.readLine();
-    if (line == null) {
+    IIoUtil ioUtil = new IoUtil(nodeCsv, ENCODING);
+    List<String> nodesInfo = ioUtil.getInput();
+    if (nodesInfo == null || nodesInfo.size() == 0 || nodesInfo.get(0) == null) {
       throw new IllegalArgumentException("Node File doesn't contain header");
     }
-    while ((line = reader.readLine()) != null) {
-      String cols[] = line.split(",");
+    for (int i = 1; i < nodesInfo.size(); i++) {
+      String cols[] = nodesInfo.get(i).split(SEPARATOR);
       socialNetworkUsersMap.addNode(Integer.parseInt(cols[0]), cols[1], cols[2], Integer.parseInt(cols[3]), cols[4]);
     }
-    reader.close();
-
 
     // read edge data
-    reader = new BufferedReader(new FileReader(new File(edgeCsv)));
-    line = reader.readLine();
-    if (line == null) {
+    ioUtil = new IoUtil(edgeCsv, ENCODING);
+    List<String> edgeInfo = ioUtil.getInput();
+    if (edgeInfo == null || edgeInfo.size() == 0 || edgeInfo.get(0) == null) {
       throw new IllegalArgumentException("Edge File doesn't contain header");
     }
-    while ((line = reader.readLine()) != null) {
-      String cols[] = line.split(",");
+    for (int i = 1; i < edgeInfo.size(); i++) {
+      String cols[] = edgeInfo.get(i).split(SEPARATOR);
       socialNetworkUsersMap.addEdge(Integer.parseInt(cols[0]), Integer.parseInt(cols[1]));
     }
-    reader.close();
   }
 
   public void outputResult(String path, String encoding) {
