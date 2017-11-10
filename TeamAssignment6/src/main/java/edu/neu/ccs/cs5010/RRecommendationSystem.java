@@ -1,8 +1,14 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.Set;
 
-public class RRecommendationSystem extends RecommendationSystem{
+public class RRecommendationSystem extends RecommendationSystem {
 
   public RRecommendationSystem(String nodeCsv, String edgeCsv, int numToProcess, int numToRecommend) {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
@@ -20,10 +26,11 @@ public class RRecommendationSystem extends RecommendationSystem{
       int index;
       do {
         index = random.nextInt(allUser.size());
+        count++;
       } while (selectedUser.contains(index));
       selectedUser.add(index);
       UserRecommendationList recommendationList = new UserRecommendationList(allUser.get(index));
-      recommendationList = giveRecommendation(recommendationList, allUser.get(index), map);
+      giveRecommendation(recommendationList, allUser.get(index), map);
       allRecommendations.add(recommendationList);
     }
   }

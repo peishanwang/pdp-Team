@@ -19,7 +19,7 @@ public class Rule1GetFriendWithMaxFriends implements Rule{
    * @return new generated recommended list that has all the users recommended by first rule.
    */
   @Override
-  public UserRecommendationList generateRecommendations(UserRecommendationList recommendationList,
+  public void generateRecommendations(UserRecommendationList recommendationList,
                                      int userId,
                                      Map<Integer, GraphNode> idToNodeMap,
                                      int numRecommendationsPerUser) {
@@ -48,7 +48,6 @@ public class Rule1GetFriendWithMaxFriends implements Rule{
         }
       }
     }
-    return recommendationList;
   }
 
 

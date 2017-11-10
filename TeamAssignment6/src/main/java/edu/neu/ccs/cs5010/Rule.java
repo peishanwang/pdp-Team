@@ -14,7 +14,7 @@ public interface Rule {
    * @param numRecommendationsPerUser required number of recommendations per user
    * @return newly generated recommended users list
    */
-  UserRecommendationList generateRecommendations(UserRecommendationList recommendationList,
+  void generateRecommendations(UserRecommendationList recommendationList,
                               int userId,
                               Map<Integer,GraphNode> idToNodeMap,
                               int numRecommendationsPerUser);
