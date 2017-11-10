@@ -13,7 +13,8 @@ public class Rule4FollowRandomUser implements Rule{
     GraphNode userNode = idToNodeMap.get(userId);
     while (recommendationList.getRecommendationSize() < numRecommendationsPerUser) {
       // assuming nodeId are sequentially given
-      if(idToNodeMap.keySet().size()-idToNodeMap.get(userId).friendSet.size()-1 < numRecommendationsPerUser) {
+      if(recommendationList.getRecommendationSize() + idToNodeMap.get(userId).friendSet.size() + 1
+          >= idToNodeMap.keySet().size()) {
         break;
       }
       int randomNodeId = random.nextInt(idToNodeMap.size()) + 1;

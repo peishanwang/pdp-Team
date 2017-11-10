@@ -9,6 +9,7 @@ import java.util.Set;
 
 public class GraphNode {
   GraphNode(int nodeId, String creationDate, String gender, int age, String city) {
+    recommendedTimes = 0;
     this.nodeId = nodeId;
 
     DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
@@ -59,6 +60,14 @@ public class GraphNode {
     return profileCreationDate;
   }
 
+  public void addOneRecommended() {
+    recommendedTimes++;
+  }
+
+  public int getRecommendedTimes() {
+    return recommendedTimes;
+  }
+
   int nodeId;
   Set<Integer> friendSet;
   int numFollowers;
@@ -67,6 +76,7 @@ public class GraphNode {
   int age;
   Date profileCreationDate;
   String city;
+  int recommendedTimes;
 }
 
 enum Gender {
