@@ -128,19 +128,19 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
                           Map<Integer, GraphNode> map) {
     Rule currRule;
     currRule = new Rule1GetFriendWithMaxFriends();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;
     }
     currRule = new Rule2FriendOfFriend();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;
     }
     currRule = new Rule3FollowInfluencer();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;

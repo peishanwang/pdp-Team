@@ -68,3 +68,27 @@ public class GraphNode {
   Date profileCreationDate;
   String city;
 }
+
+enum Gender {
+  MALE("M"), FEMALE("F"), Other("O");
+
+  Gender(String gender) {
+    this.genderStr = gender;
+  }
+
+  @Override
+  public String toString() {
+    return this.genderStr;
+  }
+
+  public static Gender fromString(String genderStr) {
+    for (Gender g : Gender.values()) {
+      if (g.toString().equalsIgnoreCase(genderStr)) {
+        return g;
+      }
+    }
+    return null;
+  }
+
+  private final String genderStr;
+}
