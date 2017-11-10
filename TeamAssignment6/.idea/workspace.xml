@@ -45,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="RecommendationSystem.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="RecommendationSystem.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/RecommendationSystem.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="316">
@@ -53,6 +53,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="outputs.csv" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/outputs.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -366,12 +376,12 @@
       <workItem from="1510093107986" duration="8716000" />
       <workItem from="1510251302117" duration="558000" />
       <workItem from="1510255391529" duration="15773000" />
-      <workItem from="1510280469468" duration="2954000" />
+      <workItem from="1510280469468" duration="3406000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="28001000" />
+    <option name="totallyTimeSpent" value="28453000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -805,14 +815,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/outputs.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/RecommendationSystem.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="316">
@@ -820,6 +822,14 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/outputs.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
