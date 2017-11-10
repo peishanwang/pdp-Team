@@ -116,7 +116,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
   }
 
   //update recommendationList
-  void giveRecommendation(UserRecommendationList recommendationList,
+  UserRecommendationList giveRecommendation(UserRecommendationList recommendationList,
                           int Id,
                           Map<Integer, GraphNode> map) {
     Rule currRule;
@@ -124,39 +124,23 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return;
+      return recommendationList;
     }
     currRule = new Rule2FriendOfFriend();
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return;
+      return recommendationList;
     }
     currRule = new Rule3FollowInfluencer();
     recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
-      return;
+      return recommendationList;
     }
     currRule = new Rule4FollowRandomUser();
     currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
-    currRule = new Rule1GetFriendWithMaxFriends();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
-    if (recommendationList.getRecommendationSize() >= numToRecommend) {
-      return;
-    }
-    currRule = new Rule2FriendOfFriend();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
-    if (recommendationList.getRecommendationSize() >= numToRecommend) {
-      return;
-    }
-    currRule = new Rule3FollowInfluencer();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
-    if (recommendationList.getRecommendationSize() >= numToRecommend) {
-      return;
-    }
-    currRule = new Rule4FollowRandomUser();
-    recommendationList = currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    return recommendationList;
   }
 
 

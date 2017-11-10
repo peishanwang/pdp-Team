@@ -23,7 +23,7 @@ public class RRecommendationSystem extends RecommendationSystem{
       } while (selectedUser.contains(index));
       selectedUser.add(index);
       UserRecommendationList recommendationList = new UserRecommendationList(allUser.get(index));
-      giveRecommendation(recommendationList, allUser.get(index), map);
+      recommendationList = giveRecommendation(recommendationList, allUser.get(index), map);
       allRecommendations.add(recommendationList);
     }
   }
