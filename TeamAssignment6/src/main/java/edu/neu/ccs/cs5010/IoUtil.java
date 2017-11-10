@@ -46,7 +46,8 @@ public class IoUtil implements IIoUtil {
   public void generateOutput(List<String> result, String fileName) {
     File directory = new File(path);
     try {
-      boolean folderExisted = directory.exists() || directory.mkdirs();
+      boolean folderExisted = path.length() == 0 ||
+          directory.exists() || directory.mkdirs();
       if (!folderExisted) {
         throw new IOException("Unable to create path");
       }

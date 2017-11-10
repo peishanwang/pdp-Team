@@ -108,9 +108,12 @@ public abstract class RecommendationSystem implements IRecommendationSystem{
     HashMap<String, String> map = new HashMap<>();
     map.put(NODE_ID, recommendationForOne.getUserId() + "");
     StringBuilder strb = new StringBuilder();
+    strb.append("[");
     for (int recommendedFriend : recommendationForOne.getRecommendations()) {
-      strb.append(recommendedFriend + "");
+      strb.append(recommendedFriend + " ");
     }
+    strb.deleteCharAt(strb.length() - 1);
+    strb.append("]");
     map.put(RECOMMENDED_NODES, strb.toString());
     return map;
   }
