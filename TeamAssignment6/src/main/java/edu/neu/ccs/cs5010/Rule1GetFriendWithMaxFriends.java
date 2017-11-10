@@ -16,7 +16,6 @@ public class Rule1GetFriendWithMaxFriends implements Rule{
    * @param userId id of user
    * @param idToNodeMap map that stores node-id as key and graph node as value
    * @param numRecommendationsPerUser required number of recommendations per user
-   * @return new generated recommended list that has all the users recommended by first rule.
    */
   @Override
   public void generateRecommendations(UserRecommendationList recommendationList,

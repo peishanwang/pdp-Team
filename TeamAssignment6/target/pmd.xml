@@ -1,22 +1,46 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd version="5.3.5" timestamp="2017-11-09T14:11:35.272">
-<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\GraphNode.java">
-<violation beginline="14" endline="14" begincolumn="16" endcolumn="17" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="GraphNode" method="GraphNode" variable="df" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
-Avoid variables with short names like df
+<pmd version="5.3.5" timestamp="2017-11-10T13:14:18.278">
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\ERecommendationSystem.java">
+<violation beginline="18" endline="18" begincolumn="32" endcolumn="32" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="ERecommendationSystem" method="generateRecommendation" variable="a" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like a
+</violation>
+<violation beginline="18" endline="18" begincolumn="35" endcolumn="35" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="ERecommendationSystem" method="generateRecommendation" variable="b" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like b
 </violation>
 </file>
-<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\TwitterGraph.java">
-<violation beginline="62" endline="62" begincolumn="36" endcolumn="37" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\GraphNode.java">
+<violation beginline="15" endline="15" begincolumn="16" endcolumn="17" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="GraphNode" method="GraphNode" variable="df" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like df
+</violation>
+<violation beginline="75" endline="75" begincolumn="15" endcolumn="17" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="GraphNode" variable="age" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'age'.
+</violation>
+<violation beginline="77" endline="77" begincolumn="18" endcolumn="21" rule="UnusedPrivateField" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="GraphNode" variable="city" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'city'.
+</violation>
+</file>
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\RRecommendationSystem.java">
+<violation beginline="22" endline="22" begincolumn="32" endcolumn="32" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="RRecommendationSystem" method="generateRecommendation" variable="a" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like a
+</violation>
+<violation beginline="22" endline="22" begincolumn="35" endcolumn="35" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="RRecommendationSystem" method="generateRecommendation" variable="b" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like b
+</violation>
+</file>
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\RecommendationSystem.java">
+<violation beginline="129" endline="129" begincolumn="31" endcolumn="32" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="RecommendationSystem" method="giveRecommendation" variable="Id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+Avoid variables with short names like Id
+</violation>
+<violation beginline="129" endline="129" begincolumn="31" endcolumn="32" rule="VariableNamingConventions" ruleset="Naming" package="edu.neu.ccs.cs5010" class="RecommendationSystem" method="giveRecommendation" variable="Id" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#VariableNamingConventions" priority="1">
+Variables should start with a lowercase character, 'Id' starts with uppercase character.
+</violation>
+</file>
+<file name="D:\pdp_team_assignments\TeamAssignment6\src\main\java\edu\neu\ccs\cs5010\Rule3FollowInfluencer.java">
+<violation beginline="39" endline="39" begincolumn="36" endcolumn="37" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Rule3FollowInfluencer" method="compare" variable="o1" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
 Avoid variables with short names like o1
 </violation>
-<violation beginline="62" endline="62" begincolumn="50" endcolumn="51" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
+<violation beginline="39" endline="39" begincolumn="50" endcolumn="51" rule="ShortVariable" ruleset="Naming" package="edu.neu.ccs.cs5010" class="Rule3FollowInfluencer" method="compare" variable="o2" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/naming.html#ShortVariable" priority="3">
 Avoid variables with short names like o2
-</violation>
-<violation beginline="92" endline="92" begincolumn="10" endcolumn="20" rule="UnusedLocalVariable" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="generateRecommendation" variable="currentDate" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'currentDate'.
-</violation>
-<violation beginline="93" endline="93" begincolumn="10" endcolumn="20" rule="UnusedLocalVariable" ruleset="Unused Code" package="edu.neu.ccs.cs5010" class="TwitterGraph" method="generateRecommendation" variable="monthTimeMs" externalInfoUrl="https://pmd.github.io/pmd-5.3.5/pmd-java/rules/java/unusedcode.html#UnusedLocalVariable" priority="3">
-Avoid unused local variables such as 'monthTimeMs'.
 </violation>
 </file>
 </pmd>

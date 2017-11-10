@@ -12,7 +12,6 @@ public interface Rule {
    * @param userId id of user
    * @param idToNodeMap map that stores node-id as key and graph node as value
    * @param numRecommendationsPerUser required number of recommendations per user
-   * @return newly generated recommended users list
    */
   void generateRecommendations(UserRecommendationList recommendationList,
                               int userId,
