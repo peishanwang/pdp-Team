@@ -7,7 +7,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GraphNode {
+public class GraphNode implements IGraphNode{
   GraphNode(int nodeId, String creationDate, String gender, int age, String city) {
     recommendedTimes = 0;
     this.nodeId = nodeId;
@@ -39,7 +39,7 @@ public class GraphNode {
     this.numFollowers = 0;
   }
 
-  void addFollower(GraphNode node) {
+  public void addFollower(GraphNode node) {
     friendSet.add(node.getNodeId());
     node.numFollowers++;
   }
@@ -68,15 +68,14 @@ public class GraphNode {
     return recommendedTimes;
   }
 
-  int nodeId;
-  Set<Integer> friendSet;
-  int numFollowers;
-
-  Gender gender;
-  int age;
-  Date profileCreationDate;
-  String city;
-  int recommendedTimes;
+  private int nodeId;
+  private Set<Integer> friendSet;
+  private int numFollowers;
+  private Gender gender;
+  private int age;
+  private Date profileCreationDate;
+  private String city;
+  private int recommendedTimes;
 }
 
 enum Gender {
