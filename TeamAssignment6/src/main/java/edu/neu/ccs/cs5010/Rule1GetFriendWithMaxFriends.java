@@ -4,14 +4,14 @@ import java.util.Date;
 import java.util.Map;
 
 /**
- * Class implementing the first rule.
+ * Class to generate recommendations according to First Criteria.
  * Rule 1: if profile less than 1 month old, find friend which has most friends and
  * follow what he follows
  */
 public class Rule1GetFriendWithMaxFriends implements Rule{
 
   /**
-   * overridden method from Rule Interface.
+   * Method to generate recommendations. overridden by Rule Interface.
    * @param recommendationList list of recommended users
    * @param userId id of user
    * @param idToNodeMap map that stores node-id as key and graph node as value

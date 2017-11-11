@@ -1,5 +1,8 @@
 package edu.neu.ccs.cs5010;
 
+/**
+ * Class to throw exception if cmd argument is wrong and also print appropriate instructions.
+ */
 public class IllegalCmdArgumentException extends RuntimeException {
   /**
    * IllegalCmdArgumentException Constructor/

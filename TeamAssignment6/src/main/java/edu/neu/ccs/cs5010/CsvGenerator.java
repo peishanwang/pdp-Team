@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * CsvGenerator is used to generate csv file.
+ * CsvGenerator is used to generate output csv file.
  */
 public class CsvGenerator implements ICsvGenerator {
   private static final int HASHCODE_INITIAL = 17;
@@ -24,6 +24,10 @@ public class CsvGenerator implements ICsvGenerator {
     setHeader();
   }
 
+  /**
+   * method will add map information line by line.
+   * @param map information to be added.
+   */
   @Override
   public void addLine(HashMap<String, String> map) {
     StringBuilder strb = new StringBuilder();
@@ -36,6 +40,11 @@ public class CsvGenerator implements ICsvGenerator {
     text.add(strb.toString());
   }
 
+  /**
+   * method to generate csv file.
+   * @param pathAndName path to take file from
+   * @param encoding encoding type
+   */
   @Override
   public void generateCsv(String pathAndName, String encoding) {
     String[] strs = pathAndName.split("\\\\");

@@ -3,7 +3,7 @@ package edu.neu.ccs.cs5010;
 import java.util.Map;
 
 /**
- * Interface Rule.
+ * Interface Rule to generate recommendations according to 1 or more out of 4 criterias.
  */
 public interface Rule {
   /**

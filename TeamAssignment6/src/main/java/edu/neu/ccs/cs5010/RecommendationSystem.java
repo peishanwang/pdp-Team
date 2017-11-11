@@ -7,6 +7,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Execution starts from Class RecommendationSystem.
+ */
 public abstract class RecommendationSystem implements IRecommendationSystem {
   private static final String NODE_ID = "Node ID";
   private static final String SEPARATOR = ",";
@@ -21,6 +24,13 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
   int numToProcess;
   int numToRecommend;
 
+  /**
+   * RecommendedSystem constructor.
+   * @param nodeCsv csv file of nodes
+   * @param edgeCsv csv file of edges
+   * @param numToProcess total number of users to generate recommendations for
+   * @param numToRecommend total numberof recommended
+   */
   public RecommendationSystem(String nodeCsv,
                               String edgeCsv,
                               int numToProcess,
@@ -32,9 +42,17 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     this.numToRecommend = numToRecommend;
   }
 
+  /**
+   * abstract method to generate recommendations.
+   * will be implemented by child classes-RRecommendationSystem,
+   * SRecommendationSystem, ERecommendationSystem
+   */
   public abstract void generateRecommendation();
 
 
+  /**
+   * method to print results on console.
+   */
   @Override
   public void printResult() {
     for (UserRecommendationList userRecommendationList : allRecommendations) {
@@ -52,6 +70,11 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     }
   }
 
+  /**
+   * main method of project.
+   * @param args command line arguments
+   * @throws IOException IO Exception
+   */
   public static void main(String[] args) throws IOException {
     ICmdParser cmdParser = new CmdParser(args);
     IRecommendationSystem recommendationSystem = chooseSystem(cmdParser);
@@ -82,6 +105,10 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     return recommendationSystem;
   }
 
+  /**
+   * method to read node and edge files.
+   * this method will also call method to add nodes into a hashmap
+   */
   public void initializeSystem() {
     SocialNetworkUsersMap socialNetworkUsersMap = new SocialNetworkUsersMap();
     // read node data
@@ -91,7 +118,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
       throw new IllegalArgumentException("Node File doesn't contain header");
     }
     for (int i = 1; i < nodesInfo.size(); i++) {
-      String cols[] = nodesInfo.get(i).split(SEPARATOR);
+      String[] cols = nodesInfo.get(i).split(SEPARATOR);
       socialNetworkUsersMap.addNode(Integer.parseInt(cols[0]),
               cols[1],
               cols[2],
@@ -106,11 +133,16 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
       throw new IllegalArgumentException("Edge File doesn't contain header");
     }
     for (int i = 1; i < edgeInfo.size(); i++) {
-      String cols[] = edgeInfo.get(i).split(SEPARATOR);
+      String[] cols = edgeInfo.get(i).split(SEPARATOR);
       socialNetworkUsersMap.addEdge(Integer.parseInt(cols[0]), Integer.parseInt(cols[1]));
     }
   }
 
+  /**
+   * method to output results on console.
+   * @param path path of node file
+   * @param encoding file encoding used
+   */
   public void outputResult(String path, String encoding) {
     ICsvGenerator csvGenerator = new CsvGenerator(Arrays.asList(NODE_ID, RECOMMENDED_NODES));
     for (int i = 0; i < allRecommendations.size(); i++) {

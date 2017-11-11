@@ -3,7 +3,18 @@ package edu.neu.ccs.cs5010;
 import java.util.Map;
 import java.util.Random;
 
+/**
+ * Class to generate recommendations randomly using 4th criteria.
+ */
 public class Rule4FollowRandomUser implements Rule{
+
+  /**
+   * Method to generate recommendations. overridden by Rule Interface.
+   * @param recommendationList list of recommended users
+   * @param userId id of user
+   * @param idToNodeMap map that stores node-id as key and graph node as value
+   * @param numRecommendationsPerUser required number of recommendations per user
+   */
   @Override
   public void generateRecommendations(UserRecommendationList recommendationList,
                                               int userId,

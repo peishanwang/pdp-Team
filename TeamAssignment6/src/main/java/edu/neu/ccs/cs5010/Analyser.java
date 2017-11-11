@@ -11,6 +11,10 @@ import java.util.Set;
  */
 public class Analyser implements IAnalyser {
 
+  /**
+   * method to get top ten recommended users.
+   * @return list of top recommended users
+   */
   public List<Integer> getTopTenResult() {
     List<Integer> res = new ArrayList<>();
     Set<Integer> allUsers = SocialNetworkUsersMap.idToNodeMap.keySet();

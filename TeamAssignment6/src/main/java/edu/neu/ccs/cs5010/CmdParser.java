@@ -1,5 +1,9 @@
 package edu.neu.ccs.cs5010;
 
+/**
+ * CmdParser class is used to parse command line arguments.
+ * It will parse every command line argument and will use them accordingly
+ */
 public class CmdParser implements ICmdParser{
   private static final int HASHCODE_INITIAL = 17;
   private static final int HASHCODE_COEFFICIENT = 31;
@@ -49,10 +53,10 @@ public class CmdParser implements ICmdParser{
       totalNumberOfUsers = LARGE_USER_AMOUNT;
     }
     if (args.length > RECOMMENDATION_NUM_INDEX) {
-      numberOfRecommendations = Integer.valueOf(args[RECOMMENDATION_NUM_INDEX]);
+      numberOfRecommendations = Integer.parseInt(args[RECOMMENDATION_NUM_INDEX]);
     }
     if (args.length > PROCESS_NUM_INDEX) {
-      numberOfUsersToProcess = Integer.valueOf(args[PROCESS_NUM_INDEX]);
+      numberOfUsersToProcess = Integer.parseInt(args[PROCESS_NUM_INDEX]);
       if (numberOfUsersToProcess > totalNumberOfUsers) {
         throw new IllegalCmdArgumentException("numberOfUsersToProcess must not"
             + "be larger than total number of users.");
@@ -69,26 +73,50 @@ public class CmdParser implements ICmdParser{
     }
   }
 
+  /**
+   * method to get all nodes.
+   * @return string having all nodes of csvfile
+   */
   public String getFileNodes() {
     return fileNodes;
   }
 
+  /**
+   * method to get all edges.
+   * @return string having all edges of csvFile
+   */
   public String getFileEdges() {
     return fileEdges;
   }
 
+  /**
+   * method that has output file properties.
+   * @return output file
+   */
   public String getFileOutput() {
     return fileOutput;
   }
 
+  /**
+   * method to get processing flag.
+   * @return char - e/r/s
+   */
   public char getProcessingFlag() {
     return processingFlag;
   }
 
+  /**
+   * method to get number of users to be processed.
+   * @return number of users to be processed
+   */
   public int getNumberOfUsersToProcess() {
     return numberOfUsersToProcess;
   }
 
+  /**
+   * method to get number of recommendations to be generated.
+   * @return number of recommendations
+   */
   public int getNumberOfRecommendations() {
     return numberOfRecommendations;
   }

@@ -8,9 +8,20 @@ import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 
+
+/**
+ * RRecommendationSystem class is used for taking users to process randomly.
+ *
+ */
 public class RRecommendationSystem extends RecommendationSystem {
 
-
+  /**
+   * RRecommendationSystem constructor.
+   * @param nodeCsv node csv file
+   * @param edgeCsv edge csv file
+   * @param numToProcess number of users to process
+   * @param numToRecommend number of recommendation to make
+   */
   public RRecommendationSystem(String nodeCsv,
                                String edgeCsv,
                                int numToProcess,
@@ -18,6 +29,9 @@ public class RRecommendationSystem extends RecommendationSystem {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
   }
 
+  /**
+   * method to generate recommendations-overridden from interface RecommendationSystem.
+   */
   @Override
   public void generateRecommendation() {
     Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;

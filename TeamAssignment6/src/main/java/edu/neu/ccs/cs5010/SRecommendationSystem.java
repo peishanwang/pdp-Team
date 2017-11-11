@@ -5,12 +5,29 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * RRecommendationSystem class is used for taking users to process from start.
+ *
+ */
 public class SRecommendationSystem extends RecommendationSystem{
 
-  public SRecommendationSystem(String nodeCsv, String edgeCsv, int numToProcess, int numToRecommend) {
+  /**
+   * SRecommendationSystem constructor.
+   * @param nodeCsv node csv file
+   * @param edgeCsv edge csv file
+   * @param numToProcess number of users to process
+   * @param numToRecommend number of recommendation to make
+   */
+  public SRecommendationSystem(String nodeCsv,
+                               String edgeCsv,
+                               int numToProcess,
+                               int numToRecommend) {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
   }
 
+  /**
+   * method to generate recommendations-overridden from interface RecommendationSystem.
+   */
   @Override
   public void generateRecommendation() {
     Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;

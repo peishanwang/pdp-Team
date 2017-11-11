@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * UserRecommendationList is class to store recommended nodes for particular node id.
  * fields - userid of user we are generating recommendation for.
  * set of all the users recommended
  *
