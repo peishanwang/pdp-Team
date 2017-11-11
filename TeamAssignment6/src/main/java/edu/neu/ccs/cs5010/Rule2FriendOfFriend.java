@@ -1,21 +1,21 @@
 package edu.neu.ccs.cs5010;
 
+import java.util.Collections;
+import java.util.Map;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Map;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Collections;
 
-public class Rule2FriendOfFriend implements Rule{
+public class Rule2FriendOfFriend implements Rule {
   @Override
   public void generateRecommendations(UserRecommendationList recommendationList,
-                                              int userId,
-                                              Map<Integer, GraphNode> idToNodeMap,
-                                              int numRecommendationsPerUser) {
+                                      int userId,
+                                      Map<Integer, GraphNode> idToNodeMap,
+                                      int numRecommendationsPerUser) {
 
     GraphNode userNode = idToNodeMap.get(userId);
-    Set<Integer> fOfFs = new HashSet<>();
+    Set<Integer> friendOfFriends = new HashSet<>();
     for (Integer friendId : userNode.getFriends()) {
       GraphNode friendNode = idToNodeMap.get(friendId);
       if (friendNode == null) {
@@ -23,16 +23,16 @@ public class Rule2FriendOfFriend implements Rule{
       }
       for (Integer fOfF : friendNode.getFriends()) {
         if (userNode.getNodeId() != fOfF && !userNode.getFriends().contains(fOfF)) {
-          fOfFs.add(fOfF);
+          friendOfFriends.add(fOfF);
         }
       }
     }
     // check if already in recommendation list
-    List<Integer> fOfFsList = new ArrayList<>(fOfFs);
-    fOfFs.clear();
-    Collections.sort(fOfFsList);
-    for (Integer fOfFId : fOfFsList) {
-      recommendationList.tryRecommendUser(fOfFId);
+    List<Integer> friendOfFriendsList = new ArrayList<>(friendOfFriends);
+    friendOfFriends.clear();
+    Collections.sort(friendOfFriendsList);
+    for (Integer friendOfFriendId : friendOfFriendsList) {
+      recommendationList.tryRecommendUser(friendOfFriendId);
       if (recommendationList.getRecommendationSize() >= numRecommendationsPerUser) {
         break;
       }

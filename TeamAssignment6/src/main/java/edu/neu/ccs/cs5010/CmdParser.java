@@ -26,6 +26,11 @@ public class CmdParser implements ICmdParser{
   private int numberOfUsersToProcess;
   private int numberOfRecommendations;
   private int totalNumberOfUsers;
+
+  /**
+   * CmdParser constructor.
+   * @param args arguments passed through command line
+   */
   public CmdParser(String[] args) {
     if (args.length < MIN_ARGS) {
       throw new IllegalCmdArgumentException("You didn't give enough arguments.");
@@ -49,16 +54,16 @@ public class CmdParser implements ICmdParser{
     if (args.length > PROCESS_NUM_INDEX) {
       numberOfUsersToProcess = Integer.valueOf(args[PROCESS_NUM_INDEX]);
       if (numberOfUsersToProcess > totalNumberOfUsers) {
-        throw new IllegalCmdArgumentException("numberOfUsersToProcess must not" +
-            "be larger than total number of users.");
+        throw new IllegalCmdArgumentException("numberOfUsersToProcess must not"
+            + "be larger than total number of users.");
       }
     }
     if (args.length > FLAG_INDEX) {
       char flag = args[FLAG_INDEX].charAt(0);
       if (args[FLAG_INDEX].length() != 1 || (flag != FLAG_START
           && flag != FLAG_END && flag != FLAG_RANDOM)) {
-        throw new IllegalCmdArgumentException("Your input processingFlag" +
-            "is illegal.");
+        throw new IllegalCmdArgumentException("Your input processingFlag"
+            + "is illegal.");
       }
       processingFlag = flag;
     }

@@ -17,7 +17,7 @@ public class Rule3FollowInfluencer implements Rule {
     GraphNode userNode = idToNodeMap.get(userId);
     //TODO: change maxInfluencers according to file.
     List<Integer> influencersList;
-    if(idToNodeMap.size()==100) {
+    if (idToNodeMap.size() == 100) {
       influencersList = new Rule3FollowInfluencer().generateInfluencers(idToNodeMap, 25);
     } else {
       influencersList = new Rule3FollowInfluencer().generateInfluencers(idToNodeMap, 250);
@@ -33,30 +33,31 @@ public class Rule3FollowInfluencer implements Rule {
   }
 
 
-  public List<Integer> generateInfluencers(Map<Integer, GraphNode> idToNodeMap, int maxInfluencers) {
+  public List<Integer> generateInfluencers(Map<Integer, GraphNode> idToNodeMap,
+                                           int maxInfluencers) {
     Comparator<GraphNode> followerComparator = new Comparator<GraphNode>() {
       @Override
-      public int compare(GraphNode o1, GraphNode o2) {
-        return o1.getNumFollowers() - o2.getNumFollowers();
+      public int compare(GraphNode obj1, GraphNode obj2) {
+        return obj1.getNumFollowers() - obj2.getNumFollowers();
       }
     };
     // min heap of max influencers
-    PriorityQueue<GraphNode> influencersPQ = new PriorityQueue<>(maxInfluencers, followerComparator);
+    PriorityQueue<GraphNode> influencersPriorityQueue = new PriorityQueue<>(maxInfluencers, followerComparator);
     // go over all the nodes in graph and add to queue
     for (GraphNode node : idToNodeMap.values()) {
-      if (influencersPQ.size() < maxInfluencers) {
-        influencersPQ.add(node);
+      if (influencersPriorityQueue.size() < maxInfluencers) {
+        influencersPriorityQueue.add(node);
       } else {
-        if (node.getNumFollowers() > influencersPQ.peek().getNumFollowers()) {
-          influencersPQ.poll();
-          influencersPQ.add(node);
+        if (node.getNumFollowers() > influencersPriorityQueue.peek().getNumFollowers()) {
+          influencersPriorityQueue.poll();
+          influencersPriorityQueue.add(node);
         }
       }
     }
 
     List<Integer> influencersList = new ArrayList<>(maxInfluencers);
-    while (!influencersPQ.isEmpty()) {
-      influencersList.add(influencersPQ.poll().getNodeId());
+    while (!influencersPriorityQueue.isEmpty()) {
+      influencersList.add(influencersPriorityQueue.poll().getNodeId());
     }
     Collections.sort(influencersList);
     return influencersList;

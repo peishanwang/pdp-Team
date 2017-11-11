@@ -31,7 +31,7 @@ public class IoUtil implements IIoUtil {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc} .
    */
   public List<String> getInput() {
     List<String> list = new ArrayList<>();
@@ -50,13 +50,13 @@ public class IoUtil implements IIoUtil {
   }
 
   /**
-   * {@inheritDoc}
+   * {@inheritDoc} .
    */
   public void generateOutput(List<String> result, String fileName) {
     File directory = new File(path);
     try {
-      boolean folderExisted = path.length() == 0 ||
-          directory.exists() || directory.mkdirs();
+      boolean folderExisted = path.length() == 0
+          || directory.exists() || directory.mkdirs();
       if (!folderExisted) {
         throw new IOException("Unable to create path");
       }

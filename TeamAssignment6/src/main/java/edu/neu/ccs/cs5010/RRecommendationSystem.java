@@ -11,7 +11,10 @@ import java.util.Set;
 public class RRecommendationSystem extends RecommendationSystem {
 
 
-  public RRecommendationSystem(String nodeCsv, String edgeCsv, int numToProcess, int numToRecommend) {
+  public RRecommendationSystem(String nodeCsv,
+                               String edgeCsv,
+                               int numToProcess,
+                               int numToRecommend) {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
   }
 

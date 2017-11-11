@@ -7,7 +7,10 @@ import java.util.Map;
 
 public class ERecommendationSystem extends RecommendationSystem {
 
-  public ERecommendationSystem(String nodeCsv, String edgeCsv, int numToProcess, int numToRecommend) {
+  public ERecommendationSystem(String nodeCsv,
+                               String edgeCsv,
+                               int numToProcess,
+                               int numToRecommend) {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
   }
 

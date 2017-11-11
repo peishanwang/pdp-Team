@@ -1,7 +1,14 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.Set;
 
+/**
+ * Analyser class is used to print top 10 recommended users.
+ */
 public class Analyser implements IAnalyser {
 
   public List<Integer> getTopTenResult() {

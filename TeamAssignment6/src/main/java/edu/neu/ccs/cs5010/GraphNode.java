@@ -12,9 +12,9 @@ public class GraphNode implements IGraphNode{
     recommendedTimes = 0;
     this.nodeId = nodeId;
 
-    DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
     try {
-      profileCreationDate = df.parse(creationDate);
+      profileCreationDate = dateFormat.parse(creationDate);
     } catch (ParseException e) {
       throw new IllegalArgumentException("creation date not properly formatted.");
     }

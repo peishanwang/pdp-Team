@@ -15,7 +15,8 @@ public class SocialNetworkUsersMap {
     GraphNode dstNode = idToNodeMap.get(dstNodeId);
 
     if (srcNode == null || dstNode == null) {
-      System.out.println("Ignore relationship for one of non existant node: " + srcNodeId + " -> " + dstNodeId);
+      System.out.println("Ignore relationship for one of non existant node: "
+              + srcNodeId + " -> " + dstNodeId);
       return;
     }
     srcNode.addFollower(dstNode);
