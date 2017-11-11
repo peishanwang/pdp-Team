@@ -2,7 +2,9 @@ package edu.neu.ccs.cs5010;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.Set;
 
@@ -17,7 +19,11 @@ public class Analyser implements IAnalyser {
    */
   public List<Integer> getTopTenResult() {
     List<Integer> res = new ArrayList<>();
-    Set<Integer> allUsers = SocialNetworkUsersMap.idToNodeMap.keySet();
+    Set<Integer> allUsers = new HashSet<>();
+    for(Map.Entry<Integer, GraphNode> entry: SocialNetworkUsersMap.idToNodeMap.entrySet()){
+      allUsers.add(entry.getKey());
+    }
+
     PriorityQueue<GraphNode> priorityQueue = new PriorityQueue<GraphNode>(
         new Comparator<GraphNode>() {
           @Override
@@ -30,6 +36,9 @@ public class Analyser implements IAnalyser {
           }
         }
     );
+
+
+
     for (int user : allUsers) {
       priorityQueue.add(SocialNetworkUsersMap.idToNodeMap.get(user));
     }
