@@ -39,7 +39,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
       }
       System.out.println("]");
     }
-    List<Integer> topTen = Analyser.getTopTenResult();
+    List<Integer> topTen = new Analyser().getTopTenResult();
     System.out.println("Top ten most frequently recommended node IDs : ");
     for (int i = 0; i < 10; i++) {
       System.out.println(topTen.get(i));

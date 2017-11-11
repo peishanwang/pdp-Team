@@ -72,6 +72,26 @@ public class IoUtil implements IIoUtil {
     }
   }
 
+  @Override
+  public boolean equals(Object object) {
+    if (object == this) {
+      return true;
+    }
+    if (!(object instanceof IoUtil)) {
+      return false;
+    }
+    IoUtil other = (IoUtil) object;
+    boolean result = (this.path.equals(other.path))
+        && (this.encoding.equals(other.encoding));
+    return result;
+  }
 
+  @Override
+  public int hashCode() {
+    int result = 17;
+    result = 31 * result + this.path.hashCode();
+    result = 31 * result + this.encoding.hashCode();
+    return result;
+  }
 
 }

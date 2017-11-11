@@ -2,9 +2,9 @@ package edu.neu.ccs.cs5010;
 
 import java.util.*;
 
-public class Analyser {
+public class Analyser implements IAnalyser {
 
-  public static List<Integer> getTopTenResult() {
+  public List<Integer> getTopTenResult() {
     List<Integer> res = new ArrayList<>();
     Set<Integer> allUsers = SocialNetworkUsersMap.idToNodeMap.keySet();
     PriorityQueue<GraphNode> priorityQueue = new PriorityQueue<GraphNode>(
