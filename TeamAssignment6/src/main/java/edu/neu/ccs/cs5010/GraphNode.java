@@ -47,7 +47,6 @@ public class GraphNode implements IGraphNode{
     this.city = city;
 
     this.friendSet = new HashSet<>();
-    friendSet.size();
     this.numFollowers = 0;
   }
 
@@ -89,7 +88,7 @@ public class GraphNode implements IGraphNode{
    * @return profile creation date
    */
   public Date getProfileCreationDate() {
-    return profileCreationDate;
+    return (Date) profileCreationDate.clone();
   }
 
   /**
@@ -111,9 +110,9 @@ public class GraphNode implements IGraphNode{
   private Set<Integer> friendSet;
   private int numFollowers;
   private Gender gender;
-  private int age;
+  int age;
   private Date profileCreationDate;
-  private String city;
+  String city;
   private int recommendedTimes;
 }
 

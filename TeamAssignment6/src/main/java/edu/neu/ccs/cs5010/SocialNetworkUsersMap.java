@@ -4,11 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * SocialNetworkUsersMap is class to generate and store idToNodeMap.
+ * SocialNetworkUsersMap is class to add nodes and edges to graph.
  */
 public class SocialNetworkUsersMap {
-
-  public static Map<Integer, GraphNode> idToNodeMap = new HashMap<>();
+  protected static Map<Integer, GraphNode> idToNodeMap = new HashMap<>();
 
   /**
    * method to add new user to graph.
