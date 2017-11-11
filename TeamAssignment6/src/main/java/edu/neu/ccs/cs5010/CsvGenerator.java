@@ -8,6 +8,8 @@ import java.util.List;
  * CsvGenerator is used to generate csv file.
  */
 public class CsvGenerator implements ICsvGenerator {
+  private static final int HASHCODE_INITIAL = 17;
+  private static final int HASHCODE_COEFFICIENT = 31;
   private static final String SEPARATOR = ", ";
   private List<String> text;
   private List<String> headers;
@@ -59,9 +61,9 @@ public class CsvGenerator implements ICsvGenerator {
 
   @Override
   public int hashCode() {
-    int result = 17;
-    result = 31 * result + headers.hashCode();
-    result = 31 * result + text.hashCode();
+    int result = HASHCODE_INITIAL;
+    result = HASHCODE_COEFFICIENT * result + headers.hashCode();
+    result = HASHCODE_COEFFICIENT * result + text.hashCode();
     return result;
   }
 

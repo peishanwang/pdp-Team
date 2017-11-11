@@ -15,7 +15,7 @@ public class ERecommendationSystem extends RecommendationSystem {
   public void generateRecommendation() {
     Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;
     List<Integer> allUser = new ArrayList<>(map.keySet());
-    Collections.sort(allUser, (a, b) -> b - a);
+    Collections.sort(allUser, (user1, user2) -> user2 - user1);
     for (int i = 0; i < numToProcess; i++) {
       UserRecommendationList recommendationList = new UserRecommendationList(allUser.get(i));
       giveRecommendation(recommendationList, allUser.get(i), map);

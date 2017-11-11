@@ -10,6 +10,7 @@ import java.util.Set;
 
 public class RRecommendationSystem extends RecommendationSystem {
 
+
   public RRecommendationSystem(String nodeCsv, String edgeCsv, int numToProcess, int numToRecommend) {
     super(nodeCsv, edgeCsv, numToProcess, numToRecommend);
   }
@@ -19,7 +20,7 @@ public class RRecommendationSystem extends RecommendationSystem {
     Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;
     List<Integer> allUser = new ArrayList<>(map.keySet());
     Random random = new Random();
-    Collections.sort(allUser, (a, b) -> b - a);
+    Collections.sort(allUser, (user1, user2) -> user2 - user1);
     Set<Integer> selectedUser = new HashSet();
     int count = 0;
     while (count < numToRecommend) {
