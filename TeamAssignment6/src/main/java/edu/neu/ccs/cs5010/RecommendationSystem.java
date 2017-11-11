@@ -12,6 +12,9 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
   private static final String SEPARATOR = ",";
   private static final String RECOMMENDED_NODES = "Recommended nodes";
   private static final String ENCODING = "UTF-8";
+  private static final int HASHCODE_INITIAL = 17;
+  private static final int HASHCODE_COEFFICIENT = 31;
+  private static final int PRINTED_NUMBER = 10;
   List<UserRecommendationList> allRecommendations;
   private String nodeCsv;
   private String edgeCsv;
@@ -41,7 +44,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     }
     List<Integer> topTen = new Analyser().getTopTenResult();
     System.out.println("Top ten most frequently recommended node IDs : ");
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < PRINTED_NUMBER; i++) {
       System.out.println(topTen.get(i));
     }
   }
@@ -76,9 +79,8 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
     return recommendationSystem;
   }
 
-  public void initializeSystem() throws IOException {
+  public void initializeSystem() {
     SocialNetworkUsersMap socialNetworkUsersMap = new SocialNetworkUsersMap();
-
     // read node data
     IIoUtil ioUtil = new IoUtil(nodeCsv, ENCODING);
     List<String> nodesInfo = ioUtil.getInput();
@@ -126,30 +128,57 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
 
   //update recommendationList
   void giveRecommendation(UserRecommendationList recommendationList,
-                          int Id,
+                          int id,
                           Map<Integer, GraphNode> map) {
     Rule currRule;
     currRule = new Rule1GetFriendWithMaxFriends();
-    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;
     }
     currRule = new Rule2FriendOfFriend();
-    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;
     }
     currRule = new Rule3FollowInfluencer();
-    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, id, map, numToRecommend);
     if (recommendationList.getRecommendationSize() >= numToRecommend) {
       // recommendation finished for this user
       return;
     }
     currRule = new Rule4FollowRandomUser();
-    currRule.generateRecommendations(recommendationList, Id, map, numToRecommend);
+    currRule.generateRecommendations(recommendationList, id, map, numToRecommend);
     return;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object == this) {
+      return true;
+    }
+    if (!(this.getClass().isInstance(object))) {
+      return false;
+    }
+    RecommendationSystem other = (RecommendationSystem) object;
+    return this.allRecommendations.equals(other.allRecommendations)
+        && (this.nodeCsv.equals(other.nodeCsv))
+        && (this.edgeCsv.equals(other.edgeCsv))
+        && (this.numToProcess == other.numToProcess)
+        && (this.numToRecommend == other.numToRecommend);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = HASHCODE_INITIAL;
+    result = HASHCODE_COEFFICIENT * result + allRecommendations.hashCode();
+    result = HASHCODE_COEFFICIENT * result + nodeCsv.hashCode();
+    result = HASHCODE_COEFFICIENT * result + edgeCsv.hashCode();
+    result = HASHCODE_COEFFICIENT * result + numToProcess;
+    result = HASHCODE_COEFFICIENT * result + numToRecommend;
+    return result;
   }
 
 

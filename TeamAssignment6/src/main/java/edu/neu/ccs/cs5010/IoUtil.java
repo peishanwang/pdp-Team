@@ -15,6 +15,8 @@ import java.util.List;
  * IoUtil is used to handle read text from file and output file.
  */
 public class IoUtil implements IIoUtil {
+  private static final int HASHCODE_INITIAL = 17;
+  private static final int HASHCODE_COEFFICIENT = 31;
   private String path;
   private String encoding;
 
@@ -88,9 +90,9 @@ public class IoUtil implements IIoUtil {
 
   @Override
   public int hashCode() {
-    int result = 17;
-    result = 31 * result + this.path.hashCode();
-    result = 31 * result + this.encoding.hashCode();
+    int result = HASHCODE_INITIAL;
+    result = HASHCODE_COEFFICIENT * result + this.path.hashCode();
+    result = HASHCODE_COEFFICIENT * result + this.encoding.hashCode();
     return result;
   }
 
