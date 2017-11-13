@@ -33,7 +33,7 @@ public class Rule1GetFriendWithMaxFriends implements Rule{
       GraphNode nodeWithMaxfriends = null;
       for (Integer friendsNodeId : userNode.getFriends()) {
         GraphNode friendsNode = idToNodeMap.get(friendsNodeId);
-        if (friendsNodeId == null) {
+        if (friendsNode == null) {
           throw new IllegalStateException("friendNode not found for id: " + friendsNodeId);
         }
         if (friendsNode.getFriends().size() > maxfriends) {

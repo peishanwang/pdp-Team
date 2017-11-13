@@ -12,6 +12,15 @@ import java.util.Set;
  */
 public class GraphNode implements IGraphNode{
 
+  private int nodeId;
+  private Set<Integer> friendSet;
+  private int numFollowers;
+  private Gender gender;
+  private int age;
+  private Date profileCreationDate;
+  private String city;
+  private int recommendedTimes;
+
   /**
    * GraphNode constructor.
    * @param nodeId unique id of user
@@ -21,6 +30,7 @@ public class GraphNode implements IGraphNode{
    * @param city place of residence
    */
   GraphNode(int nodeId, String creationDate, String gender, int age, String city) {
+
     recommendedTimes = 0;
     this.nodeId = nodeId;
 
@@ -106,14 +116,29 @@ public class GraphNode implements IGraphNode{
     return recommendedTimes;
   }
 
-  private int nodeId;
-  private Set<Integer> friendSet;
-  private int numFollowers;
-  private Gender gender;
-  int age;
-  private Date profileCreationDate;
-  String city;
-  private int recommendedTimes;
+  /**
+   * method to get gender.
+   * @return gender
+   */
+  public Gender getGender() {
+    return gender;
+  }
+
+  /**
+   * method to get age.
+   * @return age
+   */
+  public int getAge() {
+    return age;
+  }
+
+  /**
+   * method to get city.
+   * @return name of the city.
+   */
+  public String getCity() {
+    return city;
+  }
 }
 
 
