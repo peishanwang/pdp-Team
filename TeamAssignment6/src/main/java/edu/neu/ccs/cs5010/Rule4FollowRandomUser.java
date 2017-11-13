@@ -34,6 +34,7 @@ public class Rule4FollowRandomUser implements Rule{
               + idToNodeMap.get(userId).getFriends().size()
               + 1
               >= idToNodeMap.keySet().size()) {
+        System.out.println("Required number of recommendations cannot be generated");
         break;
       }
 
