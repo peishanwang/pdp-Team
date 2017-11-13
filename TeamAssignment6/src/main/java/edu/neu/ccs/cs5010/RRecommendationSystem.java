@@ -37,8 +37,8 @@ public class RRecommendationSystem extends RecommendationSystem {
     Map<Integer, GraphNode> map = SocialNetworkUsersMap.idToNodeMap;
     List<Integer> allUser = new ArrayList<>(map.keySet());
     Random random = new Random();
-    Collections.sort(allUser, (user1, user2) -> user2 - user1);
-    Set<Integer> selectedUser = new HashSet();
+    allUser.sort((user1, user2) -> user2 - user1);
+    Set<Integer> selectedUser = new HashSet<>();
     int count = 0;
     while (count < numToRecommend) {
       int index;
