@@ -30,9 +30,6 @@ public class Rule2FriendOfFriend implements Rule {
     Set<Integer> friendOfFriends = new HashSet<>();
     for (Integer friendId : userNode.getFriends()) {
       GraphNode friendNode = idToNodeMap.get(friendId);
-      if (friendNode == null) {
-        throw new IllegalStateException("friendNode not found for id: " + friendId);
-      }
       for (Integer friendOfFriend : friendNode.getFriends()) {
         if (userNode.getNodeId() != friendOfFriend
                 && !userNode.getFriends().contains(friendOfFriend)) {

@@ -6,7 +6,7 @@ import java.util.Map;
 /**
  * SocialNetworkUsersMap is class to add nodes and edges to graph.
  */
-public class SocialNetworkUsersMap {
+class SocialNetworkUsersMap {
   protected static Map<Integer, GraphNode> idToNodeMap = new HashMap<>();
 
   /**

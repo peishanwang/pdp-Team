@@ -71,7 +71,7 @@ public class RecommendationSystemTest {
     };
 
     String[] args3 = new String[] {
-            "nodes_10000.csv", "edges_10000.csv", "outputs.csv", "r", "100", "15"
+            "nodes_10000.csv", "edges_10000.csv", "outputs.csv", "r", "550", "150"
     };
     RecommendationSystem.main(args);
     RecommendationSystem.main(args2);

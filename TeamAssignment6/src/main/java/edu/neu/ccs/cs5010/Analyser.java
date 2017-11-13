@@ -20,7 +20,7 @@ public class Analyser implements IAnalyser {
   public List<Integer> getTopTenResult() {
     List<Integer> res = new ArrayList<>();
     Set<Integer> allUsers = new HashSet<>();
-    for(Map.Entry<Integer, GraphNode> entry: SocialNetworkUsersMap.idToNodeMap.entrySet()){
+    for (Map.Entry<Integer, GraphNode> entry: SocialNetworkUsersMap.idToNodeMap.entrySet()) {
       allUsers.add(entry.getKey());
     }
 
