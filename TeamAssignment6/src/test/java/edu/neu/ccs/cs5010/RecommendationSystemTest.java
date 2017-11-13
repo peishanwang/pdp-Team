@@ -98,4 +98,15 @@ public class RecommendationSystemTest {
     systemBad.initializeSystem();
   }
 
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testNodeEmptyException() {
+    IRecommendationSystem systemBad = new SRecommendationSystem(
+            "nodes_empty.csv",
+            "edges_10000.csv",
+            100,
+            15);
+    systemBad.initializeSystem();
+  }
+
 }
