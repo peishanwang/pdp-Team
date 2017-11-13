@@ -34,7 +34,7 @@ public class GraphNode implements IGraphNode{
     recommendedTimes = 0;
     this.nodeId = nodeId;
 
-    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
+    DateFormat dateFormat = new SimpleDateFormat("MM/dd/yy");
     try {
       profileCreationDate = dateFormat.parse(creationDate);
     } catch (ParseException e) {
