@@ -5,7 +5,7 @@ import org.junit.Test;
 public class Rule1Test {
 
   @Test
-  public void checkRule1Coverage(){
+  public void checkRule1(){
     IRecommendationSystem system = new SRecommendationSystem(
             "nodes_rule1.csv",
             "edges_small.csv",

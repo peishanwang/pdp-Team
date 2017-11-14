@@ -25,17 +25,11 @@ public class Rule1GetFriendWithMaxFriends implements Rule{
     Date currentDate = new Date();
     long monthTimeMs = 31L * 24L * 60L * 60L * 1000L;
     GraphNode userNode = idToNodeMap.get(userId);
-    if (userNode == null) {
-      throw new IllegalStateException("invalid nodeId: " + userId);
-    }
     if ((currentDate.getTime() - userNode.getProfileCreationDate().getTime()) <= monthTimeMs) {
       int maxfriends = 0;
       GraphNode nodeWithMaxfriends = null;
       for (Integer friendsNodeId : userNode.getFriends()) {
         GraphNode friendsNode = idToNodeMap.get(friendsNodeId);
-        if (friendsNode == null) {
-          throw new IllegalStateException("friendNode not found for id: " + friendsNodeId);
-        }
         if (friendsNode.getFriends().size() > maxfriends) {
           nodeWithMaxfriends = friendsNode;
           maxfriends = nodeWithMaxfriends.getFriends().size();
