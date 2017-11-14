@@ -56,4 +56,10 @@ public class IoUtilTest {
     IAnalyser analyser = new Analyser();
     Assert.assertEquals(false, ioUtil1.equals(analyser));
   }
+
+  @Test
+  public void testException() {
+    ioUtil1 = new IoUtil("nonononono",
+        "UTF-8");
+  }
 }

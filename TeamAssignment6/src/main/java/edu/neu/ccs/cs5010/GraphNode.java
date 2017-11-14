@@ -11,7 +11,8 @@ import java.util.Set;
  * GraphNode class signifies the nodes(users) of social network graph.
  */
 public class GraphNode implements IGraphNode{
-
+  private static final int HASHCODE_INITIAL = 17;
+  private static final int HASHCODE_COEFFICIENT = 31;
   private int nodeId;
   private Set<Integer> friendSet;
   private int numFollowers;
@@ -138,6 +139,25 @@ public class GraphNode implements IGraphNode{
    */
   public String getCity() {
     return city;
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object == this) {
+      return true;
+    }
+    if (!(this.getClass().isInstance(object))) {
+      return false;
+    }
+    GraphNode other = (GraphNode) object;
+    return this.nodeId == other.nodeId;
+  }
+
+  @Override
+  public int hashCode() {
+    int result = HASHCODE_INITIAL;
+    result = HASHCODE_COEFFICIENT * result + nodeId;
+    return result;
   }
 }
 

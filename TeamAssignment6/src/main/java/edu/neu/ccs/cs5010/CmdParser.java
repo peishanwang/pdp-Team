@@ -20,7 +20,6 @@ public class CmdParser implements ICmdParser{
   private static final char FLAG_END = 'e';
   private static final char FLAG_RANDOM = 'r';
   private static final String SMALL_CSV = "nodes_small.csv";
-  private static final String LARGE_CSV = "nodes_10000.csv";
   private static final int SMALL_USER_AMOUNT = 100;
   private static final int LARGE_USER_AMOUNT = 9500;
   private String fileNodes;
@@ -49,7 +48,7 @@ public class CmdParser implements ICmdParser{
     numberOfRecommendations = DEFAULT_RECOMMENDATION_NUM;
     if (fileNodes.contains(SMALL_CSV)) {
       totalNumberOfUsers = SMALL_USER_AMOUNT;
-    } else if (fileNodes.contains(LARGE_CSV)) {
+    } else {
       totalNumberOfUsers = LARGE_USER_AMOUNT;
     }
     if (args.length > RECOMMENDATION_NUM_INDEX) {
@@ -58,7 +57,7 @@ public class CmdParser implements ICmdParser{
     if (args.length > PROCESS_NUM_INDEX) {
       numberOfUsersToProcess = Integer.parseInt(args[PROCESS_NUM_INDEX]);
       if (numberOfUsersToProcess > totalNumberOfUsers) {
-        throw new IllegalCmdArgumentException("numberOfUsersToProcess must not"
+        throw new IllegalCmdArgumentException("numberOfUsersToProcess must not "
             + "be larger than total number of users.");
       }
     }

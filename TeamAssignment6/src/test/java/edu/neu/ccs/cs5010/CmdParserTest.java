@@ -22,6 +22,18 @@ public class CmdParserTest {
     });
   }
 
+  @Test
+  public void testDifferentInput() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv"});
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s"
+    });
+    cmdParser3 = new CmdParser(new String[] {
+        "nodes_10000.csv", "edges_10000.csv", "outputs.csv", "s", "50"
+    });
+  }
+
   @Test(expected = IllegalCmdArgumentException.class)
   public void testException1() {
     cmdParser1 = new CmdParser(new String[] {
@@ -94,6 +106,72 @@ public class CmdParserTest {
   public void testNotEqualsDiffClass() {
     IAnalyser analyser = new Analyser();
     Assert.assertEquals(false, cmdParser1.equals(analyser));
+  }
+
+  @Test
+  public void testBranch1() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "nono", "outputs.csv", "s", "100", "15"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
+  }
+
+  @Test
+  public void testBranch2() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nono", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
+  }
+
+  @Test
+  public void testBranch3() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "nono", "s", "100", "15"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
+  }
+
+  @Test
+  public void testBranch4() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "50", "15"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
+  }
+
+  @Test
+  public void testBranch5() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "30"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
+  }
+
+  @Test
+  public void testBranch6() {
+    cmdParser1 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "s", "100", "15"
+    });
+    cmdParser2 = new CmdParser(new String[] {
+        "nodes_small.csv", "edges_small.csv", "outputs.csv", "e", "100", "15"
+    });
+    Assert.assertEquals(false, cmdParser1.equals(cmdParser2));
   }
 
 }

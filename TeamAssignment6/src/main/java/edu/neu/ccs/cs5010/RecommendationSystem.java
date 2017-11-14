@@ -202,8 +202,7 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
       return false;
     }
     RecommendationSystem other = (RecommendationSystem) object;
-    return this.allRecommendations.equals(other.allRecommendations)
-        && (this.nodeCsv.equals(other.nodeCsv))
+    return (this.nodeCsv.equals(other.nodeCsv))
         && (this.edgeCsv.equals(other.edgeCsv))
         && (this.numToProcess == other.numToProcess)
         && (this.numToRecommend == other.numToRecommend);
@@ -212,7 +211,6 @@ public abstract class RecommendationSystem implements IRecommendationSystem {
   @Override
   public int hashCode() {
     int result = HASHCODE_INITIAL;
-    result = HASHCODE_COEFFICIENT * result + allRecommendations.hashCode();
     result = HASHCODE_COEFFICIENT * result + nodeCsv.hashCode();
     result = HASHCODE_COEFFICIENT * result + edgeCsv.hashCode();
     result = HASHCODE_COEFFICIENT * result + numToProcess;

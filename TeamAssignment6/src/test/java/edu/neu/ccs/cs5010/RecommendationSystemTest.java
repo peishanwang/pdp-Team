@@ -109,4 +109,36 @@ public class RecommendationSystemTest {
     systemBad.initializeSystem();
   }
 
+  @Test
+  public void testBranch1() {
+    system1 = new SRecommendationSystem("nodes_small.csv", "edges_small.csv",
+        100, 15);
+    system2 = new SRecommendationSystem("nono", "edges_small.csv",
+        100, 15);
+  }
+
+  @Test
+  public void testBranch2() {
+    system1 = new SRecommendationSystem("nodes_small.csv", "edges_small.csv",
+        100, 15);
+    system2 = new SRecommendationSystem("nodes_small.csv", "nono",
+        100, 15);
+  }
+
+  @Test
+  public void testBranch3() {
+    system1 = new SRecommendationSystem("nodes_small.csv", "edges_small.csv",
+        100, 15);
+    system2 = new SRecommendationSystem("nono", "edges_small.csv",
+        50, 15);
+  }
+
+  @Test
+  public void testBranch4() {
+    system1 = new SRecommendationSystem("nodes_small.csv", "edges_small.csv",
+        100, 15);
+    system2 = new SRecommendationSystem("nodes_small.csv", "nono ",
+        100, 20);
+  }
+
 }
