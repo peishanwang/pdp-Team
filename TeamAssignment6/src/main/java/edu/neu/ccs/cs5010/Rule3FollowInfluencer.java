@@ -27,7 +27,6 @@ public class Rule3FollowInfluencer implements Rule {
                                               int numRecommendationsPerUser) {
 
     GraphNode userNode = idToNodeMap.get(userId);
-    //TODO: change maxInfluencers according to file.
     List<Integer> influencersList;
     if (idToNodeMap.size() == 100) {
       influencersList = new Rule3FollowInfluencer().generateInfluencers(idToNodeMap, 25);
