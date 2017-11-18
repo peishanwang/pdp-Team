@@ -7,20 +7,50 @@ import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 
-public class SkierAnalyser {
+public class FileDataToDataStructures {
+  private Map<Integer, Skier> integerToSkierMap;
+  private Map<Integer, Lift> integerLiftMap;
+  private Map<Skier, Lift> skierLiftMap;
+  private List<String[]> fileData;
   private Map<Skier, List<Lift>> mapOfSkiers;
 
-  public SkierAnalyser(){
+  public FileDataToDataStructures(List<String[]> allInfo) {
+    this.fileData = allInfo;
+    integerLiftMap = new HashMap<>();
+    integerToSkierMap = new HashMap<>();
+    skierLiftMap = new HashMap<>();
     mapOfSkiers = new HashMap<>();
   }
 
-  public void addSkierToMap(Skier skier, Lift lift){
-    if(mapOfSkiers.containsKey(skier)) {
-      mapOfSkiers.get(skier).add(lift);
-    } else {
-      List<Lift> liftList = new ArrayList<>();
-      liftList.add(lift);
-      mapOfSkiers.put(skier, liftList);
+  public void generateMaps(){
+    Skier skier;
+    Lift lift;
+    for(String[] fileRow : fileData){
+      int skierId = Integer.valueOf(fileRow[2]);
+      int liftId = Integer.valueOf(fileRow[3]);
+      if(!integerToSkierMap.containsKey(skierId)){
+        skier = new Skier(skierId);
+        integerToSkierMap.put(skierId, skier);
+      }
+
+      if(!integerLiftMap.containsKey(liftId)){
+        lift = new Lift(liftId);
+        integerLiftMap.put(liftId, lift);
+      }
+
+      skierLiftMap.put(integerToSkierMap.get(skierId), integerLiftMap.get(liftId));
+    }
+  }
+
+  public void SkierAnalyser(){
+    for(Map.Entry<Skier, Lift> skierLiftEntry : skierLiftMap.entrySet()){
+      if(mapOfSkiers.containsKey(skierLiftEntry.getKey())) {
+        mapOfSkiers.get(skierLiftEntry.getKey()).add(skierLiftEntry.getValue());
+      } else {
+        List<Lift> liftList = new ArrayList<>();
+        liftList.add(skierLiftEntry.getValue());
+        mapOfSkiers.put(skierLiftEntry.getKey(), liftList);
+      }
     }
   }
 
@@ -49,10 +79,11 @@ public class SkierAnalyser {
     return verticalMeters;
   }
 
+
   public Map<Skier, Integer> topTenVerticalMeters(Map<Skier, Integer> skierInformation){
     Map<Skier, Integer> topSkiersInfo = new LinkedHashMap<>();
     PriorityQueue<Map.Entry<Skier, Integer>> queue =
-        new PriorityQueue<>((e1, e2) -> e2.getValue() - e1.getValue());
+            new PriorityQueue<>((e1, e2) -> e2.getValue() - e1.getValue());
 
     for(Map.Entry<Skier, Integer> skierEntry : skierInformation.entrySet() ){
       queue.add(skierEntry);
@@ -68,21 +99,5 @@ public class SkierAnalyser {
   }
 
 
-
-  //testing
-  public static void main(String[] args) {
-    SkierAnalyser skierAnalyser = new SkierAnalyser();
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    skierAnalyser.addSkierToMap(new Skier(1), new Lift(4));
-    Map<Skier, Integer> topSkiersInfo = skierAnalyser.topTenVerticalMeters(skierAnalyser.analyseSkierInformation());
-    for(Map.Entry<Skier, Integer> topSkier : topSkiersInfo.entrySet()){
-      System.out.println(topSkier.getKey().getSkierId() + " " + topSkier.getValue());
-    }
-  }
 
 }

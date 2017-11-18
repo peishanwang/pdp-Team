@@ -3,10 +3,12 @@ package edu.neu.ccs.cs5010;
 import java.util.List;
 import java.util.Map;
 
-public class ConcurrentResultGenerator implements IResultGenerator {
+public class SequentialResultGenerator implements IResultGenerator {
+
   @Override
-  public Map<Skier, Integer> getSkierInfo() {
+  public Map<Integer, Integer> getSkierInfo() {
     return null;
+    //get skier id and lift id and analyser class
   }
 
   @Override
@@ -17,6 +19,6 @@ public class ConcurrentResultGenerator implements IResultGenerator {
   @Override
   public List<Map<Integer, Integer>> getHourInfo() {
     return null;
+    //get map from hour analyser and append everything to list.
   }
-
 }
