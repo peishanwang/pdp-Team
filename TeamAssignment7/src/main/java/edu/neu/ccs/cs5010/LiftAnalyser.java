@@ -1,14 +1,22 @@
 package edu.neu.ccs.cs5010;
 
+import java.text.ParseException;
+import java.util.HashMap;
+import java.util.Map;
+
 public class LiftAnalyser {
-  int[] liftArray = new int[40];
+  Map<Integer, Integer> liftMap = new HashMap<>();
 
   public void addLiftCount(int liftID){
-    liftArray[liftID-1]++;
+    if(liftMap.containsKey(liftID)){
+      liftMap.put(liftID, liftMap.get(liftID) + 1);
+    } else {
+      liftMap.put(liftID, 1);
+    }
   }
 
-  public int[] getLiftInfo(){
-    return liftArray;
+  public Map<Integer, Integer> getLiftInfo(){
+    return liftMap;
   }
 
   public static void main(String[] args) {
@@ -36,9 +44,10 @@ public class LiftAnalyser {
     liftAnalyser.addLiftCount(10);
     liftAnalyser.addLiftCount(11);
     liftAnalyser.addLiftCount(18);
-    int[] liftInfo = liftAnalyser.getLiftInfo();
-    for(int i = 0; i < liftInfo.length ;i++){
-      System.out.print(liftInfo[i]+" ");
+    Map<Integer, Integer> liftInfo = liftAnalyser.getLiftInfo();
+    for(Map.Entry<Integer, Integer> entry : liftInfo.entrySet()){
+      System.out.println(entry.getKey());
+      System.out.println(entry.getValue());
     }
   }
 }
