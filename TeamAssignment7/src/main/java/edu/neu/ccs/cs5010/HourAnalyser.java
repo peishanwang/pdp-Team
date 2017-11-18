@@ -20,7 +20,7 @@ public class HourAnalyser {
     }
   }
 
-  public void calculateLiftsPerHour(int hour){
+  public Map<Integer, Integer> calculateLiftsPerHour(int hour){
     List<Integer> lifts = mapOfHourToLifts.get(hour);
     Map<Integer, Integer> liftsWithCount = new HashMap<>();
     for(int lift : lifts){
@@ -30,7 +30,7 @@ public class HourAnalyser {
         liftsWithCount.put(lift, 1);
       }
     }
-    sortLiftsWithCount(liftsWithCount);
+    return sortLiftsWithCount(liftsWithCount);
 
 
 

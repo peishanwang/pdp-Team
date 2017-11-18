@@ -19,5 +19,6 @@ public class SequentialResultGenerator implements IResultGenerator {
   @Override
   public List<Map<Integer, Integer>> getHourInfo() {
     return null;
+    //get map from hour analyser and append everything to list. 
   }
 }
