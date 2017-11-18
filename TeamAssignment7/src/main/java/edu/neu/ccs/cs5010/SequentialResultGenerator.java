@@ -1,9 +1,5 @@
 package edu.neu.ccs.cs5010;
 
-<<<<<<< Updated upstream
-public class SequentialResultGenerator implements IResultGenerator {
-  
-=======
 import java.util.List;
 import java.util.Map;
 
@@ -12,16 +8,16 @@ public class SequentialResultGenerator implements IResultGenerator {
   @Override
   public Map<Integer, Integer> getSkierInfo() {
     return null;
+    //get skier id and lift id and analyser class
   }
 
   @Override
-  public int[] getLiftInfo() {
-    return new int[0];
-  }
-
-  @Override
-  public Map<Integer, Integer> getHourInfo() {
+  public Map<Integer, Integer> getLiftInfo() {
     return null;
   }
->>>>>>> Stashed changes
+
+  @Override
+  public List<Map<Integer, Integer>> getHourInfo() {
+    return null;
+  }
 }
