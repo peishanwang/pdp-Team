@@ -1,5 +1,5 @@
 package edu.neu.ccs.cs5010;
 
-public class SequentialResultGenerator {
-
+public class SequentialResultGenerator implements IResultGenerator {
+  
 }
