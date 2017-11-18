@@ -11,4 +11,12 @@ public interface IoUtil {
       throw new IllegalStateException("Unable to read input", e);
     }
   }
+
+  static Writer getWriter(String relativePath){
+    try {
+      return new OutputStreamWriter(new FileOutputStream(relativePath), "UTF-8");
+    } catch (FileNotFoundException | UnsupportedEncodingException e) {
+      throw new IllegalStateException("Unable to read input", e);
+    }
+  }
 }

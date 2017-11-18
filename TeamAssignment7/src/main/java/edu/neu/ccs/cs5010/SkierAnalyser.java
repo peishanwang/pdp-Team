@@ -52,7 +52,7 @@ public class SkierAnalyser {
   public Map<Integer, Integer> topTenVerticalMeters(Map<Integer, Integer> skierInformation){
     Map<Integer, Integer> topSkiersInfo = new LinkedHashMap<>();
     PriorityQueue<Map.Entry<Integer, Integer>> queue =
-            new PriorityQueue<Map.Entry<Integer, Integer>>((e1,e2)->e2.getValue()-e1.getValue());
+        new PriorityQueue<>((e1, e2) -> e2.getValue() - e1.getValue());
 
     for(Map.Entry<Integer, Integer> skierEntry : skierInformation.entrySet() ){
       queue.add(skierEntry);

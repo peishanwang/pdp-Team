@@ -3,7 +3,6 @@ package edu.neu.ccs.cs5010;
 
 public class SkiDataProcessor {
   private static final String SEQUENTIAL = "Sequential";
-  private static final String CONCURRENT = "Concurrent";
   private IAllInfo allInfo;
   private String flag;
 
@@ -17,9 +16,11 @@ public class SkiDataProcessor {
   }
 
   public void processData() {
+    IResultGenerator resultGenerator;
     if (flag.equals(SEQUENTIAL)) {
-
+      resultGenerator = new SequentialResultGenerator();
+    } else {
+      resultGenerator = new ConcurrentResultGenerator();
     }
-
   }
 }
