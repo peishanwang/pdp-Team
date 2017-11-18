@@ -25,14 +25,14 @@ public class InfoParser {
     // creates a CSV parser
     CsvParser parser = new CsvParser(settings);
     // call beginParsing to read records one by one, iterator-style.
-    parser.beginParsing(getReader("/examples/example.csv"));
+    parser.beginParsing(getReader(path));
     String[] headers = parser.parseNext();
 
     Map<String, Integer> headerToIndex = parseHeaders(headers);
 
     String[] row;
     while ((row = parser.parseNext()) != null) {
-
+      parseSkierInfo(row[headerToIndex.get("skier")], row[headerToIndex.get("lift")]);
     }
 
     // The resources are closed automatically when the end of the input is reached,

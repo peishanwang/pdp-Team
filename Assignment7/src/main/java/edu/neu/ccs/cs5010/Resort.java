@@ -19,12 +19,12 @@ public class Resort implements IResort {
     idToSkier.get(skierId).addVertical(vertical);
   }
 
-  public List<ISkier> getTopHundredSkier() {
+  public List<ISkier> getTopSkier(int numberOfSkiers) {
     List<ISkier> allSkiers = new ArrayList<>();
     for (int id : idToSkier.keySet()) {
       allSkiers.add(idToSkier.get(id));
     }
     Collections.sort(allSkiers);
-    return allSkiers.subList(0, 99);
+    return allSkiers.subList(0, numberOfSkiers);
   }
 }

@@ -5,4 +5,5 @@ import java.util.Map;
 
 public interface IResort {
   void addSkierVertical(int skierId, int vertical);
+  List<ISkier> getTopSkier(int numberOfSkiers);
 }
