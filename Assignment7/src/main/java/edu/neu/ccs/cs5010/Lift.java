@@ -1,4 +1,4 @@
 package edu.neu.ccs.cs5010;
 
-public class Lift {
+public class Lift implements ILift {
 }
