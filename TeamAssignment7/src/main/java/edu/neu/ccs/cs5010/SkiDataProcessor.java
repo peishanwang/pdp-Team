@@ -17,12 +17,4 @@ public class SkiDataProcessor {
   public void processData() {
 
   }
-
-
-
-
-
-
-
-
 }
