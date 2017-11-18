@@ -1,9 +1,8 @@
 package edu.neu.ccs.cs5010;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -38,9 +37,10 @@ public class HourAnalyser {
 
   }
 
-  private void sortLiftsWithCount(Map<Integer, Integer> liftsWithCount) {
+  private Map<Integer, Integer> sortLiftsWithCount(Map<Integer, Integer> liftsWithCount) {
+    Map<Integer, Integer> sortedLiftsWithCount = new LinkedHashMap<>();
     PriorityQueue<Map.Entry<Integer, Integer>> queue =
-            new PriorityQueue<Map.Entry<Integer, Integer>>((e1,e2)->e2.getValue()-e1.getValue());
+            new PriorityQueue<>((e1,e2)->e2.getValue()-e1.getValue());
 
     for(Map.Entry<Integer, Integer> liftWithCount : liftsWithCount.entrySet() ){
       queue.add(liftWithCount);
@@ -48,9 +48,9 @@ public class HourAnalyser {
 
     while(!queue.isEmpty()){
       Map.Entry<Integer, Integer> entry = queue.poll();
-      System.out.println(entry.getKey() + " " + entry.getValue());
+      sortedLiftsWithCount.put(entry.getKey(), entry.getValue());
     }
-
+    return sortedLiftsWithCount;
   }
 
   public static void main(String[] args) {
