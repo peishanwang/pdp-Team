@@ -5,9 +5,9 @@ import java.io.IOException;
 import java.util.List;
 
 public class FileWriter {
-  public void writeData(List<String> skierVerticalInfo, String fileName) throws IOException {
+  public void writeData(List<String> FileDataToWrite, String fileName) throws IOException {
     BufferedWriter writer = new BufferedWriter(new java.io.FileWriter(fileName));
-    for(String str : skierVerticalInfo){
+    for(String str : FileDataToWrite){
       writer.write(str);
       writer.write("\n");
     }
