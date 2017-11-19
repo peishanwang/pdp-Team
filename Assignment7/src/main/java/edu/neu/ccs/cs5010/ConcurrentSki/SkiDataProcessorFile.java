@@ -31,6 +31,7 @@ public class SkiDataProcessorFile {
 
   BlockingQueue<LiftHourQueueItem> liftHourQueue;
   ConsumerExecutor<LiftHourQueueItem> liftHourConsumer;
+  edu.neu.ccs.cs5010.ConcurrentSki.FileWriter fileWriter = new edu.neu.ccs.cs5010.ConcurrentSki.FileWriter();
 
   public SkiDataProcessorFile() {
     skierQueue = new LinkedBlockingDeque<>();
@@ -41,6 +42,7 @@ public class SkiDataProcessorFile {
       private ConcurrentMap<Integer, AtomicInteger> skierVerticalRideMap = new ConcurrentHashMap<>();
       private AtomicBoolean finished = new AtomicBoolean(false);
       private final int topNSkiers = 100;
+      private final String skierCSVFile = "skier.csv";
       @Override
       public void accept(SkierQueueItem skierQueueItem) {
         if (skierQueueItem == null) {
@@ -48,8 +50,8 @@ public class SkiDataProcessorFile {
           if (finished.compareAndSet(false, true)) {
             // write file
             try {
-              BufferedWriter writer = new BufferedWriter(new FileWriter("skier.csv"));
-              writer.write("SkierId,Vertical\n");
+              List<String> skierVerticalInfo = new ArrayList<>();
+              skierVerticalInfo.add("SkierId, Vertical");
               PriorityQueue<SkierWithVertical> topNVerticalSkiers = new PriorityQueue<>(topNSkiers, Comparator.comparingInt(o -> o.getVerticalDistance()));
               for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
                 if (topNVerticalSkiers.size() >= topNSkiers) {
@@ -67,12 +69,9 @@ public class SkiDataProcessorFile {
               }
 
               for (int i = topSkiers.size() - 1; i >= 0; i--) {
-                writer.write(topSkiers.get(i).getSkierId() + "," + topSkiers.get(i).getVerticalDistance());
-                if (i != 0) {
-                  writer.write("\n");
-                }
+                skierVerticalInfo.add(String.valueOf(topSkiers.get(i).getSkierId()) + ", " + String.valueOf(topSkiers.get(i).getVerticalDistance()));
               }
-              writer.close();
+              fileWriter.writeData(skierVerticalInfo, skierCSVFile);
             } catch (IOException e) {
               e.printStackTrace();
             }
@@ -88,6 +87,7 @@ public class SkiDataProcessorFile {
     Consumer<Integer> liftConsumerFx = new Consumer<Integer>() {
       private ConcurrentMap<Integer, AtomicInteger> liftNumRidesMap = new ConcurrentSkipListMap<>();
       private AtomicBoolean finished = new AtomicBoolean(false);
+      private String liftCSVFile = "lifts.csv";
       @Override
       public void accept(Integer liftId) {
         if (liftId == null) {
@@ -95,17 +95,14 @@ public class SkiDataProcessorFile {
           if (finished.compareAndSet(false, true)) {
             // write file
             try {
-              BufferedWriter writer = new BufferedWriter(new FileWriter("lifts.csv"));
-              writer.write("LiftID,Number of Rides\n");
+              List<String> liftCountData = new ArrayList<>();
+              liftCountData.add("LiftID,Number of Rides");
               int numLiftEntries = 0;
               for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry : liftNumRidesMap.entrySet()) {
-                writer.write(liftNumRidesEntry.getKey() + "," + liftNumRidesEntry.getValue());
+                liftCountData.add(liftNumRidesEntry.getKey() + "," + liftNumRidesEntry.getValue());
                 numLiftEntries++;
-                if (numLiftEntries < liftNumRidesMap.size()) {
-                  writer.write("\n");
-                }
               }
-              writer.close();
+              fileWriter.writeData(liftCountData, liftCSVFile);
             } catch (IOException e) {
               e.printStackTrace();
             }
@@ -121,6 +118,7 @@ public class SkiDataProcessorFile {
       private ConcurrentMap<Integer, ConcurrentMap<Integer, AtomicInteger>> hourNumLiftRidesMap = new ConcurrentSkipListMap<>();
       private AtomicBoolean finished = new AtomicBoolean(false);
       private int numBusiestLifts = 10;
+      private String hourCSVFile = "hours.csv";
 
       @Override
       public void accept(LiftHourQueueItem liftHourQueueItem) {
@@ -129,8 +127,8 @@ public class SkiDataProcessorFile {
           if (finished.compareAndSet(false, true)) {
             // write file
             try {
-              BufferedWriter writer = new BufferedWriter(new FileWriter("hours.csv"));
-              writer.write("Hour,LiftID,Number of Rides\n");
+              List<String> liftHourInformation = new ArrayList<>();
+              liftHourInformation.add("Hour,LiftID,Number of Rides");
               int numHourEntries = 0;
               for (Map.Entry<Integer,  ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry : hourNumLiftRidesMap.entrySet()) {
                 numHourEntries++;
@@ -149,13 +147,10 @@ public class SkiDataProcessorFile {
                 while (!busiestLifts.isEmpty()) {
                   LiftWithRides liftWithRides = busiestLifts.poll();
                   numLiftsRemaining--;
-                  writer.write(hourLiftNumRidesEntry.getKey() + "," + liftWithRides.getLiftId() + "," + liftWithRides.getNumRides());
-                  if (!(numHourEntries == hourNumLiftRidesMap.size() && numLiftsRemaining == 0)) {
-                    writer.write("\n");
-                  }
+                  liftHourInformation.add(hourLiftNumRidesEntry.getKey() + "," + liftWithRides.getLiftId() + "," + liftWithRides.getNumRides());
                 }
               }
-              writer.close();
+              fileWriter.writeData(liftHourInformation, hourCSVFile);
             } catch (IOException e) {
               e.printStackTrace();
             }
@@ -178,6 +173,7 @@ public class SkiDataProcessorFile {
     liftHourConsumer = new ConsumerExecutor<>(liftHourQueue, liftHourConsumerFx,numConsumerThreads);
     liftHourConsumer.startConsumers();
   }
+
 
   public void parseFile(String filePath) throws IOException, InterruptedException {
     FileReader in = new FileReader(filePath);
