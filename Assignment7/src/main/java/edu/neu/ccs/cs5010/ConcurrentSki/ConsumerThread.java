@@ -1,4 +1,4 @@
-package edu.neu.ccs.cs5010.ConcurrentSki;
+package edu.neu.ccs.cs5010.concurrentski;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
