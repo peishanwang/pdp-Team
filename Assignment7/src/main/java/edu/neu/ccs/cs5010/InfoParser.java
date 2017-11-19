@@ -64,7 +64,7 @@ public class InfoParser {
     int liftIdValue = Integer.parseInt(liftId);
     int timeValue = Integer.parseInt(time);
     int hourIndex = getHour(timeValue);
-    resort.
+
   }
 
   private Integer getHour(int min) {

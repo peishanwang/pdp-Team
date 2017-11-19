@@ -27,4 +27,12 @@ public class Resort implements IResort {
     Collections.sort(allSkiers);
     return allSkiers.subList(0, numberOfSkiers);
   }
+
+  public void addLiftRide(int liftId) {
+    liftList.get(liftId - 1).addRide();
+  }
+
+  public void addLiftRideWithTime(int liftId, int timeIndex) {
+    liftList.get(liftId - 1).addRideWithTime(timeIndex);
+  }
 }
