@@ -1,10 +1,8 @@
-package edu.neu.ccs.cs5010.ConcurrentSki;
+package edu.neu.ccs.cs5010.concurrentski;
 
 
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -22,7 +20,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class SkiDataProcessorFile {
-  private int numConsumerThreads = 5;
+  private int numConsumerThreads = 1;
   BlockingQueue<SkierQueueItem> skierQueue;
   ConsumerExecutor<SkierQueueItem> skierConsumer;
 
@@ -31,7 +29,7 @@ public class SkiDataProcessorFile {
 
   BlockingQueue<LiftHourQueueItem> liftHourQueue;
   ConsumerExecutor<LiftHourQueueItem> liftHourConsumer;
-  edu.neu.ccs.cs5010.ConcurrentSki.FileWriter fileWriter = new edu.neu.ccs.cs5010.ConcurrentSki.FileWriter();
+  edu.neu.ccs.cs5010.ResultWriter fileWriter = new edu.neu.ccs.cs5010.ResultWriter();
 
   public SkiDataProcessorFile() {
     skierQueue = new LinkedBlockingDeque<>();
@@ -49,9 +47,8 @@ public class SkiDataProcessorFile {
           // this is signal from one of threads that queue is empty now
           if (finished.compareAndSet(false, true)) {
             // write file
-            try {
-              List<String> skierVerticalInfo = new ArrayList<>();
-              skierVerticalInfo.add("SkierId, Vertical");
+              List<Object[]> skierVerticalInfo = new ArrayList<>();
+              skierVerticalInfo.add(new String[]{"SkierId, Vertical"});
               PriorityQueue<SkierWithVertical> topNVerticalSkiers = new PriorityQueue<>(topNSkiers, Comparator.comparingInt(o -> o.getVerticalDistance()));
               for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
                 if (topNVerticalSkiers.size() >= topNSkiers) {
@@ -69,13 +66,10 @@ public class SkiDataProcessorFile {
               }
 
               for (int i = topSkiers.size() - 1; i >= 0; i--) {
-                skierVerticalInfo.add(String.valueOf(topSkiers.get(i).getSkierId()) + ", " + String.valueOf(topSkiers.get(i).getVerticalDistance()));
+                skierVerticalInfo.add(new String[]{String.valueOf(topSkiers.get(i).getSkierId()), String.valueOf(topSkiers.get(i).getVerticalDistance())});
               }
-              fileWriter.writeData(skierVerticalInfo, skierCSVFile);
-            } catch (IOException e) {
-              e.printStackTrace();
+              fileWriter.write(skierCSVFile, skierVerticalInfo);
             }
-          }
           return;
         }
         skierVerticalRideMap.putIfAbsent(skierQueueItem.getSkierId(), new AtomicInteger(0));
@@ -94,19 +88,15 @@ public class SkiDataProcessorFile {
           // this is signal from one of threads that queue is empty now
           if (finished.compareAndSet(false, true)) {
             // write file
-            try {
-              List<String> liftCountData = new ArrayList<>();
-              liftCountData.add("LiftID,Number of Rides");
+              List<Object[]> liftCountData = new ArrayList<>();
+              liftCountData.add(new String[]{"LiftID,Number of Rides"});
               int numLiftEntries = 0;
               for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry : liftNumRidesMap.entrySet()) {
-                liftCountData.add(liftNumRidesEntry.getKey() + "," + liftNumRidesEntry.getValue());
+                liftCountData.add(new String[] {liftNumRidesEntry.getKey() + "," + liftNumRidesEntry.getValue()});
                 numLiftEntries++;
               }
-              fileWriter.writeData(liftCountData, liftCSVFile);
-            } catch (IOException e) {
-              e.printStackTrace();
+              fileWriter.write(liftCSVFile, liftCountData);
             }
-          }
           return;
         }
         liftNumRidesMap.putIfAbsent(liftId, new AtomicInteger(0));
@@ -126,9 +116,8 @@ public class SkiDataProcessorFile {
           // this is signal from one of threads that queue is empty now
           if (finished.compareAndSet(false, true)) {
             // write file
-            try {
-              List<String> liftHourInformation = new ArrayList<>();
-              liftHourInformation.add("Hour,LiftID,Number of Rides");
+              List<Object[]> liftHourInformation = new ArrayList<>();
+              liftHourInformation.add(new String[]{"Hour,LiftID,Number of Rides"});
               int numHourEntries = 0;
               for (Map.Entry<Integer,  ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry : hourNumLiftRidesMap.entrySet()) {
                 numHourEntries++;
@@ -147,13 +136,10 @@ public class SkiDataProcessorFile {
                 while (!busiestLifts.isEmpty()) {
                   LiftWithRides liftWithRides = busiestLifts.poll();
                   numLiftsRemaining--;
-                  liftHourInformation.add(hourLiftNumRidesEntry.getKey() + "," + liftWithRides.getLiftId() + "," + liftWithRides.getNumRides());
+                  liftHourInformation.add(new String[]{String.valueOf(hourLiftNumRidesEntry.getKey()),String.valueOf(liftWithRides.getLiftId()), String.valueOf(liftWithRides.getNumRides())});
                 }
               }
-              fileWriter.writeData(liftHourInformation, hourCSVFile);
-            } catch (IOException e) {
-              e.printStackTrace();
-            }
+              fileWriter.write(hourCSVFile, liftHourInformation);
           }
           return;
         }
@@ -170,12 +156,12 @@ public class SkiDataProcessorFile {
     liftConsumer = new ConsumerExecutor<>(liftQueue, liftConsumerFx, numConsumerThreads);
     liftConsumer.startConsumers();
 
-    liftHourConsumer = new ConsumerExecutor<>(liftHourQueue, liftHourConsumerFx,numConsumerThreads);
+    liftHourConsumer = new ConsumerExecutor<>(liftHourQueue, liftHourConsumerFx, numConsumerThreads);
     liftHourConsumer.startConsumers();
   }
 
 
-  public void parseFile(String filePath) throws IOException, InterruptedException {
+  private void parseFile(String filePath) throws IOException, InterruptedException {
     FileReader in = new FileReader(filePath);
     BufferedReader br = new BufferedReader(in);
     String line = br.readLine();

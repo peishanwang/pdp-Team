@@ -1,4 +1,4 @@
-package edu.neu.ccs.cs5010.ConcurrentSki;
+package edu.neu.ccs.cs5010.concurrentski;
 
 public class LiftWithRides {
   public LiftWithRides(int liftId, int numRides) {

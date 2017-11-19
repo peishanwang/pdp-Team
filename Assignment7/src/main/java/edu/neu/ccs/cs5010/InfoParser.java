@@ -2,8 +2,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.ConcurrentSki.LiftHourQueueItem;
-import edu.neu.ccs.cs5010.ConcurrentSki.SkiHelper;
+import edu.neu.ccs.cs5010.concurrentski.SkiHelper;
 
 import java.util.HashMap;
 import java.util.Map;
