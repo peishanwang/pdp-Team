@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
+import java.util.List;
+
 public interface IResultWriter {
-  void writeResult1();
-  void writeResult2();
-  void writeResult3();
+  void write(String path, List<Object[]> rows);
 }

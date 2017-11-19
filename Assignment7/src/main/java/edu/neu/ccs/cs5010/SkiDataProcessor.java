@@ -3,6 +3,9 @@ package edu.neu.ccs.cs5010;
 
 public class SkiDataProcessor implements ISkiDataProcessor {
   private static final String SEQUENTIAL = "Sequential";
+  private static final String OUTPUT_FILE1 = "skier2.csv";
+  private static final String OUTPUT_FILE2 = "lift2.csv";
+  private static final String OUTPUT_FILE3 = "hour2.csv";
   private String path;
   private String flag;
   private IResort resort;
@@ -29,9 +32,10 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   }
 
   public void outputResult() {
-    IResultWriter writer = new ResultWriter(resort);
-    writer.writeResult1();
-    writer.writeResult2();
-    writer.writeResult3();
+    IResultWriter writer = new ResultWriter();
+    IResultExtracter extracter = new ResultExtracter(resort);
+    writer.write(OUTPUT_FILE1, extracter.extractResult1());
+    writer.write(OUTPUT_FILE2, extracter.extractResult2());
+    writer.write(OUTPUT_FILE3, extracter.extractResult3());
   }
 }

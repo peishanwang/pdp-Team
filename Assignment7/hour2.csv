@@ -1,5 +1,5 @@
-Hour1
-LiftID,NumberOfRides
+hour1
+LiftID,Number of Rides
 29,3466
 34,3466
 9,3444
@@ -10,8 +10,8 @@ LiftID,NumberOfRides
 39,3408
 12,3399
 7,3386
-Hour2
-LiftID,NumberOfRides
+hour2
+LiftID,Number of Rides
 11,3456
 28,3445
 32,3439
@@ -22,8 +22,8 @@ LiftID,NumberOfRides
 18,3396
 24,3395
 19,3386
-Hour3
-LiftID,NumberOfRides
+hour3
+LiftID,Number of Rides
 21,3540
 4,3437
 29,3419
@@ -34,8 +34,8 @@ LiftID,NumberOfRides
 22,3370
 17,3369
 37,3366
-Hour4
-LiftID,NumberOfRides
+hour4
+LiftID,Number of Rides
 18,3428
 24,3413
 20,3398
@@ -46,8 +46,8 @@ LiftID,NumberOfRides
 14,3374
 36,3374
 3,3368
-Hour5
-LiftID,NumberOfRides
+hour5
+LiftID,Number of Rides
 18,3415
 32,3411
 5,3395
@@ -58,8 +58,8 @@ LiftID,NumberOfRides
 16,3382
 26,3378
 38,3376
-Hour6
-LiftID,NumberOfRides
+hour6
+LiftID,Number of Rides
 17,3431
 22,3411
 39,3402
