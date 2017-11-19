@@ -1,4 +1,5 @@
-package edu.neu.ccs.cs5010;
+package edu.neu.ccs.cs5010.ConcurrentSki;
+
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -16,168 +17,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.LinkedBlockingDeque;
-import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
-class SkiHelper {
-  static int getVerticalDistanceMetres(int liftId) {
-    if (liftId >= 1 && liftId <= 10) {
-      return 200;
-    } else if (liftId >= 11 && liftId <= 20) {
-      return 300;
-    } else if (liftId >= 20 && liftId <= 30) {
-      return 400;
-    } else if (liftId >= 30 && liftId <= 40) {
-      return 500;
-    } else {
-      throw new IllegalArgumentException("invalid liftId: " + liftId);
-    }
-  }
-}
-
-class SkierQueueItem {
-  public SkierQueueItem(int skierId, int liftId) {
-    this.skierId = skierId;
-    this.liftId = liftId;
-  }
-
-  public Integer getSkierId() {
-    return skierId;
-  }
-
-  public Integer getLiftId() {
-    return liftId;
-  }
-
-  private Integer skierId;
-  private Integer liftId;
-}
-
-class LiftHourQueueItem {
-  public LiftHourQueueItem(int min, int liftId) {
-    this.min = min;
-    this.liftId = liftId;
-  }
-
-  public Integer getTimeMin() {
-    return min;
-  }
-
-  public Integer getHour() {
-    int hour = (min / 60);
-    // starts from 1
-    if (hour < 6) {hour += 1;}
-    return hour;
-  }
-
-  public Integer getLiftId() {
-    return liftId;
-  }
-
-  private Integer min;
-  private Integer liftId;
-}
-
-class ConsumerThread<T> extends Thread {
-  private final BlockingQueue<T> consumerQueue;
-  private final Consumer<T> consumerFx;
-  private volatile boolean stop;
-
-  public ConsumerThread(final BlockingQueue<T> queue, final Consumer<T> consumerFx) {
-    this.consumerQueue = queue;
-    this.consumerFx = consumerFx;
-    this.stop = false;
-  }
-
-  public void beginStop() {
-    this.stop = true;
-  }
-
-  @Override
-  public void run() {
-    while (!this.stop || !this.consumerQueue.isEmpty()) {
-      try {
-        T item = this.consumerQueue.poll(100, TimeUnit.MILLISECONDS);
-        if (item == null) {
-          continue;
-        }
-        consumerFx.accept(item);
-      } catch (InterruptedException e) {
-        e.printStackTrace();
-      }
-    }
-    // signal end by calling with null object
-    consumerFx.accept(null);
-  }
-}
-
-class ConsumerExecutor<T> {
-
-  public ConsumerExecutor(final BlockingQueue<T> queue,
-                          final Consumer<T> consumerFx,
-                          int numConsumerThreads) {
-    consumerThreads = new ArrayList<>();
-    for (int i = 0; i < numConsumerThreads; i++) {
-      consumerThreads.add(new ConsumerThread<>(queue, consumerFx));
-    }
-  }
-
-  public void startConsumers() {
-    for (ConsumerThread<T> consumerThread : consumerThreads) {
-      consumerThread.start();
-    }
-  }
-
-  public void join() throws InterruptedException {
-    for (ConsumerThread<T> consumerThread : consumerThreads) {
-      consumerThread.beginStop();
-      consumerThread.join();
-    }
-  }
-
-  private List<ConsumerThread<T>> consumerThreads;
-}
-
-class SkierWithVertical {
-  public SkierWithVertical(int skierId, int vertical) {
-    this.skierId = skierId;
-    this.vertical = vertical;
-  }
-
-  public Integer getSkierId() {
-    return skierId;
-  }
-
-  public Integer getVerticalDistance() {
-    return vertical;
-  }
-
-  private Integer skierId;
-  private Integer vertical;
-}
-
-class LiftWithRides {
-  public LiftWithRides(int liftId, int numRides) {
-    this.liftId = liftId;
-    this.numRides = numRides;
-  }
-
-  public Integer getLiftId() {
-    return liftId;
-  }
-
-  public Integer getNumRides() {
-    return numRides;
-  }
-
-  private Integer liftId;
-  private Integer numRides;
-}
-
 public class SkiDataProcessorFile {
-  private int numConsumerThreads = 1;
+  private int numConsumerThreads = 5;
   BlockingQueue<SkierQueueItem> skierQueue;
   ConsumerExecutor<SkierQueueItem> skierConsumer;
 
@@ -377,4 +222,5 @@ public class SkiDataProcessorFile {
     SkiDataProcessorFile skiDataProcessor = new SkiDataProcessorFile();
     skiDataProcessor.parseFile(filePath);
   }
+
 }
