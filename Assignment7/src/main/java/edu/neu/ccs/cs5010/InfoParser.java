@@ -20,29 +20,16 @@ public class InfoParser {
 
   public void parseInfo(String path) {
     CsvParserSettings settings = new CsvParserSettings();
-    //the file used in the example uses '\n' as the line separator sequence.
-    //the line separator sequence is defined here to ensure systems such as MacOS and Windows
-    //are able to process this file correctly (MacOS uses '\r'; and Windows uses '\r\n').
     settings.getFormat().setLineSeparator("\n");
-    // creates a CSV parser
     CsvParser parser = new CsvParser(settings);
-    // call beginParsing to read records one by one, iterator-style.
     parser.beginParsing(getReader(path));
     String[] headers = parser.parseNext();
-
     Map<String, Integer> headerToIndex = parseHeaders(headers);
-
     String[] row;
     while ((row = parser.parseNext()) != null) {
       parseSkierInfo(row[headerToIndex.get("skier")], row[headerToIndex.get("lift")]);
       parseLiftInfo(row[headerToIndex.get("lift")], row[headerToIndex.get("time")]);
     }
-
-    // The resources are closed automatically when the end of the input is reached,
-    // or when an error happens, but you can call stopParsing() at any time.
-
-    // You only need to use this if you are not parsing the entire content.
-    // But it doesn't hurt if you call it anyway.
     parser.stopParsing();
   }
 

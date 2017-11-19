@@ -28,4 +28,19 @@ public class Skier implements ISkier {
   public int getTotalVertical() {
     return totalVertical;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    Skier skier = (Skier) obj;
+
+    return getSkierId() == skier.getSkierId();
+  }
+
+  @Override
+  public int hashCode() {
+    return getSkierId();
+  }
 }

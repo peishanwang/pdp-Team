@@ -66,4 +66,21 @@ public class ResultExtracter implements IResultExtracter {
     }
     return result;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    ResultExtracter that = (ResultExtracter) obj;
+
+    return resort.equals(that.resort);
+  }
+
+  @Override
+  public int hashCode() {
+    int result = resort.hashCode();
+    result = 31 * result + hourIndex;
+    return result;
+  }
 }

@@ -42,4 +42,22 @@ public class Resort implements IResort {
   public List<ILift> getLiftList() {
     return liftList;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) return true;
+    if (obj == null || getClass() != obj.getClass()) return false;
+
+    Resort resort = (Resort) obj;
+
+    return idToSkier.equals(resort.idToSkier)
+        && getLiftList().equals(resort.getLiftList());
+  }
+
+  @Override
+  public int hashCode() {
+    int result = idToSkier.hashCode();
+    result = 31 * result + getLiftList().hashCode();
+    return result;
+  }
 }
