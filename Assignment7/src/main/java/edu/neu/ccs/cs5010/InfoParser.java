@@ -2,6 +2,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
+import edu.neu.ccs.cs5010.ConcurrentSki.LiftHourQueueItem;
 import edu.neu.ccs.cs5010.ConcurrentSki.SkiHelper;
 
 import java.util.HashMap;
@@ -59,8 +60,18 @@ public class InfoParser {
         SkiHelper.getVerticalDistanceMetres(liftIdValue));
   }
 
-  private void parseLiftInfo(String liftId) {
+  private void parseLiftInfo(String liftId, String time) {
+    int liftIdValue = Integer.parseInt(liftId);
+    int timeValue = Integer.parseInt(time);
+    int hourIndex = getHour(timeValue);
 
+  }
+
+  private Integer getHour(int min) {
+    int hour = (min / 60);
+    // starts from 1
+    if (hour < 6) {hour += 1;}
+    return hour;
   }
 
 
