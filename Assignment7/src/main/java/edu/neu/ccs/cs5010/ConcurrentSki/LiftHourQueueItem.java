@@ -13,7 +13,9 @@ public class LiftHourQueueItem {
   public Integer getHour() {
     int hour = (min / 60);
     // starts from 1
-    if (hour < 6) {hour += 1;}
+    if (hour < 6) {
+      hour += 1;
+    }
     return hour;
   }
 

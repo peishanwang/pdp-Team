@@ -1,10 +1,18 @@
 package edu.neu.ccs.cs5010;
 
-import java.io.*;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 
 public interface IoUtil {
 
-  static Reader getReader(String relativePath){
+  static Reader getReader(String relativePath) {
     try {
       return new InputStreamReader(new FileInputStream(relativePath), "UTF-8");
     } catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -12,7 +20,7 @@ public interface IoUtil {
     }
   }
 
-  static Writer getWriter(String relativePath){
+  static Writer getWriter(String relativePath) {
     try {
       return new OutputStreamWriter(new FileOutputStream(relativePath), "UTF-8");
     } catch (FileNotFoundException | UnsupportedEncodingException e) {
