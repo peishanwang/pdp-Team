@@ -16,8 +16,11 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   public static void main(String[] args) {
     ICmdParser cmdParser = new CmdParser(args);
     ISkiDataProcessor processor = new SkiDataProcessor(cmdParser.getCsvFile(), cmdParser.getFlag());
+    long startTime = System.currentTimeMillis();
     processor.processData();
+    long endTime = System.currentTimeMillis();
     processor.outputResult();
+    System.out.println("Time taken: " + String.valueOf(endTime-startTime));
   }
 
   public void processData() {
