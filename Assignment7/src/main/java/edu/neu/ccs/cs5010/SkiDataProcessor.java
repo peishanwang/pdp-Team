@@ -28,5 +28,7 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   public void outputResult() {
     IResultWriter writer = new ResultWriter(resort);
     writer.writeResult1();
+    writer.writeResult2();
+    writer.writeResult3();
   }
 }

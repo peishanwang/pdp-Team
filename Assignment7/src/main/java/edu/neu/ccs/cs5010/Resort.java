@@ -10,6 +10,9 @@ public class Resort implements IResort {
   public Resort() {
     idToSkier = new HashMap<>();
     liftList = new ArrayList<>();
+    for (int i = 0; i < 40; i++) {
+      liftList.add(new Lift(i + 1));
+    }
   }
 
   public void addSkierVertical(int skierId, int vertical) {
@@ -34,5 +37,9 @@ public class Resort implements IResort {
 
   public void addLiftRideWithTime(int liftId, int timeIndex) {
     liftList.get(liftId - 1).addRideWithTime(timeIndex);
+  }
+
+  public List<ILift> getLiftList() {
+    return liftList;
   }
 }

@@ -35,6 +35,7 @@ public class InfoParser {
     String[] row;
     while ((row = parser.parseNext()) != null) {
       parseSkierInfo(row[headerToIndex.get("skier")], row[headerToIndex.get("lift")]);
+      parseLiftInfo(row[headerToIndex.get("lift")], row[headerToIndex.get("time")]);
     }
 
     // The resources are closed automatically when the end of the input is reached,
@@ -63,16 +64,8 @@ public class InfoParser {
   private void parseLiftInfo(String liftId, String time) {
     int liftIdValue = Integer.parseInt(liftId);
     int timeValue = Integer.parseInt(time);
-    int hourIndex = getHour(timeValue);
-
+    resort.addLiftRide(liftIdValue);
+    resort.addLiftRideWithTime(liftIdValue, (timeValue - 1)/60);
   }
-
-  private Integer getHour(int min) {
-    int hour = (min / 60);
-    // starts from 1
-    if (hour < 6) {hour += 1;}
-    return hour;
-  }
-
 
 }
