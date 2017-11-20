@@ -1,4 +1,4 @@
-package edu.neu.ccs.cs5010.concurrentski;
+package edu.neu.ccs.cs5010.concurrentsystem;
 
 public class LiftHourQueueItem {
   public LiftHourQueueItem(int min, int liftId) {

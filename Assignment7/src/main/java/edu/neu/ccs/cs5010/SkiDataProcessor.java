@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
 
-import edu.neu.ccs.cs5010.concurrentski.ConcurrentSki;
+import edu.neu.ccs.cs5010.concurrentsystem.ConcurrentSki;
 import java.io.IOException;
 
 public class SkiDataProcessor implements ISkiDataProcessor {

@@ -2,10 +2,14 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.concurrentski.SkiHelper;
+import edu.neu.ccs.cs5010.concurrentsystem.LiftHourQueueItem;
+import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
+import edu.neu.ccs.cs5010.concurrentsystem.SkierQueueItem;
+import jdk.nashorn.internal.ir.Block;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.BlockingQueue;
 
 import static edu.neu.ccs.cs5010.IoUtil.getReader;
 
@@ -31,6 +35,7 @@ public class InfoParser {
     }
     parser.stopParsing();
   }
+
 
   private Map<String, Integer> parseHeaders(String[] headers) {
     Map<String, Integer> headerToIndex = new HashMap<>();

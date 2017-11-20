@@ -1,4 +1,4 @@
-package edu.neu.ccs.cs5010.concurrentski;
+package edu.neu.ccs.cs5010.concurrentsystem;
 
 public class SkierQueueItem {
   public SkierQueueItem(int skierId, int liftId) {

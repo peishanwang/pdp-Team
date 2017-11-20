@@ -1,9 +1,9 @@
-package edu.neu.ccs.cs5010.concurrentski;
+package edu.neu.ccs.cs5010.concurrentsystem;
 
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import com.univocity.parsers.csv.CsvParser;
+import com.univocity.parsers.csv.CsvParserSettings;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -18,6 +18,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
+import static edu.neu.ccs.cs5010.IoUtil.getReader;
 
 public class ConcurrentSki {
   private int numConsumerThreads = 1;
@@ -184,15 +185,12 @@ public class ConcurrentSki {
     liftHourConsumer.startConsumers();
   }
 
-
-  public void parseFile(String filePath) throws IOException, InterruptedException {
-    FileReader fileReader = new FileReader(filePath);
-    BufferedReader bufferedReader = new BufferedReader(fileReader);
-    String line = bufferedReader.readLine();
-    if (line == null) {
-      throw new IllegalArgumentException("No header in file");
-    }
-    String[] headers = line.split(",");
+  public void parseFile(String filePath) throws InterruptedException {
+    CsvParserSettings settings = new CsvParserSettings();
+    settings.getFormat().setLineSeparator("\n");
+    CsvParser parser = new CsvParser(settings);
+    parser.beginParsing(getReader(filePath));
+    String[] headers = parser.parseNext();
     Map<String, Integer> fieldIndexMap = new HashMap<>();
     for (int idx = 0; idx < headers.length; idx++) {
       fieldIndexMap.put(headers[idx], idx);
@@ -203,13 +201,12 @@ public class ConcurrentSki {
     if (skierIdx == null || liftIdx == null || timeIdx == null) {
       throw new IllegalArgumentException("missing col skier or lift or time");
     }
-
+    String[] row;
     long startTime = System.currentTimeMillis();
-    while ((line = bufferedReader.readLine()) != null) {
-      String[] cols = line.split(",");
-      Integer skierId = Integer.parseInt(cols[skierIdx]);
-      Integer liftId = Integer.parseInt(cols[liftIdx]);
-      Integer time = Integer.parseInt(cols[timeIdx]);
+    while ((row = parser.parseNext()) != null)  {
+      Integer skierId = Integer.parseInt(row[skierIdx]);
+      Integer liftId = Integer.parseInt(row[liftIdx]);
+      Integer time = Integer.parseInt(row[timeIdx]);
 
       skierQueue.put(new SkierQueueItem(skierId, liftId));
       liftQueue.put(liftId);
