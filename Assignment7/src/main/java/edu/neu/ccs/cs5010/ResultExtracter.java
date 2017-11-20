@@ -37,8 +37,6 @@ public class ResultExtracter implements IResultExtracter {
       ISkier currSkier = topHundredSkier.get(i);
       result.add(new String[]{Integer.toString(currSkier.getSkierId()),
           Integer.toString(currSkier.getTotalVertical())});
-//      System.out.println(Integer.toString(currSkier.getSkierId()) + "," +
-//          Integer.toString(currSkier.getTotalVertical()));
     }
     return result;
   }
