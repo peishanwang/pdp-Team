@@ -50,8 +50,8 @@ public class SkierWithVertical implements ISkierWithVertical{
       return false;
     }
     SkierWithVertical that = (SkierWithVertical) object;
-    return Objects.equals(skierId, that.skierId) &&
-            Objects.equals(vertical, that.vertical);
+    return Objects.equals(skierId, that.skierId)
+            && Objects.equals(vertical, that.vertical);
   }
 
   @Override
