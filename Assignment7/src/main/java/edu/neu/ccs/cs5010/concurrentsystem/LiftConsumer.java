@@ -9,6 +9,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class LiftConsumer implements Consumer<Integer> {
   private ConcurrentMap<Integer, AtomicInteger> liftNumRidesMap;
   private AtomicBoolean finished;

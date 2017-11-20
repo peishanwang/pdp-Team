@@ -3,6 +3,11 @@ package edu.neu.ccs.cs5010;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class Lift implements ILift {
   private int totalRides;
   private int liftId;

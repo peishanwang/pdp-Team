@@ -4,6 +4,12 @@ import edu.neu.ccs.cs5010.concurrentsystem.ParallelRideInfoConsumer;
 
 import java.io.IOException;
 
+
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class SkiDataProcessor implements ISkiDataProcessor {
   private static final String SEQUENTIAL = "Sequential";
   private static final String CONCURRENT = "Concurrent";

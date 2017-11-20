@@ -1,5 +1,11 @@
 package edu.neu.ccs.cs5010.concurrentsystem;
 
+
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class LiftHourQueueItem {
   public LiftHourQueueItem(int min, int liftId) {
     this.min = min;

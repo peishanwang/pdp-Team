@@ -12,6 +12,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
   private ConcurrentMap<Integer, ConcurrentMap<Integer, AtomicInteger>> hourNumLiftRidesMap;
   private AtomicBoolean finished;

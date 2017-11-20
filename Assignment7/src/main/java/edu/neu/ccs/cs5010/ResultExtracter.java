@@ -2,6 +2,11 @@ package edu.neu.ccs.cs5010;
 
 import java.util.*;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class ResultExtracter implements IResultExtracter {
   private static final int SKIER_NUM = 100;
   private static final int LIFT_NUM = 10;

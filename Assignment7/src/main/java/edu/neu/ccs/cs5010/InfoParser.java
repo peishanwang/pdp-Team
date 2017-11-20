@@ -10,6 +10,13 @@ import java.util.function.Consumer;
 
 import static edu.neu.ccs.cs5010.IoUtil.getReader;
 
+
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
+
 public class InfoParser {
   private Map<String, Integer> headerToIndex;
   public InfoParser() {

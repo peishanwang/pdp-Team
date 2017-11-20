@@ -2,6 +2,12 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
 
+
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class SequentialRideInfoConsumer implements IRideInfoConsumer {
   private static final String OUTPUT_FILE1 = "skier2.csv";
   private static final String OUTPUT_FILE2 = "lift2.csv";

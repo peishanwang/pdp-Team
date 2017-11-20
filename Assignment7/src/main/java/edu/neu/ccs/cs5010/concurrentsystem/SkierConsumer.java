@@ -11,6 +11,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class SkierConsumer implements Consumer<SkierQueueItem> {
   private static final String skierCsvFile = "skier.csv";
   private static final int topNskiers = 100;

@@ -5,8 +5,19 @@ import java.util.List;
 import java.util.Queue;
 import java.util.function.Consumer;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class ConsumerExecutor<T> {
 
+  /**
+   * ConsumerExecutor Constructor.
+   * @param queue queue of data to infer.
+   * @param consumerFx Consumer object
+   * @param numConsumerThreads number of threads
+   */
   public ConsumerExecutor(final Queue<T> queue,
                           final Consumer<T> consumerFx,
                           int numConsumerThreads) {
@@ -16,6 +27,9 @@ public class ConsumerExecutor<T> {
     }
   }
 
+  /**
+   * startConsumers method to start all threads.
+   */
   public void startConsumers() {
     for (ConsumerThread<T> consumerThread : consumerThreads) {
       consumerThread.start();

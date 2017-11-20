@@ -2,6 +2,11 @@ package edu.neu.ccs.cs5010;
 
 import java.util.*;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class Resort implements IResort {
 
   Map<Integer, ISkier> idToSkier;

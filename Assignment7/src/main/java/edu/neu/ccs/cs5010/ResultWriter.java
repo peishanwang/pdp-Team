@@ -5,7 +5,11 @@ import com.univocity.parsers.csv.CsvWriterSettings;
 
 import java.util.List;
 
-
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class ResultWriter implements IResultWriter {
 
   public void write(String path, List<Object[]> rows) {

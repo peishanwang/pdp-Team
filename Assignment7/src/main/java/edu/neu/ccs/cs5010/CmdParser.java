@@ -1,5 +1,11 @@
 package edu.neu.ccs.cs5010;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
+
 public class CmdParser implements ICmdParser{
   private static final int NEEDED_ARGS = 2;
   private static final int CSVFILE_INDEX = 0;

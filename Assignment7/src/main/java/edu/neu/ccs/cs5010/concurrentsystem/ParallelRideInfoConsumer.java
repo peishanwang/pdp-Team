@@ -6,6 +6,11 @@ import edu.neu.ccs.cs5010.RideInfo;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
+/**
+ * This is part of PDP Assignment 7.
+ *
+ * @author Manika and Peishan
+ */
 public class ParallelRideInfoConsumer implements IRideInfoConsumer {
   private int numConsumerThreads = 1;
   Queue<SkierQueueItem> skierQueue;
