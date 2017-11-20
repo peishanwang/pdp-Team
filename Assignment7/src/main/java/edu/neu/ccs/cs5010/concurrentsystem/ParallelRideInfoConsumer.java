@@ -16,6 +16,7 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
   private static final Logger LOGGER
       = Logger.getLogger(ParallelRideInfoConsumer.class.getName());
   private int numConsumerThreads = 1;
+
   Queue<SkierQueueItem> skierQueue;
   ConsumerExecutor<SkierQueueItem> skierConsumer;
 
@@ -67,10 +68,11 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
       liftConsumer.join();
       liftHourConsumer.join();
       long endTime = System.currentTimeMillis();
-      LOGGER.info("time taken to stop threads: " + (endTime - startTime));
+      String str = String.format("time taken to stop threads: %1$d", endTime - startTime);
+      LOGGER.info(str);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
-      e.printStackTrace();
+      LOGGER.info(e.getMessage());
     }
   }
 }
