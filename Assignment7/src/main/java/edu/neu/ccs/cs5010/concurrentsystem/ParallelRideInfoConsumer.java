@@ -3,7 +3,6 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 import edu.neu.ccs.cs5010.IRideInfoConsumer;
 import edu.neu.ccs.cs5010.RideInfo;
 
-import java.util.Objects;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -60,7 +59,7 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
   public void stop() {
     // stop for threads to finish
     try {
-      long startTime = System.currentTimeMillis();
+      final long startTime = System.currentTimeMillis();
       skierConsumer.join();
       liftConsumer.join();
       liftHourConsumer.join();

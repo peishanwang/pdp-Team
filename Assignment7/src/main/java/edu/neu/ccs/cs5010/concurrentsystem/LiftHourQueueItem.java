@@ -36,16 +36,21 @@ public class LiftHourQueueItem implements ILiftHourQueueItem{
   public Integer getLiftId() {
     return liftId;
   }
+
   private Integer min;
   private Integer liftId;
 
   @Override
   public boolean equals(Object object) {
-    if (this == object) return true;
-    if (object == null || getClass() != object.getClass()) return false;
+    if (this == object) {
+      return true;
+    }
+    if (object == null || getClass() != object.getClass()) {
+      return false;
+    }
     LiftHourQueueItem that = (LiftHourQueueItem) object;
-    return Objects.equals(min, that.min) &&
-            Objects.equals(liftId, that.liftId);
+    return Objects.equals(min, that.min)
+            && Objects.equals(liftId, that.liftId);
   }
 
   @Override

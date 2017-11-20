@@ -8,7 +8,6 @@ import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 /**
  * This is a class to parse the information from the .csv file.
  *

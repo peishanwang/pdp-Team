@@ -41,8 +41,8 @@ public class LiftWithRides implements ILiftWithRides {
       return false;
     }
     LiftWithRides that = (LiftWithRides) object;
-    return Objects.equals(liftId, that.liftId) &&
-            Objects.equals(numRides, that.numRides);
+    return Objects.equals(liftId, that.liftId)
+            && Objects.equals(numRides, that.numRides);
   }
 
   @Override

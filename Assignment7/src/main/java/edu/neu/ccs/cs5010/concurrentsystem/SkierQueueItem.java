@@ -46,8 +46,8 @@ public class SkierQueueItem implements ISkierQueueItem {
       return false;
     }
     SkierQueueItem that = (SkierQueueItem) object;
-    return Objects.equals(skierId, that.skierId) &&
-            Objects.equals(liftId, that.liftId);
+    return Objects.equals(skierId, that.skierId)
+            && Objects.equals(liftId, that.liftId);
   }
 
   @Override
