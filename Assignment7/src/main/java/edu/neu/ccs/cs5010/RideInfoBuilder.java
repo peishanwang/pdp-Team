@@ -1,12 +1,14 @@
 package edu.neu.ccs.cs5010;
 
 
+import edu.neu.ccs.cs5010.concurrentsystem.IRideInfoBuilder;
+
 /**
  * This is part of PDP Assignment 7.
  *
  * @author Manika and Peishan
  */
-public class RideInfoBuilder {
+public class RideInfoBuilder implements IRideInfoBuilder{
 
   public RideInfoBuilder() {
     rideInfo = new RideInfo();

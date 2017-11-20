@@ -21,12 +21,9 @@ public class SkiDataProcessor implements ISkiDataProcessor {
     this.processParallely = processParallely;
   }
 
-  public static void main(String[] args) throws IOException, InterruptedException {
+  public static void main(String[] args) {
     ICmdParser cmdParser = new CmdParser(args);
     boolean processParallely = cmdParser.getFlag().equalsIgnoreCase(CONCURRENT);
-    if (!processParallely && !cmdParser.getFlag().equalsIgnoreCase(SEQUENTIAL)) {
-      throw new IllegalCmdArgumentException("neither sequential nor concurrent");
-    }
     ISkiDataProcessor processor = new SkiDataProcessor(cmdParser.getCsvFile(), processParallely);
     long startTime = System.currentTimeMillis();
     processor.processData();

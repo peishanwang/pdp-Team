@@ -9,13 +9,14 @@ import java.util.*;
  */
 public class Resort implements IResort {
 
-  Map<Integer, ISkier> idToSkier;
-  List<ILift> liftList;
+  private static final int NUM_LIFTS = 40;
+  private Map<Integer, ISkier> idToSkier;
+  private List<ILift> liftList;
 
   public Resort() {
     idToSkier = new HashMap<>();
     liftList = new ArrayList<>();
-    for (int i = 0; i < 40; i++) {
+    for (int i = 0; i < NUM_LIFTS; i++) {
       liftList.add(new Lift(i + 1));
     }
   }
@@ -55,13 +56,13 @@ public class Resort implements IResort {
 
     Resort resort = (Resort) obj;
 
-    return idToSkier.equals(resort.idToSkier)
+    return idToSkier.keySet().equals(resort.idToSkier.keySet())
         && getLiftList().equals(resort.getLiftList());
   }
 
   @Override
   public int hashCode() {
-    int result = idToSkier.hashCode();
+    int result = idToSkier.keySet().hashCode();
     result = 31 * result + getLiftList().hashCode();
     return result;
   }

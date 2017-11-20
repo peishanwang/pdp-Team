@@ -11,6 +11,8 @@ public class CmdParser implements ICmdParser{
   private static final int CSVFILE_INDEX = 0;
   private static final int FLAG_INDEX = 1;
   private static final int HASHCODE_COEFFICIENT = 31;
+  private static final String SEQUENTIAL = "Sequential";
+  private static final String CONCURRENT = "Concurrent";
   private String csvFile;
   private String flag;
 
@@ -20,6 +22,13 @@ public class CmdParser implements ICmdParser{
     }
     csvFile = args[CSVFILE_INDEX];
     flag = args[FLAG_INDEX];
+    if (flag.equalsIgnoreCase(SEQUENTIAL)) {
+      flag = SEQUENTIAL;
+    } else if (flag.equalsIgnoreCase(CONCURRENT)) {
+      flag = CONCURRENT;
+    } else {
+      throw new IllegalCmdArgumentException("neither sequential nor concurrent");
+    }
   }
 
   public String getCsvFile() {
