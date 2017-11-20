@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010;
 
+import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
 import org.junit.Test;
 
 import java.io.IOException;
@@ -31,7 +32,7 @@ public class SkiDataProcessorTest {
     SkiDataProcessor.main(new String[]{FILE_NAME, CONCURRENT});
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = IllegalHeaderInformationNullException.class)
   public void testNullHeader() {
     SkiDataProcessor.main(new String[]{NULL_HEADER, SEQUENTIAL});
   }

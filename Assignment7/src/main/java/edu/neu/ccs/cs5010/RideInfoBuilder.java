@@ -2,6 +2,7 @@ package edu.neu.ccs.cs5010;
 
 
 import edu.neu.ccs.cs5010.concurrentsystem.IRideInfoBuilder;
+import edu.neu.ccs.cs5010.exceptions.IllegalRideInfoBuilderException;
 
 /**
  * This is a class to build RideInfo.
@@ -17,7 +18,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   @Override
   public RideInfoBuilder setResortId(int resortId) {
     if (resortId < 0) {
-      throw new IllegalArgumentException("");
+      throw new IllegalRideInfoBuilderException("Resort id invalid");
     }
     rideInfo.resortId = resortId;
     return this;
@@ -26,7 +27,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   @Override
   public RideInfoBuilder setDay(int day) {
     if (day < 1 || day > 365 ) {
-      throw new IllegalArgumentException("");
+      throw new IllegalRideInfoBuilderException("Day invalid");
     }
     rideInfo.day = day;
     return this;
@@ -35,7 +36,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   @Override
   public RideInfoBuilder setSkier(int skierId) {
     if (skierId < 0) {
-      throw new IllegalArgumentException("");
+      throw new IllegalRideInfoBuilderException("SkierId invalid");
     }
     rideInfo.skierId = skierId;
     return this;
@@ -44,7 +45,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   @Override
   public RideInfoBuilder setLiftId(int liftId) {
     if (liftId < 1 || liftId > 40) {
-      throw new IllegalArgumentException("");
+      throw new IllegalRideInfoBuilderException("LiftId Invalid");
     }
     rideInfo.liftId = liftId;
     return this;
@@ -53,7 +54,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   @Override
   public RideInfoBuilder setTime(int time) {
     if (time < 0 || time > 360) {
-      throw new IllegalArgumentException("");
+      throw new IllegalRideInfoBuilderException("Time Invalid");
     }
     rideInfo.time = time;
     return this;

@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
+import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -61,7 +62,7 @@ public class InfoParser implements IInfoParser {
   private int getRowItemInt(String[] row, String colName) {
     Integer colIdx = headerToIndex.get(colName);
     if (colIdx == null) {
-      throw new IllegalArgumentException("");
+      throw new IllegalHeaderInformationNullException("Header is Null. ");
     }
     return Integer.parseInt(row[colIdx]);
   }
