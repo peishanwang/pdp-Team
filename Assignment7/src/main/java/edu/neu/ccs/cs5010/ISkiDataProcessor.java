@@ -1,10 +1,13 @@
 package edu.neu.ccs.cs5010;
 
 /**
- * This is part of PDP Assignment 7.
+ * This is interface of SkiDataProcessor.
  *
- * @author Manika and Peishan
+ * @see SkiDataProcessor
  */
 public interface ISkiDataProcessor {
+  /**
+   * Process data from .csv file.
+   */
   void processData();
 }

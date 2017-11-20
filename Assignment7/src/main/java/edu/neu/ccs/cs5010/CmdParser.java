@@ -1,9 +1,8 @@
 package edu.neu.ccs.cs5010;
 
 /**
- * This is part of PDP Assignment 7.
+ * This is a class to parse the command line input arguments.
  *
- * @author Manika and Peishan
  */
 
 public class CmdParser implements ICmdParser{
@@ -16,6 +15,10 @@ public class CmdParser implements ICmdParser{
   private String csvFile;
   private String flag;
 
+  /**
+   * Constructor of CmdParser.
+   * @param args input arguments.
+   */
   public CmdParser(String[] args) {
     if (args.length != NEEDED_ARGS) {
       throw new IllegalCmdArgumentException("You didn't provide right number of arguments.");
@@ -31,10 +34,12 @@ public class CmdParser implements ICmdParser{
     }
   }
 
+  @Override
   public String getCsvFile() {
     return csvFile;
   }
 
+  @Override
   public String getFlag() {
     return flag;
   }

@@ -1,14 +1,26 @@
 package edu.neu.ccs.cs5010;
 
 /**
- * This is part of PDP Assignment 7.
+ * Interface of Skier.
  *
- * @author Manika and Peishan
+ * @see Skier
  */
 public interface ISkier extends Comparable<ISkier> {
+  /**
+   * Returns skier's id.
+   * @return skier's id.
+   */
   int getSkierId();
 
+  /**
+   * Add vertical for the skier.
+   * @param vertical value of vertical.
+   */
   void addVertical(int vertical);
 
+  /**
+   * Returns total number of vertical.
+   * @return total number of vertical.
+   */
   int getTotalVertical();
 }

@@ -1,13 +1,18 @@
 package edu.neu.ccs.cs5010;
 
 /**
- * This is part of PDP Assignment 7.
- *
- * @author Manika and Peishan
+ * This is an interface of consumer containing accept and stop method.
  */
 public interface IRideInfoConsumer {
 
+  /**
+   * Accept ride information and process them.
+   * @param rideInfo ride information.
+   */
   public void accept(RideInfo rideInfo);
 
+  /**
+   * Stop the consumer after process all the data.
+   */
   public void stop();
 }
