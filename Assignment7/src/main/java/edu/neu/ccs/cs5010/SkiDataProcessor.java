@@ -36,8 +36,9 @@ public class SkiDataProcessor implements ISkiDataProcessor {
     long startTime = System.currentTimeMillis();
     processor.processData();
     long endTime = System.currentTimeMillis();
+    long timeTaken = endTime - startTime;
     System.out.println("Time taken for " + (processParallely ? CONCURRENT : SEQUENTIAL)
-        + " : " + String.valueOf(endTime - startTime) + " ms");
+        + " : " + String.valueOf(timeTaken) + " ms");
   }
 
   @Override

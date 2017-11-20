@@ -10,11 +10,6 @@ public class RideInfo implements IRideInfo{
   int liftId; // liftId from 1 to 40
   int time; // time in minutes from 0 to 360
 
-  /**
-   * Constructor of RideInfo.
-   */
-  public RideInfo() { }
-
   @Override
   public int getResortId() {
     return resortId;

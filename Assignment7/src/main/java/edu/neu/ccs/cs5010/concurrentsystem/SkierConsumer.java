@@ -47,27 +47,12 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
         PriorityQueue<SkierWithVertical> topNVerticalSkiers =
                 new PriorityQueue<>(
                         TOPNSKIERS, Comparator.comparingInt(obj -> obj.getVerticalDistance()));
-        for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
-          if (topNVerticalSkiers.size() >= TOPNSKIERS) {
-            if (topNVerticalSkiers.peek().getVerticalDistance() > entrySet.getValue().get()) {
-              continue;
-            } else {
-              topNVerticalSkiers.poll();
-            }
-          }
-          topNVerticalSkiers.add(
-                  new SkierWithVertical(entrySet.getKey(), entrySet.getValue().get()));
-        }
+        calculateTop100Skiers(topNVerticalSkiers);
         List<SkierWithVertical> topSkiers = new ArrayList<>(topNVerticalSkiers.size());
         while (!topNVerticalSkiers.isEmpty()) {
           topSkiers.add(topNVerticalSkiers.poll());
         }
-
-        for (int i = topSkiers.size() - 1; i >= 0; i--) {
-          skierVerticalInfo.add(new String[]
-          {String.valueOf(topSkiers.get(i).getSkierId()),
-                          String.valueOf(topSkiers.get(i).getVerticalDistance())});
-        }
+        getSkierInfoWithVertical(topSkiers, skierVerticalInfo);
         fileWriter.write(SKIERCSVFILE, skierVerticalInfo);
       }
       return;
@@ -75,6 +60,29 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     skierVerticalRideMap.putIfAbsent(skierQueueItem.getSkierId(), new AtomicInteger(0));
     skierVerticalRideMap.get(skierQueueItem.getSkierId())
             .addAndGet(SkiHelper.getVerticalDistanceMetres(skierQueueItem.getLiftId()));
+  }
+
+  private void calculateTop100Skiers(PriorityQueue<SkierWithVertical> topNVerticalSkiers) {
+    for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
+      if (topNVerticalSkiers.size() >= TOPNSKIERS) {
+        if (topNVerticalSkiers.peek().getVerticalDistance() > entrySet.getValue().get()) {
+          continue;
+        } else {
+          topNVerticalSkiers.poll();
+        }
+      }
+      topNVerticalSkiers.add(
+              new SkierWithVertical(entrySet.getKey(), entrySet.getValue().get()));
+    }
+  }
+
+  private void getSkierInfoWithVertical(List<SkierWithVertical> topSkiers,
+                                        List<Object[]> skierVerticalInfo) {
+    for (int i = topSkiers.size() - 1; i >= 0; i--) {
+      skierVerticalInfo.add(new String[]
+      {String.valueOf(topSkiers.get(i).getSkierId()),
+                      String.valueOf(topSkiers.get(i).getVerticalDistance())});
+    }
   }
 
 }
