@@ -38,6 +38,7 @@ public class ConsumerExecutor<T> {
 
   /**
    * method to execute all threads.
+   * join basically means waiting for a thread to finish.
    * @throws InterruptedException Interrupted Exception
    */
   public void join() throws InterruptedException {

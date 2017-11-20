@@ -46,7 +46,12 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
         skierVerticalInfo.add(new String[]{"SkierID", "Vertical"});
         PriorityQueue<SkierWithVertical> topNVerticalSkiers =
                 new PriorityQueue<>(
-                        TOPNSKIERS, Comparator.comparingInt(obj -> obj.getVerticalDistance()));
+                        TOPNSKIERS, new Comparator<SkierWithVertical>() {
+                  @Override
+                  public int compare(SkierWithVertical obj1, SkierWithVertical obj2) {
+                    return obj1.getVerticalDistance() - obj2.getVerticalDistance();
+                  }
+                });
         calculateTop100Skiers(topNVerticalSkiers);
         List<SkierWithVertical> topSkiers = new ArrayList<>(topNVerticalSkiers.size());
         while (!topNVerticalSkiers.isEmpty()) {

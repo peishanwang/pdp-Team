@@ -50,7 +50,12 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
                 hourNumLiftRidesMap.entrySet()) {
           PriorityQueue<LiftWithRides> busiestLifts =
                   new PriorityQueue<>(numBusiestLifts,
-                          Comparator.comparingInt(obj -> obj.getNumRides()));
+                          new Comparator<LiftWithRides>() {
+                            @Override
+                            public int compare(LiftWithRides obj1, LiftWithRides obj2) {
+                              return obj2.getNumRides() - obj1.getNumRides();
+                            }
+                          });
           getBusiestLifts(hourLiftNumRidesEntry, busiestLifts);
           getBusiestLiftsAlongWithRides(busiestLifts,
                   liftHourInformation,
