@@ -3,7 +3,6 @@ package edu.neu.ccs.cs5010;
 import edu.neu.ccs.cs5010.concurrentsystem.ParallelRideInfoConsumer;
 
 import java.io.IOException;
-import java.util.function.Consumer;
 
 public class SkiDataProcessor implements ISkiDataProcessor {
   private static final String SEQUENTIAL = "Sequential";
