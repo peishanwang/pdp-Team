@@ -2,6 +2,7 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.concurrentsystem.ParallelRideInfoConsumer;
 
+import java.util.logging.Logger;
 
 
 /**
@@ -13,6 +14,8 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   private static final String CONCURRENT = "Concurrent";
   private String path;
   private boolean processParallely;
+  private static final Logger LOGGER
+      = Logger.getLogger(SkiDataProcessor.class.getName());
 
   /**
    * Constructor of SkiDataProcessor.
@@ -23,6 +26,7 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   public SkiDataProcessor(String path, boolean processParallely) {
     this.path = path;
     this.processParallely = processParallely;
+
   }
 
   /**
@@ -36,7 +40,7 @@ public class SkiDataProcessor implements ISkiDataProcessor {
     long startTime = System.currentTimeMillis();
     processor.processData();
     long endTime = System.currentTimeMillis();
-    System.out.println("Time taken for " + (processParallely ? CONCURRENT : SEQUENTIAL)
+    LOGGER.info("Time taken for " + (processParallely ? CONCURRENT : SEQUENTIAL)
         + " : " + String.valueOf(endTime - startTime) + " ms");
   }
 

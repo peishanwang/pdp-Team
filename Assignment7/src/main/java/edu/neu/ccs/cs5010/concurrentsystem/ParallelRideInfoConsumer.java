@@ -2,9 +2,11 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 
 import edu.neu.ccs.cs5010.IRideInfoConsumer;
 import edu.neu.ccs.cs5010.RideInfo;
+import edu.neu.ccs.cs5010.SkiDataProcessor;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.logging.Logger;
 
 /**
  * This is part of PDP Assignment 7.
@@ -12,6 +14,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
  * @author Manika and Peishan
  */
 public class ParallelRideInfoConsumer implements IRideInfoConsumer {
+  private static final Logger LOGGER
+      = Logger.getLogger(ParallelRideInfoConsumer.class.getName());
   private int numConsumerThreads = 1;
   Queue<SkierQueueItem> skierQueue;
   ConsumerExecutor<SkierQueueItem> skierConsumer;
@@ -64,7 +68,7 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
       liftConsumer.join();
       liftHourConsumer.join();
       long endTime = System.currentTimeMillis();
-      System.out.println("time taken to stop threads: " + (endTime - startTime));
+      LOGGER.info("time taken to stop threads: " + (endTime - startTime));
     } catch (InterruptedException e) {
       e.printStackTrace();
     }

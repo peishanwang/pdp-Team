@@ -7,6 +7,7 @@ import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.logging.Logger;
 
 /**
  * This is a class to parse the information from the .csv file.
@@ -15,6 +16,8 @@ import java.util.Map;
 
 public class InfoParser implements IInfoParser {
   private Map<String, Integer> headerToIndex;
+  private static final Logger LOGGER
+      = Logger.getLogger(InfoParser.class.getName());
 
   @Override
   public void parseInfo(String path, IRideInfoConsumer rideInfoConsumer) {
@@ -31,7 +34,7 @@ public class InfoParser implements IInfoParser {
       rideInfoConsumer.accept(parseRideInfoRow(row));
     }
     long endTime = System.currentTimeMillis();
-    System.out.println("time taken to consume rows: " + (endTime - startTime));
+    LOGGER.info("time taken to consume rows: " + (endTime - startTime));
     parser.stopParsing();
     rideInfoConsumer.stop();
   }
