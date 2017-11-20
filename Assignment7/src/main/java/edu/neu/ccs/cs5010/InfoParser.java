@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010;
 
+
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 
@@ -8,23 +9,20 @@ import java.util.Map;
 
 import static edu.neu.ccs.cs5010.IoUtil.getReader;
 
-
 /**
- * This is part of PDP Assignment 7.
+ * This is a class to parse the information from the .csv file.
  *
- * @author Manika and Peishan
  */
 
-public class InfoParser {
+public class InfoParser implements IInfoParser {
   private Map<String, Integer> headerToIndex;
-  public InfoParser() {
-  }
 
+  @Override
   public void parseInfo(String path, IRideInfoConsumer rideInfoConsumer) {
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
-    parser.beginParsing(getReader(path));
+    parser.beginParsing(IoUtil.getReader(path));
     String[] headers = parser.parseNext();
     parseHeaders(headers);
     String[] row;
@@ -39,6 +37,11 @@ public class InfoParser {
     rideInfoConsumer.stop();
   }
 
+  /**
+   * Parse information for each row.
+   * @param row String array containing a row's information.
+   * @return RideInfo object containing information of this row.
+   */
   private RideInfo parseRideInfoRow(String[] row) {
     return new RideInfoBuilder()
             .setResortId(getRowItemInt(row, "resort"))
@@ -49,18 +52,24 @@ public class InfoParser {
             .build();
   }
 
-  private Integer getRowItemInt(String[] row, String colName) {
-    return Integer.parseInt(getRowItem(row, colName));
-  }
-
-  private String getRowItem(String[] row, String colName) {
+  /**
+   * Get the header's index using it's name.
+   * @param row String array containing a row's information.
+   * @param colName header's name.
+   * @return index of the header.
+   */
+  private int getRowItemInt(String[] row, String colName) {
     Integer colIdx = headerToIndex.get(colName);
     if (colIdx == null) {
       throw new IllegalArgumentException("");
     }
-    return row[colIdx];
+    return Integer.parseInt(row[colIdx]);
   }
 
+  /**
+   * Parse headers of the .csv file and store the information in a HashMap.
+   * @param headers String array containing headers' information.
+   */
   private void parseHeaders(String[] headers) {
     headerToIndex = new HashMap<>();
     for (int i = 0; i < headers.length; i++) {

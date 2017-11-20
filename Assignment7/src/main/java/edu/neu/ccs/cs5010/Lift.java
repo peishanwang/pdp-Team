@@ -4,15 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is part of PDP Assignment 7.
+ * Class of lift containing information of lift's rides.
  *
- * @author Manika and Peishan
  */
 public class Lift implements ILift {
   private int totalRides;
   private int liftId;
   private List<Integer> ridesForHour;
 
+  /**
+   * Constructor of lift.
+   * @param liftId lift id.
+   */
   public Lift(int liftId) {
     this.liftId = liftId;
     ridesForHour = new ArrayList<>();
@@ -21,22 +24,27 @@ public class Lift implements ILift {
     }
   }
 
+  @Override
   public void addRide() {
     totalRides++;
   }
 
-  public void addRideWithTime(int hourIndex) {
+  @Override
+  public void addRideWithHourIndex(int hourIndex) {
     ridesForHour.set(hourIndex, ridesForHour.get(hourIndex) + 1);
   }
 
+  @Override
   public int getTotalRides() {
     return totalRides;
   }
 
+  @Override
   public int getLiftId() {
     return liftId;
   }
 
+  @Override
   public int getHourRides(int hourIndex) {
     return ridesForHour.get(hourIndex);
   }

@@ -1,9 +1,7 @@
 package edu.neu.ccs.cs5010;
 
 /**
- * This is part of PDP Assignment 7.
- *
- * @author Manika and Peishan
+ * Class of skier containing information of skier's total vertical.
  */
 public class Skier implements ISkier {
   private int skierId;
@@ -21,26 +19,37 @@ public class Skier implements ISkier {
     }
   }
 
-  public Skier(int skierId){
+  /**
+   * Constructor of Skier.
+   * @param skierId skier's id
+   */
+  public Skier(int skierId) {
     this.skierId = skierId;
   }
 
-  public int getSkierId(){
+  @Override
+  public int getSkierId() {
     return skierId;
   }
 
+  @Override
   public void addVertical(int vertical) {
     totalVertical += vertical;
   }
 
+  @Override
   public int getTotalVertical() {
     return totalVertical;
   }
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     Skier skier = (Skier) obj;
 

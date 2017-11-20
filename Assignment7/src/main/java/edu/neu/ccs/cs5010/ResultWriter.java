@@ -6,12 +6,12 @@ import com.univocity.parsers.csv.CsvWriterSettings;
 import java.util.List;
 
 /**
- * This is part of PDP Assignment 7.
+ * This is a class to write result to file.
  *
- * @author Manika and Peishan
  */
 public class ResultWriter implements IResultWriter {
 
+  @Override
   public void write(String path, List<Object[]> rows) {
     CsvWriter writer = new CsvWriter(IoUtil.getWriter(path), new CsvWriterSettings());
     writer.writeRows(rows);

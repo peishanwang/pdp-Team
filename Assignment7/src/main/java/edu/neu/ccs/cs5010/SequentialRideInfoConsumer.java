@@ -4,9 +4,8 @@ import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
 
 
 /**
- * This is part of PDP Assignment 7.
+ * This is the consumer class for sequential solution.
  *
- * @author Manika and Peishan
  */
 public class SequentialRideInfoConsumer implements IRideInfoConsumer {
   private static final String OUTPUT_FILE1 = "skier2.csv";
@@ -14,6 +13,9 @@ public class SequentialRideInfoConsumer implements IRideInfoConsumer {
   private static final String OUTPUT_FILE3 = "hour2.csv";
   private IResort resort;
 
+  /**
+   * Constructor of SequentialRideInfoConsumer.
+   */
   public SequentialRideInfoConsumer() {
     this.resort = new Resort();
   }
@@ -23,7 +25,8 @@ public class SequentialRideInfoConsumer implements IRideInfoConsumer {
     resort.addSkierVertical(rideInfo.getSkierId(),
             SkiHelper.getVerticalDistanceMetres(rideInfo.getLiftId()));
     resort.addLiftRide(rideInfo.getLiftId());
-    resort.addLiftRideWithTime(rideInfo.getLiftId(), (rideInfo.getTime() - 1)/60);
+    resort.addLiftRideWithHourIndex(rideInfo.getLiftId(),
+        (rideInfo.getTime() - 1) / 60);
   }
 
   @Override

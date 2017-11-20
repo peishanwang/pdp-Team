@@ -5,9 +5,8 @@ import edu.neu.ccs.cs5010.concurrentsystem.ParallelRideInfoConsumer;
 
 
 /**
- * This is part of PDP Assignment 7.
+ * Main class to process the SkiData.
  *
- * @author Manika and Peishan
  */
 public class SkiDataProcessor implements ISkiDataProcessor {
   private static final String SEQUENTIAL = "Sequential";
@@ -15,11 +14,21 @@ public class SkiDataProcessor implements ISkiDataProcessor {
   private String path;
   private boolean processParallely;
 
+  /**
+   * Constructor of SkiDataProcessor.
+   * @param path input .csv file path
+   * @param processParallely true if using concurrent solution.
+   *                         false if using sequential solution.
+   */
   public SkiDataProcessor(String path, boolean processParallely) {
     this.path = path;
     this.processParallely = processParallely;
   }
 
+  /**
+   * Main method of the processor.
+   * @param args input arguments
+   */
   public static void main(String[] args) {
     ICmdParser cmdParser = new CmdParser(args);
     boolean processParallely = cmdParser.getFlag().equalsIgnoreCase(CONCURRENT);
@@ -27,12 +36,13 @@ public class SkiDataProcessor implements ISkiDataProcessor {
     long startTime = System.currentTimeMillis();
     processor.processData();
     long endTime = System.currentTimeMillis();
-    System.out.println("Time taken for " + (processParallely ? CONCURRENT : SEQUENTIAL) +
-            " : " + String.valueOf(endTime - startTime) + " ms");
+    System.out.println("Time taken for " + (processParallely ? CONCURRENT : SEQUENTIAL)
+        + " : " + String.valueOf(endTime - startTime) + " ms");
   }
 
+  @Override
   public void processData() {
-    InfoParser infoParser = new InfoParser();
+    IInfoParser infoParser = new InfoParser();
     IRideInfoConsumer rideDataConsumer;
     if (this.processParallely) {
       rideDataConsumer = new ParallelRideInfoConsumer();

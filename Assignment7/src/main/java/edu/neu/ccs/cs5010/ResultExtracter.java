@@ -1,11 +1,13 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 /**
- * This is part of PDP Assignment 7.
+ * This is a class containing the methods to extract question answer from Resort.
  *
- * @author Manika and Peishan
  */
 public class ResultExtracter implements IResultExtracter {
   private static final int SKIER_NUM = 100;
@@ -18,10 +20,15 @@ public class ResultExtracter implements IResultExtracter {
 
   private IResort resort;
 
+  /**
+   * Constructor of ResultExtracter.
+   * @param resort resort
+   */
   public ResultExtracter(IResort resort) {
     this.resort = resort;
   }
 
+  @Override
   public List<Object[]> extractResult1() {
     List<ISkier> topHundredSkier = resort.getTopSkier(SKIER_NUM);
     List<Object[]> result = new ArrayList<>();
@@ -36,6 +43,7 @@ public class ResultExtracter implements IResultExtracter {
     return result;
   }
 
+  @Override
   public List<Object[]> extractResult2() {
     List<ILift> allLifts = resort.getLiftList();
     List<Object[]> result = new ArrayList<>();
@@ -48,8 +56,9 @@ public class ResultExtracter implements IResultExtracter {
   }
 
   private int hourIndex;
-  public List<Object[]> extractResult3() {
 
+  @Override
+  public List<Object[]> extractResult3() {
     List<ILift> allLifts = resort.getLiftList();
     List<Object[]> result = new ArrayList<>();
 
@@ -74,8 +83,12 @@ public class ResultExtracter implements IResultExtracter {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     ResultExtracter that = (ResultExtracter) obj;
 

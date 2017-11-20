@@ -3,10 +3,14 @@ package edu.neu.ccs.cs5010;
 import java.util.List;
 
 /**
- * This is part of PDP Assignment 7.
+ * Interface of ResultWriter.
  *
- * @author Manika and Peishan
  */
 public interface IResultWriter {
+  /**
+   * Write result to file.
+   * @param path output file path.
+   * @param rows output file text.
+   */
   void write(String path, List<Object[]> rows);
 }

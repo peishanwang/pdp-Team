@@ -58,8 +58,19 @@ public class CmdParserTest {
     IResultWriter writer = new ResultWriter();
     Assert.assertEquals(false, parser1.equals(writer));
   }
+
   @Test(expected = IllegalCmdArgumentException.class)
   public void testException() {
     parser1 = new CmdParser(new String[]{FILE_NAME, WRONG_FLAG});
+  }
+
+  @Test(expected = IllegalCmdArgumentException.class)
+  public void testNumArgsException() {
+    parser1 = new CmdParser(new String[]{FILE_NAME});
+  }
+
+  @Test(expected = IllegalCmdArgumentException.class)
+  public void testNumArgsException2() {
+    parser1 = new CmdParser(new String[]{FILE_NAME, SEQUENTIAL, FILE_NAME});
   }
 }
