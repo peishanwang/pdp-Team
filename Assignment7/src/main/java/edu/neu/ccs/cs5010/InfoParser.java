@@ -2,61 +2,60 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.concurrentsystem.LiftHourQueueItem;
 import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
-import edu.neu.ccs.cs5010.concurrentsystem.SkierQueueItem;
-import jdk.nashorn.internal.ir.Block;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.BlockingQueue;
+import java.util.function.Consumer;
 
 import static edu.neu.ccs.cs5010.IoUtil.getReader;
 
 public class InfoParser {
-
-  private IResort resort;
-
-  public InfoParser(IResort resort) {
-    this.resort = resort;
+  private Map<String, Integer> headerToIndex;
+  public InfoParser() {
   }
 
-  public void parseInfo(String path) {
+  public void parseInfo(String path, IRideInfoConsumer rideInfoConsumer) {
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
     parser.beginParsing(getReader(path));
     String[] headers = parser.parseNext();
-    Map<String, Integer> headerToIndex = parseHeaders(headers);
+    parseHeaders(headers);
     String[] row;
     while ((row = parser.parseNext()) != null) {
-      parseSkierInfo(row[headerToIndex.get("skier")], row[headerToIndex.get("lift")]);
-      parseLiftInfo(row[headerToIndex.get("lift")], row[headerToIndex.get("time")]);
+      rideInfoConsumer.accept(parseRideInfoRow(row));
     }
     parser.stopParsing();
+    rideInfoConsumer.stop();
   }
 
+  private RideInfo parseRideInfoRow(String[] row) {
+    return new RideInfoBuilder()
+            .setResortId(getRowItemInt(row, "resort"))
+            .setDay(getRowItemInt(row, "day"))
+            .setSkier(getRowItemInt(row, "skier"))
+            .setLiftId(getRowItemInt(row, "lift"))
+            .setTime(getRowItemInt(row, "time"))
+            .build();
+  }
 
-  private Map<String, Integer> parseHeaders(String[] headers) {
-    Map<String, Integer> headerToIndex = new HashMap<>();
+  private Integer getRowItemInt(String[] row, String colName) {
+    return Integer.parseInt(getRowItem(row, colName));
+  }
+
+  private String getRowItem(String[] row, String colName) {
+    Integer colIdx = headerToIndex.get(colName);
+    if (colIdx == null) {
+      throw new IllegalArgumentException("");
+    }
+    return row[colIdx];
+  }
+
+  private void parseHeaders(String[] headers) {
+    headerToIndex = new HashMap<>();
     for (int i = 0; i < headers.length; i++) {
       headerToIndex.put(headers[i], i);
     }
-    return headerToIndex;
   }
-
-  private void parseSkierInfo(String skierId, String liftId) {
-    int skierIdValue = Integer.parseInt(skierId);
-    int liftIdValue = Integer.parseInt(liftId);
-    resort.addSkierVertical(skierIdValue,
-        SkiHelper.getVerticalDistanceMetres(liftIdValue));
-  }
-
-  private void parseLiftInfo(String liftId, String time) {
-    int liftIdValue = Integer.parseInt(liftId);
-    int timeValue = Integer.parseInt(time);
-    resort.addLiftRide(liftIdValue);
-    resort.addLiftRideWithTime(liftIdValue, (timeValue - 1)/60);
-  }
-
 }

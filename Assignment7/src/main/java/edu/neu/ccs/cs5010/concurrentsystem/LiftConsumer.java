@@ -30,14 +30,12 @@ public class LiftConsumer implements Consumer<Integer> {
         // write file
         List<Object[]> liftCountData = new ArrayList<>();
         liftCountData.add(new String[]{"LiftID", "Number of Rides"});
-        int numLiftEntries = 0;
         for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry :
                 liftNumRidesMap.entrySet()) {
           liftCountData.add(new String[]{
                   String.valueOf(
                           liftNumRidesEntry.getKey()),
                   String.valueOf(liftNumRidesEntry.getValue())});
-          numLiftEntries++;
         }
         fileWriter.write(liftCsvFile, liftCountData);
       }

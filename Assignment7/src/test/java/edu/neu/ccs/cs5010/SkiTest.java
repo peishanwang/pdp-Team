@@ -1,20 +1,21 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.concurrentsystem.ConcurrentSki;
 import org.junit.Test;
 
 import java.io.IOException;
 
 public class SkiTest {
-  SkiDataProcessor skiDataProcessorSequential = new SkiDataProcessor("PDPAssignment.csv", "Sequential");
-
-  ConcurrentSki skiDataProcessorConcurrent = new ConcurrentSki();
-
+  SkiDataProcessor skiDataProcessorSequential = new SkiDataProcessor("PDPAssignment.csv", true);
+  SkiDataProcessor skiDataProcessorConcurrent = new SkiDataProcessor("PDPAssignment.csv", false);
 
   @Test
-  public void checkMain() throws InterruptedException {
-    skiDataProcessorConcurrent.parseFile("PDPAssignment.csv");
+  public void checkSequential() throws InterruptedException {
     skiDataProcessorSequential.processData();
+  }
+
+  @Test
+  public void checkParallel() throws InterruptedException {
+    skiDataProcessorConcurrent.processData();
   }
 }
 

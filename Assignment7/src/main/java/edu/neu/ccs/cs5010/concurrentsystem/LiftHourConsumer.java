@@ -34,10 +34,8 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
         // write file
         List<Object[]> liftHourInformation = new ArrayList<>();
         liftHourInformation.add(new String[]{"Hour", "LiftID", "Number of Rides"});
-        int numHourEntries = 0;
         for (Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry :
                 hourNumLiftRidesMap.entrySet()) {
-          numHourEntries++;
           PriorityQueue<LiftWithRides> busiestLifts =
                   new PriorityQueue<>(numBusiestLifts,
                           Comparator.comparingInt(obj -> obj.getNumRides()));
@@ -53,10 +51,8 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
             busiestLifts.add(new LiftWithRides(
                     liftNumRidesEntry.getKey(), liftNumRidesEntry.getValue().get()));
           }
-          int numLiftsRemaining = busiestLifts.size();
           while (!busiestLifts.isEmpty()) {
             LiftWithRides liftWithRides = busiestLifts.poll();
-            numLiftsRemaining--;
             liftHourInformation.add(new String[]
                     {String.valueOf(hourLiftNumRidesEntry.getKey()),
                             String.valueOf(liftWithRides.getLiftId()),

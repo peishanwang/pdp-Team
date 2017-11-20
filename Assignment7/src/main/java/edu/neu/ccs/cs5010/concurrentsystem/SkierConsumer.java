@@ -12,8 +12,8 @@ import java.util.concurrent.atomic.AtomicInteger;
 import java.util.function.Consumer;
 
 public class SkierConsumer implements Consumer<SkierQueueItem> {
-  private final String skierCsvFile = "skier.csv";
-  private final int topNskiers = 100;
+  private static final String skierCsvFile = "skier.csv";
+  private static final int topNskiers = 100;
   private ConcurrentMap<Integer, AtomicInteger> skierVerticalRideMap;
   private AtomicBoolean finished;
   edu.neu.ccs.cs5010.ResultWriter fileWriter;
@@ -31,7 +31,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
       if (finished.compareAndSet(false, true)) {
         // write file
         List<Object[]> skierVerticalInfo = new ArrayList<>();
-        skierVerticalInfo.add(new String[]{"SkierId", "Vertical"});
+        skierVerticalInfo.add(new String[]{"SkierID", "Vertical"});
         PriorityQueue<SkierWithVertical> topNVerticalSkiers =
                 new PriorityQueue<>(
                         topNskiers, Comparator.comparingInt(obj -> obj.getVerticalDistance()));
@@ -53,7 +53,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
 
         for (int i = topSkiers.size() - 1; i >= 0; i--) {
           skierVerticalInfo.add(new String[]
-                  {String.valueOf(topSkiers.get(i).getSkierId()),
+          {String.valueOf(topSkiers.get(i).getSkierId()),
                           String.valueOf(topSkiers.get(i).getVerticalDistance())});
         }
         fileWriter.write(skierCsvFile, skierVerticalInfo);
