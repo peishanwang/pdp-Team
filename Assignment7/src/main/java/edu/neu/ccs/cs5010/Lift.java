@@ -30,7 +30,7 @@ public class Lift implements ILift {
   }
 
   @Override
-  public void addRideWithTime(int hourIndex) {
+  public void addRideWithHourIndex(int hourIndex) {
     ridesForHour.set(hourIndex, ridesForHour.get(hourIndex) + 1);
   }
 

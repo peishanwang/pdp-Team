@@ -11,6 +11,7 @@ import java.util.List;
  */
 public class ResultWriter implements IResultWriter {
 
+  @Override
   public void write(String path, List<Object[]> rows) {
     CsvWriter writer = new CsvWriter(IoUtil.getWriter(path), new CsvWriterSettings());
     writer.writeRows(rows);

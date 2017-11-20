@@ -9,10 +9,10 @@ public interface IRideInfoConsumer {
    * Accept ride information and process them.
    * @param rideInfo ride information.
    */
-  public void accept(RideInfo rideInfo);
+  void accept(RideInfo rideInfo);
 
   /**
    * Stop the consumer after process all the data.
    */
-  public void stop();
+  void stop();
 }

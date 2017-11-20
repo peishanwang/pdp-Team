@@ -1,6 +1,9 @@
 package edu.neu.ccs.cs5010;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 
 /**
  * This is a class containing the methods to extract question answer from Resort.
@@ -19,7 +22,7 @@ public class ResultExtracter implements IResultExtracter {
 
   /**
    * Constructor of ResultExtracter.
-   * @param resort
+   * @param resort resort
    */
   public ResultExtracter(IResort resort) {
     this.resort = resort;
@@ -53,9 +56,9 @@ public class ResultExtracter implements IResultExtracter {
   }
 
   private int hourIndex;
+
   @Override
   public List<Object[]> extractResult3() {
-
     List<ILift> allLifts = resort.getLiftList();
     List<Object[]> result = new ArrayList<>();
 
@@ -80,8 +83,12 @@ public class ResultExtracter implements IResultExtracter {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     ResultExtracter that = (ResultExtracter) obj;
 

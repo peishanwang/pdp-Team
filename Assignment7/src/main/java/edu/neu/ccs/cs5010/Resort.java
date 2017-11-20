@@ -37,8 +37,8 @@ public class Resort implements IResort {
   @Override
   public List<ISkier> getTopSkier(int numberOfSkiers) {
     List<ISkier> allSkiers = new ArrayList<>();
-    for (int id : idToSkier.keySet()) {
-      allSkiers.add(idToSkier.get(id));
+    for (Map.Entry<Integer, ISkier> entry: idToSkier.entrySet()) {
+      allSkiers.add(entry.getValue());
     }
     Collections.sort(allSkiers);
     return allSkiers.subList(0, numberOfSkiers);
@@ -51,7 +51,7 @@ public class Resort implements IResort {
 
   @Override
   public void addLiftRideWithHourIndex(int liftId, int hourIndex) {
-    liftList.get(liftId - 1).addRideWithTime(hourIndex);
+    liftList.get(liftId - 1).addRideWithHourIndex(hourIndex);
   }
 
   @Override
@@ -61,8 +61,12 @@ public class Resort implements IResort {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     Resort resort = (Resort) obj;
 

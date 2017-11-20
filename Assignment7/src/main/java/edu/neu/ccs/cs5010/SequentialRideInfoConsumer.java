@@ -25,7 +25,8 @@ public class SequentialRideInfoConsumer implements IRideInfoConsumer {
     resort.addSkierVertical(rideInfo.getSkierId(),
             SkiHelper.getVerticalDistanceMetres(rideInfo.getLiftId()));
     resort.addLiftRide(rideInfo.getLiftId());
-    resort.addLiftRideWithHourIndex(rideInfo.getLiftId(), (rideInfo.getTime() - 1)/60);
+    resort.addLiftRideWithHourIndex(rideInfo.getLiftId(),
+        (rideInfo.getTime() - 1) / 60);
   }
 
   @Override

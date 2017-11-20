@@ -15,9 +15,9 @@ public interface ILift {
 
   /**
    * Add ride with its time information to the lift.
-   * @param timeIndex
+   * @param hourIndex hour index.
    */
-  void addRideWithTime(int timeIndex);
+  void addRideWithHourIndex(int hourIndex);
 
   /**
    * Get the total number of lift's ride.

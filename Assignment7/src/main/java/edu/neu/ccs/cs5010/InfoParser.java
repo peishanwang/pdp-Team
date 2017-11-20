@@ -1,15 +1,11 @@
 package edu.neu.ccs.cs5010;
 
+
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Consumer;
-
-import static edu.neu.ccs.cs5010.IoUtil.getReader;
-
 
 /**
  * This is a class to parse the information from the .csv file.
@@ -24,7 +20,7 @@ public class InfoParser implements IInfoParser {
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
-    parser.beginParsing(getReader(path));
+    parser.beginParsing(IoUtil.getReader(path));
     String[] headers = parser.parseNext();
     parseHeaders(headers);
     String[] row;

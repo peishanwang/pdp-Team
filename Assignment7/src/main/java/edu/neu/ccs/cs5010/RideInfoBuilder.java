@@ -9,6 +9,7 @@ import edu.neu.ccs.cs5010.concurrentsystem.IRideInfoBuilder;
 public class RideInfoBuilder implements IRideInfoBuilder{
 
   private RideInfo rideInfo;
+
   public RideInfoBuilder() {
     rideInfo = new RideInfo();
   }
@@ -39,6 +40,7 @@ public class RideInfoBuilder implements IRideInfoBuilder{
     rideInfo.skierId = skierId;
     return this;
   }
+
   @Override
   public RideInfoBuilder setLiftId(int liftId) {
     if (liftId < 1 || liftId > 40) {
@@ -63,11 +65,15 @@ public class RideInfoBuilder implements IRideInfoBuilder{
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
-    RideInfoBuilder that = (RideInfoBuilder) o;
+    RideInfoBuilder that = (RideInfoBuilder) obj;
 
     return rideInfo.equals(that.rideInfo);
   }

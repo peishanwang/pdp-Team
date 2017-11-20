@@ -21,14 +21,14 @@ public class Skier implements ISkier {
 
   /**
    * Constructor of Skier.
-   * @param skierId
+   * @param skierId skier's id
    */
-  public Skier(int skierId){
+  public Skier(int skierId) {
     this.skierId = skierId;
   }
 
   @Override
-  public int getSkierId(){
+  public int getSkierId() {
     return skierId;
   }
 
@@ -44,8 +44,12 @@ public class Skier implements ISkier {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     Skier skier = (Skier) obj;
 

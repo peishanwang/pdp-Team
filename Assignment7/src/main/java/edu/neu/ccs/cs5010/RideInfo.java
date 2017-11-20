@@ -41,11 +41,15 @@ public class RideInfo implements IRideInfo{
   }
 
   @Override
-  public boolean equals(Object o) {
-    if (this == o) return true;
-    if (o == null || getClass() != o.getClass()) return false;
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
-    RideInfo rideInfo = (RideInfo) o;
+    RideInfo rideInfo = (RideInfo) obj;
 
     return getResortId() == rideInfo.getResortId()
         && getDay() == rideInfo.getDay()
