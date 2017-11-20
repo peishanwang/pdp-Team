@@ -23,9 +23,13 @@ public class InfoParser {
     String[] headers = parser.parseNext();
     parseHeaders(headers);
     String[] row;
+
+    long startTime = System.currentTimeMillis();
     while ((row = parser.parseNext()) != null) {
       rideInfoConsumer.accept(parseRideInfoRow(row));
     }
+    long endTime = System.currentTimeMillis();
+    System.out.println("time taken to consume rows: " + (endTime - startTime));
     parser.stopParsing();
     rideInfoConsumer.stop();
   }

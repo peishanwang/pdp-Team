@@ -2,12 +2,12 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
+import java.util.Queue;
 import java.util.function.Consumer;
 
 public class ConsumerExecutor<T> {
 
-  public ConsumerExecutor(final BlockingQueue<T> queue,
+  public ConsumerExecutor(final Queue<T> queue,
                           final Consumer<T> consumerFx,
                           int numConsumerThreads) {
     consumerThreads = new ArrayList<>();

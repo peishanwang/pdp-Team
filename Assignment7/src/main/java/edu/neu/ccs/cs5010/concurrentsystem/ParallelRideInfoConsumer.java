@@ -3,25 +3,24 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 import edu.neu.ccs.cs5010.IRideInfoConsumer;
 import edu.neu.ccs.cs5010.RideInfo;
 
-import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingDeque;
-import java.util.function.Consumer;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class ParallelRideInfoConsumer implements IRideInfoConsumer {
   private int numConsumerThreads = 1;
-  BlockingQueue<SkierQueueItem> skierQueue;
+  Queue<SkierQueueItem> skierQueue;
   ConsumerExecutor<SkierQueueItem> skierConsumer;
 
-  BlockingQueue<Integer> liftQueue;
+  Queue<Integer> liftQueue;
   ConsumerExecutor<Integer> liftConsumer;
 
-  BlockingQueue<LiftHourQueueItem> liftHourQueue;
+  Queue<LiftHourQueueItem> liftHourQueue;
   ConsumerExecutor<LiftHourQueueItem> liftHourConsumer;
 
   public ParallelRideInfoConsumer() {
-    skierQueue = new LinkedBlockingDeque<>();
-    liftQueue = new LinkedBlockingDeque<>();
-    liftHourQueue = new LinkedBlockingDeque<>();
+    skierQueue = new ConcurrentLinkedQueue<>();
+    liftQueue = new ConcurrentLinkedQueue<>();
+    liftHourQueue = new ConcurrentLinkedQueue<>();
 
     skierConsumer = new ConsumerExecutor<>(skierQueue, new SkierConsumer(), numConsumerThreads);
     skierConsumer.startConsumers();
@@ -36,22 +35,21 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
 
   @Override
   public void accept(RideInfo rideInfo) {
-    try {
-      skierQueue.put(new SkierQueueItem(rideInfo.getSkierId(), rideInfo.getLiftId()));
-      liftQueue.put(rideInfo.getLiftId());
-      liftHourQueue.put(new LiftHourQueueItem(rideInfo.getTime(), rideInfo.getLiftId()));
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
+    skierQueue.add(new SkierQueueItem(rideInfo.getSkierId(), rideInfo.getLiftId()));
+    liftQueue.add(rideInfo.getLiftId());
+    liftHourQueue.add(new LiftHourQueueItem(rideInfo.getTime(), rideInfo.getLiftId()));
   }
 
   @Override
   public void stop() {
     // stop for threads to finish
     try {
+      long startTime = System.currentTimeMillis();
       skierConsumer.join();
       liftConsumer.join();
       liftHourConsumer.join();
+      long endTime = System.currentTimeMillis();
+      System.out.println("time taken to stop threads: " + (endTime - startTime));
     } catch (InterruptedException e) {
       e.printStackTrace();
     }
