@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -17,18 +18,25 @@ import java.util.function.Consumer;
  * @author Manika and Peishan
  */
 public class SkierConsumer implements Consumer<SkierQueueItem> {
-  private static final String skierCsvFile = "skier.csv";
-  private static final int topNskiers = 100;
+  private static final String SKIERCSVFILE = "skier.csv";
+  private static final int TOPNSKIERS = 100;
   private ConcurrentMap<Integer, AtomicInteger> skierVerticalRideMap;
   private AtomicBoolean finished;
   edu.neu.ccs.cs5010.ResultWriter fileWriter;
 
+  /**
+   * SkierConsumer constructor.
+   */
   public SkierConsumer() {
     skierVerticalRideMap = new ConcurrentHashMap<>();
     finished = new AtomicBoolean(false);
     fileWriter = new edu.neu.ccs.cs5010.ResultWriter();
   }
 
+  /**
+   * method overridden by Consumer Interface.
+   * @param skierQueueItem skier with lift info(we can get vertical acc. to lift id)
+   */
   @Override
   public void accept(SkierQueueItem skierQueueItem) {
     if (skierQueueItem == null) {
@@ -39,9 +47,9 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
         skierVerticalInfo.add(new String[]{"SkierID", "Vertical"});
         PriorityQueue<SkierWithVertical> topNVerticalSkiers =
                 new PriorityQueue<>(
-                        topNskiers, Comparator.comparingInt(obj -> obj.getVerticalDistance()));
+                        TOPNSKIERS, Comparator.comparingInt(obj -> obj.getVerticalDistance()));
         for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
-          if (topNVerticalSkiers.size() >= topNskiers) {
+          if (topNVerticalSkiers.size() >= TOPNSKIERS) {
             if (topNVerticalSkiers.peek().getVerticalDistance() > entrySet.getValue().get()) {
               continue;
             } else {
@@ -61,7 +69,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
           {String.valueOf(topSkiers.get(i).getSkierId()),
                           String.valueOf(topSkiers.get(i).getVerticalDistance())});
         }
-        fileWriter.write(skierCsvFile, skierVerticalInfo);
+        fileWriter.write(SKIERCSVFILE, skierVerticalInfo);
       }
       return;
     }
@@ -69,4 +77,5 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     skierVerticalRideMap.get(skierQueueItem.getSkierId())
             .addAndGet(SkiHelper.getVerticalDistanceMetres(skierQueueItem.getLiftId()));
   }
+
 }

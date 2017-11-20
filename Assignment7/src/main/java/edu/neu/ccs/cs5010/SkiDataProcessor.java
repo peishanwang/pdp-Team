@@ -2,7 +2,6 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.concurrentsystem.ParallelRideInfoConsumer;
 
-import java.io.IOException;
 
 
 /**

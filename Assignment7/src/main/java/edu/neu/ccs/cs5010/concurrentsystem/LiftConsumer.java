@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ConcurrentSkipListMap;
 import java.util.concurrent.atomic.AtomicBoolean;
@@ -21,12 +22,19 @@ public class LiftConsumer implements Consumer<Integer> {
   edu.neu.ccs.cs5010.ResultWriter fileWriter;
 
 
+  /**
+   * LiftConsumer constructor.
+   */
   public LiftConsumer() {
     liftNumRidesMap = new ConcurrentSkipListMap<>();
     finished = new AtomicBoolean(false);
     fileWriter = new edu.neu.ccs.cs5010.ResultWriter();
   }
 
+  /**
+   * method overridden by Constructor class.
+   * @param liftId id of lift.
+   */
   @Override
   public void accept(Integer liftId) {
     if (liftId == null) {
@@ -49,4 +57,5 @@ public class LiftConsumer implements Consumer<Integer> {
     liftNumRidesMap.putIfAbsent(liftId, new AtomicInteger(0));
     liftNumRidesMap.get(liftId).incrementAndGet();
   }
+
 }

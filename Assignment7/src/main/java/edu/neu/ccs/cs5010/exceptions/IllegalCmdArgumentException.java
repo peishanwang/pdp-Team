@@ -1,4 +1,4 @@
-package edu.neu.ccs.cs5010;
+package edu.neu.ccs.cs5010.exceptions;
 
 /**
  * Class to throw exception if cmd argument is wrong and also print appropriate instructions.

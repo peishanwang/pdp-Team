@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010;
 
+import edu.neu.ccs.cs5010.exceptions.IllegalCmdArgumentException;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

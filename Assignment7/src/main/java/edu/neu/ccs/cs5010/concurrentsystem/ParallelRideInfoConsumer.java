@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 import edu.neu.ccs.cs5010.IRideInfoConsumer;
 import edu.neu.ccs.cs5010.RideInfo;
 
+import java.util.Objects;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
@@ -22,6 +23,9 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
   Queue<LiftHourQueueItem> liftHourQueue;
   ConsumerExecutor<LiftHourQueueItem> liftHourConsumer;
 
+  /**
+   * Parellel Ride info consumer Constructor.
+   */
   public ParallelRideInfoConsumer() {
     skierQueue = new ConcurrentLinkedQueue<>();
     liftQueue = new ConcurrentLinkedQueue<>();
@@ -38,6 +42,10 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
     liftHourConsumer.startConsumers();
   }
 
+  /**
+   * method overridden by RideInfoConsumer.
+   * @param rideInfo detail of ride.
+   */
   @Override
   public void accept(RideInfo rideInfo) {
     skierQueue.add(new SkierQueueItem(rideInfo.getSkierId(), rideInfo.getLiftId()));
@@ -45,6 +53,9 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
     liftHourQueue.add(new LiftHourQueueItem(rideInfo.getTime(), rideInfo.getLiftId()));
   }
 
+  /**
+   * method to start processes and stop them.
+   */
   @Override
   public void stop() {
     // stop for threads to finish

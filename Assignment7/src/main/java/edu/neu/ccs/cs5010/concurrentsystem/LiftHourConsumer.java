@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
@@ -24,13 +25,20 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
   private String hourCsvFile = "hours.csv";
   edu.neu.ccs.cs5010.ResultWriter fileWriter;
 
-  public LiftHourConsumer(){
+  /**
+   * LiftHourConsumer constructor.
+   */
+  public LiftHourConsumer() {
     hourNumLiftRidesMap =
             new ConcurrentSkipListMap<>();
     finished = new AtomicBoolean(false);
     fileWriter = new edu.neu.ccs.cs5010.ResultWriter();
   }
 
+  /**
+   * method overridden by Consumer interface.
+   * @param liftHourQueueItem item of lift along with hours
+   */
   @Override
   public void accept(LiftHourQueueItem liftHourQueueItem) {
     if (liftHourQueueItem == null) {
@@ -59,10 +67,10 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
           while (!busiestLifts.isEmpty()) {
             LiftWithRides liftWithRides = busiestLifts.poll();
             liftHourInformation.add(new String[]
-                    {String.valueOf(hourLiftNumRidesEntry.getKey()),
+            {String.valueOf(hourLiftNumRidesEntry.getKey()),
                             String.valueOf(liftWithRides.getLiftId()),
                             String.valueOf(liftWithRides.getNumRides())
-                    });
+            });
           }
         }
         fileWriter.write(hourCsvFile, liftHourInformation);
@@ -75,5 +83,4 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
             liftHourQueueItem.getLiftId(), new AtomicInteger(0));
     hourNumLiftRidesMap.get(hour).get(liftHourQueueItem.getLiftId()).incrementAndGet();
   }
-
 }

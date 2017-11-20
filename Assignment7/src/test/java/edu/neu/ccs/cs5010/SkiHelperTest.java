@@ -1,6 +1,7 @@
 package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
+import edu.neu.ccs.cs5010.exceptions.IllegalSkiHelperArgumentException;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;
@@ -32,7 +33,7 @@ public class SkiHelperTest {
     assertEquals(SkiHelper.getVerticalDistanceMetres(liftId31), height500);
   }
 
-  @Test(expected = IllegalArgumentException.class)
+  @Test(expected = IllegalSkiHelperArgumentException.class)
   public void testForIllegalArgument() {
     SkiHelper.getVerticalDistanceMetres(liftId41);
   }
@@ -52,7 +53,6 @@ public class SkiHelperTest {
   private int liftId21 = 21;
   private int liftId31 = 31;
   private int liftId41 = 41;
-  private int liftIdNegative = -1;
   private int height200 = 200;
   private int height300 = 300;
   private int height400 = 400;
