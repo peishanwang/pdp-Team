@@ -6,15 +6,18 @@ import org.junit.Test;
 import java.io.IOException;
 
 public class SkiTest {
-  SkiDataProcessor skiDataProcessorSequential = new SkiDataProcessor("PDPAssignment.csv", "Sequential");
+  private SkiDataProcessor skiDataProcessorSequential = new SkiDataProcessor(
+      "PDPAssignment.csv", "Sequential");
 
-  ConcurrentSki skiDataProcessorConcurrent = new ConcurrentSki();
+  private ConcurrentSki skiDataProcessorConcurrent = new ConcurrentSki();
 
 
   @Test
   public void checkMain() throws InterruptedException {
     skiDataProcessorConcurrent.parseFile("PDPAssignment.csv");
     skiDataProcessorSequential.processData();
+    skiDataProcessorSequential.outputResult();
+
   }
 }
 
