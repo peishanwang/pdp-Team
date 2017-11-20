@@ -62,6 +62,10 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
             .addAndGet(SkiHelper.getVerticalDistanceMetres(skierQueueItem.getLiftId()));
   }
 
+  /**
+   * method to get top 100 skiers from priority queue.
+   * @param topNVerticalSkiers priority queue to store info to
+   */
   private void calculateTop100Skiers(PriorityQueue<SkierWithVertical> topNVerticalSkiers) {
     for (Map.Entry<Integer, AtomicInteger> entrySet : skierVerticalRideMap.entrySet()) {
       if (topNVerticalSkiers.size() >= TOPNSKIERS) {
@@ -76,6 +80,11 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     }
   }
 
+  /**
+   * method to get skier information with vertical meters.
+   * @param topSkiers top 100 skiers
+   * @param skierVerticalInfo info. of skier with vertical meters
+   */
   private void getSkierInfoWithVertical(List<SkierWithVertical> topSkiers,
                                         List<Object[]> skierVerticalInfo) {
     for (int i = topSkiers.size() - 1; i >= 0; i--) {
