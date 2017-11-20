@@ -1,7 +1,6 @@
 package edu.neu.ccs.cs5010.concurrentsystem;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
@@ -50,12 +49,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
                 hourNumLiftRidesMap.entrySet()) {
           PriorityQueue<LiftWithRides> busiestLifts =
                   new PriorityQueue<>(numBusiestLifts,
-                          new Comparator<LiftWithRides>() {
-                            @Override
-                            public int compare(LiftWithRides obj1, LiftWithRides obj2) {
-                              return obj2.getNumRides() - obj1.getNumRides();
-                            }
-                          });
+                      (obj1, obj2) -> obj2.getNumRides() - obj1.getNumRides());
           getBusiestLifts(hourLiftNumRidesEntry, busiestLifts);
           getBusiestLiftsAlongWithRides(busiestLifts,
                   liftHourInformation,
