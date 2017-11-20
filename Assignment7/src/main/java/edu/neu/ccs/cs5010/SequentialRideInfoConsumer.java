@@ -8,6 +8,7 @@ import edu.neu.ccs.cs5010.concurrentsystem.SkiHelper;
  *
  */
 public class SequentialRideInfoConsumer implements IRideInfoConsumer {
+  private static final int MIN_PER_HOUR = 60;
   private static final String OUTPUT_FILE1 = "skier2.csv";
   private static final String OUTPUT_FILE2 = "lift2.csv";
   private static final String OUTPUT_FILE3 = "hour2.csv";
@@ -26,7 +27,7 @@ public class SequentialRideInfoConsumer implements IRideInfoConsumer {
             SkiHelper.getVerticalDistanceMetres(rideInfo.getLiftId()));
     resort.addLiftRide(rideInfo.getLiftId());
     resort.addLiftRideWithHourIndex(rideInfo.getLiftId(),
-        (rideInfo.getTime() - 1) / 60);
+        (rideInfo.getTime() - 1) / MIN_PER_HOUR);
   }
 
   @Override
