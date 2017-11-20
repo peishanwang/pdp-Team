@@ -2,7 +2,6 @@ package edu.neu.ccs.cs5010.concurrentsystem;
 
 import edu.neu.ccs.cs5010.IRideInfoConsumer;
 import edu.neu.ccs.cs5010.RideInfo;
-import edu.neu.ccs.cs5010.SkiDataProcessor;
 
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
@@ -70,6 +69,7 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
       long endTime = System.currentTimeMillis();
       LOGGER.info("time taken to stop threads: " + (endTime - startTime));
     } catch (InterruptedException e) {
+      Thread.currentThread().interrupt();
       e.printStackTrace();
     }
   }

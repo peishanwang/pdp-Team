@@ -51,26 +51,11 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
           PriorityQueue<LiftWithRides> busiestLifts =
                   new PriorityQueue<>(numBusiestLifts,
                           Comparator.comparingInt(obj -> obj.getNumRides()));
-          for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry :
-                  hourLiftNumRidesEntry.getValue().entrySet()) {
-            if (busiestLifts.size() >= numBusiestLifts) {
-              if (busiestLifts.peek().getNumRides() > liftNumRidesEntry.getValue().get()) {
-                continue;
-              } else {
-                busiestLifts.poll();
-              }
-            }
-            busiestLifts.add(new LiftWithRides(
-                    liftNumRidesEntry.getKey(), liftNumRidesEntry.getValue().get()));
-          }
-          while (!busiestLifts.isEmpty()) {
-            LiftWithRides liftWithRides = busiestLifts.poll();
-            liftHourInformation.add(new String[]
-            {String.valueOf(hourLiftNumRidesEntry.getKey()),
-                            String.valueOf(liftWithRides.getLiftId()),
-                            String.valueOf(liftWithRides.getNumRides())
-            });
-          }
+          getBusiestLifts(hourLiftNumRidesEntry, busiestLifts);
+          getBusiestLiftsAlongWithRides(busiestLifts,
+                  liftHourInformation,
+                  hourLiftNumRidesEntry
+          );
         }
         fileWriter.write(hourCsvFile, liftHourInformation);
       }
@@ -81,5 +66,48 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
     hourNumLiftRidesMap.get(hour).putIfAbsent(
             liftHourQueueItem.getLiftId(), new AtomicInteger(0));
     hourNumLiftRidesMap.get(hour).get(liftHourQueueItem.getLiftId()).incrementAndGet();
+  }
+
+  /**
+   * method to get busiest lifts.
+   * @param hourLiftNumRidesEntry entry of map
+   * @param busiestLifts priority queue to store info to
+   */
+  private void getBusiestLifts(Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>>
+                                       hourLiftNumRidesEntry,
+                      PriorityQueue<LiftWithRides> busiestLifts
+  ) {
+    for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry :
+            hourLiftNumRidesEntry.getValue().entrySet()) {
+      if (busiestLifts.size() >= numBusiestLifts) {
+        if (busiestLifts.peek().getNumRides() > liftNumRidesEntry.getValue().get()) {
+          continue;
+        } else {
+          busiestLifts.poll();
+        }
+      }
+      busiestLifts.add(new LiftWithRides(
+              liftNumRidesEntry.getKey(), liftNumRidesEntry.getValue().get()));
+    }
+  }
+
+  /**
+   * method to get busiest lifts along with hour.
+   * @param busiestLifts priority queue of top lifts
+   * @param liftHourInformation lift info with hour
+   * @param hourLiftNumRidesEntry one entry of map.
+   */
+  private void getBusiestLiftsAlongWithRides(PriorityQueue<LiftWithRides> busiestLifts,
+                            List<Object[]> liftHourInformation,
+                            Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>>
+                                                     hourLiftNumRidesEntry) {
+    while (!busiestLifts.isEmpty()) {
+      LiftWithRides liftWithRides = busiestLifts.poll();
+      liftHourInformation.add(new String[]
+      {String.valueOf(hourLiftNumRidesEntry.getKey()),
+                      String.valueOf(liftWithRides.getLiftId()),
+                      String.valueOf(liftWithRides.getNumRides())
+      });
+    }
   }
 }
