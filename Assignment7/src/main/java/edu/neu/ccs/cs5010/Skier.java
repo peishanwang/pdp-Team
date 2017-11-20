@@ -6,6 +6,9 @@ public class Skier implements ISkier {
 
   @Override
   public int compareTo(ISkier other) {
+    if (other == null) {
+      throw new IllegalArgumentException();
+    }
     if (this.getTotalVertical() == other.getTotalVertical()) {
       return this.getSkierId() - other.getSkierId();
     } else {
