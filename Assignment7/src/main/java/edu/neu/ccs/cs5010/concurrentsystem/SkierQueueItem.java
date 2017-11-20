@@ -1,6 +1,7 @@
 package edu.neu.ccs.cs5010.concurrentsystem;
 
-public class SkierQueueItem {
+public class SkierQueueItem implements ISkierQueueItem {
+
   public SkierQueueItem(int skierId, int liftId) {
     this.skierId = skierId;
     this.liftId = liftId;

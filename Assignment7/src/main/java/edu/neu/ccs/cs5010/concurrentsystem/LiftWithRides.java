@@ -1,15 +1,17 @@
 package edu.neu.ccs.cs5010.concurrentsystem;
 
-public class LiftWithRides {
+public class LiftWithRides implements ILiftWithRides {
   public LiftWithRides(int liftId, int numRides) {
     this.liftId = liftId;
     this.numRides = numRides;
   }
 
+  @Override
   public Integer getLiftId() {
     return liftId;
   }
 
+  @Override
   public Integer getNumRides() {
     return numRides;
   }
