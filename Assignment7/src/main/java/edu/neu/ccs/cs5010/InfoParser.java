@@ -34,7 +34,7 @@ public class InfoParser implements IInfoParser {
       rideInfoConsumer.accept(parseRideInfoRow(row));
     }
     long endTime = System.currentTimeMillis();
-    String str = String.format("time taken to stop threads: %1$d", endTime - startTime);
+    String str = String.format("time taken to read rows: %1$d ms", endTime - startTime);
     LOGGER.info(str);
     parser.stopParsing();
     rideInfoConsumer.stop();

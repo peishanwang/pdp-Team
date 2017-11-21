@@ -68,7 +68,7 @@ public class ParallelRideInfoConsumer implements IRideInfoConsumer {
       liftConsumer.join();
       liftHourConsumer.join();
       long endTime = System.currentTimeMillis();
-      String str = String.format("time taken to stop threads: %1$d", endTime - startTime);
+      String str = String.format("time taken to stop threads: %1$d ms", endTime - startTime);
       LOGGER.info(str);
     } catch (InterruptedException e) {
       Thread.currentThread().interrupt();
