@@ -32,7 +32,6 @@ public class SequentialRideInfoConsumer implements IRideInfoConsumer {
 
   @Override
   public void stop() {
-    IResultWriter writer = new ResultWriter();
     IResultExtracter extracter = new ResultExtracter(resort);
     try {
       DatFileGenerator.writeToRandomAccessFile(extracter.extractResult1(), OUTPUT_FILE2);

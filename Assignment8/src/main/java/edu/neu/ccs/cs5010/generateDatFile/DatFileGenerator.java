@@ -10,7 +10,7 @@ public class DatFileGenerator {
 
     // Open a file for reading and writing.
     RandomAccessFile randomFile =
-        new RandomAccessFile("Letters.dat", "rw");
+        new RandomAccessFile(fileName, "rw");
 
     System.out.println("Writing to the file " + fileName);
 

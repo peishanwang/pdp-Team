@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class DatFileReader {
-  private static final int INT_SIZE = 2;
+  private static final int INT_SIZE = 4;
   private static final String MODE = "rw";
 
   static int readFromRandomAccessFile(String fileName, int unitNum)
