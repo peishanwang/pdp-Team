@@ -48,7 +48,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
         for (Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry :
                 hourNumLiftRidesMap.entrySet()) {
           PriorityQueue<LiftWithRides> busiestLifts =
-                  new PriorityQueue<>(numBusiestLifts,
+                  new PriorityQueue<>(40,
                       (obj1, obj2) -> obj2.getNumRides() - obj1.getNumRides());
           getBusiestLifts(hourLiftNumRidesEntry, busiestLifts);
           getBusiestLiftsAlongWithRides(busiestLifts,
@@ -78,13 +78,6 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
   ) {
     for (Map.Entry<Integer, AtomicInteger> liftNumRidesEntry :
             hourLiftNumRidesEntry.getValue().entrySet()) {
-      if (busiestLifts.size() >= numBusiestLifts) {
-        if (busiestLifts.peek().getNumRides() > liftNumRidesEntry.getValue().get()) {
-          continue;
-        } else {
-          busiestLifts.poll();
-        }
-      }
       busiestLifts.add(new LiftWithRides(
               liftNumRidesEntry.getKey(), liftNumRidesEntry.getValue().get()));
     }
@@ -100,13 +93,16 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
                             List<Object[]> liftHourInformation,
                             Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>>
                                                      hourLiftNumRidesEntry) {
-    while (!busiestLifts.isEmpty()) {
+    int count = 0;
+    while (count < 10) {
       LiftWithRides liftWithRides = busiestLifts.poll();
       liftHourInformation.add(new String[]
       {String.valueOf(hourLiftNumRidesEntry.getKey()),
                       String.valueOf(liftWithRides.getLiftId()),
                       String.valueOf(liftWithRides.getNumRides())
+
       });
+      count++;
     }
   }
 }

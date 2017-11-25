@@ -20,12 +20,8 @@ public class LiftHourQueueItem implements ILiftHourQueueItem{
    */
   @Override
   public Integer getHour() {
-    int hour = (min / 60);
-    // starts from 1
-    if (hour < 6) {
-      hour += 1;
-    }
-    return hour;
+    int hour = (min - 1) / 60;
+    return hour + 1;
   }
 
   /**
