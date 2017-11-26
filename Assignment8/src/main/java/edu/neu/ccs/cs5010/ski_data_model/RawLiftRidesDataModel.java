@@ -1,38 +1,10 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
-import edu.neu.ccs.cs5010.generateDatFile.Skier;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-class RawLiftRidesData extends DataModelItem {
-  public RawLiftRidesData(DataModelItem dataModelItem) {
-    super(dataModelItem);
-  }
-  public RawLiftRidesData(int[] fields) {
-    super(fields);
-  }
-  public int getRideNum() {
-    return getField(0);
-  }
-  public int getSkierId() {
-    return getField(1);
-  }
-  public int getLiftId() {
-    return getField(2);
-  }
-  public int getTime() {
-    return getField(3);
-  }
-  public static RawLiftRidesData constructRawLiftRidesData(int rideNum,
-                                                           int skierId,
-                                                           int liftId,
-                                                           int time) {
-    return new RawLiftRidesData(new int[]{rideNum, skierId, liftId, time});
-  }
-}
 
 public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
   public RawLiftRidesDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
@@ -71,19 +43,19 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
    int[] rides = skierIndexData.getRidesId();
    List<RawLiftRidesData> skierRides = new ArrayList<>(rides.length);
     for (int ride : rides) {
-      skierRides.add(super.getDataInfo(ride));
+      skierRides.add(super.getDataInfo(ride - 1 /* rowId */));
     }
    return skierRides;
   }
 
   @Override
-  public RawLiftRidesData getDataInfo(int skierId) {
-    throw new NotImplementedException();
+  public RawLiftRidesData getDataInfo(int rideId) {
+    return super.getDataInfo(rideId - 1 /* rowId */);
   }
 
   @Override
-  void updateDataInfo(int itemId, RawLiftRidesData itemData) {
-    throw new NotImplementedException();
+  void updateDataInfo(int rideId, RawLiftRidesData itemData) {
+    super.updateDataInfo(rideId - 1 /* rowId */, itemData);
   }
 
   @Override

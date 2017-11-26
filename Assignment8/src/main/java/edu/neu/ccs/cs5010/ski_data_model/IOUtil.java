@@ -11,7 +11,7 @@ public final class IOUtil {
    * @param filePath input file's path
    * @return file reader
    */
-  static Reader getReader(final String filePath) {
+  public static Reader getReader(final String filePath) {
     try {
       return new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
     } catch (FileNotFoundException e) {
@@ -19,11 +19,11 @@ public final class IOUtil {
     }
   }
 
-  static Reader getBufferedReader(final String filePath, final int bufferSize) {
+  public static Reader getBufferedReader(final String filePath, final int bufferSize) {
     return new BufferedReader(getReader(filePath), bufferSize);
   }
 
-  static Reader getBufferedReader(final String filePath) {
+  public static Reader getBufferedReader(final String filePath) {
     return getBufferedReader(filePath, DEFAULT_READ_BUFFER_SIZE);
   }
 
@@ -32,7 +32,7 @@ public final class IOUtil {
    * @param filePath output file's path
    * @return file writer
    */
-  static OutputStream getWriter(final String filePath) {
+  public static OutputStream getWriter(final String filePath) {
     try {
       return new FileOutputStream(filePath, false /* create new everytime */);
     } catch (FileNotFoundException e) {
@@ -40,15 +40,15 @@ public final class IOUtil {
     }
   }
 
-  static OutputStream getBufferedWriter(final String filePath, final int bufferSize) {
+  public static OutputStream getBufferedWriter(final String filePath, final int bufferSize) {
     return new BufferedOutputStream(getWriter(filePath), bufferSize);
   }
 
-  static OutputStream getBufferedWriter(final String filePath) {
+  public static OutputStream getBufferedWriter(final String filePath) {
     return getBufferedWriter(filePath, DEFAULT_WRITE_BUFFER_SIZE);
   }
 
-  static RandomAccessFile getRandomFileAccessor(final String filePath) {
+  public static RandomAccessFile getRandomFileAccessor(final String filePath) {
     try {
       return new RandomAccessFile(filePath, "rw");
     } catch (FileNotFoundException e) {
@@ -56,11 +56,11 @@ public final class IOUtil {
     }
   }
 
-  static byte[] intToByteArray(int x) {
+  public static byte[] intToByteArray(int x) {
     return ByteBuffer.allocate(Integer.BYTES).putInt(x).array();
   }
 
-  static byte[] intArrayToByteArray(int[] x) {
+  public static byte[] intArrayToByteArray(int[] x) {
     ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES * x.length);
     for (int i : x) {
       buffer.putInt(i);
