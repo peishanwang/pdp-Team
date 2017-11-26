@@ -31,11 +31,16 @@ public abstract class IDataModel<T extends DataModelItem> {
 
 
   public void addDataInfo(T itemData) {
-    dataSource.create(itemData);
+    synchronized (dataSource) {
+      dataSource.create(itemData);
+    }
   }
 
   public T getDataInfo(int itemId) {
-    DataModelItem item = dataSource.read(itemId);
+    DataModelItem item = null;
+    synchronized (dataSource) {
+      item = dataSource.read(itemId);
+    }
     return itemFactory.create(item);
   }
 
@@ -44,13 +49,17 @@ public abstract class IDataModel<T extends DataModelItem> {
   }
 
   void updateDataInfo(int itemId, T itemData) {
-    dataSource.update(itemId, itemData);
+    synchronized (dataSource) {
+      dataSource.update(itemId, itemData);
+    }
   }
 
   DataSourceOpenMode getDSMode() {return openMode;}
 
   public void close() {
-    dataSource.close();
+    synchronized (dataSource) {
+      dataSource.close();
+    }
   }
 
   private final Factory<T> itemFactory;

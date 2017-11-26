@@ -27,11 +27,9 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
   }
   private ConcurrentMap<Integer, SkierRideStats> skierVerticalRideMap;
   private static final int MAX_SKIERS = 40000;
-  private static final int RIDES_DATA_BATCH_SIZE = 10000;
   private AtomicBoolean finished;
   private RawLiftRidesDataModel rawLiftRidesDataModel;
   private AtomicInteger numRidesConsumed;
-  private Queue<RawLiftRidesData> batchRidesData;
   /**
    * SkierConsumer constructor.
    */
@@ -41,7 +39,6 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     rawLiftRidesDataModel = new RawLiftRidesDataModel(SkiDataProcessor.SKI_DATA_MODEL_BASE_PATH,
             DataSourceOpenMode.CREATE_MODEL);
     numRidesConsumed = new AtomicInteger(0);
-    batchRidesData = new ConcurrentLinkedQueue<>();
   }
 
   /**
@@ -53,11 +50,6 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     if (skierQueueItem == null) {
       // this is signal from one of threads that queue is empty now
       if (finished.compareAndSet(false, true)) {
-        // flush remaining bath of raw rides
-        for (RawLiftRidesData rideData : batchRidesData) {
-          rawLiftRidesDataModel.addDataInfo(rideData);
-        }
-
         // write file
         SkierDataModel skierDataModel = new SkierDataModel(SkiDataProcessor
                 .SKI_DATA_MODEL_BASE_PATH, DataSourceOpenMode.CREATE_MODEL);
@@ -88,7 +80,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     }
     // add to raw data file
     int rideNum = numRidesConsumed.incrementAndGet();
-    batchRidesData.add(RawLiftRidesData.constructRawLiftRidesData(rideNum,
+    rawLiftRidesDataModel.addDataInfo(RawLiftRidesData.constructRawLiftRidesData(rideNum,
             skierQueueItem.getSkierId(), skierQueueItem.getLiftId(), skierQueueItem.getTs()));
 
     skierVerticalRideMap.putIfAbsent(skierQueueItem.getSkierId(), new SkierRideStats());
@@ -96,15 +88,6 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     skierRideStats.rideIds.add(rideNum);
     skierRideStats.totalVertical.addAndGet(SkiHelper.getVerticalDistanceMetres(skierQueueItem
             .getLiftId()));
-
-    if (rideNum % RIDES_DATA_BATCH_SIZE == 0) {
-      synchronized (rawLiftRidesDataModel) {
-        for (RawLiftRidesData rideData : batchRidesData) {
-          rawLiftRidesDataModel.addDataInfo(rideData);
-        }
-        batchRidesData.clear();
-      }
-    }
   }
 
 }

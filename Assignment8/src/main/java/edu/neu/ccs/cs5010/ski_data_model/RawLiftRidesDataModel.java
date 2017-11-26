@@ -3,6 +3,8 @@ package edu.neu.ccs.cs5010.ski_data_model;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
@@ -66,16 +68,14 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
 
     // init index in create mode
 //    SkierToRideIndex index = new SkierToRideIndex(basePath, DataSourceOpenMode.CREATE_MODEL);
-//    index.close();
-//
-//    // use in access mode
-//    index = new SkierToRideIndex(basePath);
 //    for (int i = 1; i <= 10; i++) {
-//      SkierIndexData data = index.getDataInfo(i);
+//      SkierIndexData data = SkierData.constructSkierData(i, 0, 0);
 //      data.addRide(i);
 //      data.addRide(i + 1);
-//      index.updateDataInfo(i, data);
+//      index.addDataInfo(i, data);
 //    }
+//    index.close();
+//    index = new SkierToRideIndex(basePath);
 //    for (int i = 1; i <= 10; i++) {
 //      SkierIndexData data = index.getDataInfo(i);
 //      int[] rides = data.getRidesId();
@@ -99,12 +99,13 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
 //    dataModel.close();
 
     RawLiftRidesDataModel dataModel = new RawLiftRidesDataModel(basePath);
-    for (int i = 1; i <= 40000; i++) {
-      List<RawLiftRidesData> ridesData = dataModel.getDataListInfo(i);
+    for (int skierId = 1; skierId <= 40000; skierId++) {
+      List<RawLiftRidesData> ridesData = dataModel.getDataListInfo(skierId);
       if (ridesData.size() != 20) {
         throw new IllegalStateException("");
       }
-      System.out.print("For skier: " + i + ", ridesInfo: ");
+      Collections.sort(ridesData, Comparator.comparing(o -> ((Integer) o.getTime())));
+      System.out.print("For skier: " + skierId + ", ridesInfo: ");
       for (RawLiftRidesData rideData : ridesData) {
         System.out.print("[" + rideData.getRideNum() + ", " + rideData.getTime() + "]");
       }

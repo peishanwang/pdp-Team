@@ -46,9 +46,9 @@ public class LiftDataModel extends IDataModel<LiftData> {
 //    liftDataModel.close();
 
     LiftDataModel liftDataModel = new LiftDataModel(basePath);
-    for (int i = 1; i <= 40; i++) {
-      LiftData liftData = liftDataModel.getDataInfo(i);
-      System.out.println("read liftInfo for id: " + i + ", liftId: "
+    for (int liftId = 1; liftId <= 40; liftId++) {
+      LiftData liftData = liftDataModel.getDataInfo(liftId);
+      System.out.println("read liftInfo for id: " + liftId + ", liftId: "
               + liftData.getLiftId() +
               ", " + "numRides: " +
               liftData

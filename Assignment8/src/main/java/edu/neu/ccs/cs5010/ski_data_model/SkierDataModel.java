@@ -46,9 +46,11 @@ public class SkierDataModel extends IDataModel<SkierData> {
 //    skierDataModel.close();
 
     SkierDataModel skierDataModel = new SkierDataModel(basePath);
-    for (int i = 1; i <= 40000; i++) {
-      SkierData skierData = skierDataModel.getDataInfo(i);
-      System.out.println("read skierInfo for id: " + i + ", skierId: " + skierData.getSkierId() +
+    for (int skierId = 1; skierId <= 40000; skierId++) {
+      SkierData skierData = skierDataModel.getDataInfo(skierId);
+      skierData.incNumViews();
+      skierDataModel.updateDataInfo(skierId, skierData);
+      System.out.println("read skierInfo for id: " + skierId + ", skierId: " + skierData.getSkierId() +
               ", " + "numRides: " +
               skierData
                       .getNumRides() + ", numVertical: " + skierData.getTotalVertical() + ", numViews: "

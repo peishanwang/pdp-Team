@@ -30,12 +30,12 @@ public class HourRidesDataModel extends IDataModel<HourRideData> {
 //    dataModel.close();
 
     HourRidesDataModel dataModel = new HourRidesDataModel(basePath);
-    for (int i = 0; i < 6; i++) {
-      HourRideData rideData = dataModel.getDataInfo(i);
+    for (int hourId = 0; hourId < 6; hourId++) {
+      HourRideData rideData = dataModel.getDataInfo(hourId);
       if (rideData.getBusyLifts().length != 10) {
         throw new IllegalStateException("invalid lifts");
       }
-      System.out.print("Hour: " + i + " has rides: ");
+      System.out.print("Hour: " + hourId + " has rides: ");
       for (int liftId : rideData.getBusyLifts()) {
         System.out.print(liftId + " ");
       }
