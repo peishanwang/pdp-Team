@@ -18,6 +18,9 @@ public class HourRideData extends DataModelItem {
   public static HourRideData constructHourData(int hour,
                                                int[] busyLifts) {
     int[] fieldsData = new int[1 + busyLifts.length];
+    if (busyLifts.length != 10) {
+      throw new IllegalArgumentException("invalid size of busiest lifts");
+    }
     fieldsData[0] = hour;
     System.arraycopy(busyLifts, 0, fieldsData, 1, busyLifts.length);
     return new HourRideData(fieldsData);

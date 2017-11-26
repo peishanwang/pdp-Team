@@ -13,12 +13,18 @@ public class CachedDataSource extends DataSource {
   @Override
   public DataModelItem read(int itemId) {
     DataModelItem dataItem = cache.get(itemId);
-    return dataItem != null ? dataItem : super.read(itemId);
+    if (dataItem == null) {
+      dataItem = super.read(itemId);
+      // update in cache if not already present
+      cache.put(itemId, dataItem);
+    }
+    return dataItem;
   }
 
   @Override
   public void update(int itemId, DataModelItem newValue) {
     super.update(itemId, newValue);
+    // update in cache
     cache.put(itemId, newValue);
   }
 
