@@ -1,0 +1,51 @@
+package edu.neu.ccs.cs5010.ski_data_model;
+
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
+
+import java.util.List;
+
+interface Factory<T extends DataModelItem> {
+  T create(DataModelItem item);
+}
+
+public abstract class IDataModel<T extends DataModelItem> {
+  public IDataModel(final String sourcePath,
+                    DataSourceOpenMode openMode,
+                    int numFields,
+                    Factory<T> factory) {
+    this.dataSource = new DataSource(
+            sourcePath,
+            openMode,
+            numFields);
+    this.openMode = openMode;
+    this.itemFactory = factory;
+  }
+
+
+  public void addDataInfo(T itemData) {
+    dataSource.create(itemData);
+  }
+
+  public T getDataInfo(int itemId) {
+    DataModelItem item = dataSource.read(itemId);
+    return itemFactory.create(item);
+  }
+
+  public List<T> getDataListInfo(int itemId) {
+    throw new NotImplementedException();
+  }
+
+  void updateDataInfo(int itemId, T itemData) {
+    dataSource.update(itemId, itemData);
+  }
+
+  DataSourceOpenMode getDSMode() {return openMode;}
+
+  public void close() {
+    dataSource.close();
+  }
+
+  private final Factory<T> itemFactory;
+  private final DataSourceOpenMode openMode;
+  protected final DataSource dataSource;
+}
