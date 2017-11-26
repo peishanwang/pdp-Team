@@ -12,40 +12,16 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.67431813">
+    <splitter split-orientation="horizontal" split-proportion="0.60267377">
       <split-first>
-        <splitter split-orientation="horizontal" split-proportion="0.50249004">
+        <splitter split-orientation="horizontal" split-proportion="0.40079895">
           <split-first>
             <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-              <file leaf-file-name="SkiDataProcessor.java" pinned="false" current-in-tab="false">
+              <file leaf-file-name="SkiDataProcessor.java" pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/SkiDataProcessor.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="541">
-                      <caret line="43" column="19" lean-forward="false" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="IDataModel.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataModel.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="525">
-                      <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                        <element signature="e#665#666#0" expanded="true" />
-                        <element signature="e#702#703#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="IDataSource.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataSource.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="84">
-                      <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+                    <state relative-caret-position="0">
+                      <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
                       <folding />
                     </state>
                   </provider>
@@ -54,8 +30,8 @@
               <file leaf-file-name="SkierToRideIndex.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierToRideIndex.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="724">
-                      <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+                    <state relative-caret-position="609">
+                      <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
                       <folding />
                     </state>
                   </provider>
@@ -64,7 +40,7 @@
               <file leaf-file-name="SkiQueryProcessor.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/SkiQueryProcessor.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="189">
+                    <state relative-caret-position="360">
                       <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
                       <folding />
                     </state>
@@ -78,8 +54,8 @@
               <file leaf-file-name="IOUtil.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IOUtil.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="206">
-                      <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
+                    <state relative-caret-position="361">
+                      <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
                       <folding>
                         <element signature="imports" expanded="true" />
                       </folding>
@@ -87,11 +63,43 @@
                   </provider>
                 </entry>
               </file>
+              <file leaf-file-name="IDataModel.java" pinned="false" current-in-tab="true">
+                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataModel.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="520">
+                      <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+                      <folding>
+                        <element signature="imports" expanded="true" />
+                      </folding>
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="CachedDataSource.java" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/CachedDataSource.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="258">
+                      <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
+              <file leaf-file-name="LRUCache.java" pinned="false" current-in-tab="false">
+                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LRUCache.java">
+                  <provider selected="true" editor-type-id="text-editor">
+                    <state relative-caret-position="858">
+                      <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
+                      <folding />
+                    </state>
+                  </provider>
+                </entry>
+              </file>
               <file leaf-file-name="IDSIndex.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDSIndex.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="42">
-                      <caret line="2" column="66" lean-forward="false" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
+                    <state relative-caret-position="400">
+                      <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
                       <folding />
                     </state>
                   </provider>
@@ -100,32 +108,8 @@
               <file leaf-file-name="DataModelItem.java" pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataModelItem.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="420">
-                      <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
-                      <folding />
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="true">
-                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSource.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="394">
-                      <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
-                      <folding>
-                        <element signature="imports" expanded="true" />
-                        <element signature="e#2445#2446#0" expanded="true" />
-                        <element signature="e#2474#2475#0" expanded="true" />
-                      </folding>
-                    </state>
-                  </provider>
-                </entry>
-              </file>
-              <file leaf-file-name="DataSourceFileWriter.java" pinned="false" current-in-tab="false">
-                <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSourceFileWriter.java">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="147">
-                      <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+                    <state relative-caret-position="1000">
+                      <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
                       <folding />
                     </state>
                   </provider>
@@ -137,12 +121,24 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-          <file leaf-file-name="SkierDataModel.java" pinned="false" current-in-tab="false">
+          <file leaf-file-name="SkierDataModel.java" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierDataModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="882">
-                  <caret line="58" column="40" lean-forward="false" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+                <state relative-caret-position="240">
+                  <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
                   <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="DataSource.java" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSource.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="296">
+                  <caret line="95" column="3" lean-forward="true" selection-start-line="95" selection-start-column="3" selection-end-line="95" selection-end-column="3" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -150,8 +146,8 @@
           <file leaf-file-name="LiftDataModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LiftDataModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="441">
-                  <caret line="29" column="3" lean-forward="false" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+                <state relative-caret-position="280">
+                  <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
                   <folding />
                 </state>
               </provider>
@@ -160,8 +156,8 @@
           <file leaf-file-name="HourRidesDataModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/HourRidesDataModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="630">
-                  <caret line="38" column="3" lean-forward="false" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
+                <state relative-caret-position="1920">
+                  <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -169,13 +165,15 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="RawLiftRidesDataModel.java" pinned="false" current-in-tab="true">
+          <file leaf-file-name="RawLiftRidesDataModel.java" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="552">
-                  <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
+                <state relative-caret-position="680">
+                  <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#467#468#0" expanded="true" />
+                    <element signature="e#495#496#0" expanded="true" />
                     <element signature="e#2612#2613#0" expanded="true" />
                     <element signature="e#2657#2658#0" expanded="true" />
                   </folding>
@@ -226,17 +224,19 @@
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSourceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataSourceModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSourceFileWriter.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LRUCache.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LiftDataModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierDataModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataModelItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDSIndex.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/HourRidesDataModel.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSource.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IOUtil.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierToRideIndex.java" />
-        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataModel.java" />
         <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LRUCache.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/CachedDataSource.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataModel.java" />
+        <option value="$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierDataModel.java" />
       </list>
     </option>
   </component>
@@ -307,7 +307,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -318,17 +319,6 @@
             <path>
               <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
               <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name=".idea" type="462c0819:PsiDirectoryNode" />
-              <item name="libraries" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -360,16 +350,6 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cs5010" type="462c0819:PsiDirectoryNode" />
               <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cs5010" type="462c0819:PsiDirectoryNode" />
-              <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-              <item name="HourRidesDataModel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
             <path>
               <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
@@ -381,53 +361,12 @@
               <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
               <item name="IDataModel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
             </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cs5010" type="462c0819:PsiDirectoryNode" />
-              <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-              <item name="LiftDataModel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cs5010" type="462c0819:PsiDirectoryNode" />
-              <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-              <item name="RawLiftRidesDataModel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cs5010" type="462c0819:PsiDirectoryNode" />
-              <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-              <item name="SkierDataModel.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
-            <path>
-              <item name="Assignment8" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Assignment8" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cs5010" type="462c0819:PsiDirectoryNode" />
-              <item name="ski_data_model" type="462c0819:PsiDirectoryNode" />
-              <item name="SkierToRideIndex.java" type="529ef68f:ClassesTreeStructureProvider$PsiClassOwnerTreeNode" />
-            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
       <pane id="AndroidView" />
-      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -449,7 +388,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.RawLiftRidesDataModel">
+  <component name="RunManager" selected="Application.SkierDataModel">
     <configuration name="HourRidesDataModel" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -458,6 +397,25 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="edu.neu.ccs.cs5010.ski_data_model.HourRidesDataModel" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="Assignment8" />
+      <envs />
+    </configuration>
+    <configuration name="LRUCache" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="edu.neu.ccs.cs5010.ski_data_model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="edu.neu.ccs.cs5010.ski_data_model.LRUCache" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -496,25 +454,6 @@
         </pattern>
       </extension>
       <option name="MAIN_CLASS_NAME" value="edu.neu.ccs.cs5010.ski_data_model.RawLiftRidesDataModel" />
-      <option name="VM_PARAMETERS" />
-      <option name="PROGRAM_PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="ENABLE_SWING_INSPECTOR" value="false" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="Assignment8" />
-      <envs />
-    </configuration>
-    <configuration name="SkiDataProcessor" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
-        <pattern>
-          <option name="PATTERN" value="edu.neu.ccs.cs5010.generateDatFile.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="MAIN_CLASS_NAME" value="edu.neu.ccs.cs5010.generateDatFile.SkiDataProcessor" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -627,19 +566,19 @@
       <listeners />
     </configuration>
     <list size="5">
-      <item index="0" class="java.lang.String" itemvalue="Application.SkiDataProcessor" />
-      <item index="1" class="java.lang.String" itemvalue="Application.SkierDataModel" />
-      <item index="2" class="java.lang.String" itemvalue="Application.LiftDataModel" />
-      <item index="3" class="java.lang.String" itemvalue="Application.HourRidesDataModel" />
-      <item index="4" class="java.lang.String" itemvalue="Application.RawLiftRidesDataModel" />
+      <item index="0" class="java.lang.String" itemvalue="Application.SkierDataModel" />
+      <item index="1" class="java.lang.String" itemvalue="Application.LiftDataModel" />
+      <item index="2" class="java.lang.String" itemvalue="Application.HourRidesDataModel" />
+      <item index="3" class="java.lang.String" itemvalue="Application.RawLiftRidesDataModel" />
+      <item index="4" class="java.lang.String" itemvalue="Application.LRUCache" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Application.RawLiftRidesDataModel" />
-        <item index="1" class="java.lang.String" itemvalue="Application.HourRidesDataModel" />
+        <item index="0" class="java.lang.String" itemvalue="Application.SkierDataModel" />
+        <item index="1" class="java.lang.String" itemvalue="Application.LRUCache" />
         <item index="2" class="java.lang.String" itemvalue="Application.LiftDataModel" />
-        <item index="3" class="java.lang.String" itemvalue="Application.SkierDataModel" />
-        <item index="4" class="java.lang.String" itemvalue="Application.SkiDataProcessor" />
+        <item index="3" class="java.lang.String" itemvalue="Application.RawLiftRidesDataModel" />
+        <item index="4" class="java.lang.String" itemvalue="Application.HourRidesDataModel" />
       </list>
     </recent_temporary>
   </component>
@@ -660,15 +599,17 @@
       <workItem from="1511643479371" duration="12543000" />
       <workItem from="1511659497677" duration="3788000" />
       <workItem from="1511667586738" duration="5067000" />
-      <workItem from="1511674079016" duration="3901000" />
+      <workItem from="1511674079016" duration="8060000" />
+      <workItem from="1511684789988" duration="2223000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="43585000" />
+    <option name="totallyTimeSpent" value="49967000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="3458" height="1408" extended-state="6" />
+    <frame x="-16" y="-16" width="3872" height="2092" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -678,14 +619,13 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.38102895" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32945737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11886457" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.10748663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2170418" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -697,6 +637,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.030546624" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -738,50 +679,17 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java</url>
-          <line>61</line>
-          <properties />
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierToRideIndex.java</url>
           <line>84</line>
           <properties />
           <option name="timeStamp" value="3" />
         </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java</url>
-          <line>110</line>
-          <properties />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="9" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/IInfoParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="17" lean-forward="false" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/ILift.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/InfoParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/Lift.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="527">
@@ -832,7 +740,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-1996">
           <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -941,8 +848,6 @@
           <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="15" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
-            <element signature="e#2474#2475#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -969,13 +874,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/DatFileGenerator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://C:/Program Files/Java/jdk1.8.0_144/src.zip!/java/io/FilterOutputStream.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="451">
@@ -987,13 +885,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
           <caret line="37" column="42" lean-forward="false" selection-start-line="37" selection-start-column="42" selection-end-line="37" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LRUCache.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="40">
-          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1012,41 +903,117 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/liftrides_index.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/SkiQueryProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/hours.dat">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/DatFileGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="61" lean-forward="false" selection-start-line="7" selection-start-column="45" selection-end-line="7" selection-end-column="61" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="160">
+          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDSIndex.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="400">
+          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataModelItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1000">
+          <caret line="27" column="28" lean-forward="false" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="680">
+          <caret line="34" column="1" lean-forward="false" selection-start-line="34" selection-start-column="1" selection-end-line="34" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#467#468#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#2612#2613#0" expanded="true" />
+            <element signature="e#2657#2658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/HourRidesDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="38" column="3" lean-forward="false" selection-start-line="38" selection-start-column="3" selection-end-line="38" selection-end-column="3" />
+        <state relative-caret-position="1920">
+          <caret line="57" column="50" lean-forward="false" selection-start-line="57" selection-start-column="50" selection-end-line="57" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LiftDataModel.java">
+    <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="441">
-          <caret line="29" column="3" lean-forward="false" selection-start-line="29" selection-start-column="3" selection-end-line="29" selection-end-column="3" />
+        <state relative-caret-position="21">
+          <caret line="1" column="6" lean-forward="false" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSourceFileWriter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1200">
+          <caret line="36" column="0" lean-forward="false" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierDataModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierToRideIndex.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="882">
-          <caret line="58" column="40" lean-forward="false" selection-start-line="58" selection-start-column="40" selection-end-line="58" selection-end-column="40" />
+        <state relative-caret-position="609">
+          <caret line="33" column="37" lean-forward="false" selection-start-line="33" selection-start-column="37" selection-end-line="33" selection-end-column="37" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataSource.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IOUtil.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="4" column="17" lean-forward="false" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding />
+        <state relative-caret-position="361">
+          <caret line="43" column="34" lean-forward="false" selection-start-line="43" selection-start-column="34" selection-end-line="43" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/liftrides_index.dat">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/SkiDataProcessor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -1054,97 +1021,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSourceFileWriter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LiftDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="11" column="28" lean-forward="false" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="280">
+          <caret line="11" column="14" lean-forward="true" selection-start-line="11" selection-start-column="14" selection-end-line="11" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IOUtil.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/LRUCache.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataModelItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="20" column="36" lean-forward="false" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        <state relative-caret-position="858">
+          <caret line="33" column="14" lean-forward="false" selection-start-line="33" selection-start-column="14" selection-end-line="33" selection-end-column="14" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/generateDatFile/SkiDataProcessor.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/CachedDataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="541">
-          <caret line="43" column="19" lean-forward="false" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="19" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/SkiQueryProcessor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" column="46" lean-forward="false" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierToRideIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="724">
-          <caret line="61" column="12" lean-forward="false" selection-start-line="61" selection-start-column="12" selection-end-line="61" selection-end-column="12" />
+        <state relative-caret-position="258">
+          <caret line="8" column="2" lean-forward="true" selection-start-line="8" selection-start-column="2" selection-end-line="8" selection-end-column="2" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="25" column="19" lean-forward="false" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        <state relative-caret-position="520">
+          <caret line="22" column="25" lean-forward="true" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#665#666#0" expanded="true" />
-            <element signature="e#702#703#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/IDSIndex.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="66" lean-forward="false" selection-start-line="2" selection-start-column="66" selection-end-line="2" selection-end-column="66" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/DataSource.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="28" column="14" lean-forward="false" selection-start-line="28" selection-start-column="14" selection-end-line="28" selection-end-column="14" />
+        <state relative-caret-position="296">
+          <caret line="95" column="3" lean-forward="true" selection-start-line="95" selection-start-column="3" selection-end-line="95" selection-end-column="3" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#2445#2446#0" expanded="true" />
-            <element signature="e#2474#2475#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/RawLiftRidesDataModel.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/edu/neu/ccs/cs5010/ski_data_model/SkierDataModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="552">
-          <caret line="115" column="39" lean-forward="false" selection-start-line="115" selection-start-column="39" selection-end-line="115" selection-end-column="39" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2612#2613#0" expanded="true" />
-            <element signature="e#2657#2658#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="240">
+          <caret line="6" column="8" lean-forward="false" selection-start-line="6" selection-start-column="8" selection-end-line="6" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>

@@ -109,7 +109,7 @@ public class DataSource implements IDataSource {
     }
   }
 
-  private void validateState(DataSourceOpenMode mode) {
+  protected void validateState(DataSourceOpenMode mode) {
     if (this.openMode != mode) {
       throw new IllegalStateException("invalid mode");
     }

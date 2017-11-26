@@ -13,10 +13,18 @@ public abstract class IDataModel<T extends DataModelItem> {
                     DataSourceOpenMode openMode,
                     int numFields,
                     Factory<T> factory) {
-    this.dataSource = new DataSource(
+    if (openMode == DataSourceOpenMode.CREATE_MODEL) {
+      this.dataSource = new DataSource(
             sourcePath,
             openMode,
             numFields);
+    } else if (openMode == DataSourceOpenMode.ACCESS_MODEL) {
+      this.dataSource = new CachedDataSource(
+              sourcePath,
+              numFields);
+    } else {
+      throw new IllegalStateException("invalid state.");
+    }
     this.openMode = openMode;
     this.itemFactory = factory;
   }
