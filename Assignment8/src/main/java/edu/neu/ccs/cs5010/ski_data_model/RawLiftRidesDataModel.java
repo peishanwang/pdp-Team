@@ -4,7 +4,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
   public RawLiftRidesDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
@@ -13,7 +12,10 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
             NUM_FIELDS,
             RawLiftRidesData::new);
     this.baseStorePath = baseStorePath;
-    skierRidesIndex = new SkierToRideIndex(baseStorePath, openMode);
+    // only open in access mode
+    if (openMode == DataSourceOpenMode.ACCESS_MODEL) {
+      skierRidesIndex = new SkierToRideIndex(baseStorePath);
+    }
   }
 
   public RawLiftRidesDataModel(final String baseStorePath) {
@@ -22,19 +24,7 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
 
   @Override
   public void addDataInfo(RawLiftRidesData itemData) {
-    int rideNum = itemData.getRideNum();
-    int skierId = itemData.getSkierId();
-    if (rideNum <= 0) {
-      throw new IllegalArgumentException("rideNum");
-    }
-    if (skierRidesIndex.getDSMode() != DataSourceOpenMode.ACCESS_MODEL) {
-      skierRidesIndex.close();
-      skierRidesIndex = new SkierToRideIndex(baseStorePath);
-    }
-    SkierIndexData skierIndexData = skierRidesIndex.getDataInfo(skierId);
-    skierIndexData.addRide(rideNum);
     super.addDataInfo(itemData);
-    skierRidesIndex.updateDataInfo(skierId, skierIndexData);
   }
 
 
@@ -61,7 +51,9 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
   @Override
   public void close() {
     super.close();
-    skierRidesIndex.close();
+    if (skierRidesIndex != null) {
+      skierRidesIndex.close();
+    }
   }
 
   private final String baseStorePath;
@@ -73,42 +65,50 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
     String basePath = "D:\\pdp_team_assignments\\Assignment8";
 
     // init index in create mode
-    SkierToRideIndex index = new SkierToRideIndex(basePath, DataSourceOpenMode.CREATE_MODEL);
-    index.close();
+//    SkierToRideIndex index = new SkierToRideIndex(basePath, DataSourceOpenMode.CREATE_MODEL);
+//    index.close();
+//
+//    // use in access mode
+//    index = new SkierToRideIndex(basePath);
+//    for (int i = 1; i <= 10; i++) {
+//      SkierIndexData data = index.getDataInfo(i);
+//      data.addRide(i);
+//      data.addRide(i + 1);
+//      index.updateDataInfo(i, data);
+//    }
+//    for (int i = 1; i <= 10; i++) {
+//      SkierIndexData data = index.getDataInfo(i);
+//      int[] rides = data.getRidesId();
+//      System.out.print("Num Rides: " + rides.length + ", rides = ");
+//      for (int r : rides) {
+//        System.out.print(r + " ");
+//      }
+//      System.out.println();
+//    }
+//    index.close();
+//    RawLiftRidesDataModel dataModel = new RawLiftRidesDataModel(basePath, DataSourceOpenMode
+//            .CREATE_MODEL);
+//    Random random = new Random();
+//    for (int i = 10; i > 0; i--) {
+//      RawLiftRidesData data = RawLiftRidesData.constructRawLiftRidesData(i,
+//              random.nextInt(4) + 1,
+//              random.nextInt(10),
+//              random.nextInt(10));
+//      dataModel.addDataInfo(data);
+//    }
+//    dataModel.close();
 
-    // use in access mode
-    index = new SkierToRideIndex(basePath);
-    for (int i = 1; i <= 10; i++) {
-      SkierIndexData data = index.getDataInfo(i);
-      data.addRide(i);
-      data.addRide(i + 1);
-      index.updateDataInfo(i, data);
-    }
-    for (int i = 1; i <= 10; i++) {
-      SkierIndexData data = index.getDataInfo(i);
-      int[] rides = data.getRidesId();
-      System.out.print("Num Rides: " + rides.length + ", rides = ");
-      for (int r : rides) {
-        System.out.print(r + " ");
+    RawLiftRidesDataModel dataModel = new RawLiftRidesDataModel(basePath);
+    for (int i = 1; i <= 40000; i++) {
+      List<RawLiftRidesData> ridesData = dataModel.getDataListInfo(i);
+      if (ridesData.size() != 20) {
+        throw new IllegalStateException("");
+      }
+      System.out.print("For skier: " + i + ", ridesInfo: ");
+      for (RawLiftRidesData rideData : ridesData) {
+        System.out.print("[" + rideData.getRideNum() + ", " + rideData.getTime() + "]");
       }
       System.out.println();
-    }
-    index.close();
-    RawLiftRidesDataModel dataModel = new RawLiftRidesDataModel(basePath, DataSourceOpenMode
-            .CREATE_MODEL);
-    Random random = new Random();
-    for (int i = 10; i > 0; i--) {
-      RawLiftRidesData data = RawLiftRidesData.constructRawLiftRidesData(i,
-              random.nextInt(4) + 1,
-              random.nextInt(10),
-              random.nextInt(10));
-      dataModel.addDataInfo(data);
-    }
-    dataModel.close();
-
-    dataModel = new RawLiftRidesDataModel(basePath);
-    for (int i = 0; i <= 5; i++) {
-      System.out.println(dataModel.getDataListInfo(1));
     }
     dataModel.close();
   }
