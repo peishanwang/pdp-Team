@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
+import edu.neu.ccs.cs5010.ski_data_model.IoUtil;
 
 import java.util.ArrayList;
 import java.util.List;

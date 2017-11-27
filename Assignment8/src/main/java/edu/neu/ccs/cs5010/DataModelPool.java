@@ -2,32 +2,28 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.ski_data_model.DataModelItem;
 import edu.neu.ccs.cs5010.ski_data_model.IDataModel;
-import edu.neu.ccs.cs5010.ski_data_model.LiftDataModel;
-
-import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ThreadLocalRandom;
 
-public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> implements
-        IDataModelPool<DM> {
 
-  public DataModelPool(int maxSize, IDataModelFactory<DM> modelCreator) {
+public class DataModelPool<D extends IDataModel<? extends DataModelItem>> implements
+        IDataModelPool<D> {
+
+  public DataModelPool(int maxSize, IDataModelFactory<D> modelCreator) {
     this.maxPoolSize = maxSize;
     this.modelCreator = modelCreator;
-    this.dataModelPool = new LinkedList<>();
+    this.dataPool = new LinkedList<>();
     this.currentPoolSize = 0;
     this.modelsInFlight = 0;
   }
 
   @Override
-  public synchronized DM requestModel() {
+  public synchronized D requestModel() {
     validateState();
     if (currentPoolSize > 0) {
       modelsInFlight++;
       currentPoolSize--;
-      return dataModelPool.remove();
+      return dataPool.remove();
     }
     if (modelsInFlight < maxPoolSize) {
       modelsInFlight++;
@@ -42,7 +38,7 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
         }
         modelsInFlight++;
         currentPoolSize--;
-        return dataModelPool.remove();
+        return dataPool.remove();
       } catch (InterruptedException e) {
         throw new IllegalStateException("thread interrupted");
       }
@@ -50,9 +46,9 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   }
 
   @Override
-  public synchronized void returnModel(DM model) {
+  public synchronized void returnModel(D model) {
     validateState();
-    dataModelPool.add((DM)model);
+    dataPool.add((D)model);
     modelsInFlight--;
     currentPoolSize++;
     validateState();
@@ -61,52 +57,25 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
 
   @Override
   public synchronized void close() {
-    for (DM model : dataModelPool) {
+    for (D model : dataPool) {
       model.close();
     }
   }
 
   private void validateState() {
-    boolean ok = (currentPoolSize >= 0);
-    ok &= (currentPoolSize <= maxPoolSize);
-    ok &= (modelsInFlight >= 0);
-    ok &= (currentPoolSize + modelsInFlight <= maxPoolSize);
-    if (!ok) {
+    boolean okay = (currentPoolSize >= 0);
+    okay &= (currentPoolSize <= maxPoolSize);
+    okay &= (modelsInFlight >= 0);
+    okay &= (currentPoolSize + modelsInFlight <= maxPoolSize);
+    if (!okay) {
       throw new IllegalStateException("Illegal state of pol, currentPoolSize: " + currentPoolSize
               + ", inFlight: " + modelsInFlight + ", maxSize: " + maxPoolSize);
     }
   }
 
   private final int maxPoolSize;
-  private final IDataModelFactory<DM> modelCreator;
-  private final Queue<DM> dataModelPool;
+  private final IDataModelFactory<D> modelCreator;
+  private final Queue<D> dataPool;
   private int currentPoolSize;
   private int modelsInFlight;
-
-  public static void main(String[] args) throws InterruptedException {
-    final String basePath = ".";
-    final IDataModelPool<LiftDataModel> dataModelPool =
-            new DataModelPool<>(10, () -> new LiftDataModel(basePath));
-
-    final int numThreads = 100;
-    final int numIterations = 1000;
-    List<Thread> threads = new ArrayList<>(numThreads);
-    for (int i = 0; i < numThreads; i++) {
-      threads.add(new Thread(new Runnable() {
-        @Override
-        public void run() {
-          for (int it = 0; it < numIterations; it++) {
-            int liftId = ThreadLocalRandom.current().nextInt(40) + 1;
-            LiftDataModel liftDataModel = dataModelPool.requestModel();
-            System.out.println("lift: " + liftId + " has rides: " + liftDataModel.getDataInfo(liftId));
-            dataModelPool.returnModel(liftDataModel);
-          }
-        }
-      }));
-      threads.get(i).run();
-    }
-    for (int i = 0; i < numThreads; i++) {
-      threads.get(i).join();
-    }
-  }
 }

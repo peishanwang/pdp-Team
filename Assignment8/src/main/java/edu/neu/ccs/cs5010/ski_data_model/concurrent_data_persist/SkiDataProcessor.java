@@ -9,6 +9,7 @@ import java.util.logging.Logger;
  *
  */
 public class SkiDataProcessor implements ISkiDataProcessor {
+  public static final String SKI_DATA_FILE = "PDPAssignment.csv";
   public static final String SKI_DATA_MODEL_BASE_PATH = ".";
   private String path;
   private static final Logger LOGGER
@@ -27,8 +28,9 @@ public class SkiDataProcessor implements ISkiDataProcessor {
    * @param args input arguments
    */
   public static void main(String[] args) {
-    String pathName = SKI_DATA_MODEL_BASE_PATH + File.separator + "PDPAssignment.csv";
-    ISkiDataProcessor processor = new SkiDataProcessor(pathName);
+    String defaultPathName = SKI_DATA_MODEL_BASE_PATH + File.separator + SKI_DATA_FILE;
+    ISkiDataProcessor processor = new SkiDataProcessor(
+            args.length == 0 ? defaultPathName : args[0]);
     long startTime = System.currentTimeMillis();
     processor.processData();
     long endTime = System.currentTimeMillis();

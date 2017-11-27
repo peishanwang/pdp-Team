@@ -30,12 +30,18 @@ public class QueryCmdParser {
 
   @Override
   public boolean equals(Object obj) {
-    if (this == obj) return true;
-    if (obj == null || getClass() != obj.getClass()) return false;
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
 
     QueryCmdParser that = (QueryCmdParser) obj;
 
-    if (getNumberOfQueries() != that.getNumberOfQueries()) return false;
+    if (getNumberOfQueries() != that.getNumberOfQueries()) {
+      return false;
+    }
     return getCsvFile().equals(that.getCsvFile());
   }
 
