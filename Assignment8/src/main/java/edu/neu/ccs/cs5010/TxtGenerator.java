@@ -24,7 +24,7 @@ public class TxtGenerator {
       if (!folderExisted) {
         throw new IOException("Unable to create path");
       }
-      OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(path + fileName),
+      OutputStreamWriter osw = new OutputStreamWriter(new FileOutputStream(fileName),
           encoding);
       BufferedWriter bfw = new BufferedWriter(osw);
       for (int i = 0; i < result.size(); i++) {

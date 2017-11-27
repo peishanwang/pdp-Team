@@ -26,17 +26,4 @@ public interface IoUtil {
       throw new IllegalStateException("Unable to read input", e);
     }
   }
-
-  /**
-   * Get writer using output file's path.
-   * @param relativePath output file's path
-   * @return file writer
-   */
-  static Writer getWriter(String relativePath) {
-    try {
-      return new OutputStreamWriter(new FileOutputStream(relativePath), "UTF-8");
-    } catch (FileNotFoundException | UnsupportedEncodingException e) {
-      throw new IllegalStateException("Unable to read input", e);
-    }
-  }
 }

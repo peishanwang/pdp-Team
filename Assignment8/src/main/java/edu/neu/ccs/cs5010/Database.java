@@ -70,7 +70,7 @@ public class Database {
   }
 
   private String getQuery3Result(int hourId) {
-    HourRideData rideData = hours.getDataInfo(hourId);
+    HourRideData rideData = hours.getDataInfo(hourId - 1);
     if (rideData.getBusyLifts().length != 10) {
       throw new IllegalStateException("invalid lifts");
     }
