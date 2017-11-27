@@ -49,7 +49,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
         for (Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry :
                 hourNumLiftRidesMap.entrySet()) {
           PriorityQueue<LiftWithRides> busiestLifts =
-                  new PriorityQueue<>(40,
+                  new PriorityQueue<>(numBusiestLifts,
                       (obj1, obj2) -> obj2.getNumRides() - obj1.getNumRides());
           getBusiestLifts(hourLiftNumRidesEntry.getValue(), busiestLifts);
           HourRideData data = getBusiestLiftsAlongWithRides(busiestLifts, hourLiftNumRidesEntry);
@@ -92,8 +92,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
     int[] rides = new int[numBusiestLifts];
     while (liftCount < numBusiestLifts) {
       LiftWithRides liftWithRides = busiestLifts.poll();
-      // pri queue is min queue so add into rides from back
-      rides[numBusiestLifts - liftCount - 1] = liftWithRides.getLiftId();
+      rides[numBusiestLifts] = liftWithRides.getLiftId();
       liftCount++;
     }
     return HourRideData.constructHourData(hour, rides);

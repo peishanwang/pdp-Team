@@ -39,6 +39,13 @@ public class Database {
     }
   }
 
+  public void close() {
+    liftrides.close();
+    lifts.close();
+    skiers.close();
+    hours.close();
+  }
+
   private String getQuery1Result(int skierId) {
     readWriteLock.writeLock().lock();
     SkierData skierData;
@@ -61,9 +68,10 @@ public class Database {
     Collections.sort(ridesData, Comparator.comparing(o -> ((Integer) o.getTime())));
     StringBuilder strb = new StringBuilder();
     strb.append("queryId: 2");
-    strb.append(", skierId: ").append(skierId).append(", liftIds: ");
+    strb.append(", skierId: ").append(skierId).append(", [time, liftId]: ");
     for (RawLiftRidesData rideData : ridesData) {
-      strb.append(rideData.getLiftId()).append(", ");
+      strb.append("[").append(rideData.getTime()).append(", ");
+      strb.append(rideData.getLiftId()).append("]").append(", ");
     }
     strb.delete(strb.length() - 2, strb.length());
     return strb.toString();

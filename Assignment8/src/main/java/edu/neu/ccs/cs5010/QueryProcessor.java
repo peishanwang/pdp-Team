@@ -23,6 +23,7 @@ public class QueryProcessor extends Thread {
       int parameter = queryList.get(i).getParameter();
       result.add(database.getResult(type, parameter));
     }
+    database.close();
     TxtGenerator generator = new TxtGenerator(".", "UTF-8");
     generator.generateOutput(result, "Thread" + processorId + ".txt");
   }
