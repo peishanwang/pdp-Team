@@ -1,35 +1,25 @@
 package edu.neu.ccs.cs5010;
 
 import java.util.List;
-import java.util.concurrent.BrokenBarrierException;
-import java.util.concurrent.CyclicBarrier;
 
 public class QueryProcessor implements Runnable {
   private int processorId;
   private List<Query> queryList;
-  private Database database;
+  private ModelDatabase database;
   private TxtGenerator txtGenerator;
-  private CyclicBarrier barrier;
 
-  public QueryProcessor(int processorId, List<Query> queryList, CyclicBarrier barrier) {
+  public QueryProcessor(int processorId, ModelDatabase database, List<Query> queryList) {
     this.processorId = processorId;
     this.queryList = queryList;
-    this.barrier = barrier;
-    database = new Database();
-    this.txtGenerator = new TxtGenerator("Thread" + processorId + ".txt");
+    this.database = database;
+    this.txtGenerator = new TxtGenerator("Thread" + this.processorId + ".txt");
   }
 
   @Override
   public void run() {
-    try {
       for (int i = 0; i < queryList.size(); i++) {
-        txtGenerator.write(database.getResult(queryList.get(i)));
+        txtGenerator.write(database.performQuery(queryList.get(i)));
       }
-      database.close();
       txtGenerator.close();
-      barrier.await();
-    } catch (InterruptedException | BrokenBarrierException e) {
-      e.fillInStackTrace();
-    }
   }
 }

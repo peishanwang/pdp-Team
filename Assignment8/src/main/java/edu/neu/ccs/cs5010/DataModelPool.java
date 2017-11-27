@@ -5,9 +5,9 @@ import edu.neu.ccs.cs5010.ski_data_model.IDataModel;
 import edu.neu.ccs.cs5010.ski_data_model.LiftDataModel;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
-import java.util.concurrent.ConcurrentLinkedDeque;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> implements
@@ -16,13 +16,14 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   public DataModelPool(int maxSize, IDataModelFactory<DM> modelCreator) {
     this.maxPoolSize = maxSize;
     this.modelCreator = modelCreator;
-    this.dataModelPool = new ConcurrentLinkedDeque<>();
+    this.dataModelPool = new LinkedList<>();
     this.currentPoolSize = 0;
     this.modelsInFlight = 0;
   }
 
   @Override
   public synchronized DM requestModel() {
+    validateState();
     if (currentPoolSize > 0) {
       modelsInFlight++;
       currentPoolSize--;
@@ -32,8 +33,11 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
       modelsInFlight++;
       return modelCreator.create();
     } else {
+      if (modelsInFlight != maxPoolSize) {
+        throw new IllegalStateException("");
+      }
       try {
-        while (modelsInFlight == maxPoolSize && currentPoolSize == 0) {
+        while (currentPoolSize == 0 && modelsInFlight == maxPoolSize) {
           wait();
         }
         modelsInFlight++;
@@ -47,9 +51,11 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
 
   @Override
   public synchronized void returnModel(DM model) {
+    validateState();
     dataModelPool.add((DM)model);
     modelsInFlight--;
     currentPoolSize++;
+    validateState();
     notifyAll();
   }
 
@@ -57,6 +63,17 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   public synchronized void close() {
     for (DM model : dataModelPool) {
       model.close();
+    }
+  }
+
+  private void validateState() {
+    boolean ok = (currentPoolSize >= 0);
+    ok &= (currentPoolSize <= maxPoolSize);
+    ok &= (modelsInFlight >= 0);
+    ok &= (currentPoolSize + modelsInFlight <= maxPoolSize);
+    if (!ok) {
+      throw new IllegalStateException("Illegal state of pol, currentPoolSize: " + currentPoolSize
+              + ", inFlight: " + modelsInFlight + ", maxSize: " + maxPoolSize);
     }
   }
 
@@ -69,10 +86,10 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   public static void main(String[] args) throws InterruptedException {
     final String basePath = "D:\\pdp_team_assignments\\Assignment8";
     final IDataModelPool<LiftDataModel> dataModelPool =
-            new DataModelPool<>(2, () -> new LiftDataModel(basePath));
+            new DataModelPool<>(10, () -> new LiftDataModel(basePath));
 
-    final int numThreads = 5;
-    final int numIterations = 10;
+    final int numThreads = 100;
+    final int numIterations = 1000;
     List<Thread> threads = new ArrayList<>(numThreads);
     for (int i = 0; i < numThreads; i++) {
       threads.add(new Thread(new Runnable() {

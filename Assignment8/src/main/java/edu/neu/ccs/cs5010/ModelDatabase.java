@@ -4,9 +4,15 @@ import edu.neu.ccs.cs5010.ski_data_model.*;
 
 import java.util.Comparator;
 import java.util.List;
-import java.util.concurrent.locks.ReentrantReadWriteLock;
+import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ModelDatabase {
+  private static final Logger LOGGER
+          = Logger.getLogger(ModelDatabase.class.getName());
 
   public ModelDatabase() {
     this.rawLiftRidesModelPool = new DataModelPool<>(
@@ -17,12 +23,19 @@ public class ModelDatabase {
             MAX_MODEL_POOL_SIZE, () -> new LiftDataModel(BASE_PATH));
     this.hoursModelPool = new DataModelPool<>(
             MAX_MODEL_POOL_SIZE, () -> new HourRidesDataModel(BASE_PATH));
-    this.dbLockPool = new ReentrantReadWriteLock[MAX_DB_EXCLUSIVE_LOCKS];
+    this.dbLockPool = new Lock[MAX_DB_EXCLUSIVE_LOCKS];
+    for (int i = 0; i < MAX_DB_EXCLUSIVE_LOCKS; i++) {
+      this.dbLockPool[i] = new ReentrantLock();
+    }
+    this.queriesPerformed = new AtomicInteger(0);
   }
 
   public String performQuery(Query query) {
     Query.QueryType queryType = query.getType();
     int key = query.getKey();
+    int queryNum = queriesPerformed.incrementAndGet();
+    LOGGER.log(Level.FINE, "Performing query: " + queryNum + " of type " +
+            queryType.name() + ", " + "key: " + key);
     switch (queryType) {
       case SKIER_SUMMARY:
         return getSkierSummary(key);
@@ -31,7 +44,6 @@ public class ModelDatabase {
       case BUSY_LIFTS_PER_HOUR:
         return getBusyLiftsPerHour(key);
       case LIFT_SUMMARY: {
-        LiftDataModel liftModel = this.liftsModelPool.requestModel();
         return getLiftSummary(key);
       }
       default:
@@ -53,21 +65,17 @@ public class ModelDatabase {
 
   private String getSkierSummary(int skierId) {
     // get lock for skierId by its hash from dbLockPool
-    int skierLockHash = getHash(skierId) % MAX_DB_EXCLUSIVE_LOCKS;
-    ReentrantReadWriteLock readWriteLock = dbLockPool[skierLockHash];
-    readWriteLock.writeLock().lock();
-    SkierData skierData;
-    try {
-      // now get the skierDataModel from the pool
-      SkierDataModel skierDataModel = this.skiersModelPool.requestModel();
-      skierData = skierDataModel.getDataInfo(skierId);
-      skierData.incNumViews();
-      skierDataModel.updateDataInfo(skierId, skierData);
-      // return the skierDataModel back to the pool
-      this.skiersModelPool.returnModel(skierDataModel);
-    } finally {
-      readWriteLock.writeLock().unlock();
-    }
+    int skierLockId = getHash(skierId) % MAX_DB_EXCLUSIVE_LOCKS;
+    Lock skierIdLock = dbLockPool[skierLockId];
+    skierIdLock.lock();
+    // now get the skierDataModel from the pool
+    SkierDataModel skierDataModel = this.skiersModelPool.requestModel();
+    SkierData skierData = skierDataModel.getDataInfo(skierId);
+    skierData.incNumViews();
+    skierDataModel.updateDataInfo(skierId, skierData);
+    // return the skierDataModel back to the pool
+    this.skiersModelPool.returnModel(skierDataModel);
+    skierIdLock.unlock();
     return "queryId: 1"
             + ", skierId: " + skierData.getSkierId()
             + ", numRides: " + skierData.getNumRides()
@@ -125,5 +133,6 @@ public class ModelDatabase {
   private final IDataModelPool<SkierDataModel> skiersModelPool;
   private final IDataModelPool<LiftDataModel> liftsModelPool;
   private final IDataModelPool<HourRidesDataModel> hoursModelPool;
-  private final ReentrantReadWriteLock[] dbLockPool;
+  private final Lock[] dbLockPool;
+  private AtomicInteger queriesPerformed;
 }
