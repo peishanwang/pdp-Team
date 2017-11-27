@@ -7,24 +7,21 @@ public class QueryProcessor extends Thread {
   private int processorId;
   private List<Query> queryList;
   private Database database;
-  private List<String> result;
+  private TxtGenerator txtGenerator;
 
   public QueryProcessor(int processorId, List<Query> queryList) {
     this.processorId = processorId;
     this.queryList = queryList;
     database = new Database();
-    result = new ArrayList<>();
+    this.txtGenerator = new TxtGenerator("Thread" + processorId + ".txt");
   }
 
   @Override
   public void run() {
     for (int i = 0; i < queryList.size(); i++) {
-      int type = queryList.get(i).getQueryId();
-      int parameter = queryList.get(i).getParameter();
-      result.add(database.getResult(type, parameter));
+      txtGenerator.write(database.getResult(queryList.get(i)));
     }
+    txtGenerator.close();
     database.close();
-    TxtGenerator generator = new TxtGenerator(".", "UTF-8");
-    generator.generateOutput(result, "Thread" + processorId + ".txt");
   }
 }

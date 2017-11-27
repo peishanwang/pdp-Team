@@ -48,6 +48,15 @@ public final class IOUtil {
     return getBufferedWriter(filePath, DEFAULT_WRITE_BUFFER_SIZE);
   }
 
+  public static Writer getTextWriter(final String filePath) {
+    try {
+      return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),
+              StandardCharsets.UTF_8), DEFAULT_WRITE_BUFFER_SIZE);
+    } catch (FileNotFoundException e) {
+      throw new IllegalStateException("Unable to find output file: " + filePath, e);
+    }
+  }
+
   public static RandomAccessFile getRandomFileAccessor(final String filePath) {
     try {
       return new RandomAccessFile(filePath, "rw");

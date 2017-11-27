@@ -24,18 +24,20 @@ public class Database {
     hours = new HourRidesDataModel(PATH);
   }
 
-  public String getResult(int queryId, int parameter) {
-    switch (queryId) {
-      case 1:
-        return getQuery1Result(parameter);
-      case 2:
-        return getQuery2Result(parameter);
-      case 3 :
-        return getQuery3Result(parameter);
-      case 4 :
-        return getQuery4Result(parameter);
+  public String getResult(Query query) {
+    Query.QueryType queryType = query.getType();
+    int key = query.getKey();
+    switch (queryType) {
+      case SKIER_SUMMARY:
+        return getQuery1Result(key);
+      case SKIER_RIDE_DETAILS:
+        return getQuery2Result(key);
+      case BUSY_LIFTS_PER_HOUR:
+        return getQuery3Result(key);
+      case LIFT_SUMMARY:
+        return getQuery4Result(key);
       default:
-        throw new IllegalArgumentException("Illegal query id" + queryId);
+        throw new IllegalArgumentException("Illegal query type" + queryType.name());
     }
   }
 

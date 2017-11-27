@@ -4,7 +4,7 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
-interface Factory<T extends DataModelItem> {
+interface DataModelItemFactory<T extends DataModelItem> {
   T create(DataModelItem item);
 }
 
@@ -12,7 +12,7 @@ public abstract class IDataModel<T extends DataModelItem> {
   public IDataModel(final String sourcePath,
                     DataSourceOpenMode openMode,
                     int numFields,
-                    Factory<T> factory) {
+                    DataModelItemFactory<T> factory) {
     if (openMode == DataSourceOpenMode.CREATE_MODEL) {
       this.dataSource = new DataSource(
             sourcePath,
@@ -56,7 +56,7 @@ public abstract class IDataModel<T extends DataModelItem> {
     }
   }
 
-  private final Factory<T> itemFactory;
+  private final DataModelItemFactory<T> itemFactory;
   private final DataSourceOpenMode openMode;
   protected final DataSource dataSource;
 }

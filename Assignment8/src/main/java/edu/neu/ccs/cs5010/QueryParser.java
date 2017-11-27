@@ -3,12 +3,9 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.logging.Logger;
 
 /**

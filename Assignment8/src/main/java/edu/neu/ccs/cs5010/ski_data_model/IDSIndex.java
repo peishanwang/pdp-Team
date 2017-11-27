@@ -4,7 +4,7 @@ public abstract class IDSIndex<T extends DataModelItem> extends IDataModel<T> {
   public IDSIndex(final String sourcePath,
                   DataSourceOpenMode openMode,
                   int numFields,
-                  Factory<T> factory) {
+                  DataModelItemFactory<T> factory) {
     super(sourcePath, openMode, numFields, factory);
   }
   abstract int getIndexColumn();
