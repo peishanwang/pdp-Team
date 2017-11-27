@@ -84,7 +84,7 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   private int modelsInFlight;
 
   public static void main(String[] args) throws InterruptedException {
-    final String basePath = "D:\\pdp_team_assignments\\Assignment8";
+    final String basePath = ".";
     final IDataModelPool<LiftDataModel> dataModelPool =
             new DataModelPool<>(10, () -> new LiftDataModel(basePath));
 

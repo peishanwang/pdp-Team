@@ -1,8 +1,10 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
+
 public class SkierToRideIndex extends IDSIndex<SkierIndexData> {
   public SkierToRideIndex(final String baseStorePath, DataSourceOpenMode mode) {
-    super(baseStorePath + '/' + RAW_LIFT_RIDES_FILE_INDEX_STORE,
+    super(baseStorePath + File.separator + RAW_LIFT_RIDES_FILE_INDEX_STORE,
             mode,
             INDEX_NUM_FIELDS,
             SkierIndexData::new);

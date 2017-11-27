@@ -1,10 +1,11 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
 import java.util.Random;
 
 public class SkierDataModel extends IDataModel<SkierData> {
   public SkierDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + SKIER_FILE_STORE,
+    super(baseStorePath + File.separator + SKIER_FILE_STORE,
             openMode,
             NUM_FIELDS,
             SkierData::new);

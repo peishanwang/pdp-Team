@@ -1,9 +1,11 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
+
 public class HourRidesDataModel extends IDataModel<HourRideData> {
   public HourRidesDataModel(final String baseStorePath,
                             DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + HOUR_FILE_STORE,
+    super(baseStorePath + File.separator + HOUR_FILE_STORE,
             openMode,
             NUM_FIELDS,
             HourRideData::new);

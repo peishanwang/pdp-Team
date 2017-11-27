@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist;
 
+import java.io.File;
 import java.util.logging.Logger;
 
 
@@ -26,8 +27,8 @@ public class SkiDataProcessor implements ISkiDataProcessor {
    * @param args input arguments
    */
   public static void main(String[] args) {
-    ISkiDataProcessor processor = new SkiDataProcessor
-            (SKI_DATA_MODEL_BASE_PATH + "\\PDPAssignment.csv");
+    String pathName = SKI_DATA_MODEL_BASE_PATH + File.separator + "PDPAssignment.csv";
+    ISkiDataProcessor processor = new SkiDataProcessor(pathName);
     long startTime = System.currentTimeMillis();
     processor.processData();
     long endTime = System.currentTimeMillis();

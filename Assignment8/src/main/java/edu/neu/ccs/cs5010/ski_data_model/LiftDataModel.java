@@ -1,10 +1,11 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
 import java.util.Random;
 
 public class LiftDataModel extends IDataModel<LiftData> {
   public LiftDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + LIFT_FILE_STORE,
+    super(baseStorePath + File.separator + LIFT_FILE_STORE,
             openMode,
             NUM_FIELDS,
             LiftData::new);
@@ -29,7 +30,7 @@ public class LiftDataModel extends IDataModel<LiftData> {
 
 
   public static void main(String[] args) {
-    String basePath = "D:\\pdp_team_assignments\\Assignment8";
+    String basePath = ".";
 //    LiftDataModel liftDataModel = new LiftDataModel(basePath, DataSourceOpenMode.CREATE_MODEL);
 //    Random random = new Random();
 //    for (int i = 1; i <= 10; i++) {
