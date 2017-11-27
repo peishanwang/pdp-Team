@@ -49,7 +49,6 @@ public class DataSource implements IDataSource {
         fields[i] = this.fileAccessor.readInt();
       }
     } catch (IOException e) {
-      System.out.println(itemId);
       throw new IllegalStateException("unable to read data", e);
     }
     this.numRowsRead++;
