@@ -3,7 +3,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.ski_data_model.IoUtil;
+import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,16 +20,21 @@ public class QueryParser implements IQueryParser {
 
 
   @Override
-  public List<Query> parseInfo(String path) {
+  public List<Query> parseInfo(String path, int numberOfQueries) {
     List<Query> queryList = new ArrayList<>();
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
-    List<String[]> rows = parser.parseAll(IoUtil.getReader(path));
+    List<String[]> rows = parser.parseAll(IOUtil.getReader(path));
 
     long startTime = System.currentTimeMillis();
+    int numRows = 0;
     for (String[] row : rows) {
       queryList.add(new Query(Integer.parseInt(row[0]), Integer.parseInt(row[1])));
+      numRows++;
+      if (numRows == numberOfQueries) {
+        break;
+      }
     }
     long endTime = System.currentTimeMillis();
     String str = String.format("time taken to read rows: %1$d ms", endTime - startTime);

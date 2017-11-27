@@ -8,6 +8,6 @@ import java.util.List;
  * @see QueryParser
  */
 public interface IQueryParser {
-  List<Query> parseInfo(String path);
+  List<Query> parseInfo(String path, int numberOfQueries);
 
 }

@@ -2,10 +2,10 @@ package edu.neu.ccs.cs5010;
 
 public class SkiQueryProcessor {
   private String path;
-  private int numOfThreads;
-  public SkiQueryProcessor(String path, int numOfThreads) {
+  private int numberOfQueries;
+  public SkiQueryProcessor(String path, int numberOfQueries) {
     this.path = path;
-    this.numOfThreads = numOfThreads;
+    this.numberOfQueries = numberOfQueries;
   }
 
   public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class SkiQueryProcessor {
 
   public void processQuery() {
     IQueryParser parser = new QueryParser();
-    QueryExecutor executor = new QueryExecutor(parser.parseInfo(path), numOfThreads);
+    QueryExecutor executor = new QueryExecutor(parser.parseInfo(path, numberOfQueries));
     executor.execute();
   }
 }

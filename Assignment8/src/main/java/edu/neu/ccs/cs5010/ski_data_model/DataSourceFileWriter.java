@@ -7,7 +7,7 @@ import java.io.OutputStream;
 public class DataSourceFileWriter implements Closeable {
   public DataSourceFileWriter(String filePath, int width) {
     fixedColWidth = width;
-    writer = IoUtil.getBufferedWriter(filePath);
+    writer = IOUtil.getBufferedWriter(filePath);
     numRowsWritten = 0;
   }
 
@@ -15,7 +15,7 @@ public class DataSourceFileWriter implements Closeable {
     if (data.getNumFields() * Integer.BYTES != fixedColWidth) {
       throw new IllegalArgumentException("Invalid width for data being written");
     }
-    writer.write(IoUtil.intArrayToByteArray(data.getFields()));
+    writer.write(IOUtil.intArrayToByteArray(data.getFields()));
     numRowsWritten++;
   }
 
