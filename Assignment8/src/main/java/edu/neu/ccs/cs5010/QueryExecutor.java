@@ -2,10 +2,12 @@ package edu.neu.ccs.cs5010;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 public class QueryExecutor {
   private List<QueryProcessor> allThreads;
-
+  private CyclicBarrier barrier;
   public QueryExecutor(List<Query> queryList,
                        int numOfThreads) {
     allThreads = new ArrayList<>();
@@ -14,6 +16,7 @@ public class QueryExecutor {
       allThreads.add(new QueryProcessor(i + 1,
           queryList.subList(i * queriesEachThread, (i + 1) * queriesEachThread)));
     }
+    barrier  = new CyclicBarrier(numOfThreads);
   }
 
 
@@ -23,9 +26,15 @@ public class QueryExecutor {
     }
   }
 
-  public void join() throws InterruptedException {
-    for (QueryProcessor thread : allThreads) {
-      thread.join();
+  public void join() {
+    try {
+      for (QueryProcessor thread : allThreads) {
+        thread.join();
+        barrier.await();
+      }
+    } catch (InterruptedException | BrokenBarrierException e) {
+      e.getStackTrace();
     }
+
   }
 }

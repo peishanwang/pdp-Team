@@ -22,11 +22,7 @@ public class SkiQueryProcessor {
     QueryExecutor executor = new QueryExecutor(parser.parseInfo(PATH),NUM_THREADS);
     long startTime = System.currentTimeMillis();
     executor.start();
-    try {
-      executor.join();
-    } catch (InterruptedException e) {
-      e.getStackTrace();
-    }
+    executor.join();
     long endTime = System.currentTimeMillis();
     long timeTaken = endTime - startTime;
     String str = String.format("Time taken for %1$s threads : %2$d ms",
