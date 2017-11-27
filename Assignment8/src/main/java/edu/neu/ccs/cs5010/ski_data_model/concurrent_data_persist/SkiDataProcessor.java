@@ -8,7 +8,7 @@ import java.util.logging.Logger;
  *
  */
 public class SkiDataProcessor implements ISkiDataProcessor {
-  public static final String SKI_DATA_MODEL_BASE_PATH = "D:\\pdp_team_assignments\\Assignment8";
+  public static final String SKI_DATA_MODEL_BASE_PATH = ".";
   private String path;
   private static final Logger LOGGER
       = Logger.getLogger(SkiDataProcessor.class.getName());

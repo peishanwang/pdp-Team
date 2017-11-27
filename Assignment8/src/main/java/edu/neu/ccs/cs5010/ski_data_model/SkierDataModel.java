@@ -20,7 +20,7 @@ public class SkierDataModel extends IDataModel<SkierData> {
   }
 
   @Override
-  void updateDataInfo(int itemId, SkierData itemData) {
+  public void updateDataInfo(int itemId, SkierData itemData) {
     super.updateDataInfo(itemId - 1 /* rowId */, itemData);
   }
 
@@ -29,7 +29,7 @@ public class SkierDataModel extends IDataModel<SkierData> {
 
 
   public static void main(String[] args) {
-    String basePath = "D:\\pdp_team_assignments\\Assignment8";
+    String basePath = ".";
 //    SkierDataModel skierDataModel = new SkierDataModel(basePath, DataSourceOpenMode.CREATE_MODEL);
 //    Random random = new Random();
 //    for (int i = 1; i <= 10; i++) {

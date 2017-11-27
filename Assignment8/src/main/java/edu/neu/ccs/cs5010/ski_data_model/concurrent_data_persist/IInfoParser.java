@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist;
 
 /**
- * Interface of InfoParser.
+ * Interface of QueryParser.
  *
  * @see InfoParser
  */

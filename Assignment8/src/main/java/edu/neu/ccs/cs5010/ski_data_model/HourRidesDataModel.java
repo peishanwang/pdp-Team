@@ -18,7 +18,7 @@ public class HourRidesDataModel extends IDataModel<HourRideData> {
 
 
   public static void main(String[] args) {
-    String basePath = "D:\\pdp_team_assignments\\Assignment8";
+    String basePath = ".";
 //    HourRidesDataModel dataModel = new HourRidesDataModel(basePath, DataSourceOpenMode
 //            .CREATE_MODEL);
 //    dataModel.addDataInfo(HourRideData.constructHourData(

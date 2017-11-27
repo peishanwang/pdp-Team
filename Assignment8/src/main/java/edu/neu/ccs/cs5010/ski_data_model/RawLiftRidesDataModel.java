@@ -31,14 +31,15 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
 
 
   public List<RawLiftRidesData> getDataListInfo(int skierId) {
-   SkierIndexData skierIndexData = skierRidesIndex.getDataInfo(skierId);
-   int[] rides = skierIndexData.getRidesId();
-   List<RawLiftRidesData> skierRides = new ArrayList<>(rides.length);
+    SkierIndexData skierIndexData = skierRidesIndex.getDataInfo(skierId);
+    int[] rides = skierIndexData.getRidesId();
+    List<RawLiftRidesData> skierRides = new ArrayList<>(rides.length);
     for (int ride : rides) {
       skierRides.add(super.getDataInfo(ride - 1 /* rowId */));
     }
-   return skierRides;
+    return skierRides;
   }
+
 
   @Override
   public RawLiftRidesData getDataInfo(int rideId) {
@@ -64,7 +65,7 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
   private static final int NUM_FIELDS = 4;
 
   public static void main(String[] args) {
-    String basePath = "D:\\pdp_team_assignments\\Assignment8";
+    String basePath = ".";
 
     // init index in create mode
 //    SkierToRideIndex index = new SkierToRideIndex(basePath, DataSourceOpenMode.CREATE_MODEL);
