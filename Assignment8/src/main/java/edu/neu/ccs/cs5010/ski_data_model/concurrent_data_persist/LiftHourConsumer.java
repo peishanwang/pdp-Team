@@ -92,7 +92,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
     int[] rides = new int[numBusiestLifts];
     while (liftCount < numBusiestLifts) {
       LiftWithRides liftWithRides = busiestLifts.poll();
-      rides[numBusiestLifts] = liftWithRides.getLiftId();
+      rides[liftCount] = liftWithRides.getLiftId();
       liftCount++;
     }
     return HourRideData.constructHourData(hour, rides);

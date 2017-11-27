@@ -16,7 +16,7 @@ public class IllegalCmdArgumentException extends RuntimeException {
   public IllegalCmdArgumentException(String str) {
     super(str);
     LOGGER.info("You need to input following two arguments:\n"
-        + "1.csv file containing lift records.\n"
-        + "2.choose \"Sequential\" or \"Concurrent\" solution to generate result.\n");
+        + "1.csv file containing query records.\n"
+        + "2.number of queries(20 must be a factor of this value).\n");
   }
 }
