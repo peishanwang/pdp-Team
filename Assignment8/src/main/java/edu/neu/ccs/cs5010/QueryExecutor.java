@@ -28,6 +28,7 @@ public class QueryExecutor {
           queryList.subList(i * queriesEachThread, (i + 1) * queriesEachThread))));
     }
     try {
+      // get results from all threads
       for (Future queryResFut : queryResultFutures) {
         queryResFut.get();
       }

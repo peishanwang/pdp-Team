@@ -17,9 +17,9 @@ public class QueryProcessor implements Runnable {
 
   @Override
   public void run() {
-      for (int i = 0; i < queryList.size(); i++) {
-        txtGenerator.write(database.performQuery(queryList.get(i)));
-      }
-      txtGenerator.close();
+    for (int i = 0; i < queryList.size(); i++) {
+      txtGenerator.writeLine(database.performQuery(queryList.get(i)));
+    }
+    txtGenerator.close();
   }
 }

@@ -15,17 +15,17 @@ public class TxtGenerator {
     writer = IOUtil.getTextWriter(filePath);
   }
 
-  public void write(String result) {
+  public void writeLine(String result) {
     try {
-      writer.write(result + "\n");
+      writer.write(result + System.lineSeparator());
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write file: " + this.filePath, e);
     }
   }
 
-  public void write(List<String> result) {
+  public void writeLines(List<String> result) {
     for (int i = 0; i < result.size(); i++) {
-      write(result.get(i));
+      writeLine(result.get(i));
     }
   }
 
