@@ -14,12 +14,12 @@ public class SkierQueueItem implements ISkierQueueItem {
    * SkierQueueItem Consumer.
    * @param skierId id of skier
    * @param liftId id of lift
-   * @param ts of ride
+   * @param timeStamp of ride
    */
-  public SkierQueueItem(int skierId, int liftId, int ts) {
+  public SkierQueueItem(int skierId, int liftId, int timeStamp) {
     this.skierId = skierId;
     this.liftId = liftId;
-    this.timestamp = ts;
+    this.timestamp = timeStamp;
   }
 
   /**

@@ -1,6 +1,5 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
-import java.util.Random;
 
 public class LiftDataModel extends IDataModel<LiftData> {
   public LiftDataModel(final String baseStorePath, DataSourceOpenMode openMode) {

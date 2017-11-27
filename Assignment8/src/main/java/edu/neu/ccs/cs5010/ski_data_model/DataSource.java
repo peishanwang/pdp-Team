@@ -43,14 +43,13 @@ public class DataSource implements IDataSource {
 
     int[] fields = new int[numFields];
     try {
-      this.fileAccessor.seek(itemId * fixedColWidth);
+      this.fileAccessor.seek((long)itemId * fixedColWidth);
       for (int i = 0; i < numFields; i++) {
         fields[i] = this.fileAccessor.readInt();
       }
     } catch (IOException e) {
       throw new IllegalStateException("unable to read data", e);
     }
-    this.numRowsRead++;
     return new DataModelItem(fields);
   }
 
@@ -63,15 +62,11 @@ public class DataSource implements IDataSource {
       this.numTotalRows++;
     }
     try {
-      this.fileAccessor.seek(itemId * fixedColWidth);
+      this.fileAccessor.seek((long)itemId * fixedColWidth);
       this.fileAccessor.write(IoUtil.intArrayToByteArray(newValue.getFields()));
     } catch (IOException e) {
       throw new IllegalStateException("unable to write data", e);
     }
-  }
-
-  public int getNumItemsRead() {
-    return numRowsRead;
   }
 
   @Override
@@ -120,5 +115,4 @@ public class DataSource implements IDataSource {
   private final int numFields;
   private final int fixedColWidth;
   private int numTotalRows;
-  private int numRowsRead;
 }

@@ -2,7 +2,7 @@ package edu.neu.ccs.cs5010.ski_data_model;
 
 public class DataModelItem {
   public DataModelItem(int[] fields) {
-    this.fields = fields;
+    this.fields = fields.clone();
     this.numFields = fields.length;
   }
 

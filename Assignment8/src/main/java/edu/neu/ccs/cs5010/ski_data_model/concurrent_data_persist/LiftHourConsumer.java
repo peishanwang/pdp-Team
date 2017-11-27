@@ -3,9 +3,6 @@ package edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist;
 import edu.neu.ccs.cs5010.ski_data_model.DataSourceOpenMode;
 import edu.neu.ccs.cs5010.ski_data_model.HourRideData;
 import edu.neu.ccs.cs5010.ski_data_model.HourRidesDataModel;
-
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 import java.util.PriorityQueue;
 import java.util.concurrent.ConcurrentHashMap;
@@ -23,7 +20,7 @@ import java.util.function.Consumer;
 public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
   private ConcurrentMap<Integer, ConcurrentMap<Integer, AtomicInteger>> hourNumLiftRidesMap;
   private AtomicBoolean finished;
-  private final int numBusiestLifts = 10;
+  private static final int NUM_BUSIEST_LIFTS = 10;
 
   /**
    * LiftHourConsumer constructor.
@@ -49,7 +46,7 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
         for (Map.Entry<Integer, ConcurrentMap<Integer, AtomicInteger>> hourLiftNumRidesEntry :
                 hourNumLiftRidesMap.entrySet()) {
           PriorityQueue<LiftWithRides> busiestLifts =
-                  new PriorityQueue<>(numBusiestLifts,
+                  new PriorityQueue<>(NUM_BUSIEST_LIFTS,
                       (obj1, obj2) -> obj2.getNumRides() - obj1.getNumRides());
           getBusiestLifts(hourLiftNumRidesEntry.getValue(), busiestLifts);
           HourRideData data = getBusiestLiftsAlongWithRides(busiestLifts, hourLiftNumRidesEntry);
@@ -89,8 +86,8 @@ public class LiftHourConsumer implements Consumer<LiftHourQueueItem> {
                                                      hourLiftNumRidesEntry) {
     int hour = hourLiftNumRidesEntry.getKey();
     int liftCount = 0;
-    int[] rides = new int[numBusiestLifts];
-    while (liftCount < numBusiestLifts) {
+    int[] rides = new int[NUM_BUSIEST_LIFTS];
+    while (liftCount < NUM_BUSIEST_LIFTS) {
       LiftWithRides liftWithRides = busiestLifts.poll();
       rides[liftCount] = liftWithRides.getLiftId();
       liftCount++;

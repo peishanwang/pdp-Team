@@ -95,7 +95,7 @@ public class ModelDatabase {
     List<RawLiftRidesData> ridesData = rawLiftRidesDataModel.getDataListInfo(skierId);
     // return model back to pool
     this.rawLiftRidesModelPool.returnModel(rawLiftRidesDataModel);
-    ridesData.sort(Comparator.comparing(o -> ((Integer) o.getTime())));
+    ridesData.sort(Comparator.comparing(obj -> ((Integer) obj.getTime())));
     StringBuilder strb = new StringBuilder();
     strb.append("queryId: 2");
     strb.append(", skierId: ").append(skierId).append(", [time, liftId]: ");

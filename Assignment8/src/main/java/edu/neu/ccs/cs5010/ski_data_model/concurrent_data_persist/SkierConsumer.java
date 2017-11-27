@@ -16,7 +16,7 @@ import java.util.function.Consumer;
  * @author Manika and Peishan
  */
 public class SkierConsumer implements Consumer<SkierQueueItem> {
-  class SkierRideStats {
+  static class SkierRideStats {
     SkierRideStats() {
       rideIds = new ConcurrentLinkedQueue<>();
       totalVertical = new AtomicInteger(0);

@@ -2,7 +2,6 @@ package edu.neu.ccs.cs5010.ski_data_model;
 
 import java.io.*;
 import java.nio.ByteBuffer;
-import java.nio.CharBuffer;
 import java.nio.charset.StandardCharsets;
 
 public interface IoUtil {
@@ -57,9 +56,9 @@ public interface IoUtil {
     }
   }
 
-  static byte[] intArrayToByteArray(int[] x) {
-    ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES * x.length);
-    for (int i : x) {
+  static byte[] intArrayToByteArray(int[] num) {
+    ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES * num.length);
+    for (int i : num) {
       buffer.putInt(i);
     }
     return buffer.array();

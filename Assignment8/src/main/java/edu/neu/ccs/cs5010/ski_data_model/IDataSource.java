@@ -6,13 +6,13 @@ public interface IDataSource {
   default void create(DataModelItem item) {
     throw new NotImplementedException();
   }
-  default DataModelItem read(int id) {
+  default DataModelItem read(int itemId) {
     throw new NotImplementedException();
   }
-  default void update(int id, DataModelItem item) {
+  default void update(int itemId, DataModelItem item) {
     throw new NotImplementedException();
   }
-  default void delete(int id) {
+  default void delete(int itemId) {
     throw new NotImplementedException();
   }
   int getNumDataItems();
