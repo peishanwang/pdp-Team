@@ -1,6 +1,6 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
+import edu.neu.ccs.cs5010.ski_data_model.IoUtil;
 
 import java.io.*;
 import java.util.List;
@@ -12,7 +12,7 @@ public class TxtGenerator {
    */
   public TxtGenerator(final String filePath) {
     this.filePath = filePath;
-    writer = IOUtil.getTextWriter(filePath);
+    writer = IoUtil.getTextWriter(filePath);
   }
 
   public void writeLine(String result) {
@@ -20,12 +20,6 @@ public class TxtGenerator {
       writer.write(result + System.lineSeparator());
     } catch (IOException e) {
       throw new IllegalStateException("Unable to write file: " + this.filePath, e);
-    }
-  }
-
-  public void writeLines(List<String> result) {
-    for (int i = 0; i < result.size(); i++) {
-      writeLine(result.get(i));
     }
   }
 

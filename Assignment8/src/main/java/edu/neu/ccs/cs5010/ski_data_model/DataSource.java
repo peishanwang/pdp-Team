@@ -7,14 +7,13 @@ public class DataSource implements IDataSource {
   public DataSource(final String filePath,
                     DataSourceOpenMode openMode,
                     int numFields) {
-    this.filePath = filePath;
     this.openMode = openMode;
     this.numFields = numFields;
     this.fixedColWidth = numFields * Integer.BYTES;
     if (openMode == DataSourceOpenMode.CREATE_MODEL) {
       this.batchFileWriter = new DataSourceFileWriter(filePath, fixedColWidth);
     } else if (openMode == DataSourceOpenMode.ACCESS_MODEL) {
-      this.fileAccessor = IOUtil.getRandomFileAccessor(filePath);
+      this.fileAccessor = IoUtil.getRandomFileAccessor(filePath);
       this.numTotalRows = getDataColsInFile();
     } else {
       throw new IllegalArgumentException("Invalid open mode");
@@ -65,7 +64,7 @@ public class DataSource implements IDataSource {
     }
     try {
       this.fileAccessor.seek(itemId * fixedColWidth);
-      this.fileAccessor.write(IOUtil.intArrayToByteArray(newValue.getFields()));
+      this.fileAccessor.write(IoUtil.intArrayToByteArray(newValue.getFields()));
     } catch (IOException e) {
       throw new IllegalStateException("unable to write data", e);
     }
@@ -117,7 +116,6 @@ public class DataSource implements IDataSource {
 
   private RandomAccessFile fileAccessor;
   private DataSourceFileWriter batchFileWriter;
-  private final String filePath;
   private final DataSourceOpenMode openMode;
   private final int numFields;
   private final int fixedColWidth;

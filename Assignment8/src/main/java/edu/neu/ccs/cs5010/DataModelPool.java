@@ -83,30 +83,4 @@ public class DataModelPool<DM extends IDataModel<? extends DataModelItem>> imple
   private int currentPoolSize;
   private int modelsInFlight;
 
-  public static void main(String[] args) throws InterruptedException {
-    final String basePath = "D:\\pdp_team_assignments\\Assignment8";
-    final IDataModelPool<LiftDataModel> dataModelPool =
-            new DataModelPool<>(10, () -> new LiftDataModel(basePath));
-
-    final int numThreads = 100;
-    final int numIterations = 1000;
-    List<Thread> threads = new ArrayList<>(numThreads);
-    for (int i = 0; i < numThreads; i++) {
-      threads.add(new Thread(new Runnable() {
-        @Override
-        public void run() {
-          for (int it = 0; it < numIterations; it++) {
-            int liftId = ThreadLocalRandom.current().nextInt(40) + 1;
-            LiftDataModel liftDataModel = dataModelPool.requestModel();
-            System.out.println("lift: " + liftId + " has rides: " + liftDataModel.getDataInfo(liftId));
-            dataModelPool.returnModel(liftDataModel);
-          }
-        }
-      }));
-      threads.get(i).run();
-    }
-    for (int i = 0; i < numThreads; i++) {
-      threads.get(i).join();
-    }
-  }
 }

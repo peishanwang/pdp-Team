@@ -21,18 +21,18 @@ public class DataModelItem {
     return getField(getKeyColumn());
   }
 
-  protected int getNumFields() {
+  public int getNumFields() {
     return numFields;
   }
 
-  protected int getField(int index) {
+  public int getField(int index) {
     if (index < 0 || index > this.numFields) {
       throw new IllegalArgumentException("invalid index");
     }
     return this.fields[index];
   }
 
-  protected void updateField(int index, int newValue) {
+  public void updateField(int index, int newValue) {
     if (index < 0 || index > this.numFields) {
       throw new IllegalArgumentException("invalid index");
     }
