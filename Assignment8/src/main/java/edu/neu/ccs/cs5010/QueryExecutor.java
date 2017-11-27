@@ -2,7 +2,6 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.exceptions.IllegalCmdArgumentException;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
 
@@ -13,6 +12,7 @@ public class QueryExecutor {
     this.queryList = queryList;
     this.executor = Executors.newFixedThreadPool(numOfThreads);
     this.modelDatabase = new ModelDatabase();
+    this.syncBarrier = new CyclicBarrier(numOfThreads + 1);
   }
 
   public void execute() {
@@ -21,24 +21,24 @@ public class QueryExecutor {
     }
     int queriesEachThread = queryList.size() / numOfThreads;
     long startTime = System.currentTimeMillis();
-    List<Future> queryResultFutures = new ArrayList<>(numOfThreads);
     for (int i = 0; i < numOfThreads; i++) {
-      queryResultFutures.add(executor.submit(new QueryProcessor(i + 1,
+      executor.submit(new QueryProcessor(i + 1,
           modelDatabase,
-          queryList.subList(i * queriesEachThread, (i + 1) * queriesEachThread))));
+          syncBarrier,
+          queryList.subList(i * queriesEachThread, (i + 1) * queriesEachThread)));
     }
     try {
-      // get results from all threads
-      for (Future queryResFut : queryResultFutures) {
-        queryResFut.get();
-      }
+      // wait for all threads to start together
+      this.syncBarrier.await();
+      // again wait for results from all threads
+      this.syncBarrier.await();
       long endTime = System.currentTimeMillis();
       long timeTaken = endTime - startTime;
       String str = String.format("Time taken for %1$s threads : %2$d ms",
           numOfThreads,
           timeTaken);
       System.out.println(str);
-    } catch (ExecutionException | InterruptedException e) {
+    } catch (InterruptedException | BrokenBarrierException e) {
       throw new IllegalStateException("Failed to write output for queries", e);
     }
     executor.shutdown();
@@ -50,4 +50,5 @@ public class QueryExecutor {
   private final ExecutorService executor;
   private final List<Query> queryList;
   private final ModelDatabase modelDatabase;
+  private final CyclicBarrier syncBarrier;
 }
