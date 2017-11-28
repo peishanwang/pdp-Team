@@ -44,8 +44,8 @@ public class QueryProcessor implements Runnable {
       }
       txtGenerator.close();
       long threadEndTime = System.currentTimeMillis();
-      LOGGER.log(Level.FINE, "Time taken by thread: " + this.processorId + " = " +
-              (threadEndTime - threadStartTime));
+      LOGGER.log(Level.FINE, "Time taken by thread: " + this.processorId + " = "
+              + (threadEndTime - threadStartTime));
       this.syncBarrier.await();
     } catch (InterruptedException | BrokenBarrierException e) {
       throw new IllegalStateException("Fail to write queries output for thread: " + processorId, e);

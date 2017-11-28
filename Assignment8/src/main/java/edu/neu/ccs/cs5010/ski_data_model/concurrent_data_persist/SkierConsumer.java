@@ -25,6 +25,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
     Queue<Integer> rideIds;
     AtomicInteger totalVertical;
   }
+
   private ConcurrentMap<Integer, SkierRideStats> skierVerticalRideMap;
   private static final int MAX_SKIERS = 40000;
   private AtomicBoolean finished;

@@ -4,6 +4,7 @@ package edu.neu.ccs.cs5010.ski_data_model;
  * Record of lift to number of rides data for each lifts.
  */
 public class LiftData extends DataModelItem {
+
   /**
    * Constructor of LiftData
    * @param dataModelItem dataModel Item

@@ -81,5 +81,6 @@ public class SkierIndexData extends DataModelItem {
     }
     return new SkierIndexData(skierRidesIndexData);
   }
+
   private int nextAvailableField;
 }

@@ -45,8 +45,8 @@ public class ModelDatabase {
     Query.QueryType queryType = query.getType();
     int key = query.getKey();
     int queryNum = queriesPerformed.incrementAndGet();
-    LOGGER.log(Level.FINE, "Performing query: " + queryNum + " of type " +
-            queryType.name() + ", " + "key: " + key);
+    LOGGER.log(Level.FINE, "Performing query: " + queryNum + " of type "
+            + queryType.name() + ", " + "key: " + key);
     switch (queryType) {
       case SKIER_SUMMARY:
         return getSkierSummary(key);

@@ -83,8 +83,8 @@ public class DataSource implements IDataSource {
       throw new IllegalStateException("Unable to read file ", e);
     }
     if (fileSize % this.fixedColWidth != 0) {
-      throw new IllegalStateException("Illegal file format," + fileSize +
-              ", width: " + fixedColWidth);
+      throw new IllegalStateException("Illegal file format," + fileSize
+              + ", width: " + fixedColWidth);
     }
     return (int)(fileSize / this.fixedColWidth);
   }
