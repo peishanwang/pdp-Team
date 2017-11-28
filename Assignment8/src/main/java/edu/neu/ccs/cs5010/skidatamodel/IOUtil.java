@@ -1,16 +1,16 @@
 package edu.neu.ccs.cs5010.skidatamodel;
 
-import java.io.InputStreamReader;
-import java.io.Reader;
+import java.io.BufferedOutputStream;
+import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.OutputStream;
-import java.io.RandomAccessFile;
-import java.io.Writer;
-import java.io.BufferedWriter;
-import java.io.BufferedOutputStream;
-import java.io.OutputStreamWriter;
 import java.io.FileOutputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.RandomAccessFile;
+import java.io.Reader;
+import java.io.Writer;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
