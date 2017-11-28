@@ -24,14 +24,14 @@ public class SkierIndexDataTest {
 
   @Test(expected = IllegalStateException.class)
   public void testConstruct() {
-    SkierIndexData.constructRawLiftRidesData(1, new int[101]);
+    SkierIndexData.constructSkierToRideData(1, new int[101]);
   }
 
   @Test
   public void testConstruct2() {
     int[] rides = new int[100];
     rides[0] = 1;
-    SkierIndexData.constructRawLiftRidesData(1, rides);
+    SkierIndexData.constructSkierToRideData(1, rides);
   }
 
   @Test(expected = IllegalArgumentException.class)

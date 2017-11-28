@@ -1,6 +1,14 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+/**
+ * Record to store skier to rideIndex data for each skiers.
+ */
 public class SkierToRideIndex extends IDSIndex<SkierIndexData> {
+  /**
+   * Constructor of SkierToRideIndex.
+   * @param baseStorePath path where this file store.
+   * @param mode mode of accessing this record.
+   */
   public SkierToRideIndex(final String baseStorePath, DataSourceOpenMode mode) {
     super(baseStorePath + '/' + RAW_LIFT_RIDES_FILE_INDEX_STORE,
             mode,
@@ -17,6 +25,10 @@ public class SkierToRideIndex extends IDSIndex<SkierIndexData> {
      }
   }
 
+  /**
+   * Constructor of SkierToRideIndex.
+   * @param baseStorePath path where this file store.
+   */
   public SkierToRideIndex(final String baseStorePath) {
     this(baseStorePath, DataSourceOpenMode.ACCESS_MODEL);
   }

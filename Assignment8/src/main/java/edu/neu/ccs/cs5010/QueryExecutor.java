@@ -5,6 +5,9 @@ import edu.neu.ccs.cs5010.exceptions.IllegalCmdArgumentException;
 import java.util.List;
 import java.util.concurrent.*;
 
+/**
+ * QueryExecutor is used to handle multiple threads to process queries.
+ */
 public class QueryExecutor {
   public QueryExecutor(List<Query> queryList,
                        int numOfThreads) {
@@ -15,6 +18,9 @@ public class QueryExecutor {
     this.syncBarrier = new CyclicBarrier(numOfThreads + 1);
   }
 
+  /**
+   * execute executor.
+   */
   public void execute() {
     if (queryList.size() % numOfThreads != 0) {
       throw new IllegalCmdArgumentException("Can't divide queries equally among threads");
