@@ -4,7 +4,7 @@ package edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist;
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
 import edu.neu.ccs.cs5010.exceptions.IllegalHeaderInformationNullException;
-import edu.neu.ccs.cs5010.skidatamodel.IOUtil;
+import edu.neu.ccs.cs5010.skidatamodel.IoUtil;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -26,7 +26,7 @@ public class InfoParser implements IInfoParser {
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
-    parser.beginParsing(IOUtil.getReader(path));
+    parser.beginParsing(IoUtil.getReader(path));
     String[] headers = parser.parseNext();
     parseHeaders(headers);
     String[] row;

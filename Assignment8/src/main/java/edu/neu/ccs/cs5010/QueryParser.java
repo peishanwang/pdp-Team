@@ -3,7 +3,7 @@ package edu.neu.ccs.cs5010;
 
 import com.univocity.parsers.csv.CsvParser;
 import com.univocity.parsers.csv.CsvParserSettings;
-import edu.neu.ccs.cs5010.skidatamodel.IOUtil;
+import edu.neu.ccs.cs5010.skidatamodel.IoUtil;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +23,7 @@ public class QueryParser implements IQueryParser {
     CsvParserSettings settings = new CsvParserSettings();
     settings.getFormat().setLineSeparator("\n");
     CsvParser parser = new CsvParser(settings);
-    List<String[]> rows = parser.parseAll(IOUtil.getReader(path));
+    List<String[]> rows = parser.parseAll(IoUtil.getReader(path));
 
     long startTime = System.currentTimeMillis();
     int numRows = 0;

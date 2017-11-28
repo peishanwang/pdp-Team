@@ -5,7 +5,7 @@ import java.io.File;
 /**
  * RawLiftRidesDataModel can access each lift's LiftData.
  */
-public class LiftDataModel extends IDataModel<LiftData> {
+public class LiftDataModel extends IdataModel<LiftData> {
   /**
    * Constructor of LiftDataModel.
    * @param baseStorePath path where this file store.

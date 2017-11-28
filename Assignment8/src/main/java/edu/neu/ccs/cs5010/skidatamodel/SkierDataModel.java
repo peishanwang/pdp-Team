@@ -5,7 +5,7 @@ import java.io.File;
 /**
  * SkierDataModel can access skier's vertical and number of rides from file.
  */
-public class SkierDataModel extends IDataModel<SkierData> {
+public class SkierDataModel extends IdataModel<SkierData> {
   /**
    * Constructor of SkierDataModel.
    * @param baseStorePath path where this file store.

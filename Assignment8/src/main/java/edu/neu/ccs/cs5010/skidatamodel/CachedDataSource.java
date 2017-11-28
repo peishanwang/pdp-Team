@@ -3,7 +3,7 @@ package edu.neu.ccs.cs5010.skidatamodel;
 public class CachedDataSource extends DataSource {
   public CachedDataSource(String filePath, DataSourceOpenMode openMode, int numFields) {
     super(filePath, openMode, numFields);
-    cache = new LRUCache<>(MAX_CACHE_ITEMS);
+    cache = new LruCache<>(MAX_CACHE_ITEMS);
   }
 
   public CachedDataSource(String filePath, int width) {
@@ -28,6 +28,6 @@ public class CachedDataSource extends DataSource {
     cache.put(itemId, newValue);
   }
 
-  private LRUCache<Integer, DataModelItem> cache;
+  private LruCache<Integer, DataModelItem> cache;
   private static final int MAX_CACHE_ITEMS = 1000;
 }

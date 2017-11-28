@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * RawLiftRidesDataModel can access skier ride raw data.
  */
-public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
+public class RawLiftRidesDataModel extends IdataModel<RawLiftRidesData> {
   /**
    * RawLiftRidesDataModel constructor.
    * @param baseStorePath base store path.

@@ -5,15 +5,15 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 import java.util.List;
 
 
-public abstract class IDataModel<T extends DataModelItem> {
+public abstract class IdataModel<T extends DataModelItem> {
   /**
-   * IDataModel constructor.
+   * IdataModel constructor.
    * @param sourcePath path source.
    * @param openMode mode.
    * @param numFields number of fields.
    * @param factory factory to create.
    */
-  public IDataModel(final String sourcePath,
+  public IdataModel(final String sourcePath,
                     DataSourceOpenMode openMode,
                     int numFields,
                     DataModelItemFactory<T> factory) {
@@ -29,7 +29,6 @@ public abstract class IDataModel<T extends DataModelItem> {
     } else {
       throw new IllegalStateException("invalid state.");
     }
-    this.openMode = openMode;
     this.itemFactory = factory;
   }
 
@@ -61,10 +60,6 @@ public abstract class IDataModel<T extends DataModelItem> {
     dataSource.update(itemId, itemData);
   }
 
-  DataSourceOpenMode getDSMode() {
-    return openMode;
-  }
-
   /**
    * method to close connection.
    */
@@ -75,6 +70,5 @@ public abstract class IDataModel<T extends DataModelItem> {
   }
 
   private final DataModelItemFactory<T> itemFactory;
-  private final DataSourceOpenMode openMode;
   protected final DataSource dataSource;
 }

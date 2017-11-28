@@ -1,6 +1,6 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.skidatamodel.IOUtil;
+import edu.neu.ccs.cs5010.skidatamodel.IoUtil;
 
 import java.io.IOException;
 import java.io.Writer;
@@ -15,7 +15,7 @@ public class TxtGenerator {
    */
   public TxtGenerator(final String filePath) {
     this.filePath = filePath;
-    writer = IOUtil.getTextWriter(filePath);
+    writer = IoUtil.getTextWriter(filePath);
   }
 
   /**

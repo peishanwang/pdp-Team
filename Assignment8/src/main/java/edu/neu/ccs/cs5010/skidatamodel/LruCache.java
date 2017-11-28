@@ -7,35 +7,35 @@ import java.util.HashMap;
  * @param <K> key
  * @param <V> value
  */
-public class LRUCache<K, V> {
-  class DLLNode {
+public class LruCache<K, V> {
+  class DllNode {
     K key;
     V val;
-    DLLNode next;
-    DLLNode pre;
+    DllNode next;
+    DllNode pre;
 
-    DLLNode(K key, V val) {
+    DllNode(K key, V val) {
       this.key = key;
       this.val = val;
     }
   }
 
-  HashMap<K, DLLNode> hashmap;
-  DLLNode head;
-  DLLNode tail;
+  HashMap<K, DllNode> hashmap;
+  DllNode head;
+  DllNode tail;
   int capacity;
   int count;
 
   /**
-   * Constructor of LRUCache.
+   * Constructor of LruCache.
    * @param capacity capacity of the cache.
    */
-  public LRUCache(int capacity) {
+  public LruCache(int capacity) {
     this.capacity = capacity;
     count = 0;
     hashmap = new HashMap<>();
-    head = new DLLNode(null,null);
-    tail = new DLLNode(null,null);
+    head = new DllNode(null,null);
+    tail = new DllNode(null,null);
     head.next = tail;
     head.pre = null;
     tail.pre = head;
@@ -47,7 +47,7 @@ public class LRUCache<K, V> {
    * method to delete node from cache.
    * @param node node to be deleted.
    */
-  public void deleteNode(DLLNode node) {
+  public void deleteNode(DllNode node) {
     node.pre.next = node.next;
     node.next.pre = node.pre;
   }
@@ -56,7 +56,7 @@ public class LRUCache<K, V> {
    * method to add to head.
    * @param node node to be added.
    */
-  public void addToHead(DLLNode node) {
+  public void addToHead(DllNode node) {
     node.next = head.next;
     node.next.pre = node;
     node.pre = head;
@@ -70,7 +70,7 @@ public class LRUCache<K, V> {
    */
   public V get(K key) {
     if (hashmap.containsKey(key)) {
-      DLLNode node = hashmap.get(key);
+      DllNode node = hashmap.get(key);
       deleteNode(node);
       addToHead(node);
       return node.val;
@@ -85,12 +85,12 @@ public class LRUCache<K, V> {
    */
   public void put(K key, V value) {
     if (hashmap.containsKey(key)) {
-      DLLNode node = hashmap.get(key);
+      DllNode node = hashmap.get(key);
       node.val = value;
       deleteNode(node);
       addToHead(node);
     } else {
-      DLLNode node = new DLLNode(key, value);
+      DllNode node = new DllNode(key, value);
       hashmap.put(key, node);
       if (count < capacity) {
         count++;

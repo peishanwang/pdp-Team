@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.skidatamodel.DataModelItem;
-import edu.neu.ccs.cs5010.skidatamodel.IDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.IdataModel;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,7 +10,7 @@ import java.util.Queue;
  * Class of DataModelPool containing a list of DataModel.
  * @param <D> anything that extends DataModel.
  */
-public class DataModelPool<D extends IDataModel<? extends DataModelItem>> implements
+public class DataModelPool<D extends IdataModel<? extends DataModelItem>> implements
         IDataModelPool<D> {
 
   /**

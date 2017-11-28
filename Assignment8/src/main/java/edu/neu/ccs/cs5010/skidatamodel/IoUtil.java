@@ -14,7 +14,7 @@ import java.io.Writer;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
-public final class IOUtil {
+public final class IoUtil {
   /**
    * Get reader using input file's path.
    *

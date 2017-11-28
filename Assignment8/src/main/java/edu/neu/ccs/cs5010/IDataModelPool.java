@@ -1,9 +1,9 @@
 package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.skidatamodel.DataModelItem;
-import edu.neu.ccs.cs5010.skidatamodel.IDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.IdataModel;
 
-public interface IDataModelPool<D extends IDataModel<? extends DataModelItem>> {
+public interface IDataModelPool<D extends IdataModel<? extends DataModelItem>> {
 
   /**
    * Returns requested model.

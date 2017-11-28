@@ -5,7 +5,7 @@ import java.io.File;
 /**
  * Record to store skier to rideIndex data for each skiers.
  */
-public class SkierToRideIndex extends IDSIndex<SkierIndexData> {
+public class SkierToRideIndex extends IdsIndex<SkierIndexData> {
   /**
    * Constructor of SkierToRideIndex.
    * @param baseStorePath path where this file store.

@@ -2,7 +2,7 @@ package edu.neu.ccs.cs5010.skidatamodel;
 
 import java.io.File;
 
-public class HourRidesDataModel extends IDataModel<HourRideData> {
+public class HourRidesDataModel extends IdataModel<HourRideData> {
   /**
    * HourRidesDataModel constructor.
    * @param baseStorePath path of base directory.
