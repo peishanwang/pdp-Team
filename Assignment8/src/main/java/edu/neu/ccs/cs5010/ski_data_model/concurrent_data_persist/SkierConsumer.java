@@ -60,7 +60,7 @@ public class SkierConsumer implements Consumer<SkierQueueItem> {
         for (int i = 1; i <= MAX_SKIERS; i++) {
           SkierRideStats skierRideStats = skierVerticalRideMap.get(i);
           SkierData skierData;
-          SkierIndexData skierIndexData = SkierIndexData.constructRawLiftRidesData(i, new int[]{});
+          SkierIndexData skierIndexData = SkierIndexData.constructSkierToRideData(i, new int[]{});
           if (skierRideStats == null) {
             skierData = SkierData.constructSkierData(i, 0, 0);
           } else {

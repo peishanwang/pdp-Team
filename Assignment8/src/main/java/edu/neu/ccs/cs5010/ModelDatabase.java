@@ -10,10 +10,16 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * Database of models to get information from .dat file.
+ */
 public class ModelDatabase {
   private static final Logger LOGGER
           = Logger.getLogger(ModelDatabase.class.getName());
 
+  /**
+   * Constructor of ModelDatabase.
+   */
   public ModelDatabase() {
     this.rawLiftRidesModelPool = new DataModelPool<>(
             MAX_MODEL_POOL_SIZE, () -> new RawLiftRidesDataModel(BASE_PATH));
@@ -30,6 +36,11 @@ public class ModelDatabase {
     this.queriesPerformed = new AtomicInteger(0);
   }
 
+  /**
+   * Perform the result of query.
+   * @param query query to be processed
+   * @return result of query.
+   */
   public String performQuery(Query query) {
     Query.QueryType queryType = query.getType();
     int key = query.getKey();
@@ -51,6 +62,9 @@ public class ModelDatabase {
     }
   }
 
+  /**
+   * Close each model in the database.
+   */
   public void close() {
     this.rawLiftRidesModelPool.close();
     this.skiersModelPool.close();
@@ -58,11 +72,21 @@ public class ModelDatabase {
     this.hoursModelPool.close();
   }
 
+  /**
+   * Get rehashed HashCode.
+   * @param hashCode original hashcode
+   * @return rehashed HashCode
+   */
   private static int getHash(int hashCode) {
     hashCode ^= (hashCode >>> 20) ^ (hashCode >>> 12);
     return hashCode ^ (hashCode >>> 7) ^ (hashCode >>> 4);
   }
 
+  /**
+   * Returns result of query 1.
+   * @param skierId Skier id
+   * @return result of query 1.
+   */
   private String getSkierSummary(int skierId) {
     // get lock for skierId by its hash from dbLockPool
     SkierData skierData;
@@ -89,6 +113,11 @@ public class ModelDatabase {
             + ", numViews: " + skierData.getNumViews();
   }
 
+  /**
+   * Returns result of query 2.
+   * @param skierId Skier id
+   * @return result of query 2.
+   */
   private String getSkierRideDetails(int skierId) {
     // get model from pool
     RawLiftRidesDataModel rawLiftRidesDataModel = this.rawLiftRidesModelPool.requestModel();
@@ -107,6 +136,11 @@ public class ModelDatabase {
     return strb.toString();
   }
 
+  /**
+   * Returns result of query 3.
+   * @param hourId Hour id
+   * @return result of query 3.
+   */
   private String getBusyLiftsPerHour(int hourId) {
     HourRidesDataModel hourModel = this.hoursModelPool.requestModel();
     HourRideData rideData = hourModel.getDataInfo(hourId - 1);
@@ -124,6 +158,11 @@ public class ModelDatabase {
     return strb.toString();
   }
 
+  /**
+   * Returns result of query 4.
+   * @param liftId Lift id
+   * @return result of query 4.
+   */
   private String getLiftSummary(int liftId) {
     LiftDataModel liftModel = this.liftsModelPool.requestModel();
     LiftData liftData = liftModel.getDataInfo(liftId);

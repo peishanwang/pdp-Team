@@ -6,10 +6,18 @@ import edu.neu.ccs.cs5010.ski_data_model.IDataModel;
 import java.util.LinkedList;
 import java.util.Queue;
 
-
+/**
+ * Class of DataModelPool containing a list of DataModel.
+ * @param <D>
+ */
 public class DataModelPool<D extends IDataModel<? extends DataModelItem>> implements
         IDataModelPool<D> {
 
+  /**
+   * Constructor of DataModelPool
+   * @param maxSize maxsize of pool
+   * @param modelCreator factory of specific DataModel
+   */
   public DataModelPool(int maxSize, IDataModelFactory<D> modelCreator) {
     this.maxPoolSize = maxSize;
     this.modelCreator = modelCreator;
@@ -63,6 +71,9 @@ public class DataModelPool<D extends IDataModel<? extends DataModelItem>> implem
     }
   }
 
+  /**
+   * Validate the state of pool.
+   */
   private void validateState() {
     boolean okay = (currentPoolSize >= 0);
     okay &= (currentPoolSize <= maxPoolSize);

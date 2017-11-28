@@ -11,9 +11,7 @@ import java.util.logging.Logger;
 
 /**
  * This is a class to parse the information from the .csv file.
- *
  */
-
 public class QueryParser implements IQueryParser {
   private static final Logger LOGGER
       = Logger.getLogger(QueryParser.class.getName());

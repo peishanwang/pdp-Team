@@ -6,6 +6,9 @@ import java.util.concurrent.CyclicBarrier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+/**
+ * QueryProcessor is a Runnable class to process query.
+ */
 public class QueryProcessor implements Runnable {
   private static final Logger LOGGER
           = Logger.getLogger(QueryProcessor.class.getName());
@@ -15,6 +18,13 @@ public class QueryProcessor implements Runnable {
   private CyclicBarrier syncBarrier;
   private TxtGenerator txtGenerator;
 
+  /**
+   * Constructor of QueryProcessor.
+   * @param processorId processor id
+   * @param database database to get information from .dat file
+   * @param barrier barrier
+   * @param queryList list of queries to be processed
+   */
   public QueryProcessor(int processorId, ModelDatabase database, CyclicBarrier barrier, List<Query>
           queryList) {
     this.processorId = processorId;

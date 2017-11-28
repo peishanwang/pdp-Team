@@ -5,10 +5,12 @@ import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
 import java.io.IOException;
 import java.io.Writer;
 
+/**
+ * TxtGenerator is used to generate .txt output.
+ */
 public class TxtGenerator {
   /**
-   * Constructor of IoUtil.
-   *
+   * Constructor of TxtGenerator.
    * @param filePath path of input/output file
    */
   public TxtGenerator(final String filePath) {
@@ -16,6 +18,10 @@ public class TxtGenerator {
     writer = IOUtil.getTextWriter(filePath);
   }
 
+  /**
+   * Write one line to .txt file.
+   * @param result a line of String
+   */
   public void writeLine(String result) {
     try {
       writer.write(result + System.lineSeparator());
@@ -24,6 +30,9 @@ public class TxtGenerator {
     }
   }
 
+  /**
+   * Close the writer.
+   */
   public void close() {
     try {
       writer.close();

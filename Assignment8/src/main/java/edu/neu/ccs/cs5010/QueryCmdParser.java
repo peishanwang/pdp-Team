@@ -2,6 +2,9 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.exceptions.IllegalCmdArgumentException;
 
+/**
+ * QueryCmdParser is used to parse argument from command line.
+ */
 public class QueryCmdParser {
   private static final int NEEDED_ARGS = 2;
   private static final int CSVFILE_INDEX = 0;
@@ -9,6 +12,10 @@ public class QueryCmdParser {
   private String csvFile;
   private int numberOfQueries;
 
+  /**
+   * Constructor of QueryCmdParser.
+   * @param args input arguments
+   */
   public QueryCmdParser(String[] args) {
     if (args.length != NEEDED_ARGS) {
       throw new IllegalCmdArgumentException("You didn't provide right number of arguments.");
@@ -20,10 +27,18 @@ public class QueryCmdParser {
     }
   }
 
+  /**
+   * Returns csv file path.
+   * @return csv file path.
+   */
   public String getCsvFile() {
     return csvFile;
   }
 
+  /**
+   * Returns number of queries.
+   * @return number of queries.
+   */
   public int getNumberOfQueries() {
     return numberOfQueries;
   }
