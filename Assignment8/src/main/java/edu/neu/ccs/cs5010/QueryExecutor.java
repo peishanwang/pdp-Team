@@ -9,13 +9,26 @@ import java.util.concurrent.*;
  * QueryExecutor is used to handle multiple threads to process queries.
  */
 public class QueryExecutor {
-  public QueryExecutor(List<Query> queryList,
-                       int numOfThreads) {
+
+  /**
+   * Constructor of QueryExecutor.
+   * @param queryList queryList
+   * @param numOfThreads number of threads
+   */
+  public QueryExecutor(List<Query> queryList, int numOfThreads) {
     this.numOfThreads = numOfThreads;
     this.queryList = queryList;
     this.executor = Executors.newFixedThreadPool(numOfThreads);
     this.modelDatabase = new ModelDatabase();
     this.syncBarrier = new CyclicBarrier(numOfThreads + 1);
+  }
+
+  /**
+   * Constructor of QueryExecutor.
+   * @param queryList queryList
+   */
+  public QueryExecutor(List<Query> queryList) {
+    this(queryList, NUM_DEFAULT_THREADS);
   }
 
   /**
@@ -52,6 +65,7 @@ public class QueryExecutor {
     modelDatabase.close();
   }
 
+  private static final int NUM_DEFAULT_THREADS = 20;
   private final int numOfThreads;
   private final ExecutorService executor;
   private final List<Query> queryList;

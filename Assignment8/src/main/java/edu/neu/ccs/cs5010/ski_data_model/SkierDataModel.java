@@ -1,5 +1,6 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
 
 /**
  * SkierDataModel can access skier's vertical and number of rides from file.
@@ -11,7 +12,7 @@ public class SkierDataModel extends IDataModel<SkierData> {
    * @param openMode mode of accessing this record.
    */
   public SkierDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + SKIER_FILE_STORE,
+    super(baseStorePath + File.separator + SKIER_FILE_STORE,
             openMode,
             NUM_FIELDS,
             SkierData::new);

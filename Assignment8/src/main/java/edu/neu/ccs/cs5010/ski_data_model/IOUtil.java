@@ -4,13 +4,13 @@ import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
-public interface IoUtil {
+public final class IOUtil {
   /**
    * Get reader using input file's path.
    * @param filePath input file's path
    * @return file reader
    */
-  static Reader getReader(final String filePath) {
+  public static Reader getReader(final String filePath) {
     try {
       return new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8);
     } catch (FileNotFoundException e) {
@@ -23,7 +23,7 @@ public interface IoUtil {
    * @param filePath output file's path
    * @return file writer
    */
-  static OutputStream getWriter(final String filePath) {
+  public static OutputStream getWriter(final String filePath) {
     try {
       return new FileOutputStream(filePath, false /* create new everytime */);
     } catch (FileNotFoundException e) {
@@ -39,7 +39,7 @@ public interface IoUtil {
     return getBufferedWriter(filePath, DEFAULT_WRITE_BUFFER_SIZE);
   }
 
-  static Writer getTextWriter(final String filePath) {
+  public static Writer getTextWriter(final String filePath) {
     try {
       return new BufferedWriter(new OutputStreamWriter(new FileOutputStream(filePath),
               StandardCharsets.UTF_8), DEFAULT_WRITE_BUFFER_SIZE);
@@ -48,7 +48,7 @@ public interface IoUtil {
     }
   }
 
-  static RandomAccessFile getRandomFileAccessor(final String filePath) {
+  public static RandomAccessFile getRandomFileAccessor(final String filePath) {
     try {
       return new RandomAccessFile(filePath, "rw");
     } catch (FileNotFoundException e) {
@@ -64,5 +64,5 @@ public interface IoUtil {
     return buffer.array();
   }
 
-  int DEFAULT_WRITE_BUFFER_SIZE = 4096;
+  static int DEFAULT_WRITE_BUFFER_SIZE = 4096;
 }

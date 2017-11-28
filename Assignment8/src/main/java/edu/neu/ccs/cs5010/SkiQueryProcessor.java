@@ -5,16 +5,17 @@ package edu.neu.ccs.cs5010;
  */
 public class SkiQueryProcessor {
   private String path;
-  private int numOfThreads;
+  private int numberOfQueries;
+  private static final int NUM_THREADS = 20;
 
   /**
    * Constructor of SkiQueryProcessor.
    * @param path input file path
-   * @param numOfThreads number of threads to process the data
+   * @param numberOfQueries number of threads to process the data
    */
-  public SkiQueryProcessor(String path, int numOfThreads) {
+  public SkiQueryProcessor(String path, int numberOfQueries) {
     this.path = path;
-    this.numOfThreads = numOfThreads;
+    this.numberOfQueries = numberOfQueries;
   }
 
   /**
@@ -33,7 +34,7 @@ public class SkiQueryProcessor {
    */
   public void processQuery() {
     IQueryParser parser = new QueryParser();
-    QueryExecutor executor = new QueryExecutor(parser.parseInfo(path), numOfThreads);
+    QueryExecutor executor = new QueryExecutor(parser.parseInfo(path, numberOfQueries));
     executor.execute();
   }
 
@@ -48,7 +49,7 @@ public class SkiQueryProcessor {
 
     SkiQueryProcessor processor = (SkiQueryProcessor) obj;
 
-    if (numOfThreads != processor.numOfThreads) {
+    if (numberOfQueries != processor.numberOfQueries) {
       return false;
     }
     return path.equals(processor.path);
@@ -57,7 +58,7 @@ public class SkiQueryProcessor {
   @Override
   public int hashCode() {
     int result = path.hashCode();
-    result = 31 * result + numOfThreads;
+    result = 31 * result + numberOfQueries;
     return result;
   }
 }

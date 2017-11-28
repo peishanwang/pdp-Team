@@ -11,8 +11,10 @@ public interface IQueryParser {
   /**
    * Parse query information from the csv file.
    * @param path path of the csv file.
-   * @return List of queries.
+   * @param numberOfQueries number of queries.
+   * @return List of queries
    */
-  List<Query> parseInfo(String path);
+  List<Query> parseInfo(String path, int numberOfQueries);
+
 
 }

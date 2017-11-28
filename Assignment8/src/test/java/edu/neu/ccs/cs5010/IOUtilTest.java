@@ -1,29 +1,31 @@
+
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.IoUtil;
+import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
 import org.junit.Test;
 
-public class IoUtilTest {
-  private static final String WRONG_PATH = "directory\\nonono";
+import java.io.File;
+
+public class IOUtilTest {
+  private static final String WRONG_PATH = "directory" + File.separator + "nonono";
 
   @Test(expected = IllegalStateException.class)
   public void testReaderException() {
-    IoUtil.getReader(WRONG_PATH);
+    IOUtil.getReader(WRONG_PATH);
   }
 
   @Test(expected = IllegalStateException.class)
   public void testWriterException() {
-    IoUtil.getWriter(WRONG_PATH);
+    IOUtil.getWriter(WRONG_PATH);
   }
 
   @Test(expected = IllegalStateException.class)
   public void testTextWriterException() {
-    IoUtil.getTextWriter(WRONG_PATH);
+    IOUtil.getTextWriter(WRONG_PATH);
   }
 
   @Test(expected = IllegalStateException.class)
   public void testAccessorException() {
-    IoUtil.getRandomFileAccessor(WRONG_PATH);
+    IOUtil.getRandomFileAccessor(WRONG_PATH);
   }
-
 }

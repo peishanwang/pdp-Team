@@ -1,9 +1,10 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
+import java.io.File;
 
 public class LiftDataModel extends IDataModel<LiftData> {
   public LiftDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + LIFT_FILE_STORE,
+    super(baseStorePath + File.separator + LIFT_FILE_STORE,
             openMode,
             NUM_FIELDS,
             LiftData::new);
@@ -25,5 +26,4 @@ public class LiftDataModel extends IDataModel<LiftData> {
 
   private static final String LIFT_FILE_STORE = "lifts.dat";
   private static final int NUM_FIELDS = 2;
-
 }

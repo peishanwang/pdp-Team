@@ -1,12 +1,12 @@
 package edu.neu.ccs.cs5010.ski_data_model;
 
-
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
 public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
   public RawLiftRidesDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
-    super(baseStorePath + '/' + RAW_LIFT_RIDES_FILE_STORE,
+    super(baseStorePath + File.separator + RAW_LIFT_RIDES_FILE_STORE,
             openMode,
             NUM_FIELDS,
             RawLiftRidesData::new);
