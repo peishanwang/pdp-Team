@@ -8,15 +8,15 @@ public class SkierToRideIndex extends IDSIndex<SkierIndexData> {
             mode,
             INDEX_NUM_FIELDS,
             SkierIndexData::new);
-     if (mode == DataSourceOpenMode.ACCESS_MODEL) {
-       int numItems = 0;
-       synchronized (dataSource) {
+    if (mode == DataSourceOpenMode.ACCESS_MODEL) {
+      int numItems = 0;
+      synchronized (dataSource) {
         numItems = dataSource.getNumDataItems();
-       }
+      }
       if (numItems != MAX_SKIER_INDEX_SIZE) {
         throw new IllegalStateException("Num items already present: " + numItems);
       }
-     }
+    }
   }
 
   public SkierToRideIndex(final String baseStorePath) {

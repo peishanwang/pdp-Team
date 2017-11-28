@@ -10,6 +10,7 @@ public class SkierIndexData extends DataModelItem {
     }
     nextAvailableField = dataModelItem.getFields()[1];
   }
+
   public SkierIndexData(int[] fields) {
     super(fields);
     if (fields.length != SkierToRideIndex.INDEX_NUM_FIELDS) {
@@ -17,12 +18,15 @@ public class SkierIndexData extends DataModelItem {
     }
     nextAvailableField = fields[1];
   }
+
   public int getSkierId() {
     return getField(0);
   }
+
   public int[] getRidesId() {
     return Arrays.copyOfRange(getFields(), 2, 2 + nextAvailableField);
   }
+
   public void addRide(int rideNum) {
     if (rideNum == 0) {
       throw new IllegalStateException("");
@@ -30,6 +34,7 @@ public class SkierIndexData extends DataModelItem {
     getFields()[2 + nextAvailableField++] = rideNum;
     getFields()[1] = nextAvailableField;
   }
+
   public static SkierIndexData constructRawLiftRidesData(int skierId,
                                                          int[] ridesId) {
     int[] skierRidesIndexData = new int[SkierToRideIndex.INDEX_NUM_FIELDS];
@@ -47,5 +52,6 @@ public class SkierIndexData extends DataModelItem {
     }
     return new SkierIndexData(skierRidesIndexData);
   }
+
   private int nextAvailableField;
 }

@@ -48,7 +48,9 @@ public abstract class IDataModel<T extends DataModelItem> {
     dataSource.update(itemId, itemData);
   }
 
-  DataSourceOpenMode getDSMode() {return openMode;}
+  DataSourceOpenMode getDSMode() {
+    return openMode;
+  }
 
   public void close() {
     synchronized (dataSource) {

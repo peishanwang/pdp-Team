@@ -2,11 +2,13 @@ package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
 
-import java.io.*;
+import java.io.IOException;
+import java.io.Writer;
 
 public class TxtGenerator {
   /**
    * Constructor of IoUtil.
+   *
    * @param filePath path of input/output file
    */
   public TxtGenerator(final String filePath) {

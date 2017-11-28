@@ -8,35 +8,39 @@ public class LRUCache<K, V> {
     V val;
     DLLNode next;
     DLLNode pre;
-    DLLNode(K key, V val){
-      this.key=key;
-      this.val=val;
+
+    DLLNode(K key, V val) {
+      this.key = key;
+      this.val = val;
     }
   }
+
   HashMap<K, DLLNode> hashmap;
-  DLLNode head, tail;
-  int capacity, count;
+  DLLNode head;
+  DLLNode tail;
+  int capacity;
+  int count;
 
 
   public LRUCache(int capacity) {
     this.capacity = capacity;
     count = 0;
     hashmap = new HashMap<>();
-    head=new DLLNode(null,null);
+    head = new DLLNode(null,null);
     tail = new DLLNode(null,null);
-    head.next=tail;
-    head.pre =null;
-    tail.pre=head;
-    tail.next=null;
+    head.next = tail;
+    head.pre = null;
+    tail.pre = head;
+    tail.next = null;
 
   }
 
-  public void deleteNode(DLLNode node){
-    node.pre.next=node.next;
-    node.next.pre=node.pre;
+  public void deleteNode(DLLNode node) {
+    node.pre.next = node.next;
+    node.next.pre = node.pre;
   }
 
-  public void addToHead(DLLNode node){
+  public void addToHead(DLLNode node) {
     node.next = head.next;
     node.next.pre = node;
     node.pre = head;
@@ -44,7 +48,7 @@ public class LRUCache<K, V> {
   }
 
   public V get(K key) {
-    if(hashmap.containsKey(key)){
+    if(hashmap.containsKey(key)) {
       DLLNode node = hashmap.get(key);
       deleteNode(node);
       addToHead(node);
@@ -54,12 +58,12 @@ public class LRUCache<K, V> {
   }
 
   public void put(K key, V value) {
-    if(hashmap.containsKey(key)){
+    if(hashmap.containsKey(key)) {
       DLLNode node = hashmap.get(key);
       node.val = value;
       deleteNode(node);
       addToHead(node);
-    } else{
+    } else {
       DLLNode node = new DLLNode(key, value);
       hashmap.put(key, node);
       if (count < capacity) {

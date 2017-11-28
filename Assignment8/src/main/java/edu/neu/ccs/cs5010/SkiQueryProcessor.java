@@ -3,6 +3,7 @@ package edu.neu.ccs.cs5010;
 public class SkiQueryProcessor {
   private String path;
   private int numberOfQueries;
+
   public SkiQueryProcessor(String path, int numberOfQueries) {
     this.path = path;
     this.numberOfQueries = numberOfQueries;
