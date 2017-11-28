@@ -1,8 +1,8 @@
 package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.exceptions.IllegalRideInfoBuilderException;
-import edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist.IRideInfoBuilder;
-import edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist.RideInfoBuilder;
+import edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist.IRideInfoBuilder;
+import edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist.RideInfoBuilder;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

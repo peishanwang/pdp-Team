@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.LiftData;
-import edu.neu.ccs.cs5010.ski_data_model.LiftDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.LiftData;
+import edu.neu.ccs.cs5010.skidatamodel.LiftDataModel;
 import org.junit.Before;
 import org.junit.Test;
 

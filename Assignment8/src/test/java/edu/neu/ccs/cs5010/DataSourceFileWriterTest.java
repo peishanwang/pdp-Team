@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.DataModelItem;
-import edu.neu.ccs.cs5010.ski_data_model.DataSourceFileWriter;
+import edu.neu.ccs.cs5010.skidatamodel.DataModelItem;
+import edu.neu.ccs.cs5010.skidatamodel.DataSourceFileWriter;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

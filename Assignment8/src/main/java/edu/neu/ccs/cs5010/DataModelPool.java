@@ -1,20 +1,20 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.DataModelItem;
-import edu.neu.ccs.cs5010.ski_data_model.IDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.DataModelItem;
+import edu.neu.ccs.cs5010.skidatamodel.IDataModel;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * Class of DataModelPool containing a list of DataModel.
- * @param <D>
+ * @param <D> anything that extends DataModel.
  */
 public class DataModelPool<D extends IDataModel<? extends DataModelItem>> implements
         IDataModelPool<D> {
 
   /**
-   * Constructor of DataModelPool
+   * Constructor of DataModelPool.
    * @param maxSize maxsize of pool
    * @param modelCreator factory of specific DataModel
    */

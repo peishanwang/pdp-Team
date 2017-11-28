@@ -1,8 +1,8 @@
 package edu.neu.ccs.cs5010;
 
 
-import edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist.ILiftWithRides;
-import edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist.LiftWithRides;
+import edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist.ILiftWithRides;
+import edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist.LiftWithRides;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,7 +1,7 @@
 package edu.neu.ccs.cs5010;
 
 import edu.neu.ccs.cs5010.exceptions.IllegalSkiHelperArgumentException;
-import edu.neu.ccs.cs5010.ski_data_model.concurrent_data_persist.SkiHelper;
+import edu.neu.ccs.cs5010.skidatamodel.concurrentdatapersist.SkiHelper;
 import org.junit.Test;
 
 import static junit.framework.TestCase.assertEquals;

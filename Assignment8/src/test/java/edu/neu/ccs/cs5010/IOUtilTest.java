@@ -1,7 +1,7 @@
 
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.IOUtil;
+import edu.neu.ccs.cs5010.skidatamodel.IOUtil;
 import org.junit.Test;
 
 import java.io.File;

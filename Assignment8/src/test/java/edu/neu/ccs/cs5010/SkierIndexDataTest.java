@@ -1,6 +1,6 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.ski_data_model.SkierIndexData;
+import edu.neu.ccs.cs5010.skidatamodel.SkierIndexData;
 import org.junit.Before;
 import org.junit.Test;
 
