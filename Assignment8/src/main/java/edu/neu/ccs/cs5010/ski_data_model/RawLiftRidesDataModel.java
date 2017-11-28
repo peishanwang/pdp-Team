@@ -4,7 +4,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * RawLiftRidesDataModel can access skier ride raw data.
+ */
 public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
+  /**
+   * Constructor of RawLiftRidesDataModel.
+   * @param baseStorePath path where this file store.
+   * @param openMode mode of accessing this record.
+   */
   public RawLiftRidesDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
     super(baseStorePath + File.separator + RAW_LIFT_RIDES_FILE_STORE,
             openMode,
@@ -16,6 +24,10 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
     }
   }
 
+  /**
+   * Constructor of RawLiftRidesDataModel.
+   * @param baseStorePath path where this file store.
+   */
   public RawLiftRidesDataModel(final String baseStorePath) {
     this(baseStorePath, DataSourceOpenMode.ACCESS_MODEL);
   }
@@ -25,7 +37,11 @@ public class RawLiftRidesDataModel extends IDataModel<RawLiftRidesData> {
     super.addDataInfo(itemData);
   }
 
-
+  /**
+   * Get list of RawLiftRidesData.
+   * @param skierId skier id.
+   * @return list of RawLiftRidesData.
+   */
   public List<RawLiftRidesData> getDataListInfo(int skierId) {
     SkierIndexData skierIndexData = skierRidesIndex.getDataInfo(skierId);
     int[] rides = skierIndexData.getRidesId();

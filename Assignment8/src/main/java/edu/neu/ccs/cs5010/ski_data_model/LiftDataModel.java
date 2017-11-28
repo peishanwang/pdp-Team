@@ -2,7 +2,15 @@ package edu.neu.ccs.cs5010.ski_data_model;
 
 import java.io.File;
 
+/**
+ * RawLiftRidesDataModel can access each lift's LiftData.
+ */
 public class LiftDataModel extends IDataModel<LiftData> {
+  /**
+   * Constructor of LiftDataModel.
+   * @param baseStorePath path where this file store.
+   * @param openMode mode of accessing this record.
+   */
   public LiftDataModel(final String baseStorePath, DataSourceOpenMode openMode) {
     super(baseStorePath + File.separator + LIFT_FILE_STORE,
             openMode,
@@ -10,6 +18,10 @@ public class LiftDataModel extends IDataModel<LiftData> {
             LiftData::new);
   }
 
+  /**
+   * Constructor of LiftDataModel.
+   * @param baseStorePath path where this file store.
+   */
   public LiftDataModel(final String baseStorePath) {
     this(baseStorePath, DataSourceOpenMode.ACCESS_MODEL);
   }

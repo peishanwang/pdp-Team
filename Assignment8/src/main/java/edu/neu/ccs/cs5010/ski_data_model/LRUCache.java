@@ -2,6 +2,11 @@ package edu.neu.ccs.cs5010.ski_data_model;
 
 import java.util.HashMap;
 
+/**
+ * Least recently used cache.
+ * @param <K> key
+ * @param <V> value
+ */
 public class LRUCache<K, V> {
   class DLLNode {
     K key;
@@ -17,7 +22,10 @@ public class LRUCache<K, V> {
   DLLNode head, tail;
   int capacity, count;
 
-
+  /**
+   * Constructor of LRUCache.
+   * @param capacity capacity of the cache.
+   */
   public LRUCache(int capacity) {
     this.capacity = capacity;
     count = 0;
@@ -31,11 +39,19 @@ public class LRUCache<K, V> {
 
   }
 
+  /**
+   * Delete node in cache.
+   * @param node node to be deleted.
+   */
   public void deleteNode(DLLNode node){
     node.pre.next=node.next;
     node.next.pre=node.pre;
   }
 
+  /**
+   * Add node to head.
+   * @param node node to be added.
+   */
   public void addToHead(DLLNode node){
     node.next = head.next;
     node.next.pre = node;
@@ -43,6 +59,11 @@ public class LRUCache<K, V> {
     head.next = node;
   }
 
+  /**
+   * Get value of a key.
+   * @param key provided key.
+   * @return value of the key.
+   */
   public V get(K key) {
     if(hashmap.containsKey(key)){
       DLLNode node = hashmap.get(key);
@@ -53,6 +74,11 @@ public class LRUCache<K, V> {
     return null;
   }
 
+  /**
+   * Put a key value pair in cache.
+   * @param key provided key
+   * @param value provided value
+   */
   public void put(K key, V value) {
     if(hashmap.containsKey(key)){
       DLLNode node = hashmap.get(key);
@@ -72,14 +98,5 @@ public class LRUCache<K, V> {
       }
     }
 
-  }
-
-  public static void main(String[] args) {
-    LRUCache<String, String> cache = new LRUCache<>(2);
-    cache.put("a", "1");
-    cache.put("b", "2");
-    System.out.println(cache.get("a"));
-    cache.put("c", "3");
-    System.out.println(cache.get("b"));
   }
 }
