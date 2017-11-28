@@ -3,7 +3,10 @@ package edu.neu.ccs.cs5010;
 import edu.neu.ccs.cs5010.exceptions.IllegalCmdArgumentException;
 
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 /**
  * QueryExecutor is used to handle multiple threads to process queries.

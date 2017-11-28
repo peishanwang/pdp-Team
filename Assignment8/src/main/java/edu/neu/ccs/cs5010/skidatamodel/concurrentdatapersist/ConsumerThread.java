@@ -4,7 +4,7 @@ import java.util.Queue;
 import java.util.function.Consumer;
 
 /**
- * This is part of PDP Assignment 7.
+ * This is part of PDP Assignment 8.
  *
  * @author Manika and Peishan
  */

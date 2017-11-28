@@ -1,6 +1,13 @@
 package edu.neu.ccs.cs5010;
 
-import edu.neu.ccs.cs5010.skidatamodel.*;
+import edu.neu.ccs.cs5010.skidatamodel.HourRideData;
+import edu.neu.ccs.cs5010.skidatamodel.HourRidesDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.LiftData;
+import edu.neu.ccs.cs5010.skidatamodel.LiftDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.RawLiftRidesData;
+import edu.neu.ccs.cs5010.skidatamodel.RawLiftRidesDataModel;
+import edu.neu.ccs.cs5010.skidatamodel.SkierData;
+import edu.neu.ccs.cs5010.skidatamodel.SkierDataModel;
 
 import java.util.Comparator;
 import java.util.List;
