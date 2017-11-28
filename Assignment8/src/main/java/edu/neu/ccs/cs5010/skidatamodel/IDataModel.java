@@ -4,9 +4,6 @@ import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.List;
 
-interface DataModelItemFactory<T extends DataModelItem> {
-  T create(DataModelItem item);
-}
 
 public abstract class IDataModel<T extends DataModelItem> {
   /**

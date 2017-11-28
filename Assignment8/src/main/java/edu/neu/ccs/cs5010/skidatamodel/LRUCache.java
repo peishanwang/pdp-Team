@@ -26,7 +26,7 @@ public class LRUCache<K, V> {
   int capacity;
   int count;
 
- /**
+  /**
    * Constructor of LRUCache.
    * @param capacity capacity of the cache.
    */

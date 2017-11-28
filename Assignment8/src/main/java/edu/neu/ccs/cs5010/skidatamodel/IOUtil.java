@@ -1,12 +1,23 @@
 package edu.neu.ccs.cs5010.skidatamodel;
 
-import java.io.*;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.OutputStream;
+import java.io.RandomAccessFile;
+import java.io.Writer;
+import java.io.BufferedWriter;
+import java.io.BufferedOutputStream;
+import java.io.OutputStreamWriter;
+import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
 
 public final class IOUtil {
   /**
    * Get reader using input file's path.
+   *
    * @param filePath input file's path
    * @return file reader
    */
@@ -20,6 +31,7 @@ public final class IOUtil {
 
   /**
    * Get writer using output file's path.
+   *
    * @param filePath output file's path
    * @return file writer
    */
@@ -33,7 +45,8 @@ public final class IOUtil {
 
   /**
    * Get buffered writer.
-   * @param filePath output file's path
+   *
+   * @param filePath   output file's path
    * @param bufferSize buffer size
    * @return buffered writer.
    */
@@ -43,6 +56,7 @@ public final class IOUtil {
 
   /**
    * Get buffered writer.
+   *
    * @param filePath output file's path
    * @return buffered writer.
    */
@@ -52,6 +66,7 @@ public final class IOUtil {
 
   /**
    * Get text writer.
+   *
    * @param filePath output file's path
    * @return text writer.
    */
@@ -66,6 +81,7 @@ public final class IOUtil {
 
   /**
    * Get Random Access File.
+   *
    * @param filePath output file's path
    * @return random access file.
    */
