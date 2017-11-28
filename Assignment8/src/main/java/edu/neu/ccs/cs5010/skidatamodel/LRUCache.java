@@ -2,6 +2,11 @@ package edu.neu.ccs.cs5010.skidatamodel;
 
 import java.util.HashMap;
 
+/**
+ * Least recently used cache.
+ * @param <K> key
+ * @param <V> value
+ */
 public class LRUCache<K, V> {
   class DLLNode {
     K key;
@@ -21,10 +26,9 @@ public class LRUCache<K, V> {
   int capacity;
   int count;
 
-
-  /**
-   * Constructor.
-   * @param capacity capacity of cache.
+ /**
+   * Constructor of LRUCache.
+   * @param capacity capacity of the cache.
    */
   public LRUCache(int capacity) {
     this.capacity = capacity;
@@ -40,7 +44,7 @@ public class LRUCache<K, V> {
   }
 
   /**
-   * method to delete node.
+   * method to delete node from cache.
    * @param node node to be deleted.
    */
   public void deleteNode(DLLNode node) {
@@ -50,7 +54,7 @@ public class LRUCache<K, V> {
 
   /**
    * method to add to head.
-   * @param node mode to be added.
+   * @param node node to be added.
    */
   public void addToHead(DLLNode node) {
     node.next = head.next;
@@ -75,9 +79,9 @@ public class LRUCache<K, V> {
   }
 
   /**
-   * method to put key and value to map/cache.
-   * @param key key to be added
-   * @param value value to get
+   * Put a key value pair in cache.
+   * @param key provided key
+   * @param value provided value
    */
   public void put(K key, V value) {
     if (hashmap.containsKey(key)) {
@@ -99,6 +103,4 @@ public class LRUCache<K, V> {
     }
 
   }
-
-
 }

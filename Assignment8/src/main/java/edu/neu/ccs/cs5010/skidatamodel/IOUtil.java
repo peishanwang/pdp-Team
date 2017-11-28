@@ -31,18 +31,29 @@ public final class IOUtil {
     }
   }
 
+  /**
+   * Get buffered writer.
+   * @param filePath output file's path
+   * @param bufferSize buffer size
+   * @return buffered writer.
+   */
   static OutputStream getBufferedWriter(final String filePath, final int bufferSize) {
     return new BufferedOutputStream(getWriter(filePath), bufferSize);
   }
 
+  /**
+   * Get buffered writer.
+   * @param filePath output file's path
+   * @return buffered writer.
+   */
   static OutputStream getBufferedWriter(final String filePath) {
     return getBufferedWriter(filePath, DEFAULT_WRITE_BUFFER_SIZE);
   }
 
   /**
-   * TextWriter to be returned.
-   * @param filePath path file.
-   * @return Writer.
+   * Get text writer.
+   * @param filePath output file's path
+   * @return text writer.
    */
   public static Writer getTextWriter(final String filePath) {
     try {
@@ -54,8 +65,8 @@ public final class IOUtil {
   }
 
   /**
-   * Method to get randomfileaccessor.
-   * @param filePath path of file.
+   * Get Random Access File.
+   * @param filePath output file's path
    * @return random access file.
    */
   public static RandomAccessFile getRandomFileAccessor(final String filePath) {
