@@ -2,7 +2,7 @@ package edu.neu.ccs.cs5010.skidatamodel;
 
 public class DataModelItem {
   /**
-   * DataModelIyem constructor.
+   * DataModelItem constructor.
    * @param fields fields of data model.
    */
   public DataModelItem(int[] fields) {
