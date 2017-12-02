@@ -282,7 +282,7 @@ queryId: 1, skierId: 18495, numRides: 20, numVertical: 7300, numViews: 1
 queryId: 2, skierId: 18495, [time, liftId]: [11, 11], [23, 28], [53, 16], [59, 13], [73, 38], [107, 15], [111, 29], [141, 12], [161, 27], [176, 32], [189, 14], [207, 1], [224, 15], [244, 8], [258, 23], [283, 13], [300, 35], [320, 29], [337, 36], [351, 36]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 14, numRides: 19588
-queryId: 1, skierId: 4976, numRides: 20, numVertical: 7100, numViews: 1
+queryId: 1, skierId: 4976, numRides: 20, numVertical: 7100, numViews: 2
 queryId: 2, skierId: 4976, [time, liftId]: [4, 15], [20, 1], [43, 19], [57, 36], [79, 1], [102, 23], [121, 15], [132, 6], [159, 33], [172, 36], [187, 11], [211, 27], [230, 22], [247, 11], [270, 3], [282, 32], [293, 13], [323, 15], [326, 38], [355, 31]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 26, numRides: 20157
@@ -366,7 +366,7 @@ queryId: 1, skierId: 962, numRides: 20, numVertical: 6900, numViews: 1
 queryId: 2, skierId: 962, [time, liftId]: [18, 29], [27, 8], [47, 32], [71, 35], [88, 10], [96, 18], [116, 6], [127, 31], [145, 25], [171, 24], [191, 22], [213, 23], [217, 24], [238, 25], [262, 13], [273, 23], [297, 8], [316, 2], [334, 7], [359, 27]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 31, numRides: 19827
-queryId: 1, skierId: 36856, numRides: 20, numVertical: 7300, numViews: 1
+queryId: 1, skierId: 36856, numRides: 20, numVertical: 7300, numViews: 2
 queryId: 2, skierId: 36856, [time, liftId]: [11, 35], [26, 22], [51, 14], [62, 37], [78, 22], [102, 34], [126, 22], [130, 19], [152, 13], [176, 18], [197, 39], [199, 37], [220, 3], [235, 4], [261, 22], [277, 11], [305, 16], [323, 3], [340, 15], [346, 38]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 21, numRides: 20031
@@ -602,7 +602,7 @@ queryId: 1, skierId: 8384, numRides: 20, numVertical: 6800, numViews: 1
 queryId: 2, skierId: 8384, [time, liftId]: [11, 19], [36, 3], [49, 14], [66, 26], [89, 37], [105, 8], [113, 18], [141, 16], [147, 7], [178, 27], [190, 30], [199, 20], [217, 32], [238, 20], [268, 11], [276, 32], [305, 30], [316, 4], [340, 24], [346, 21]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 19, numRides: 20063
-queryId: 1, skierId: 27639, numRides: 20, numVertical: 6500, numViews: 1
+queryId: 1, skierId: 27639, numRides: 20, numVertical: 6500, numViews: 2
 queryId: 2, skierId: 27639, [time, liftId]: [6, 8], [22, 37], [51, 15], [70, 27], [87, 12], [97, 28], [113, 14], [144, 9], [150, 4], [170, 11], [189, 40], [214, 1], [221, 22], [245, 14], [261, 27], [285, 26], [292, 13], [309, 7], [329, 33], [352, 7]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 15, numRides: 19806
@@ -698,7 +698,7 @@ queryId: 1, skierId: 36866, numRides: 20, numVertical: 7800, numViews: 1
 queryId: 2, skierId: 36866, [time, liftId]: [1, 34], [35, 29], [51, 17], [63, 10], [80, 27], [98, 28], [110, 9], [131, 27], [148, 8], [169, 31], [194, 24], [206, 33], [224, 31], [239, 27], [269, 39], [282, 20], [302, 7], [310, 35], [336, 39], [346, 40]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 21, numRides: 20031
-queryId: 1, skierId: 13228, numRides: 20, numVertical: 6900, numViews: 2
+queryId: 1, skierId: 13228, numRides: 20, numVertical: 6900, numViews: 3
 queryId: 2, skierId: 13228, [time, liftId]: [2, 22], [32, 6], [37, 3], [68, 27], [83, 32], [101, 22], [120, 10], [131, 34], [161, 23], [174, 21], [182, 32], [214, 2], [217, 27], [249, 29], [257, 23], [283, 3], [304, 28], [312, 7], [340, 25], [351, 10]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 21, numRides: 20031
@@ -842,7 +842,7 @@ queryId: 1, skierId: 36960, numRides: 20, numVertical: 6600, numViews: 2
 queryId: 2, skierId: 36960, [time, liftId]: [12, 30], [32, 28], [48, 14], [59, 22], [83, 10], [95, 24], [115, 23], [142, 5], [156, 31], [179, 25], [182, 10], [205, 25], [217, 29], [244, 29], [269, 12], [276, 23], [300, 8], [315, 12], [339, 10], [352, 7]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 24, numRides: 20304
-queryId: 1, skierId: 18256, numRides: 20, numVertical: 7100, numViews: 1
+queryId: 1, skierId: 18256, numRides: 20, numVertical: 7100, numViews: 2
 queryId: 2, skierId: 18256, [time, liftId]: [8, 23], [22, 35], [42, 19], [55, 30], [81, 35], [99, 16], [124, 16], [129, 29], [161, 20], [180, 5], [194, 26], [206, 10], [225, 23], [245, 3], [261, 23], [281, 36], [293, 33], [313, 2], [333, 18], [347, 25]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 10, numRides: 19905
@@ -906,7 +906,7 @@ queryId: 1, skierId: 29764, numRides: 20, numVertical: 6800, numViews: 1
 queryId: 2, skierId: 29764, [time, liftId]: [11, 29], [35, 31], [42, 18], [59, 1], [73, 2], [94, 23], [116, 6], [129, 10], [157, 27], [176, 11], [191, 32], [199, 28], [228, 12], [239, 24], [253, 40], [279, 29], [302, 36], [324, 4], [334, 11], [356, 9]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 25, numRides: 19920
-queryId: 1, skierId: 13592, numRides: 20, numVertical: 7100, numViews: 1
+queryId: 1, skierId: 13592, numRides: 20, numVertical: 7100, numViews: 2
 queryId: 2, skierId: 13592, [time, liftId]: [16, 2], [22, 37], [37, 40], [61, 33], [84, 36], [103, 5], [116, 26], [127, 12], [147, 28], [169, 14], [187, 7], [199, 18], [226, 26], [250, 38], [262, 20], [277, 22], [292, 14], [307, 5], [336, 3], [346, 31]
 queryId: 3, hourId: 3, liftIds: 21, 4, 29, 36, 27, 1, 23, 22, 17, 37
 queryId: 4, liftId: 8, numRides: 19780
@@ -938,7 +938,7 @@ queryId: 1, skierId: 27372, numRides: 20, numVertical: 6900, numViews: 1
 queryId: 2, skierId: 27372, [time, liftId]: [14, 10], [32, 27], [52, 31], [55, 4], [73, 21], [104, 31], [125, 2], [143, 34], [156, 31], [177, 16], [190, 13], [199, 8], [219, 11], [238, 1], [270, 3], [275, 36], [292, 20], [309, 19], [335, 36], [350, 21]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 27, numRides: 19916
-queryId: 1, skierId: 3999, numRides: 20, numVertical: 5900, numViews: 1
+queryId: 1, skierId: 3999, numRides: 20, numVertical: 5900, numViews: 2
 queryId: 2, skierId: 3999, [time, liftId]: [7, 17], [25, 11], [38, 23], [71, 5], [76, 10], [104, 30], [119, 5], [136, 29], [149, 10], [168, 17], [198, 25], [212, 31], [230, 29], [247, 13], [261, 12], [286, 2], [303, 6], [319, 14], [325, 5], [352, 7]
 queryId: 3, hourId: 3, liftIds: 21, 4, 29, 36, 27, 1, 23, 22, 17, 37
 queryId: 4, liftId: 29, numRides: 20187
@@ -950,7 +950,7 @@ queryId: 1, skierId: 8011, numRides: 20, numVertical: 7200, numViews: 1
 queryId: 2, skierId: 8011, [time, liftId]: [1, 30], [34, 11], [41, 26], [66, 14], [83, 34], [100, 4], [125, 16], [143, 31], [153, 15], [163, 5], [191, 24], [200, 1], [230, 40], [237, 23], [256, 37], [273, 17], [297, 36], [315, 20], [328, 40], [353, 5]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 13, numRides: 19813
-queryId: 1, skierId: 25443, numRides: 20, numVertical: 7200, numViews: 1
+queryId: 1, skierId: 25443, numRides: 20, numVertical: 7200, numViews: 2
 queryId: 2, skierId: 25443, [time, liftId]: [15, 40], [28, 26], [46, 26], [59, 13], [75, 34], [93, 24], [116, 32], [142, 1], [145, 25], [170, 40], [189, 3], [210, 14], [234, 35], [242, 13], [263, 13], [273, 25], [304, 9], [317, 16], [328, 7], [344, 27]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 34, numRides: 19891
@@ -1050,7 +1050,7 @@ queryId: 1, skierId: 26054, numRides: 20, numVertical: 6800, numViews: 1
 queryId: 2, skierId: 26054, [time, liftId]: [13, 27], [20, 11], [41, 15], [60, 18], [81, 9], [101, 14], [115, 11], [130, 7], [157, 19], [170, 25], [184, 25], [215, 38], [232, 36], [237, 14], [267, 24], [273, 38], [293, 7], [309, 24], [341, 26], [347, 7]
 queryId: 3, hourId: 1, liftIds: 29, 34, 9, 33, 24, 38, 26, 39, 12, 7
 queryId: 4, liftId: 5, numRides: 20005
-queryId: 1, skierId: 23887, numRides: 20, numVertical: 7900, numViews: 1
+queryId: 1, skierId: 23887, numRides: 20, numVertical: 7900, numViews: 2
 queryId: 2, skierId: 23887, [time, liftId]: [17, 21], [33, 25], [52, 40], [57, 37], [85, 8], [101, 23], [111, 32], [140, 28], [157, 27], [179, 20], [195, 39], [200, 11], [221, 31], [247, 30], [259, 6], [277, 17], [302, 24], [312, 38], [340, 34], [346, 11]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 18, numRides: 20238
@@ -1078,7 +1078,7 @@ queryId: 1, skierId: 1269, numRides: 20, numVertical: 6900, numViews: 1
 queryId: 2, skierId: 1269, [time, liftId]: [10, 38], [24, 21], [38, 18], [72, 14], [83, 11], [105, 31], [117, 3], [129, 36], [157, 13], [175, 27], [192, 14], [207, 13], [223, 11], [238, 30], [262, 34], [278, 1], [297, 18], [317, 29], [338, 11], [348, 5]
 queryId: 3, hourId: 1, liftIds: 29, 34, 9, 33, 24, 38, 26, 39, 12, 7
 queryId: 4, liftId: 33, numRides: 20116
-queryId: 1, skierId: 20948, numRides: 20, numVertical: 6500, numViews: 2
+queryId: 1, skierId: 20948, numRides: 20, numVertical: 6500, numViews: 1
 queryId: 2, skierId: 20948, [time, liftId]: [14, 22], [32, 31], [41, 3], [57, 2], [74, 29], [92, 28], [112, 6], [138, 13], [158, 17], [167, 28], [195, 9], [200, 11], [218, 38], [246, 34], [260, 9], [282, 8], [306, 19], [313, 40], [338, 19], [356, 3]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 10, numRides: 19905
@@ -1170,7 +1170,7 @@ queryId: 1, skierId: 12237, numRides: 20, numVertical: 7300, numViews: 1
 queryId: 2, skierId: 12237, [time, liftId]: [12, 17], [20, 6], [47, 32], [69, 27], [77, 10], [101, 34], [114, 33], [136, 25], [158, 12], [166, 10], [197, 30], [214, 39], [221, 33], [236, 35], [264, 32], [272, 23], [306, 10], [309, 18], [338, 7], [360, 20]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 35, numRides: 19943
-queryId: 1, skierId: 13547, numRides: 20, numVertical: 7200, numViews: 1
+queryId: 1, skierId: 13547, numRides: 20, numVertical: 7200, numViews: 2
 queryId: 2, skierId: 13547, [time, liftId]: [16, 19], [30, 3], [38, 17], [69, 21], [86, 19], [107, 38], [117, 12], [129, 8], [153, 35], [167, 34], [186, 7], [206, 24], [218, 7], [235, 37], [258, 32], [274, 22], [303, 6], [307, 31], [337, 35], [343, 15]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 23, numRides: 20199
@@ -1214,7 +1214,7 @@ queryId: 1, skierId: 10612, numRides: 20, numVertical: 5700, numViews: 1
 queryId: 2, skierId: 10612, [time, liftId]: [13, 19], [22, 6], [39, 5], [55, 14], [81, 7], [91, 35], [121, 2], [144, 22], [150, 10], [167, 8], [195, 22], [210, 12], [218, 7], [249, 13], [267, 31], [286, 7], [292, 11], [316, 10], [337, 6], [355, 21]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 25, numRides: 19920
-queryId: 1, skierId: 31155, numRides: 20, numVertical: 7200, numViews: 2
+queryId: 1, skierId: 31155, numRides: 20, numVertical: 7200, numViews: 1
 queryId: 2, skierId: 31155, [time, liftId]: [11, 24], [26, 10], [40, 29], [69, 8], [80, 40], [101, 27], [125, 20], [140, 28], [147, 13], [175, 37], [183, 11], [208, 18], [226, 31], [244, 6], [257, 30], [286, 13], [303, 35], [314, 28], [329, 2], [347, 36]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 38, numRides: 20100
@@ -1222,7 +1222,7 @@ queryId: 1, skierId: 16866, numRides: 20, numVertical: 7200, numViews: 1
 queryId: 2, skierId: 16866, [time, liftId]: [18, 30], [27, 2], [37, 30], [65, 33], [79, 4], [103, 21], [118, 34], [130, 32], [153, 7], [178, 24], [187, 21], [204, 26], [224, 4], [243, 2], [263, 30], [275, 29], [291, 31], [308, 31], [336, 13], [357, 5]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 2, numRides: 19993
-queryId: 1, skierId: 24058, numRides: 20, numVertical: 7300, numViews: 1
+queryId: 1, skierId: 24058, numRides: 20, numVertical: 7300, numViews: 2
 queryId: 2, skierId: 24058, [time, liftId]: [4, 26], [34, 6], [41, 2], [69, 33], [87, 34], [103, 40], [120, 12], [138, 9], [145, 38], [173, 18], [194, 23], [204, 21], [220, 1], [249, 26], [267, 26], [271, 26], [290, 9], [311, 32], [337, 35], [352, 11]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 27, numRides: 19916
@@ -1254,7 +1254,7 @@ queryId: 1, skierId: 22536, numRides: 20, numVertical: 7100, numViews: 1
 queryId: 2, skierId: 22536, [time, liftId]: [8, 11], [22, 30], [49, 14], [64, 18], [82, 2], [103, 22], [115, 12], [144, 12], [161, 3], [172, 20], [191, 38], [201, 25], [218, 7], [250, 39], [260, 34], [271, 16], [305, 38], [311, 34], [332, 16], [344, 28]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 5, numRides: 20005
-queryId: 1, skierId: 36903, numRides: 20, numVertical: 6800, numViews: 2
+queryId: 1, skierId: 36903, numRides: 20, numVertical: 6800, numViews: 3
 queryId: 2, skierId: 36903, [time, liftId]: [10, 28], [23, 13], [44, 30], [71, 36], [89, 13], [103, 32], [111, 3], [142, 14], [151, 25], [179, 22], [196, 36], [203, 8], [229, 11], [252, 8], [258, 19], [274, 1], [294, 27], [322, 29], [335, 30], [355, 7]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 28, numRides: 20005
@@ -1502,7 +1502,7 @@ queryId: 1, skierId: 17307, numRides: 20, numVertical: 7100, numViews: 1
 queryId: 2, skierId: 17307, [time, liftId]: [13, 13], [32, 8], [40, 21], [56, 29], [73, 35], [95, 38], [115, 11], [142, 38], [161, 39], [166, 38], [188, 18], [202, 4], [227, 29], [246, 2], [253, 6], [282, 30], [291, 2], [316, 23], [329, 38], [354, 3]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 23, numRides: 20199
-queryId: 1, skierId: 33198, numRides: 20, numVertical: 6600, numViews: 2
+queryId: 1, skierId: 33198, numRides: 20, numVertical: 6600, numViews: 1
 queryId: 2, skierId: 33198, [time, liftId]: [9, 13], [35, 5], [47, 15], [58, 24], [75, 35], [96, 2], [109, 7], [134, 6], [153, 28], [179, 26], [186, 7], [201, 6], [225, 18], [252, 12], [253, 35], [275, 40], [290, 18], [318, 11], [338, 30], [359, 33]
 queryId: 3, hourId: 3, liftIds: 21, 4, 29, 36, 27, 1, 23, 22, 17, 37
 queryId: 4, liftId: 22, numRides: 20146
@@ -1626,11 +1626,11 @@ queryId: 1, skierId: 9240, numRides: 20, numVertical: 6800, numViews: 1
 queryId: 2, skierId: 9240, [time, liftId]: [12, 28], [24, 28], [45, 14], [55, 25], [84, 7], [94, 33], [121, 29], [140, 2], [156, 26], [178, 9], [182, 19], [205, 24], [226, 1], [246, 30], [253, 10], [283, 22], [300, 2], [307, 26], [336, 24], [344, 35]
 queryId: 3, hourId: 4, liftIds: 18, 24, 20, 27, 39, 6, 2, 36, 14, 3
 queryId: 4, liftId: 36, numRides: 20126
-queryId: 1, skierId: 28122, numRides: 20, numVertical: 7400, numViews: 2
+queryId: 1, skierId: 28122, numRides: 20, numVertical: 7400, numViews: 1
 queryId: 2, skierId: 28122, [time, liftId]: [2, 30], [31, 8], [48, 29], [58, 12], [75, 27], [105, 39], [115, 24], [143, 7], [145, 22], [167, 13], [184, 31], [213, 37], [230, 4], [239, 31], [267, 5], [288, 29], [290, 14], [319, 40], [330, 35], [349, 12]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 11, numRides: 19957
-queryId: 1, skierId: 36846, numRides: 20, numVertical: 6900, numViews: 3
+queryId: 1, skierId: 36846, numRides: 20, numVertical: 6900, numViews: 2
 queryId: 2, skierId: 36846, [time, liftId]: [1, 34], [24, 28], [48, 10], [65, 19], [74, 23], [102, 5], [115, 28], [133, 36], [161, 2], [169, 7], [182, 25], [203, 24], [230, 10], [249, 35], [268, 18], [274, 39], [301, 11], [322, 30], [327, 12], [349, 13]
 queryId: 3, hourId: 5, liftIds: 18, 32, 5, 33, 20, 12, 16, 7, 26, 38
 queryId: 4, liftId: 24, numRides: 20304
@@ -1710,7 +1710,7 @@ queryId: 1, skierId: 33154, numRides: 20, numVertical: 6700, numViews: 1
 queryId: 2, skierId: 33154, [time, liftId]: [8, 2], [24, 11], [37, 37], [72, 32], [82, 19], [93, 38], [121, 27], [128, 14], [158, 3], [168, 31], [188, 4], [203, 33], [230, 39], [237, 5], [254, 16], [282, 10], [298, 14], [312, 9], [331, 13], [351, 17]
 queryId: 3, hourId: 1, liftIds: 29, 34, 9, 33, 24, 38, 26, 39, 12, 7
 queryId: 4, liftId: 13, numRides: 19813
-queryId: 1, skierId: 22752, numRides: 20, numVertical: 6400, numViews: 1
+queryId: 1, skierId: 22752, numRides: 20, numVertical: 6400, numViews: 2
 queryId: 2, skierId: 22752, [time, liftId]: [15, 26], [19, 20], [49, 2], [65, 25], [79, 24], [104, 15], [117, 7], [138, 18], [150, 6], [166, 11], [195, 11], [209, 7], [233, 34], [244, 15], [262, 23], [276, 7], [303, 17], [318, 15], [328, 27], [346, 32]
 queryId: 3, hourId: 1, liftIds: 29, 34, 9, 33, 24, 38, 26, 39, 12, 7
 queryId: 4, liftId: 39, numRides: 20269
@@ -1870,7 +1870,7 @@ queryId: 1, skierId: 4845, numRides: 20, numVertical: 7400, numViews: 1
 queryId: 2, skierId: 4845, [time, liftId]: [16, 19], [23, 24], [44, 7], [58, 16], [77, 31], [104, 34], [109, 40], [134, 18], [149, 24], [177, 22], [190, 14], [206, 6], [227, 36], [247, 1], [266, 6], [286, 39], [300, 29], [307, 22], [335, 25], [343, 36]
 queryId: 3, hourId: 6, liftIds: 17, 22, 39, 29, 28, 30, 24, 23, 2, 7
 queryId: 4, liftId: 32, numRides: 20163
-queryId: 1, skierId: 29760, numRides: 20, numVertical: 7700, numViews: 2
+queryId: 1, skierId: 29760, numRides: 20, numVertical: 7700, numViews: 1
 queryId: 2, skierId: 29760, [time, liftId]: [14, 38], [26, 36], [48, 40], [57, 4], [74, 28], [92, 31], [117, 24], [131, 34], [154, 5], [163, 36], [187, 8], [215, 31], [219, 33], [245, 33], [266, 24], [275, 5], [301, 11], [323, 3], [329, 38], [360, 9]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 32, numRides: 20163
@@ -1906,7 +1906,7 @@ queryId: 1, skierId: 16770, numRides: 20, numVertical: 7900, numViews: 1
 queryId: 2, skierId: 16770, [time, liftId]: [6, 37], [32, 31], [47, 26], [66, 22], [81, 38], [107, 16], [117, 11], [132, 25], [151, 4], [164, 38], [194, 34], [207, 37], [225, 31], [240, 16], [253, 7], [280, 15], [294, 32], [321, 1], [325, 28], [344, 40]
 queryId: 3, hourId: 3, liftIds: 21, 4, 29, 36, 27, 1, 23, 22, 17, 37
 queryId: 4, liftId: 26, numRides: 20157
-queryId: 1, skierId: 33027, numRides: 20, numVertical: 6500, numViews: 2
+queryId: 1, skierId: 33027, numRides: 20, numVertical: 6500, numViews: 1
 queryId: 2, skierId: 33027, [time, liftId]: [6, 16], [25, 33], [37, 36], [59, 20], [77, 11], [99, 26], [124, 10], [140, 30], [145, 38], [166, 10], [186, 6], [216, 40], [233, 1], [236, 15], [268, 1], [275, 1], [297, 18], [311, 23], [339, 14], [359, 20]
 queryId: 3, hourId: 2, liftIds: 11, 28, 32, 38, 36, 17, 23, 18, 24, 19
 queryId: 4, liftId: 38, numRides: 20100

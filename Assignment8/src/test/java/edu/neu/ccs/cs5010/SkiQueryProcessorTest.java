@@ -7,17 +7,17 @@ import org.junit.Test;
 
 public class SkiQueryProcessorTest {
   private static final String PATH = "PDPAssignment8.csv";
-  private static final int NUM_THREADS = 20;
-  private static final int NUM_THREADS2 = 10;
+  private static final int NUM_QUERIES = 40000;
+  private static final int NUM_QUERIES2 = 10;
   private SkiQueryProcessor processor1;
   private SkiQueryProcessor processor2;
   private SkiQueryProcessor processor3;
 
   @Before
   public void before() {
-    processor1 = new SkiQueryProcessor(PATH, NUM_THREADS);
-    processor2 = new SkiQueryProcessor(PATH, NUM_THREADS);
-    processor3 = new SkiQueryProcessor(PATH, NUM_THREADS2);
+    processor1 = new SkiQueryProcessor(PATH, NUM_QUERIES);
+    processor2 = new SkiQueryProcessor(PATH, NUM_QUERIES);
+    processor3 = new SkiQueryProcessor(PATH, NUM_QUERIES2);
   }
 
   @Test
@@ -60,6 +60,6 @@ public class SkiQueryProcessorTest {
 
   @Test
   public void main() {
-    SkiQueryProcessor.main(new String[]{PATH, Integer.toString(NUM_THREADS)});
+    SkiQueryProcessor.main(new String[]{PATH, Integer.toString(NUM_QUERIES)});
   }
 }
