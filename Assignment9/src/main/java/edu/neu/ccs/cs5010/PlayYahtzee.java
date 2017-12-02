@@ -39,15 +39,15 @@ public class PlayYahtzee {
         String fromServer;
         while ((fromServer = in.readLine()) != null) {
           System.out.println("Server: " + fromServer);
-          if (fromServer.equals("Bye.")) {
-            kkSocket.close();
-            System.out.println("fromServer is null, so closing the socket... ");
-            return;
-          }
-
           String response = this.getResponse(fromServer);
+          if (response.isEmpty()) {
+            break;
+          }
           out.println(response);
         }
+
+        kkSocket.close();
+        System.out.println("fromServer is null, so closing the socket... ");
         Thread.sleep(100L);
       }
     } catch (UnknownHostException var68) {
@@ -65,6 +65,9 @@ public class PlayYahtzee {
   private String getResponse(String fromServer) {
     String[] out = fromServer.split(":");
     String frame = (out[0].trim());
+    if (frame == null || frame.isEmpty()) {
+      return "";
+    }
     switch (frame) {
       case "CHOOSE_SCORE" :
         return this.getKeepScore(fromServer);
@@ -78,6 +81,8 @@ public class PlayYahtzee {
         return "START_TURN: pls";
       case "START_ROUND" :
         return "START_ROUND: pls";
+      case "GAME_OVER" :
+        return "GAME_OVER: bye bye!";
       default:
         return "INFO: oh!";
     }
