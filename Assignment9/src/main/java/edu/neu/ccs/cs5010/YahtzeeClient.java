@@ -15,7 +15,7 @@ public class YahtzeeClient {
 
   public static void main(String[] args) throws IOException {
     if (args.length != 2) {
-      System.err.println("Usage: java KnockKnockClient <host name> <port number>");
+      System.err.println("Usage: java YahtzeeClient <host name> <port number>");
       System.exit(1);
     }
 
