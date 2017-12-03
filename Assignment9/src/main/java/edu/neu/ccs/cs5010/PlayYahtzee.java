@@ -125,12 +125,19 @@ public class PlayYahtzee {
         String[] vals = userIn.trim().split(" ");
         if (userIn.trim().length() > 0) {
           for(int i = 0; i < vals.length; ++i) {
-            int val = Integer.valueOf(vals[i]);
-            if (val >= 1 && val <= 5) {
-              out[val - 1] = 1;
-            } else {
-              System.out.println("INFO : Enter a number between 1 and 5.");
+            try {
+              int val = Integer.valueOf(vals[i]);
+              if (val >= 1 && val <= 5) {
+                out[val - 1] = 1;
+              } else {
+                System.out.println("INFO : Enter a number between 1 and 5.");
+                continue OUTER;
+              }
+            }
+            catch (NumberFormatException ex){
+              System.out.println("Wrong entry. String not allowed. Enter a number between 1 and 5");
               continue OUTER;
+
             }
           }
         }
