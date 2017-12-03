@@ -11,6 +11,10 @@ import java.net.UnknownHostException;
 public class PlayYahtzee {
 
   private BufferedReader stdIn;
+  private static final String DO_NOTHING = "INFO: wow";
+  private static final String SCORE_FRAME = "SCORE_CHOICE: ";
+  private static final String DICE_FRAME = "KEEP_DICE: ";
+  private static final String PRINT_FRAME = "PRINT_GAME_STATE: PRINT!";
 
   public static void main(String[] args) throws IOException {
     if (args.length != 2) {
@@ -65,13 +69,15 @@ public class PlayYahtzee {
     FrameParser.Frame frame = FrameParser.getFrame(out[0]);
     switch(frame) {
       case CHOOSE_SCORE:
-        return this.getKeepScore(fromServer);
+        return getKeepScore(fromServer);
       case SCORE_CHOICE_INVALID:
-        return this.getKeepScore(fromServer);
+        return getKeepScore(fromServer);
       case CHOOSE_DICE:
-        return this.getKeepDiceFrame(out[1]);
+        return getKeepDiceFrame(out[1]);
+      case ROUND_OVER:
+        return askPrint();
       default:
-        return "INFO: wow";
+        return DO_NOTHING;
     }
   }
 
@@ -83,42 +89,63 @@ public class PlayYahtzee {
         System.out.println("Please enter something  ");
       }
 
-      return "SCORE_CHOICE: " + userIn;
+      return SCORE_FRAME + userIn;
     } catch (IOException var3) {
       var3.printStackTrace();
-      return "2: 1 1 1 1 1";
+      return DO_NOTHING;
+    }
+  }
+
+  private String askPrint() {
+    try {
+      System.out.println("Do you want to print the current state?(yes or no)");
+      String userIn;
+      for(userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
+        System.out.println("Please enter yes or no");
+      }
+      if (userIn.toLowerCase().equals("yes")) {
+        return PRINT_FRAME;
+      } else {
+        return DO_NOTHING;
+      }
+    } catch (IOException var3) {
+      var3.printStackTrace();
+      return DO_NOTHING;
     }
   }
 
   private String getKeepDiceFrame(String diceValue) {
     try {
-      System.out.println("Enter numbers for the ones you want to keep, 1-5. ");
-      String userIn = this.stdIn.readLine();
-      String[] vals = userIn.trim().split(" ");
       int[] out = new int[]{0, 0, 0, 0, 0};
-      StringBuffer buffer = new StringBuffer("KEEP_DICE: " + diceValue);
-      int i;
-      if (userIn.trim().length() > 0) {
-        for(i = 0; i < vals.length; ++i) {
-          int val = Integer.valueOf(vals[i]);
-          if (val >= 1 && val <= 5) {
-            out[val - 1] = 1;
+      StringBuffer buffer = new StringBuffer(DICE_FRAME + diceValue);
+      OUTER:
+      while (true) {
+        System.out.println("Enter numbers for the ones you want to keep, 1-5. ");
+        String userIn = this.stdIn.readLine();
+        String[] vals = userIn.trim().split(" ");
+        if (userIn.trim().length() > 0) {
+          for(int i = 0; i < vals.length; ++i) {
+            int val = Integer.valueOf(vals[i]);
+            if (val >= 1 && val <= 5) {
+              out[val - 1] = 1;
+            } else {
+              continue OUTER;
+            }
           }
         }
-      }
-
-      for(i = 0; i < out.length; ++i) {
-        if (out[i] == 1) {
-          buffer.append(" 1");
-        } else {
-          buffer.append(" 0");
+        for(int i = 0; i < out.length; ++i) {
+          if (out[i] == 1) {
+            buffer.append(" 1");
+          } else {
+            buffer.append(" 0");
+          }
         }
-      }
 
-      return buffer.toString();
+        return buffer.toString();
+      }
     } catch (IOException var8) {
       var8.printStackTrace();
-      return "2: 1 1 1 1 1";
+      return DO_NOTHING;
     }
   }
 
