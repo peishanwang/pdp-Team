@@ -46,7 +46,7 @@ public class YahtzeeClientTest {
       String testString = "GAME_OVER";
       iStream = new ByteArrayInputStream(testString.getBytes(StandardCharsets.UTF_8));
       when(mockTestClientSocket.getInputStream()).thenReturn(iStream);
-      new PlayYahtzee(mockTestClientSocket);
+      new YahtzeeClient(mockTestClientSocket);
     } catch (IOException e) {
       fail(e.getMessage());
     }
@@ -61,7 +61,7 @@ public class YahtzeeClientTest {
 
 
       String inputString = "1 2 3";
-      new PlayYahtzee(mockTestClientSocket) {
+      new YahtzeeClient(mockTestClientSocket) {
         @Override
         protected boolean checkAndCloseSocket(String check) {
           Assert.assertEquals("KEEP_DICE: 1 2 3 4 5 1 1 1 0 0", check);
