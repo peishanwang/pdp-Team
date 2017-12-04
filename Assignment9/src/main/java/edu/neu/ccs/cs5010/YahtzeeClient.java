@@ -21,7 +21,7 @@ public class YahtzeeClient {
   private static final String ONE = " 1";
   private static final String ZERO = " 0";
   private static final String YES = "yes";
-  private static final String NO = "no";
+  private static final String NONO = "no";
   private static final String SPACE_SEPARATOR = " ";
   private static final String COLON_SEPARATOR = ":";
   private static final String SEVER = "Sever: ";
@@ -127,7 +127,7 @@ public class YahtzeeClient {
     System.out.println("Do you want to print the current state?(yes or no)");
     String userIn;
     for (userIn = getLine().toLowerCase();
-        !(userIn.equals(YES) || userIn.equals(NO));
+        !(userIn.equals(YES) || userIn.equals(NONO));
         userIn = getLine().toLowerCase()) {
       System.out.println("Please enter yes or no");
     }
