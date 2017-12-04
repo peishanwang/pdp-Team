@@ -5,6 +5,7 @@ import java.util.Map;
 
 public class FrameParser {
   private static final Map<String, FrameParser.Frame> stringToEnum = new HashMap();
+
   static {
     for (Frame frame : Frame.values()) {
       stringToEnum.put(frame.toString(), frame);
