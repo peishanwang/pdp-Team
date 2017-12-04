@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FrameParser {
-  private static final Map<String, FrameParser.Frame> STRING_TO_ENUM = new HashMap();
+  private static final Map<String, FrameParser.Frame> STRING_TO_ENUM = new HashMap<>();
 
   static {
     for (Frame frame : Frame.values()) {

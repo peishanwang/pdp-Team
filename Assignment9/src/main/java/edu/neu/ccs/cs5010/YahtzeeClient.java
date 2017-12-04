@@ -18,6 +18,18 @@ public class YahtzeeClient {
   private static final String PRINT_FRAME = "PRINT_GAME_STATE: PRINT!";
   private static final String GAME_OVER = "GAME_OVER";
   private static final String ENCODING = "UTF-8";
+  private static final String ONE = " 1";
+  private static final String ZERO = " 0";
+  private static final String YES = "yes";
+  private static final String NO = "no";
+  private static final String SPACE_SEPARATOR = " ";
+  private static final String COLON_SEPARATOR = ":";
+  private static final String SEVER = "Sever: ";
+  private static final long INTERVAL = 100L;
+  private static final int MIN_INDEX = 1;
+  private static final int MAX_INDEX = 5;
+  private static final int FRAME_INDEX = 0;
+  private static final int PAYLOAD_INDEX = 1;
 
   /**
    * YahtzeeClient Constructor that takes socket for instantiation.
@@ -55,15 +67,14 @@ public class YahtzeeClient {
       while (true) {
         String fromServer;
         while ((fromServer = input.readLine()) != null) {
-          System.out.println("Server: " + fromServer);
+          System.out.println(SEVER + fromServer);
           String response = this.getResponse(fromServer);
-          System.out.println("Client: " + response);
           if (checkAndCloseSocket(response)) {
             return;
           }
           out.println(response);
         }
-        Thread.sleep(100L);
+        Thread.sleep(INTERVAL);
       }
     } catch (IOException | InterruptedException e) {
       e.printStackTrace();
@@ -77,14 +88,14 @@ public class YahtzeeClient {
    * @return appropriate response
    */
   public String getResponse(String fromServer) {
-    String[] out = fromServer.split(":");
-    FrameParser.Frame frame = FrameParser.getFrame(out[0]);
+    String[] out = fromServer.split(COLON_SEPARATOR);
+    FrameParser.Frame frame = FrameParser.getFrame(out[FRAME_INDEX]);
     switch (frame) {
       case CHOOSE_SCORE:
       case SCORE_CHOICE_INVALID:
         return getKeepScore(fromServer);
       case CHOOSE_DICE:
-        return getKeepDiceFrame(out[1]);
+        return getKeepDiceFrame(out[PAYLOAD_INDEX]);
       case ROUND_OVER:
         return askPrint();
       case GAME_OVER:
@@ -116,11 +127,11 @@ public class YahtzeeClient {
     System.out.println("Do you want to print the current state?(yes or no)");
     String userIn;
     for (userIn = getLine().toLowerCase();
-        !(userIn.equals("yes") || userIn.equals("no"));
+        !(userIn.equals(YES) || userIn.equals(NO));
         userIn = getLine().toLowerCase()) {
       System.out.println("Please enter yes or no");
     }
-    if (userIn.toLowerCase().equals("yes")) {
+    if (userIn.toLowerCase().equals(YES)) {
       return PRINT_FRAME;
     } else {
       return DO_NOTHING;
@@ -140,12 +151,12 @@ public class YahtzeeClient {
     while (true) {
       System.out.println("Enter numbers for the ones you want to keep, 1-5. ");
       String userIn = getLine();
-      values = userIn.trim().split(" ");
+      values = userIn.trim().split(SPACE_SEPARATOR);
       if (userIn.trim().length() > 0) {
         for (int i = 0; i < values.length; i++) {
           try {
             int val = Integer.parseInt(values[i]);
-            if (val >= 1 && val <= 5) {
+            if (val >= MIN_INDEX && val <= MAX_INDEX) {
               out[val - 1] = 1;
             } else {
               System.out.println("INFO : Enter a number between 1 and 5.");
@@ -163,9 +174,9 @@ public class YahtzeeClient {
     }
     for (int anOut : out) {
       if (anOut == 1) {
-        strb.append(" 1");
+        strb.append(ONE);
       } else {
-        strb.append(" 0");
+        strb.append(ZERO);
       }
     }
     return strb.toString();

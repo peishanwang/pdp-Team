@@ -23,23 +23,22 @@ public class YahtzeeClientTest {
   private static final String[] YES = new String[]{"a", "yes"};
   private static final String[] NO = new String[]{"a", "no"};
   private static final String ROUND_OVER = "ROUND_OVER: ";
-  private ServerSocket mockServerSocket;
+  private static final String GAME_OVER = "GAME_OVER";
   private Socket mockTestClientSocket;
-  private PipedOutputStream oStream;
   private InputStream iStream;
   private static int index;
 
   @Before
   public void setup() {
     // Set it first
-    mockServerSocket = mock(ServerSocket.class);
+    ServerSocket mockServerSocket = mock(ServerSocket.class);
     mockTestClientSocket = mock(Socket.class);
 
     try {
       // Then mock it
       when(mockServerSocket.accept()).thenReturn(mockTestClientSocket);
 
-      oStream = new PipedOutputStream();
+      PipedOutputStream oStream = new PipedOutputStream();
       when(mockTestClientSocket.getOutputStream()).thenReturn(oStream);
 
       when(mockTestClientSocket.isClosed()).thenReturn(false);
@@ -53,7 +52,7 @@ public class YahtzeeClientTest {
   @Test
   public void testGameOver() {
     try {
-      String testString = "GAME_OVER";
+      String testString = GAME_OVER;
       iStream = new ByteArrayInputStream(testString.getBytes(StandardCharsets.UTF_8));
       when(mockTestClientSocket.getInputStream()).thenReturn(iStream);
       new YahtzeeClient(mockTestClientSocket);
