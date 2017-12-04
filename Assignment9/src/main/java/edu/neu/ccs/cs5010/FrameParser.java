@@ -3,6 +3,10 @@ package edu.neu.ccs.cs5010;
 import java.util.HashMap;
 import java.util.Map;
 
+
+/**
+ * FrameParser class is used to convert Enum frame to appropriate strings.
+ */
 public class FrameParser {
   private static final Map<String, FrameParser.Frame> STRING_TO_ENUM = new HashMap<>();
 
