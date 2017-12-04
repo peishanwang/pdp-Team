@@ -10,11 +10,13 @@ import java.net.UnknownHostException;
 
 public class PlayYahtzee {
 
-  private BufferedReader stdIn;
-  private static final String DO_NOTHING = "INFO: wow";
+  protected BufferedReader stdIn;
+  protected Socket socket;
+  private static final String DO_NOTHING = "INFO: nothing to do.";
   private static final String SCORE_FRAME = "SCORE_CHOICE: ";
-  private static final String DICE_FRAME = "KEEP_DICE: ";
+  private static final String DICE_FRAME = "KEEP_DICE:";
   private static final String PRINT_FRAME = "PRINT_GAME_STATE: PRINT!";
+  private static final String GAME_OVER = "GAME_OVER";
 
   public static void main(String[] args) throws IOException {
     if (args.length != 2) {
@@ -27,36 +29,46 @@ public class PlayYahtzee {
     new PlayYahtzee(hostName, portNumber);
   }
 
-  public PlayYahtzee(String hostName, int portNumber) {
-    this.stdIn = new BufferedReader(new InputStreamReader(System.in));
-    this.runServer(hostName, portNumber);
+  public PlayYahtzee(Socket socket) {
+    setStdIn();
+    this.socket = socket;
+    runServer();
   }
 
-  private void runServer(String hostName, int portNumber) {
+  public PlayYahtzee(String hostName, int portNumber) {
+    stdIn = new BufferedReader(new InputStreamReader(System.in));
+    try {
+      socket = new Socket(hostName, portNumber);
+    } catch (IOException e) {
+      System.err.println("Couldn't get I/O for the connection to " + hostName);
+      System.exit(1);
+    }
+    runServer();
+  }
+
+  private void runServer() {
     try (
-      Socket kkSocket = new Socket(hostName, portNumber);
-      PrintWriter out = new PrintWriter(kkSocket.getOutputStream(), true);
-      BufferedReader in = new BufferedReader(new InputStreamReader(kkSocket.getInputStream()));
+      PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+      BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
     ) {
         while (true) {
         String fromServer;
         while ((fromServer = in.readLine()) != null) {
           System.out.println("Server: " + fromServer);
-          if (fromServer.contains("GAME_OVER")) {
-            kkSocket.close();
-            System.out.println("Game is over, bye!");
+          String response = this.getResponse(fromServer);
+          System.out.println("Client: " + response);
+          if (checkAndCloseSocket(response)) {
             return;
           }
-          String response = this.getResponse(fromServer);
           out.println(response);
         }
         Thread.sleep(100L);
       }
     } catch (UnknownHostException var68) {
-      System.err.println("Don't know about host " + hostName);
+      System.err.println("Don't know about host ");
       System.exit(1);
-    } catch (IOException var69) {
-      System.err.println("Couldn't get I/O for the connection to " + hostName);
+    } catch (IOException e) {
+      System.err.println("Couldn't get I/O for the connection to ");
       System.exit(1);
     } catch (InterruptedException var70) {
       var70.printStackTrace();
@@ -64,7 +76,7 @@ public class PlayYahtzee {
 
   }
 
-  private String getResponse(String fromServer) {
+  public String getResponse(String fromServer) {
     String[] out = fromServer.split(":");
     FrameParser.Frame frame = FrameParser.getFrame(out[0]);
     switch(frame) {
@@ -76,6 +88,8 @@ public class PlayYahtzee {
         return getKeepDiceFrame(out[1]);
       case ROUND_OVER:
         return askPrint();
+      case GAME_OVER:
+        return GAME_OVER;
       default:
         return DO_NOTHING;
     }
@@ -155,6 +169,23 @@ public class PlayYahtzee {
       var8.printStackTrace();
       return DO_NOTHING;
     }
+  }
+
+  protected void setStdIn() {
+    stdIn = new BufferedReader(new InputStreamReader(System.in));
+  }
+
+  protected boolean checkAndCloseSocket(String check) {
+    if (check.contains(GAME_OVER)) {
+      try {
+        socket.close();
+        System.out.println("Game is over, bye!");
+        return true;
+      } catch (IOException e) {
+        e.printStackTrace();
+      }
+    }
+    return false;
   }
 
 
