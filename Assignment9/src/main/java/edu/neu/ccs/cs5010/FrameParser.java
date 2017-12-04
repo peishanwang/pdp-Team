@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FrameParser {
-  private static final Map<String, FrameParser.Frame> stringToEnum = new HashMap();
+  private static final Map<String, FrameParser.Frame> STRING_TO_ENUM = new HashMap();
 
   static {
     for (Frame frame : Frame.values()) {
-      stringToEnum.put(frame.toString(), frame);
+      STRING_TO_ENUM.put(frame.toString(), frame);
     }
   }
 
   public static Frame getFrame(String name) {
-    return stringToEnum.get(name);
+    return STRING_TO_ENUM.get(name);
   }
 
 
