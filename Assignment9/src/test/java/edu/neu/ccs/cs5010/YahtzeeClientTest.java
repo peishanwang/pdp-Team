@@ -14,10 +14,18 @@ import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.*;
 
 public class YahtzeeClientTest {
+  private static final String PRINT_FRAME = "PRINT_GAME_STATE: PRINT!";
+  private static final String DO_NOTHING = "INFO: nothing to do.";
+  private static final String CHOOSE_DICE = "CHOOSE_DICE: 1 2 3 4 5";
+  private static final String CHOOSE_SCORE = "CHOOSE_SCORE: 1 2 3 4 5";
+  private static final String[] YES = new String[]{"a", "yes"};
+  private static final String[] NO = new String[]{"a", "no"};
+  private static final String ROUND_OVER = "ROUND_OVER: ";
   private ServerSocket mockServerSocket;
   private Socket mockTestClientSocket;
   private PipedOutputStream oStream;
   private InputStream iStream;
+  private static int index;
 
   @Before
   public void setup() {
@@ -52,22 +60,28 @@ public class YahtzeeClientTest {
     }
   }
 
-  @Test
-  public void testDice() {
+  private void helper(String testString, String[] inputStrings) {
     try {
-      String testString = "CHOOSE_DICE: 1 2 3 4 5";
       iStream = new ByteArrayInputStream(testString.getBytes(StandardCharsets.UTF_8));
       when(mockTestClientSocket.getInputStream()).thenReturn(iStream);
 
-
-      String inputString = "1 2 3";
+      index = 0;
       new YahtzeeClient(mockTestClientSocket) {
         @Override
         protected boolean checkAndCloseSocket(String check) {
-          Assert.assertEquals("KEEP_DICE: 1 2 3 4 5 1 1 1 0 0", check);
+          if (testString.equals(CHOOSE_DICE)) {
+            Assert.assertEquals("KEEP_DICE: 1 2 3 4 5 1 1 1 0 0", check);
+          } else if (testString.equals(CHOOSE_SCORE)) {
+            Assert.assertEquals("SCORE_CHOICE: Aces", check);
+          } else if (testString.equals(ROUND_OVER) && inputStrings.equals(YES)) {
+            Assert.assertEquals(PRINT_FRAME, check);
+          } else if (testString.equals(ROUND_OVER) && inputStrings.equals(NO)) {
+            Assert.assertEquals(DO_NOTHING, check);
+          }
+
           try {
             socket.close();
-            System.out.println("Game is over, bye!");
+            System.out.println("socket closed");
           } catch (IOException e) {
             e.printStackTrace();
           }
@@ -76,12 +90,28 @@ public class YahtzeeClientTest {
         @Override
         protected void setStdIn() {
           stdIn = new BufferedReader(new InputStreamReader(
-              new ByteArrayInputStream(inputString.getBytes(StandardCharsets.UTF_8)
-          )));
+              new ByteArrayInputStream(inputStrings[index].getBytes(StandardCharsets.UTF_8))));
+          index++;
         }
       };
     } catch (IOException e) {
       fail(e.getMessage());
     }
+  }
+
+  @Test
+  public void testAskPrint() {
+    helper(ROUND_OVER, YES);
+    helper(ROUND_OVER, NO);
+  }
+
+  @Test
+  public void testDice() {
+    helper(CHOOSE_DICE, new String[]{"abc", "-1 2", "1 2 3"});
+  }
+
+  @Test
+  public void testKeepScore() {
+    helper(CHOOSE_SCORE, new String[]{"a", "Aces"});
   }
 }

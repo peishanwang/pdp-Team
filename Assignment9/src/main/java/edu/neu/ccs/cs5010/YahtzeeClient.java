@@ -17,13 +17,11 @@ public class YahtzeeClient {
   private static final String GAME_OVER = "GAME_OVER";
 
   public YahtzeeClient(Socket socket) {
-    setStdIn();
     this.socket = socket;
     runServer();
   }
 
   public YahtzeeClient(String hostName, int portNumber) {
-    stdIn = new BufferedReader(new InputStreamReader(System.in));
     try {
       socket = new Socket(hostName, portNumber);
     } catch (IOException e) {
@@ -62,7 +60,6 @@ public class YahtzeeClient {
     FrameParser.Frame frame = FrameParser.getFrame(out[0]);
     switch(frame) {
       case CHOOSE_SCORE:
-        return getKeepScore(fromServer);
       case SCORE_CHOICE_INVALID:
         return getKeepScore(fromServer);
       case CHOOSE_DICE:
@@ -80,8 +77,10 @@ public class YahtzeeClient {
     try {
       System.out.println("Enter the Score you want to take:  " + fromServer);
       String userIn;
+      setStdIn();
       for(userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
         System.out.println("Please enter something  ");
+        setStdIn();
       }
 
       return SCORE_FRAME + userIn;
@@ -95,8 +94,12 @@ public class YahtzeeClient {
     try {
       System.out.println("Do you want to print the current state?(yes or no)");
       String userIn;
-      for(userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
+      setStdIn();
+      for(userIn = this.stdIn.readLine().toLowerCase();
+          !(userIn.equals("yes") || userIn.equals("no"));
+          userIn = this.stdIn.readLine().toLowerCase()) {
         System.out.println("Please enter yes or no");
+        setStdIn();
       }
       if (userIn.toLowerCase().equals("yes")) {
         return PRINT_FRAME;
@@ -113,15 +116,17 @@ public class YahtzeeClient {
     try {
       int[] out = new int[]{0, 0, 0, 0, 0};
       StringBuffer buffer = new StringBuffer(DICE_FRAME + diceValue);
+      String[] values;
       OUTER:
       while (true) {
         System.out.println("Enter numbers for the ones you want to keep, 1-5. ");
+        setStdIn();
         String userIn = this.stdIn.readLine();
-        String[] vals = userIn.trim().split(" ");
+        values = userIn.trim().split(" ");
         if (userIn.trim().length() > 0) {
-          for(int i = 0; i < vals.length; ++i) {
+          for(int i = 0; i < values.length; ++i) {
             try {
-              int val = Integer.valueOf(vals[i]);
+              int val = Integer.valueOf(values[i]);
               if (val >= 1 && val <= 5) {
                 out[val - 1] = 1;
               } else {
@@ -132,7 +137,6 @@ public class YahtzeeClient {
             catch (NumberFormatException ex){
               System.out.println("Wrong entry. String not allowed. Enter a number between 1 and 5");
               continue OUTER;
-
             }
           }
         }
