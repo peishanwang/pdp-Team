@@ -7,6 +7,9 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
+/**
+ * YahtzeeClient class.
+ */
 public class YahtzeeClient {
   protected BufferedReader stdIn;
   protected Socket socket;
@@ -16,12 +19,21 @@ public class YahtzeeClient {
   private static final String PRINT_FRAME = "PRINT_GAME_STATE: PRINT!";
   private static final String GAME_OVER = "GAME_OVER";
 
+  /**
+   * YahtzeeClient Constructor that takes socket for instantiation.
+   * @param socket instance of Socket class
+   */
   public YahtzeeClient(Socket socket) {
     setStdIn();
     this.socket = socket;
     runServer();
   }
 
+  /**
+   * YahtzeeClient Constructor to make a client with hostname and portnumber.
+   * @param hostName name of host (localhost in our case)
+   * @param portNumber port number 1200
+   */
   public YahtzeeClient(String hostName, int portNumber) {
     stdIn = new BufferedReader(new InputStreamReader(System.in));
     try {
@@ -33,12 +45,15 @@ public class YahtzeeClient {
     runServer();
   }
 
+  /**
+   * method to run the server.
+   */
   private void runServer() {
     try (
       PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
       BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()))
     ) {
-        while (true) {
+      while (true) {
         String fromServer;
         while ((fromServer = in.readLine()) != null) {
           System.out.println("Server: " + fromServer);
@@ -57,10 +72,15 @@ public class YahtzeeClient {
 
   }
 
+  /**
+   * method to get response from server.
+   * @param fromServer string from server
+   * @return appropriate response
+   */
   public String getResponse(String fromServer) {
     String[] out = fromServer.split(":");
     FrameParser.Frame frame = FrameParser.getFrame(out[0]);
-    switch(frame) {
+    switch (frame) {
       case CHOOSE_SCORE:
         return getKeepScore(fromServer);
       case SCORE_CHOICE_INVALID:
@@ -76,11 +96,16 @@ public class YahtzeeClient {
     }
   }
 
+  /**
+   * method to take score from player.
+   * @param fromServer string from server
+   * @return score frame.
+   */
   private String getKeepScore(String fromServer) {
     try {
       System.out.println("Enter the Score you want to take:  " + fromServer);
       String userIn;
-      for(userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
+      for (userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
         System.out.println("Please enter something  ");
       }
 
@@ -91,11 +116,15 @@ public class YahtzeeClient {
     }
   }
 
+  /**
+   * method to ask for printing.
+   * @return frame telling what to print.
+   */
   private String askPrint() {
     try {
       System.out.println("Do you want to print the current state?(yes or no)");
       String userIn;
-      for(userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
+      for (userIn = this.stdIn.readLine(); userIn.length() <= 1; userIn = this.stdIn.readLine()) {
         System.out.println("Please enter yes or no");
       }
       if (userIn.toLowerCase().equals("yes")) {
@@ -109,6 +138,11 @@ public class YahtzeeClient {
     }
   }
 
+  /**
+   * method to get dice frame.
+   * @param diceValue value of dice
+   * @return buffer after keeping dice.
+   */
   private String getKeepDiceFrame(String diceValue) {
     try {
       int[] out = new int[]{0, 0, 0, 0, 0};
@@ -119,7 +153,7 @@ public class YahtzeeClient {
         String userIn = this.stdIn.readLine();
         String[] vals = userIn.trim().split(" ");
         if (userIn.trim().length() > 0) {
-          for(int i = 0; i < vals.length; ++i) {
+          for (int i = 0; i < vals.length; ++i) {
             try {
               int val = Integer.valueOf(vals[i]);
               if (val >= 1 && val <= 5) {
@@ -128,15 +162,14 @@ public class YahtzeeClient {
                 System.out.println("INFO : Enter a number between 1 and 5.");
                 continue OUTER;
               }
-            }
-            catch (NumberFormatException ex){
+            } catch (NumberFormatException ex) {
               System.out.println("Wrong entry. String not allowed. Enter a number between 1 and 5");
               continue OUTER;
 
             }
           }
         }
-        for(int i = 0; i < out.length; ++i) {
+        for (int i = 0; i < out.length; ++i) {
           if (out[i] == 1) {
             buffer.append(" 1");
           } else {
@@ -156,6 +189,11 @@ public class YahtzeeClient {
     stdIn = new BufferedReader(new InputStreamReader(System.in));
   }
 
+  /**
+   * method to check whether to close socket or not.
+   * @param check this string will tell whether game is over or not
+   * @return true/false
+   */
   protected boolean checkAndCloseSocket(String check) {
     if (check.contains(GAME_OVER)) {
       try {
