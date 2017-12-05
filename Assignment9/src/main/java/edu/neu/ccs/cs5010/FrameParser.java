@@ -21,6 +21,9 @@ public class FrameParser {
   }
 
 
+  /**
+   * Frame is an Enum that has all the states that a game can have.
+   */
   enum Frame {
     START_GAME,
     START_TURN,
