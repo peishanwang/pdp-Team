@@ -13,7 +13,6 @@ import java.io.PrintWriter;
  */
 public class IoUtil {
   private static final String ENCODING = "UTF-8";
-  private static final String EMPTY_STRING = "";
   private InputStream inputStream;
   private OutputStream outputStream;
 
@@ -30,8 +29,7 @@ public class IoUtil {
       BufferedReader stdIn = new BufferedReader(new InputStreamReader(inputStream, ENCODING));
       return stdIn.readLine();
     } catch (IOException e) {
-      e.printStackTrace();
-      return EMPTY_STRING;
+      throw new RuntimeException("You have an input exception.");
     }
   }
 
@@ -41,7 +39,7 @@ public class IoUtil {
           outputStream, ENCODING), true);
       out.println(line);
     } catch (IOException e) {
-      e.printStackTrace();
+      throw new RuntimeException("You have an output exception.");
     }
   }
 }

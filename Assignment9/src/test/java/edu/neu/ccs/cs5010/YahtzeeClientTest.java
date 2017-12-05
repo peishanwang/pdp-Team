@@ -1,7 +1,6 @@
 package edu.neu.ccs.cs5010;
 
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,7 +8,6 @@ import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
 
 import static junit.framework.TestCase.fail;
 import static org.mockito.Mockito.*;
