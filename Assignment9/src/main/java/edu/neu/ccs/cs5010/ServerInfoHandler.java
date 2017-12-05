@@ -1,6 +1,10 @@
 package edu.neu.ccs.cs5010;
 
 
+/**
+ * ServerInfoHandler is the class that handles all the game operations.
+ * i.e handles the responses of server.
+ */
 public class ServerInfoHandler {
   private static final String DO_NOTHING = "INFO: nothing to do.";
   private static final String SCORE_FRAME = "SCORE_CHOICE: ";

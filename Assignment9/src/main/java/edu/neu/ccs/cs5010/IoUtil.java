@@ -1,7 +1,16 @@
 package edu.neu.ccs.cs5010;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 
+/**
+ * IoUtil class is used to handle input and output stuff.
+ */
 public class IoUtil {
   private static final String ENCODING = "UTF-8";
   private InputStream inputStream;
