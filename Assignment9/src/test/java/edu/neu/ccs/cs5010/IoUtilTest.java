@@ -9,10 +9,11 @@ import java.io.PipedInputStream;
 import java.io.PipedOutputStream;
 
 public class IoUtilTest {
+  private static final String TEST_STRING = "hello";
 
   @Test
   public void testInput() {
-    String testString = "hello";
+    String testString = TEST_STRING;
     IoUtil input = new IoUtil(new ByteArrayInputStream(testString.getBytes()));
     Assert.assertEquals(testString, input.getLine());
   }
@@ -27,9 +28,9 @@ public class IoUtilTest {
   public void testOutput() {
     ByteArrayOutputStream test = new ByteArrayOutputStream();
     IoUtil output = new IoUtil(test);
-    output.writeLine("hello");
+    output.writeLine(TEST_STRING);
     byte[] byteArray = test.toByteArray();
-    Assert.assertEquals("hello", new String(byteArray).trim());
+    Assert.assertEquals(TEST_STRING, new String(byteArray).trim());
   }
 
   @Test(expected = RuntimeException.class)
