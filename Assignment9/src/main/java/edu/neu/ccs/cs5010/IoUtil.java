@@ -4,6 +4,7 @@ import java.io.*;
 
 public class IoUtil {
   private static final String ENCODING = "UTF-8";
+  private static final String EMPTY_STRING = "";
   private InputStream inputStream;
   private OutputStream outputStream;
 
@@ -21,7 +22,7 @@ public class IoUtil {
       return stdIn.readLine();
     } catch (IOException e) {
       e.printStackTrace();
-      return null;
+      return EMPTY_STRING;
     }
   }
 

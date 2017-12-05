@@ -4,8 +4,7 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
+import java.nio.charset.Charset;
 import java.util.Arrays;
 
 
@@ -14,7 +13,7 @@ public class ServerInfoHandlerTest {
   private static final String DO_NOTHING = "INFO: nothing to do.";
   private static final String CHOOSE_DICE = "CHOOSE_DICE: 1 2 3 4 5";
   private static final String CHOOSE_SCORE = "CHOOSE_SCORE: 1 2 3 4 5";
-  private static final String[] EMPTY = new String[]{""};
+  private static final String[] EMPTY = new String[]{"\n"};
   private static final String[] YES = new String[]{"a", "yes"};
   private static final String[] NO = new String[]{"a", "no"};
   private static final String ROUND_OVER = "ROUND_OVER: ";
@@ -52,7 +51,7 @@ public class ServerInfoHandlerTest {
   @Test
   public void testDice() {
     helper(CHOOSE_DICE, new String[]{"abc", "6 2", "-1 2", "1 2 3"});
-    //helper(CHOOSE_DICE, new String[]{""});
+    helper(CHOOSE_DICE, EMPTY);
   }
 
   @Test
